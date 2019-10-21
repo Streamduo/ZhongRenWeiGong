@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/distance_dp_120"
+        android:layout_height="@dimen/distance_dp_120"
+        android:background="@mipmap/register_duihao" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_48"
+        android:text="恭喜你注册成功"
+        android:textColor="@color/app_000000"
+        android:textSize="@dimen/distance_dp_20" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_36"
+        android:text="你可以放心在平台入驻商家消费，如有问题\n
+                        平台第一时间赔付！!"
+        android:textColor="@color/app_text_99"
+        android:textSize="@dimen/distance_dp_12" />
+</LinearLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_tuceng"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_145"
+        android:background="@mipmap/login_img" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/bus_layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_tuceng"
+        android:layout_marginLeft="@dimen/distance_dp_56"
+        android:layout_marginTop="@dimen/distance_dp_15"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_guanzhu_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8888"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注"
+            android:textColor="@color/app_text_99"
+            android:textSize="@dimen/distance_dp_11" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_trademark"
+        android:layout_width="@dimen/distance_dp_88"
+        android:layout_height="@dimen/distance_dp_88"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_114"
+        android:background="@mipmap/fang_list_default"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/img_tuceng"
+        android:layout_marginRight="@dimen/distance_dp_56"
+        android:layout_marginTop="@dimen/distance_dp_15"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_fans_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8888"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粉丝"
+            android:textColor="@color/app_text_99"
+            android:textSize="@dimen/distance_dp_11" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_trademark"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        android:textColor="@color/app_text_33"
+        android:textSize="@dimen/distance_dp_15"
+        tools:text="千库科技有限公司" />
+
+    <ImageView
+        android:id="@+id/img_renzheng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_trademark"
+        android:layout_marginLeft="@dimen/distance_dp_4"
+        android:layout_marginTop="@dimen/distance_dp_8"
+        android:layout_toRightOf="@+id/te_company_name"
+        android:background="@mipmap/renzheng" />
+
+    <TextView
+        android:id="@+id/te_guanzhu"
+        android:layout_width="@dimen/distance_dp_56"
+        android:layout_height="@dimen/distance_dp_24"
+        android:layout_below="@+id/te_company_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        android:background="@drawable/bg_bac_blue"
+        android:gravity="center"
+        android:text="+ 关注"
+        android:textColor="@color/white" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_shop_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_45"
+        android:layout_below="@+id/te_guanzhu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        app:tabIndicatorColor="@color/app_369EFF"
+        app:tabIndicatorHeight="1dp"
+        app:tabSelectedTextColor="@color/app_369EFF"
+        app:tabTextAppearance="@style/TabTextSize"
+        app:tabTextColor="@color/app_text_66"></android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_shop_page"></android.support.v4.view.ViewPager>
+
+</RelativeLayout>

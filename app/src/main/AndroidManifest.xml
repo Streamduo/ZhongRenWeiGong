@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.zhongrenweigong">
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:configChanges="fontScale"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="3.1" />
+
+        <activity android:name=".login.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".home.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".business.MerchantCertificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".business.BusinessListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".business.BusinessHomePageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home.MessageListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".home.MessageDetailActivity"></activity>
+    </application>
+
+</manifest>

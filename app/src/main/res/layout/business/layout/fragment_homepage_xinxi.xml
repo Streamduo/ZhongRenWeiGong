@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_55"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginRight="@dimen/distance_dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="法人："
+            android:textColor="@color/app_6D6D6D"
+            android:textSize="@dimen/distance_dp_14" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_faren_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_55"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginRight="@dimen/distance_dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="员工："
+            android:textColor="@color/app_6D6D6D"
+            android:textSize="@dimen/distance_dp_14" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_worker_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:background="@color/app_F4F4F4" />
+
+    <TextView
+        android:id="@+id/te_shop_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_14"
+        android:drawableLeft="@mipmap/black_address"
+        android:drawablePadding="@dimen/distance_dp_4"
+        android:textColor="@color/app_000000"
+        android:textSize="@dimen/distance_dp_15"
+        tools:text="北京市朝阳区小庄6号院" />
+
+    <com.tmall.ultraviewpager.UltraViewPager
+        android:id="@+id/zizhi_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_71"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_16"
+        android:background="@color/transparents"></com.tmall.ultraviewpager.UltraViewPager>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_14"
+        android:drawableLeft="@mipmap/zizhi"
+        android:drawablePadding="@dimen/distance_dp_4"
+        android:text="商家资质信息公示"
+        android:textColor="@color/app_000000"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_4"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:background="@color/app_F4F4F4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_14"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/zhengshu"
+            android:drawablePadding="@dimen/distance_dp_4"
+            android:text="经平台工作人员检测，结果为"
+            android:textColor="@color/app_000000"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_009307"
+            android:textSize="@dimen/distance_dp_15"
+            tools:text="合格。" />
+    </LinearLayout>
+
+    <com.tmall.ultraviewpager.UltraViewPager
+        android:id="@+id/zs_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_71"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_16"
+        android:background="@color/transparents"></com.tmall.ultraviewpager.UltraViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_55"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginRight="@dimen/distance_dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="检测人员："
+            android:textColor="@color/app_6D6D6D"
+            android:textSize="@dimen/distance_dp_14" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_jc_people_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</LinearLayout>

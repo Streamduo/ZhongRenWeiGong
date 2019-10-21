@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/distance_dp_10"
+    android:paddingLeft="@dimen/distance_dp_10"
+    android:paddingRight="@dimen/distance_dp_10"
+    android:paddingTop="@dimen/distance_dp_20">
+
+    <ImageView
+        android:id="@+id/img_business_fenlei_head"
+        android:layout_width="@dimen/distance_dp_73"
+        android:layout_height="@dimen/distance_dp_55"
+        android:background="@mipmap/fang_list_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_55"
+        android:layout_marginLeft="@dimen/distance_dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商家店铺名称"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <TextView
+            android:id="@+id/te_shop_people_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:drawableLeft="@mipmap/people_size"
+            android:drawablePadding="@dimen/distance_dp_3"
+            android:text="商家店铺名称"
+            android:textColor="@color/app_369EFF"
+            android:textSize="@dimen/distance_dp_11" />
+
+        <TextView
+            android:id="@+id/te_shop_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_4"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="商家介绍商家介绍商家介绍商家介绍商家介绍商家介绍商家介"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_10" />
+    </LinearLayout>
+
+</LinearLayout>

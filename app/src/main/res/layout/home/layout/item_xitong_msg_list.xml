@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.lijiankun24.shadowlayout.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:shadowColor="#309B9B9B"
+        app:shadowDx="@dimen/distance_dp_2"
+        app:shadowDy="@dimen/distance_dp_2"
+        app:shadowRadius="@dimen/distance_dp_10"
+        app:shadowShape="rectangle"
+        app:shadowSide="all">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_8"
+            android:layout_marginRight="@dimen/distance_dp_8"
+            android:background="@drawable/bg_bac_white_10"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/distance_dp_14"
+            android:paddingLeft="@dimen/distance_dp_10"
+            android:paddingRight="@dimen/distance_dp_5"
+            android:paddingTop="@dimen/distance_dp_14">
+
+            <TextView
+                android:id="@+id/te_msg_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_000000"
+                android:textSize="@dimen/distance_dp_15"
+                tools:text="APP系统升级通知" />
+
+            <TextView
+                android:id="@+id/te_msg_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:textColor="@color/app_888888"
+                android:textSize="@dimen/distance_dp_13"
+                tools:text="APP系统升级，升级时间为2019年11月1日23:00-4:00，升级期间，暂时不可使用。如有紧急问题请及时联系客服进行处理，望请谅解！" />
+        </LinearLayout>
+    </com.lijiankun24.shadowlayout.ShadowLayout>
+
+    <TextView
+        android:id="@+id/te_msg_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/app_D6D6D6"
+        android:textSize="@dimen/distance_dp_10"
+        tools:text="2019年10月30日18:00" />
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/distance_dp_10"
+    android:paddingLeft="@dimen/distance_dp_15">
+
+    <ImageView
+        android:id="@+id/img_business_fenlei_head"
+        android:layout_width="@dimen/distance_dp_43"
+        android:layout_height="@dimen/distance_dp_43"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:background="@mipmap/big_bussiness_head" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="快餐便当"
+        android:textColor="@color/app_text_66"
+        android:textSize="@dimen/distance_dp_11" />
+</LinearLayout>
