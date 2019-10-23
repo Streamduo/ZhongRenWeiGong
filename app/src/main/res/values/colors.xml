@@ -76,6 +76,8 @@
     <color name="app_F8F9FD">#F8F9FD</color>
     <color name="app_888888">#888888</color>
     <color name="app_D6D6D6">#D6D6D6</color>
+
     <color name="white">#fff</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

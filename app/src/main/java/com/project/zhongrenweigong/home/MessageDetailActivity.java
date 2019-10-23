@@ -23,7 +23,6 @@ public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
     @Override
     public void initView() {
         teTitle.setText("系统通知");
-        setFullScren(true);
     }
 
     @Override

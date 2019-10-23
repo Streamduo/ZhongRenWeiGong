@@ -32,7 +32,6 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setFullScren(true);
     }
 
     @Override

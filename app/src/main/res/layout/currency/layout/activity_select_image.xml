@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_circle_4"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnTakePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:height="42dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="拍照"
+                android:textColor="@color/app_text_33"
+                android:textSize="13dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_text_e6" />
+
+            <Button
+                android:id="@+id/btnSelectPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:height="42dp"
+                android:background="@null"
+                android:gravity="center"
+                android:text="手机相册选择"
+                android:textColor="@color/app_text_33"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:height="42dp"
+            android:background="@drawable/bg_white_circle_4"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/app_text_33"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+</RelativeLayout>
+

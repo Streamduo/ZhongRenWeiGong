@@ -1,7 +1,12 @@
 package com.project.zhongrenweigong.login;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.CheckBox;
@@ -16,6 +21,8 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.business.MerchantCertificationActivity;
+import com.project.zhongrenweigong.currency.ActivitySelectImage;
+import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import butterknife.BindView;
 import cn.droidlover.xdroidmvp.router.Router;
@@ -50,6 +57,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
     ViewStub vsRegisterOk;
     private View shiMingView;
     private View xinXiEditView;
+    private ImageView imgCardJust;
+    private ImageView imgCardBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +67,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
     @Override
     public void initView() {
-        setFullScren(true);
         teTitle.setText("注册账号");
     }
 
@@ -93,9 +101,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             case R.id.te_send_ems:
                 Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
                 break;
-//            case R.id.te_business:
-//                Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
-//                break;
             case R.id.te_next_shiming:
                 initShiMing();
                 break;
@@ -109,8 +114,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
         shiMingView = vsShiming.inflate();
         RelativeLayout rlShibie = shiMingView.findViewById(R.id.rl_shibie);
-        ImageView imgCardJust = shiMingView.findViewById(R.id.img_card_just);
-        ImageView imgCardBack = shiMingView.findViewById(R.id.img_card_back);
+        imgCardJust = shiMingView.findViewById(R.id.img_card_just);
+        imgCardBack = shiMingView.findViewById(R.id.img_card_back);
         EditText edEmsNum = shiMingView.findViewById(R.id.ed_ems_num);
         EditText edCardNum = shiMingView.findViewById(R.id.ed_card_num);
         EditText edCardDate = shiMingView.findViewById(R.id.ed_card_date);
@@ -144,7 +149,18 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                 }
             }
         });
-
+        imgCardJust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivitySelectImage.selectImageForCard(RegisterActivity.this);
+            }
+        });
+        imgCardBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivitySelectImage.selectImageForCard1(RegisterActivity.this);
+            }
+        });
     }
 
     private void initRegisterOk() {
@@ -152,7 +168,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         imgTop.setBackgroundResource(R.mipmap.register_ok);
         shiMingView.setVisibility(View.GONE);
         vsRegisterOk.inflate();
-
     }
 
     private void initXinxiEdit() {
@@ -172,6 +187,41 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         EditText edAddress = shiMingView.findViewById(R.id.ed_address);
         TextView teJump = (TextView) shiMingView.findViewById(R.id.te_jump);
         TextView teOk = (TextView) shiMingView.findViewById(R.id.te_ok);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
+        if (resultCode == 0) {
+            return;
+        }
+
+        String path = "";
+        path = data.getStringExtra("path");
+
+        if (path.equals("") && !TextUtils.isEmpty(data.getData().getAuthority())) {
+            Cursor cursor = getContentResolver().query(data.getData(), null, null, null, null);
+            if (cursor != null) {
+                int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                if (cursor.moveToFirst()) {
+                    path = cursor.getString(index);
+                    cursor.close();
+                }
+            }
+        }
+        if (requestCode == ActivitySelectImage.CHOSE_CARD) {
+            final Uri uri = data.getData();
+            GlideDownLoadImage.getInstance().loadImage(this, uri,
+                    imgCardJust);
+            return;
+        }
+
+        if (requestCode == ActivitySelectImage.CHOSE_CARD_1) {
+            final Uri uri = data.getData();
+
+            GlideDownLoadImage.getInstance().loadImage(this, uri,
+                    imgCardBack);
+            return;
+        }
     }
 
 }

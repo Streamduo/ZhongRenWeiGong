@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.project.zhongrenweigong.business.BusinessListActivity;
 import com.project.zhongrenweigong.login.LoginActivity;
 import com.tmall.ultraviewpager.UltraViewPager;
 
@@ -25,6 +26,7 @@ import cn.droidlover.xdroidmvp.router.Router;
 public class HomeFragment extends BaseFragment<HomePresent> {
 
     public static final String TAG = "HomeFragment";
+    public static final String TYPE = "type";
     @BindView(R.id.ad_viewpager)
     UltraViewPager adViewpager;
     @BindView(R.id.te_address)
@@ -82,15 +84,48 @@ public class HomeFragment extends BaseFragment<HomePresent> {
         teRetailers.setOnClickListener(this);
         teTeach.setOnClickListener(this);
         teTravel.setOnClickListener(this);
-
     }
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_message:
+                Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
+                break;
+            case R.id.img_saoyosao:
                 Router.newIntent(getActivity()).to(LoginActivity.class).launch();
                 break;
+            case R.id.te_food:
+                Router.newIntent(getActivity()).putInt(TYPE, 1)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+            case R.id.te_teach:
+                Router.newIntent(getActivity()).putInt(TYPE, 2)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+            case R.id.te_house:
+                Router.newIntent(getActivity()).putInt(TYPE, 3)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+            case R.id.te_car:
+                Router.newIntent(getActivity()).putInt(TYPE, 4)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+            case R.id.te_retailers:
+                Router.newIntent(getActivity()).putInt(TYPE, 5)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+            case R.id.te_travel:
+                Router.newIntent(getActivity()).putInt(TYPE, 6)
+                        .to(BusinessListActivity.class)
+                        .launch();
+                break;
+
         }
     }
 

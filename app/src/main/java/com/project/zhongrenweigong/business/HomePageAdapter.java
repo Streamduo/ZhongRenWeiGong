@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 
 public class HomePageAdapter extends FragmentPagerAdapter {
-    private String[] titles = new String[]{"信息", "动态", "活动"};
+    private String[] titles = new String[]{"信息", "动态"};
 
 
     public HomePageAdapter(FragmentManager fm) {
@@ -18,17 +18,15 @@ public class HomePageAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0:
                 return new HomePageXinXiFragment();
-//            case 1:
-//                return new FollowFragment();
-//            case 2:
-//                return new NewsFragment();
+            case 1:
+                return new BusinessDynamicFragment();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Override

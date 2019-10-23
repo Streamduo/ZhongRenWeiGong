@@ -34,13 +34,11 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
     private long exitTime = 0;
 
     /**
-     * 是否允许全屏,此处全屏是指将状态栏显示
-     **/
-    private boolean onlyShowStatusBar = false;
-    /**
      * 是否允许全屏,此处全屏是指将状态栏都隐藏掉
      **/
     private boolean mAllowFullScreen = false;
+
+    private boolean isFull = true;
     /**
      * 是否禁止旋转屏幕
      **/
@@ -110,6 +108,9 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
         setListener();
         activityManager = ActivityManager.getScreenManager();
         activityManager.pushActivity(this);
+        if (isFull){
+            StatusBarUtils.with(this).init();
+        }
     }
 
     @Override
@@ -118,10 +119,6 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
             //隐藏状态栏
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        }
-
-        if (onlyShowStatusBar) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
         return bindLayout();
@@ -208,6 +205,10 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
         this.mAllowFullScreen = allowFullScreen;
     }
 
+    public void setFull(boolean full) {
+        isFull = full;
+    }
+
     /**
      * 6.0以上检查申请权限时调用
      *
@@ -268,23 +269,6 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
         } else {
             activityManager.popAllActivity();
         }
-    }
-
-    protected void setFullScren(boolean isFull) {
-        if (isFull) {
-            StatusBarUtils.with(this).init();
-        } else {
-//            WindowManager.LayoutParams attr = getWindow()
-//                    .getAttributes();
-//            attr.flags = (WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//            getWindow().setAttributes(attr);
-            getWindow().clearFlags(
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-    }
-
-    public void setOnlyShowStatusBar(boolean onlyShowStatusBar) {
-        this.onlyShowStatusBar = onlyShowStatusBar;
     }
 
     @Override

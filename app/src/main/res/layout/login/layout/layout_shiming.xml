@@ -84,8 +84,7 @@
                         <ImageView
                             android:id="@+id/img_card_just"
                             android:layout_width="@dimen/distance_dp_126"
-                            android:layout_height="@dimen/distance_dp_86"
-                            android:visibility="gone" />
+                            android:layout_height="@dimen/distance_dp_86" />
                     </RelativeLayout>
 
                     <TextView
@@ -126,8 +125,7 @@
                         <ImageView
                             android:id="@+id/img_card_back"
                             android:layout_width="@dimen/distance_dp_126"
-                            android:layout_height="@dimen/distance_dp_86"
-                            android:visibility="gone" />
+                            android:layout_height="@dimen/distance_dp_86" />
                     </RelativeLayout>
 
                     <TextView

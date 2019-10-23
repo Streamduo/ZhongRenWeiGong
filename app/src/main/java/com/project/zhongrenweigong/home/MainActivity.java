@@ -41,7 +41,6 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
 
     @Override
     public void initView() {
-
     }
 
     @Override
@@ -70,7 +69,6 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.home_square:
-                setFullScren(false);
                 factoryFragment.changeToFragment(1);
                 homeSquare.setTextColor(getResources().getColor(R.color.app_369EFF));
                 homeMain.setChecked(false);
@@ -92,11 +90,9 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             case -1:
             case 0:
                 homeMain.setChecked(true);
-                setFullScren(true);
                 break;
             case 1:
                 homeMine.setChecked(true);
-                setFullScren(true);
                 break;
         }
     }

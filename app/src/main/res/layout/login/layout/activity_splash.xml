@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".login.SplashActivity">
 
-    <TextView
-        android:id="@+id/text_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="启动页"
-        android:textSize="@dimen/distance_dp_50"
-        />
+    <ImageView
+        android:id="@+id/img_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_splash"
+        android:scaleType="centerCrop" />
 
 </LinearLayout>

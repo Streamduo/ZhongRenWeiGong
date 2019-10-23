@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/distance_dp_13"
-            android:layout_marginTop="@dimen/distance_dp_19">
+            android:layout_marginTop="@dimen/distance_dp_29">
 
             <TextView
                 android:id="@+id/te_address"
@@ -179,5 +179,17 @@
                 android:text="@string/travel" />
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_10"
+        android:background="@color/app_text_f8" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/distance_dp_30"
+        android:background="@mipmap/home_bottom" />
 
 </LinearLayout>
