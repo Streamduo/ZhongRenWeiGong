@@ -3,6 +3,8 @@ package com.project.zhongrenweigong;
 import android.app.Application;
 import android.content.Context;
 
+import com.project.zhongrenweigong.net.ResultInterceptor;
+
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.NetProvider;
 import cn.droidlover.xdroidmvp.net.RequestHandler;
@@ -32,7 +34,8 @@ public class App extends Application {
 
             @Override
             public Interceptor[] configInterceptors() {
-                return new Interceptor[0];
+                Interceptor resultinterceptor = new ResultInterceptor(mContext);
+                return new Interceptor[]{resultinterceptor};
             }
 
             @Override

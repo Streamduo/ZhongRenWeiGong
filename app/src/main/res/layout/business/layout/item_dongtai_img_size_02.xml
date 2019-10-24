@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/distance_dp_20"
+    android:paddingLeft="@dimen/distance_dp_10"
+    android:paddingRight="@dimen/distance_dp_10"
+    android:paddingTop="@dimen/distance_dp_14">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_33"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_user_head"
+            android:layout_width="@dimen/distance_dp_33"
+            android:layout_height="@dimen/distance_dp_33"
+            android:background="@mipmap/shenhe_ren_head" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/distance_dp_10">
+
+            <TextView
+                android:id="@+id/te_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_22222"
+                android:textSize="@dimen/distance_dp_14"
+                tools:text="张*山" />
+
+            <TextView
+                android:id="@+id/te_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/app_22222"
+                android:textSize="@dimen/distance_dp_9"
+                tools:text="2019-07-04 17:30" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_20"
+        android:text="你站在楼上看风景，看风景的人在楼上看你。超爱这句话~~最近加班加到吐，无奈脸" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_14"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/img_dongtai"
+            android:layout_width="@dimen/distance_dp_165"
+            android:layout_height="@dimen/distance_dp_114"
+            android:layout_marginRight="@dimen/distance_dp_20"
+            android:background="@mipmap/fang_list_default"
+            android:scaleType="centerCrop" />
+
+
+        <ImageView
+            android:id="@+id/img_dongtai_02"
+            android:layout_width="@dimen/distance_dp_165"
+            android:layout_height="@dimen/distance_dp_114"
+            android:background="@mipmap/fang_list_default"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_20"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/distance_dp_12"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:background="@mipmap/reply" />
+
+
+        <ImageView
+            android:id="@+id/img_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/distance_dp_12"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:background="@mipmap/share" />
+
+        <ImageView
+            android:id="@+id/img_dianzan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:background="@mipmap/dianzan" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/xihuan"
+        android:drawablePadding="@dimen/distance_dp_5"
+        android:textColor="@color/app_22222"
+        android:textSize="@dimen/distance_dp_12"
+        tools:text="老张，小艾" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:background="@color/app_E5E5E5" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_commment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

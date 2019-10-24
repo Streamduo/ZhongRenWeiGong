@@ -72,9 +72,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
     @Override
     public void initAfter() {
-        teBack.setOnClickListener(this);
-        teSendEms.setOnClickListener(this);
-        teNext.setOnClickListener(this);
     }
 
     @Override
@@ -89,7 +86,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
     @Override
     public void setListener() {
-
+        teBack.setOnClickListener(this);
+        teSendEms.setOnClickListener(this);
+        teNext.setOnClickListener(this);
     }
 
     @Override
@@ -99,7 +98,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                 finish();
                 break;
             case R.id.te_send_ems:
-                Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
+//                Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
                 break;
             case R.id.te_next_shiming:
                 initShiMing();
@@ -119,9 +118,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         EditText edEmsNum = shiMingView.findViewById(R.id.ed_ems_num);
         EditText edCardNum = shiMingView.findViewById(R.id.ed_card_num);
         EditText edCardDate = shiMingView.findViewById(R.id.ed_card_date);
-        final CheckBox ckGeren = shiMingView.findViewById(R.id.ck_geren);
-        final CheckBox ckShangjia = shiMingView.findViewById(R.id.ck_shangjia);
-        Spinner spIndustry = shiMingView.findViewById(R.id.sp_industry);
+
+        final CheckBox ckMan = shiMingView.findViewById(R.id.ck_man);
+        final CheckBox ckWoman = shiMingView.findViewById(R.id.ck_woman);
+
         TextView teNextXinxi = (TextView) shiMingView.findViewById(R.id.te_next_xinxi);
 
         teNextXinxi.setOnClickListener(new View.OnClickListener() {
@@ -131,21 +131,21 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             }
         });
 
-        ckGeren.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ckMan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ckShangjia.setChecked(false);
-//                    imgTop.setBackgroundResource(R.mipmap.geren_people_face);
+                    ckWoman.setChecked(false);
+
                 }
             }
         });
-        ckShangjia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        ckWoman.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    ckGeren.setChecked(false);
-//                    imgTop.setBackgroundResource(R.mipmap.register_num02);
+                    ckMan.setChecked(false);
+
                 }
             }
         });

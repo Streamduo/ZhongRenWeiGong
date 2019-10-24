@@ -71,5 +71,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     implementation 'com.lijiankun24:shadowlayout:1.1.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.2'
 
 }

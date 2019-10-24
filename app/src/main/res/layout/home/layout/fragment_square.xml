@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +8,33 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_220">
+        android:layout_height="@dimen/distance_dp_207"
+        android:background="@mipmap/login_img">
 
-        <com.tmall.ultraviewpager.UltraViewPager
-            android:id="@+id/ad_viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/transparents"></com.tmall.ultraviewpager.UltraViewPager>
-
-        <TextView
+        <ImageView
+            android:id="@+id/img_beat"
             android:layout_width="wrap_content"
-            android:text="广场"
-            android:textSize="@dimen/distance_dp_50"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/distance_dp_16"
+            android:layout_marginTop="@dimen/distance_dp_34"
+            android:background="@mipmap/xiangji" />
     </RelativeLayout>
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_square_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_45"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        app:tabIndicatorColor="@color/app_369EFF"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/app_369EFF"
+        app:tabTextAppearance="@style/TabTextSize"
+        app:tabTextColor="@color/app_text_66" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

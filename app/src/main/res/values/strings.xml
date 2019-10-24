@@ -10,4 +10,12 @@
     <string name="net">网络电商</string>
     <string name="travel">酒店旅游</string>
 
+    <string name="phonenumber_error">请输入正确的手机号</string>
+    <string name="phonenumber_null">请输入手机号码</string>
+    <string name="code_error">验证码有误</string>
+    <string name="code_null">请输入验证码</string>
+    <string name="password_null">请输入密码</string>
+    <string name="password_error">密码只能包含数字，英文字母大小写或下划线</string>
+    <string name="password_cn_6">密码不小于6位</string>
+
 </resources>

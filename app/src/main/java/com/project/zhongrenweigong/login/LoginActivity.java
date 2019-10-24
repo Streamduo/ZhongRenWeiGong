@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.login;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -8,8 +9,11 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.util.CheckInputUtil;
+import com.project.zhongrenweigong.util.SystemUtil;
 
 import butterknife.BindView;
+import cn.droidlover.xdroidbase.kit.ToastManager;
 import cn.droidlover.xdroidmvp.router.Router;
 
 public class LoginActivity extends BaseActivity<LoginPresent> {
@@ -57,6 +61,7 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        imgLogin.setOnClickListener(this);
         teFindPassword.setOnClickListener(this);
         teRegister.setOnClickListener(this);
     }
@@ -71,6 +76,34 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
                 Router.newIntent(this).to(RegisterActivity.class).launch();
                 break;
             case R.id.te_find_password:
+                Router.newIntent(this).to(FindPasswordActivity.class).launch();
+                break;
+            case R.id.img_login:
+                String phoneNumText = edPhoneNum.getText().toString();
+                String pn = phoneNumText.replaceAll("\\D", "");
+                String passwordText = edPassword.getText().toString();
+
+                String ipAddress = SystemUtil.getIpAddress(LoginActivity.this);
+
+                if (TextUtils.isEmpty(pn)) {
+                    ToastManager.showShort(LoginActivity.this,getString(R.string.phonenumber_null));
+                    return;
+                }
+                if (!CheckInputUtil.checkPhoneForLogin(pn)) {
+                    ToastManager.showShort(LoginActivity.this,getString(R.string.phonenumber_error));
+                    return;
+                }
+
+                if (passwordText == null || passwordText.equals("")) {
+                    ToastManager.showShort(LoginActivity.this,getString(R.string.password_null));
+                    return;
+                }
+                if (passwordText.length() < 6) {
+                    ToastManager.showShort(LoginActivity.this,getString(R.string.password_cn_6));
+                    return;
+                }
+
+                getP().login("adress",ipAddress,"a",passwordText,phoneNumText);
                 break;
         }
     }

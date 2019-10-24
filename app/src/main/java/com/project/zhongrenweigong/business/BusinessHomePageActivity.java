@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.business.adapter.HomePageAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_dongtai"
+        android:layout_width="@dimen/distance_dp_115"
+        android:layout_height="@dimen/distance_dp_115"
+        android:background="@mipmap/fang_list_default"
+        android:scaleType="centerCrop" />
+</LinearLayout>
