@@ -18,6 +18,7 @@ import com.project.zhongrenweigong.util.StatusBarUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.droidlover.xdroidbase.kit.ToastManager;
 import cn.droidlover.xdroidmvp.mvp.XActivity;
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 
@@ -203,6 +204,14 @@ public abstract class BaseActivity<M extends XPresent> extends XActivity<M> impl
      */
     public void setAllowFullScreen(boolean allowFullScreen) {
         this.mAllowFullScreen = allowFullScreen;
+    }
+
+    public void showToastShort(String toastMsg){
+        ToastManager.showShort(this,toastMsg);
+    }
+
+    public void showToastLong(String toastMsg){
+        ToastManager.showLong(this,toastMsg);
     }
 
     public void setFull(boolean full) {

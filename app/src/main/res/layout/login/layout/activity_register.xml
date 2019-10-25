@@ -68,7 +68,7 @@
                         android:background="@null"
                         android:hint="请输入手机号"
                         android:inputType="number"
-                        android:maxEms="11"
+                        android:maxLength="11"
                         android:textSize="@dimen/distance_dp_10" />
 
                     <TextView
@@ -111,9 +111,10 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入验证码"
                         android:inputType="number"
-                        android:maxEms="6"
+                        android:maxLength="6"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />
                 </RelativeLayout>
@@ -141,9 +142,10 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入密码"
                         android:inputType="textPassword"
-                        android:maxEms="6"
+                        android:maxLength="16"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />
                 </RelativeLayout>
@@ -171,9 +173,10 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入确认密码"
                         android:inputType="textPassword"
-                        android:maxEms="6"
+                        android:maxLength="16"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />
                 </RelativeLayout>

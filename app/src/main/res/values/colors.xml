@@ -81,5 +81,6 @@
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
+    <color name="colorPrimary">#33aaff</color>
 
 </resources>

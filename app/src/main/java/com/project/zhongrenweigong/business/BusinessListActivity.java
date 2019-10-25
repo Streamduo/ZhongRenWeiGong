@@ -13,6 +13,10 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.business.adapter.BusinessTypeListAdapter;
 import com.project.zhongrenweigong.business.bean.BusinessTypeBean;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,8 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
     RecyclerView recyBusinessFenlei;
     @BindView(R.id.recy_business_list)
     RecyclerView recyBusinessList;
+    @BindView(R.id.sm_refresh)
+    SmartRefreshLayout smRefresh;
     private int type;
     private BusinessTypeListAdapter businessTypeListAdapter;
 
@@ -48,6 +54,19 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
         setFull(false);
         Intent intent = getIntent();
         type = intent.getIntExtra(TYPE, 0);
+
+        smRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+            }
+        });
+        smRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
+            }
+        });
     }
 
     @Override
@@ -58,7 +77,7 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             businessTypeBean.name = "包子粥店+" + i;
             list.add(businessTypeBean);
         }
-        recyBusinessFenlei.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyBusinessFenlei.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         businessTypeListAdapter = new BusinessTypeListAdapter(R.layout.item_business_fenlei_list);
         recyBusinessFenlei.setAdapter(businessTypeListAdapter);
         businessTypeListAdapter.setNewData(list);

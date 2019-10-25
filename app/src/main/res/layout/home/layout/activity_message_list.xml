@@ -18,12 +18,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recy_message_list"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sm_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/img_tuceng"
-        android:overScrollMode="never">
+        app:srlPrimaryColor="@color/white"
+        app:srlAccentColor="@color/app_text_99"
+        app:srlEnablePreviewInEditMode="true"
+        android:layout_below="@+id/img_tuceng">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_message_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </RelativeLayout>

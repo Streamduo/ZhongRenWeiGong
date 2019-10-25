@@ -51,15 +51,15 @@ public class LoginPresent extends XPresent<LoginActivity> {
 
                     @Override
                     protected void onFail(NetError error) {
-                        if (error.getType() == OtherError) {
-                            ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
-                        }
+//                        if (error.getType() == OtherError) {
+//                            ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
+//                        }
                     }
 
                     @Override
                     public void onNext(BaseModel baseModel) {
                         if (baseModel.getCode() == 200) {
-                            ToastManager.showShort(getV(), "登录成功");
+                            ToastManager.showShort(getV(), baseModel.getMsg());
                         }
                         String data = baseModel.encryptionData;
                         if (data != null && !data.equals("")) {

@@ -44,15 +44,21 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!this.isTaskRoot()) {
-            Intent intent = getIntent();
-            if (intent != null) {
-                String action = intent.getAction();
-                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
-                    finish();
-                }
-            }
+//        if (!this.isTaskRoot()) {
+//            Intent intent = getIntent();
+//            if (intent != null) {
+//                String action = intent.getAction();
+//                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) {
+//                    finish();
+//                }
+//            }
+//        }
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
         }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_splash);
         aBoolean = SharedPref.getInstance(this).getBoolean(USERTYPE, true);
         setUpSlogan();
@@ -79,4 +85,9 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
 }

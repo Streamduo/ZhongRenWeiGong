@@ -70,8 +70,8 @@
                         android:layout_marginTop="@dimen/distance_dp_37">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/distance_dp_126"
+                            android:layout_height="@dimen/distance_dp_86"
                             android:layout_centerInParent="true"
                             android:background="@mipmap/card_just" />
 
@@ -111,8 +111,8 @@
                         android:layout_marginTop="@dimen/distance_dp_37">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/distance_dp_126"
+                            android:layout_height="@dimen/distance_dp_86"
                             android:layout_centerInParent="true"
                             android:background="@mipmap/card_back" />
 
@@ -174,14 +174,14 @@
                         android:textSize="@dimen/distance_dp_12" />
 
                     <EditText
-                        android:id="@+id/ed_ems_num"
+                        android:id="@+id/ed_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入您的姓名"
-                        android:inputType="number"
-                        android:maxEms="6"
+                        android:maxLength="6"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />
                 </RelativeLayout>
@@ -209,8 +209,9 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入您的身份证号码"
-                        android:maxEms="18"
+                        android:maxLength="18"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />
                 </RelativeLayout>
@@ -256,8 +257,8 @@
                             android:id="@+id/ck_woman"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@null"
                             android:layout_marginRight="@dimen/distance_dp_10"
+                            android:background="@null"
                             android:button="@drawable/shiming_user_classification"
                             android:paddingLeft="@dimen/distance_dp_5"
                             android:text="女"
@@ -290,6 +291,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:background="@null"
+                        android:gravity="right|center_vertical"
                         android:hint="请输入身份证有效期"
                         android:textColorHint="@color/app_BEBEBE"
                         android:textSize="@dimen/distance_dp_10" />

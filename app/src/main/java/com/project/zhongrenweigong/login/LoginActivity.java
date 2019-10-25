@@ -102,8 +102,10 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
                     ToastManager.showShort(LoginActivity.this,getString(R.string.password_cn_6));
                     return;
                 }
-
-                getP().login("adress",ipAddress,"a",passwordText,phoneNumText);
+                if (!CheckInputUtil.checkPassword(passwordText)){
+                    ToastManager.showShort(LoginActivity.this,getString(R.string.password_error));
+                }
+                getP().login("adress",ipAddress,"1",passwordText,phoneNumText);
                 break;
         }
     }

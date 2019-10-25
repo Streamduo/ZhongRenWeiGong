@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +26,23 @@ public class VideoSquareFragement extends BaseFragment<VideoSquarePresent> {
     @BindView(R.id.recy_video_list)
     RecyclerView recyVideoList;
     Unbinder unbinder;
+    @BindView(R.id.sm_refresh)
+    SmartRefreshLayout smRefresh;
 
     @Override
     public void initView() {
-
+        smRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
+            }
+        });
+        smRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
+            }
+        });
     }
 
     @Override

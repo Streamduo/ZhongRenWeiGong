@@ -1,5 +1,8 @@
 package com.project.zhongrenweigong.login;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -20,12 +23,34 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.base.PressionListener;
 import com.project.zhongrenweigong.business.MerchantCertificationActivity;
 import com.project.zhongrenweigong.currency.ActivitySelectImage;
+import com.project.zhongrenweigong.net.Api;
+import com.project.zhongrenweigong.util.CheckInputUtil;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
+import com.project.zhongrenweigong.view.LoadingDialog;
+
+import java.io.File;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import cn.droidlover.xdroidbase.cache.SharedPref;
+import cn.droidlover.xdroidbase.kit.ToastManager;
 import cn.droidlover.xdroidmvp.router.Router;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
@@ -59,6 +84,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
     private View xinXiEditView;
     private ImageView imgCardJust;
     private ImageView imgCardBack;
+    private String peopleType = "1";
+    private File justFile;
+    private File backFile;
+    private String cardNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +97,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
     @Override
     public void initView() {
         teTitle.setText("注册账号");
+        requestPermission();
     }
 
     @Override
@@ -101,12 +131,57 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 //                Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
                 break;
             case R.id.te_next_shiming:
-                initShiMing();
+                String phoneNumText = edPhoneNum.getText().toString();
+                String phoneNum = phoneNumText.replaceAll("\\D", "");
+                String textEmsNum = edEmsNum.getText().toString();
+                String passwordText = edPassword.getText().toString();
+                String querenPasswordText = edQuerenPassword.getText().toString();
+                if (TextUtils.isEmpty(phoneNum)) {
+                    showToastShort(getString(R.string.phonenumber_null));
+                    return;
+                }
+                if (!CheckInputUtil.checkPhoneForLogin(phoneNum)) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.phonenumber_error));
+                    return;
+                }
+
+                if (textEmsNum == null || textEmsNum.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.code_null));
+                    return;
+                }
+                if (textEmsNum.length() < 6) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.code_error));
+                    return;
+                }
+
+                if (passwordText == null || passwordText.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.password_null));
+                    return;
+                }
+                if (passwordText.length() < 6) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.password_cn_6));
+                    return;
+                }
+
+                if (!CheckInputUtil.checkPassword(passwordText)) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.password_error));
+                }
+
+                if (querenPasswordText == null || querenPasswordText.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.queren_password_null));
+                    return;
+                }
+
+                if (!querenPasswordText.equals(passwordText)) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.same_password_error));
+                    return;
+                }
+                initShiMing(phoneNum, textEmsNum, passwordText);
                 break;
         }
     }
 
-    private void initShiMing() {
+    private void initShiMing(final String phoneNum, final String textEmsNum, final String passwordText) {
         teTitle.setText("实名/人脸认证");
         imgTop.setBackgroundResource(R.mipmap.geren_people_face);
         lineRegister.setVisibility(View.GONE);
@@ -115,9 +190,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         RelativeLayout rlShibie = shiMingView.findViewById(R.id.rl_shibie);
         imgCardJust = shiMingView.findViewById(R.id.img_card_just);
         imgCardBack = shiMingView.findViewById(R.id.img_card_back);
-        EditText edEmsNum = shiMingView.findViewById(R.id.ed_ems_num);
-        EditText edCardNum = shiMingView.findViewById(R.id.ed_card_num);
-        EditText edCardDate = shiMingView.findViewById(R.id.ed_card_date);
+        final EditText edUserName = shiMingView.findViewById(R.id.ed_user_name);
+        final EditText edCardNum = shiMingView.findViewById(R.id.ed_card_num);
+        final EditText edCardDate = shiMingView.findViewById(R.id.ed_card_date);
 
         final CheckBox ckMan = shiMingView.findViewById(R.id.ck_man);
         final CheckBox ckWoman = shiMingView.findViewById(R.id.ck_woman);
@@ -127,7 +202,28 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         teNextXinxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initRegisterOk();
+                String textUsername = edUserName.getText().toString();
+                String textCardNum = edCardNum.getText().toString();
+                String cardNum = textCardNum.replaceAll("\\D", "");
+                String textCardDate = edCardDate.getText().toString();
+
+                if (textUsername == null || textUsername.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.username_null));
+                    return;
+                }
+                if (cardNum == null || cardNum.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.usercard_num_null));
+                    return;
+                }
+                if (!CheckInputUtil.IDCardValidate(cardNum)) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.usercard_num_error));
+                    return;
+                }
+                if (textCardDate == null || textCardDate.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, getString(R.string.usercard_date_null));
+                    return;
+                }
+                getP().register(textCardNum, textCardDate, textUsername, passwordText, phoneNum, peopleType, textEmsNum);
             }
         });
 
@@ -136,7 +232,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     ckWoman.setChecked(false);
-
+                    peopleType = "1";
                 }
             }
         });
@@ -145,25 +241,37 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     ckMan.setChecked(false);
-
+                    peopleType = "0";
                 }
             }
         });
         imgCardJust.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String textCardNum = edCardNum.getText().toString();
+                cardNum = textCardNum.replaceAll("\\D", "");
+                if (cardNum == null || cardNum.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, "请先填写身份证号");
+                    return;
+                }
                 ActivitySelectImage.selectImageForCard(RegisterActivity.this);
             }
         });
         imgCardBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String textCardNum = edCardNum.getText().toString();
+                cardNum = textCardNum.replaceAll("\\D", "");
+                if (cardNum == null || cardNum.equals("")) {
+                    ToastManager.showShort(RegisterActivity.this, "请先填写身份证号");
+                    return;
+                }
                 ActivitySelectImage.selectImageForCard1(RegisterActivity.this);
             }
         });
     }
 
-    private void initRegisterOk() {
+    public void initRegisterOk() {
         teTitle.setText("注册成功");
         imgTop.setBackgroundResource(R.mipmap.register_ok);
         shiMingView.setVisibility(View.GONE);
@@ -194,7 +302,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         if (resultCode == 0) {
             return;
         }
-
         String path = "";
         path = data.getStringExtra("path");
 
@@ -212,6 +319,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             final Uri uri = data.getData();
             GlideDownLoadImage.getInstance().loadImage(this, uri,
                     imgCardJust);
+            setCompressImg(0, path);
             return;
         }
 
@@ -220,8 +328,113 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
 
             GlideDownLoadImage.getInstance().loadImage(this, uri,
                     imgCardBack);
+            setCompressImg(1, path);
             return;
         }
+    }
+
+    /**
+     * @author fuduo
+     * @time 2018/2/1  18:22
+     * @describe 上传图片
+     */
+    private void uploadPic() {
+        LoadingDialog.show(RegisterActivity.this);
+        OkHttpClient client = new OkHttpClient.Builder().
+                connectTimeout(60, TimeUnit.SECONDS).
+                readTimeout(60, TimeUnit.SECONDS).
+                writeTimeout(60, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Api.BASE_PATH)
+                .build();
+        LoginNetManager service = retrofit.create(LoginNetManager.class);
+        RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("idcard", cardNum)
+                .addFormDataPart("positive", justFile.getName(), RequestBody.create(MediaType.parse("file"), justFile))
+                .addFormDataPart("negative", backFile.getName(), RequestBody.create(MediaType.parse("file"), backFile))
+                .build();
+
+        //如果和rxjava1.x , call就换成 Observable
+        Call<BaseModel> call = service.uploadCardImage("authMemberNameApi", requestBody);
+        // 执行
+        call.enqueue(new Callback<BaseModel>() {
+            @Override
+            public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
+                String msg = response.body().getMsg();
+                int code = response.body().getCode();
+                showToastShort(msg);
+//                if (code == 200) {
+//
+//                }
+                LoadingDialog.dismiss(RegisterActivity.this);
+            }
+
+            @Override
+            public void onFailure(Call<BaseModel> call, Throwable t) {
+                showToastShort("请检查网络设置");
+                LoadingDialog.dismiss(RegisterActivity.this);
+            }
+        });
+    }
+
+    private void setCompressImg(final int index, String path) {
+        Luban.with(this).
+                load(path).
+                ignoreBy(1000).
+                setCompressListener(new OnCompressListener() {
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        if (index == 0) {
+                            justFile = file;
+                        } else {
+                            backFile = file;
+                            uploadPic();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        showToastShort("上传错误，请重试！");
+                    }
+                }).launch();
+    }
+
+    /**
+     * 请求权限
+     */
+    private void requestPermission() {
+        requestRunTimePression(RegisterActivity.this, new String[]{Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE}, new PressionListener() {
+            @Override
+            public void onGranted() {
+
+            }
+
+            @Override
+            public void onFailure(List<String> failurePression) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setMessage("提示")
+                        .setMessage("请您去设置中授予拍照和存储的权限")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent();
+                                intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                                intent.setData(Uri.fromParts("package", mContext.getPackageName(), null));
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        });
+                builder.setCancelable(false);
+                builder.show();
+            }
+        });
     }
 
 }

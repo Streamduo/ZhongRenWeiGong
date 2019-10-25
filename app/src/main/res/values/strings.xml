@@ -15,7 +15,13 @@
     <string name="code_error">验证码有误</string>
     <string name="code_null">请输入验证码</string>
     <string name="password_null">请输入密码</string>
+    <string name="queren_password_null">请输入确认密码</string>
     <string name="password_error">密码只能包含数字，英文字母大小写或下划线</string>
     <string name="password_cn_6">密码不小于6位</string>
+    <string name="username_null">用户名不能为空</string>
+    <string name="usercard_num_null">身份证号不能为空</string>
+    <string name="usercard_num_error">身份证号输入有误</string>
+    <string name="usercard_date_null">身份证有效期不能为空</string>
+    <string name="same_password_error">两次输入的密码不一致</string>
 
 </resources>
