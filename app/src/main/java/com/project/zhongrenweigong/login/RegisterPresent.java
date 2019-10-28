@@ -1,10 +1,9 @@
 package com.project.zhongrenweigong.login;
 
 import com.project.zhongrenweigong.base.BaseModel;
-import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.net.Api;
-import com.project.zhongrenweigong.util.AesUtil;
 import com.project.zhongrenweigong.util.GsonProvider;
+import com.project.zhongrenweigong.util.AES;
 
 import java.util.Map;
 
@@ -14,7 +13,6 @@ import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.XApi;
 
-import static cn.droidlover.xdroidmvp.net.NetError.OtherError;
 
 /**
  * 作者：Fuduo on 2019/10/16 10:54
@@ -35,10 +33,11 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
         stringMap.put("sex", sex);
         stringMap.put("verification",verification);
         String body = GsonProvider.gson.toJson(stringMap);
-
+        final AES aes = new AES();
         String encode3DesBody = null;
         try {
-            encode3DesBody = AesUtil.aesEncrypt(body, AesUtil.ps);
+            byte[] utf8s = body.getBytes("UTF8");
+            encode3DesBody = aes.encrypt(utf8s);
         } catch (Exception e) {
             e.printStackTrace();
         }

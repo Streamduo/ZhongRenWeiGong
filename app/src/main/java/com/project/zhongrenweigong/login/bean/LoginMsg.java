@@ -1,13 +1,13 @@
 package com.project.zhongrenweigong.login.bean;
 
+import java.io.Serializable;
+
 /**
  * 作者：Fuduo on 2019/10/23 14:58
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class LoginMsg {
-
-
+public class LoginMsg implements Serializable {
     /**
      * mbId : 346534891132948480
      * mbPhone : 23333234561
@@ -39,6 +39,4 @@ public class LoginMsg {
     public String role;
     public String isFreeze;
     public String industryId;
-
-    
 }

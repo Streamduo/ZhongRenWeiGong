@@ -1,21 +1,26 @@
 package com.project.zhongrenweigong.login;
 
 import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
-import com.project.zhongrenweigong.login.bean.LoginResponseBean;
 import com.project.zhongrenweigong.net.Api;
-import com.project.zhongrenweigong.util.AesUtil;
 import com.project.zhongrenweigong.util.GsonProvider;
+import com.project.zhongrenweigong.util.XCache;
+import com.project.zhongrenweigong.util.AES;
+import com.project.zhongrenweigong.view.LoadingDialog;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Map;
 
 import cn.droidlover.xdroidbase.kit.ToastManager;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.XApi;
 
-import static cn.droidlover.xdroidmvp.net.NetError.OtherError;
 
 /**
  * 作者：Fuduo on 2019/10/17 11:22
@@ -26,6 +31,7 @@ public class LoginPresent extends XPresent<LoginActivity> {
 
     public void login(String loginAddr, String loginIp,
                       String loginType, String mbPassword, String mbPhone) {
+        LoadingDialog.show(getV());
         Map<String, String> stringMap = Api.getBasicParamsUidAndToken();
         stringMap.put("loginAddr", loginAddr);
         stringMap.put("loginIp", loginIp);
@@ -33,10 +39,11 @@ public class LoginPresent extends XPresent<LoginActivity> {
         stringMap.put("mbPassword", mbPassword);
         stringMap.put("mbPhone", mbPhone);
         String body = GsonProvider.gson.toJson(stringMap);
-
+        final AES aes = new AES();
         String encode3DesBody = null;
         try {
-            encode3DesBody = AesUtil.aesEncrypt(body, AesUtil.ps);
+            byte[] utf8s = body.getBytes("UTF8");
+            encode3DesBody = aes.encrypt(utf8s);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,6 +57,12 @@ public class LoginPresent extends XPresent<LoginActivity> {
                 .subscribe(new ApiSubscriber<BaseModel>() {
 
                     @Override
+                    public void onComplete() {
+                        super.onComplete();
+                        LoadingDialog.dismiss(getV());
+                    }
+
+                    @Override
                     protected void onFail(NetError error) {
 //                        if (error.getType() == OtherError) {
 //                            ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
@@ -58,14 +71,19 @@ public class LoginPresent extends XPresent<LoginActivity> {
 
                     @Override
                     public void onNext(BaseModel baseModel) {
+                        SharedPref.getInstance(getV()).putBoolean(Constans.ISTOURIST, false);
                         if (baseModel.getCode() == 200) {
                             ToastManager.showShort(getV(), baseModel.getMsg());
                         }
                         String data = baseModel.encryptionData;
                         if (data != null && !data.equals("")) {
-                            String json = AesUtil.aesDecrypt(data, AesUtil.ps);
+                            String json = aes.decrypt(data);
                             LoginMsg loginMsg = GsonProvider.gson.fromJson(json, LoginMsg.class);
-                            String mbId = loginMsg.mbId;
+
+                            XCache xCache = new XCache.Builder(getV()).build();
+                            xCache.put(Constans.USERACCENT,loginMsg);
+                            EventBus.getDefault().post(new RefreshMineEvent());
+                            getV().finish();
                         }
                     }
                 });

@@ -394,6 +394,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                             justFile = file;
                         } else {
                             backFile = file;
+                        }
+                        if (justFile != null && backFile != null) {
                             uploadPic();
                         }
                     }

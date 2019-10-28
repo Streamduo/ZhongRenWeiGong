@@ -10,12 +10,15 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessListActivity;
+import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.util.RouterUtils;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
 
 /**
@@ -50,10 +53,11 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     @BindView(R.id.te_travel)
     TextView teTravel;
     Unbinder unbinder;
+    private boolean isTourist;
 
     @Override
     public void initView() {
-
+        isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
     }
 
     @Override
@@ -90,10 +94,18 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.img_message:
-                Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
+                if (isTourist) {
+                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                }else {
+                    Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
+                }
                 break;
             case R.id.img_saoyosao:
-                Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                if (isTourist) {
+                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                }else {
+                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                }
                 break;
             case R.id.te_food:
                 Router.newIntent(getActivity()).putInt(TYPE, 1)

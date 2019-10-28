@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mine.MyAuthenticationActivity">
+
+    <ImageView
+        android:id="@+id/img_tuceng"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_187"
+        android:background="@mipmap/login_img" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/bus_layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="@dimen/distance_dp_33"
+        android:layout_marginTop="@dimen/distance_dp_30">
+
+        <TextView
+            android:id="@+id/te_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_21"
+            android:textStyle="bold"
+            tools:text="林齐钗" />
+
+        <ImageView
+            android:id="@+id/img_authentication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_toRightOf="@+id/te_user_name"
+            android:background="@mipmap/img_authentication" />
+
+        <TextView
+            android:id="@+id/te_unbind"
+            android:layout_width="@dimen/distance_dp_45"
+            android:layout_height="@dimen/distance_dp_21"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/distance_dp_19"
+            android:background="@drawable/bg_stroke_white_2"
+            android:gravity="center"
+            android:text="解绑"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_11" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_151"
+        android:orientation="vertical">
+
+        <com.lijiankun24.shadowlayout.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:shadowColor="#593B73F6"
+            app:shadowDx="@dimen/distance_dp_2"
+            app:shadowDy="@dimen/distance_dp_2"
+            app:shadowRadius="@dimen/distance_dp_10"
+            app:shadowShape="rectangle"
+            app:shadowSide="all">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_178"
+                android:background="@drawable/bg_bac_white_10"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/distance_dp_20"
+                android:paddingRight="@dimen/distance_dp_20"
+                android:paddingTop="@dimen/distance_dp_20">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_39"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="L1级认证"
+                        android:textColor="@color/app_1B8FFF"
+                        android:textSize="@dimen/distance_dp_17"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_5"
+                        android:text="可享受赔付等基础服务"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_1"
+                    android:background="@color/app_ededed" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_realname_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_57">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="实名认证"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_17" />
+
+                    <TextView
+                        android:id="@+id/te_realname_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_15"
+                        tools:text="已认证" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_1"
+                    android:background="@color/app_ededed" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_face_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_57">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="人脸识别认证"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_17" />
+
+                    <TextView
+                        android:id="@+id/te_face_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_15"
+                        tools:text="已认证" />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.lijiankun24.shadowlayout.ShadowLayout>
+
+        <com.lijiankun24.shadowlayout.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:shadowColor="#593B73F6"
+            app:shadowDx="@dimen/distance_dp_2"
+            app:shadowDy="@dimen/distance_dp_2"
+            app:shadowRadius="@dimen/distance_dp_10"
+            app:shadowShape="rectangle"
+            app:shadowSide="all">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_178"
+                android:background="@drawable/bg_bac_white_10"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/distance_dp_20"
+                android:paddingRight="@dimen/distance_dp_20"
+                android:paddingTop="@dimen/distance_dp_20">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_39"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="L2级认证"
+                        android:textColor="@color/app_1B8FFF"
+                        android:textSize="@dimen/distance_dp_17"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_5"
+                        android:text="可享受提现以及商家等基础服务"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_1"
+                    android:background="@color/app_ededed" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_bankcard_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_57">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="银行卡认证"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_17" />
+
+                    <TextView
+                        android:id="@+id/te_bankcard_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_15"
+                        tools:text="已认证" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_1"
+                    android:background="@color/app_ededed" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_business_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_57">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="商家认证"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_17" />
+
+                    <TextView
+                        android:id="@+id/te_business_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_15"
+                        tools:text="已认证" />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.lijiankun24.shadowlayout.ShadowLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

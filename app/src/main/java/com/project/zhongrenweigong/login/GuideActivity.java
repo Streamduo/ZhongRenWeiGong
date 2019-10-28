@@ -1,13 +1,13 @@
 package com.project.zhongrenweigong.login;
 
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.project.zhongrenweigong.R;
+import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.home.MainActivity;
 
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
-import static com.project.zhongrenweigong.util.SharedPrefConstants.USERTYPE;
 
 public class GuideActivity extends AppCompatActivity {
 
@@ -37,7 +36,7 @@ public class GuideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guide);
         ButterKnife.bind(this);
         initView();
-        SharedPref.getInstance(this).putBoolean(USERTYPE, false);
+        SharedPref.getInstance(this).putBoolean(Constans.FIRST_OPEN, false);
     }
 
     private void initView() {

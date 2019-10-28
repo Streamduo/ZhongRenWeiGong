@@ -11,10 +11,19 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
+import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.util.RouterUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.droidlover.xdroidbase.kit.ToastManager;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class MainActivity extends BaseActivity<MainPresent> implements CompoundButton.OnCheckedChangeListener {
 
@@ -141,7 +150,17 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             case R.id.home_mine:
                 homeSquare.setTextColor(getResources().getColor(R.color.app_7d7d7d));
                 factoryFragment.changeToFragment(2);
+                boolean isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
+                if (isTourist) {
+                    Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
+                }
                 break;
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(RefreshMineEvent refreshMineEvent) {
+        homeMine.setChecked(true);
+    }
+
 }

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.util.UtilsStyle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +23,7 @@ public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
 
     @Override
     public void initView() {
+        UtilsStyle.statusBarLightMode(this);
         teTitle.setText("系统通知");
     }
 

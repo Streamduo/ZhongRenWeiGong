@@ -28,7 +28,7 @@ public interface LoginNetManager {
      */
     @FormUrlEncoded
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
-    @POST("loginEncryptionApi")
+    @POST("loginEncryptionApi")//testLogin
     Flowable<BaseModel> login(@Field("dataMsg") String dataMsg);
 
     /**

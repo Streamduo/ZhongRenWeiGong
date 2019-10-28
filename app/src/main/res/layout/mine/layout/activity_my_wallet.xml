@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mine.MyWalletActivity">
+
+    <include
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_127"
+        android:layout_marginLeft="@dimen/distance_dp_6"
+        android:layout_marginRight="@dimen/distance_dp_5"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:background="@mipmap/wallet_bac"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_28"
+            android:layout_marginTop="@dimen/distance_dp_22"
+            android:text="账户余额"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <TextView
+            android:id="@+id/te_accent_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_28"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:text="1284.28"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_28" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_260"
+        android:orientation="vertical">
+
+        <com.lijiankun24.shadowlayout.ShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:shadowColor="#309B9B9B"
+            app:shadowDx="@dimen/distance_dp_2"
+            app:shadowDy="@dimen/distance_dp_2"
+            app:shadowRadius="@dimen/distance_dp_5"
+            app:shadowShape="rectangle"
+            app:shadowSide="all">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_bac_white_10"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="12dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_wallet_tixian"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginTop="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/wallet_tixian"
+                        android:drawablePadding="@dimen/distance_dp_21"
+                        android:gravity="center_vertical"
+                        android:text="提现"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/right_back" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_wallet_chongzhi"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginTop="@dimen/distance_dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/wallet_chongzhi"
+                        android:drawablePadding="@dimen/distance_dp_26"
+                        android:gravity="center_vertical"
+                        android:text="充值"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/right_back" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_wallet_pay_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginTop="@dimen/distance_dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/wallet_pay_record"
+                        android:drawablePadding="@dimen/distance_dp_24"
+                        android:gravity="center_vertical"
+                        android:text="赔付记录"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/right_back" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_wallet_bank_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginBottom="@dimen/distance_dp_10"
+                    android:layout_marginTop="@dimen/distance_dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/wallet_bank_card"
+                        android:drawablePadding="@dimen/distance_dp_23"
+                        android:gravity="center_vertical"
+                        android:text="银行卡管理"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/right_back" />
+                </RelativeLayout>
+            </LinearLayout>
+        </com.lijiankun24.shadowlayout.ShadowLayout>
+    </LinearLayout>
+</LinearLayout>
