@@ -7,6 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/distance_dp_25"
         android:layout_height="45dp">
 
         <TextView
@@ -21,7 +22,7 @@
             android:textColor="@color/app_text_66"
             android:textSize="@dimen/distance_dp_15" />
 
-        <TextView
+        <EditText
             android:id="@+id/te_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/distance_dp_25"
@@ -34,7 +35,10 @@
             android:drawablePadding="@dimen/distance_dp_5"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:text="请输入商家名称或分类"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
+            android:hint="请输入商家名称或分类"
             android:textSize="@dimen/distance_dp_12" />
 
         <ImageView

@@ -54,19 +54,22 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".login.RegisterActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
             android:name=".login.GuideActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".login.LoginActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
             android:name=".business.MerchantCertificationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".business.BusinessListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".business.BusinessHomePageActivity"
             android:screenOrientation="portrait" />
@@ -84,7 +87,16 @@
             android:name=".login.FindPasswordActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".mine.MyAuthenticationActivity" />
-        <activity android:name=".mine.MyWalletActivity"/>
+        <activity android:name=".mine.MyWalletActivity" />
+        <activity android:name=".mine.ReflectActivity" />
+        <activity android:name=".mine.CompensationRecordActivity" />
+        <activity android:name=".currency.SearchBusinessActivity" />
+        <activity
+            android:name=".currency.SearchResultActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".home.AddressLocationActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

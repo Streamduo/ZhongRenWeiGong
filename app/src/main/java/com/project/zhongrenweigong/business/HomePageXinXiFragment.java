@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
-import com.tmall.ultraviewpager.UltraViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,13 +27,13 @@ public class HomePageXinXiFragment extends BaseFragment<HomePageXinXiPresent> {
     RecyclerView recyWorkerList;
     @BindView(R.id.te_shop_address)
     TextView teShopAddress;
-    @BindView(R.id.zizhi_viewpager)
-    UltraViewPager zizhiViewpager;
-    @BindView(R.id.zs_viewpager)
-    UltraViewPager zsViewpager;
     @BindView(R.id.recy_jc_people_list)
     RecyclerView recyJcPeopleList;
     Unbinder unbinder;
+    @BindView(R.id.recy_zizhi)
+    RecyclerView recyZizhi;
+    @BindView(R.id.recy_testing)
+    RecyclerView recyTesting;
 
     @Override
     public void initView() {

@@ -12,6 +12,7 @@ import com.project.zhongrenweigong.util.UtilsStyle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class MyWalletActivity extends BaseActivity<MyWalletPresent> {
 
@@ -67,7 +68,7 @@ public class MyWalletActivity extends BaseActivity<MyWalletPresent> {
                 finish();
                 break;
             case R.id.rl_wallet_tixian:
-
+                Router.newIntent(MyWalletActivity.this).to(ReflectActivity.class).launch();
                 break;
             case R.id.rl_wallet_chongzhi:
 

@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.home;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,28 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessListActivity;
 import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.currency.SearchBusinessActivity;
+import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
+import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
+import com.project.zhongrenweigong.home.adapter.UltraViewPagerAdapter;
+import com.project.zhongrenweigong.home.bean.DataBean;
 import com.project.zhongrenweigong.login.LoginActivity;
-import com.project.zhongrenweigong.util.RouterUtils;
+import com.project.zhongrenweigong.util.ScreenUtils;
 import com.tmall.ultraviewpager.UltraViewPager;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
+
+import static com.project.zhongrenweigong.currency.Constans.ADDRES;
 
 /**
  * 作者：Fuduo on 2019/10/17 10:23
@@ -52,6 +66,7 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     TextView teRetailers;
     @BindView(R.id.te_travel)
     TextView teTravel;
+
     Unbinder unbinder;
     private boolean isTourist;
 
@@ -60,9 +75,24 @@ public class HomeFragment extends BaseFragment<HomePresent> {
         isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
     }
 
+    public void initViewPager(List<DataBean> carouselEntities) {
+        UltraViewPagerAdapter adapter = new UltraViewPagerAdapter(getActivity(), carouselEntities);
+        adViewpager.setAdapter(adapter);
+        adViewpager.initIndicator();
+
+        adViewpager.getIndicator()
+                .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
+                .setFocusResId(R.mipmap.radio_yellow)
+                .setNormalResId(R.mipmap.white_round)
+                .setIndicatorPadding(ScreenUtils.dp2px(8))
+                .setMargin(0, 0, 0, ScreenUtils.dp2px(8))
+                .setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM)
+                .build();
+    }
+
     @Override
     public void initAfter() {
-
+        getP().getVerification();
     }
 
     @Override
@@ -72,7 +102,7 @@ public class HomeFragment extends BaseFragment<HomePresent> {
 
     @Override
     public HomePresent bindPresent() {
-        return null;
+        return new HomePresent();
     }
 
     @Override
@@ -93,17 +123,23 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
+            case R.id.te_address:
+                Router.newIntent(getActivity()).to(AddressLocationActivity.class).launch();
+                break;
+            case R.id.te_search:
+                Router.newIntent(getActivity()).to(SearchBusinessActivity.class).launch();
+                break;
             case R.id.img_message:
                 if (isTourist) {
                     Router.newIntent(getActivity()).to(LoginActivity.class).launch();
-                }else {
+                } else {
                     Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
                 }
                 break;
             case R.id.img_saoyosao:
                 if (isTourist) {
                     Router.newIntent(getActivity()).to(LoginActivity.class).launch();
-                }else {
+                } else {
                     Router.newIntent(getActivity()).to(LoginActivity.class).launch();
                 }
                 break;
@@ -145,6 +181,7 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
+        EventBus.getDefault().register(this);
         return rootView;
     }
 
@@ -152,5 +189,19 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(RefreshHomeEvent refreshMineEvent) {
+        if (refreshMineEvent.address != null) {
+            teAddress.setText(refreshMineEvent.address);
+            SharedPref.getInstance(getActivity()).put(ADDRES, refreshMineEvent.address);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

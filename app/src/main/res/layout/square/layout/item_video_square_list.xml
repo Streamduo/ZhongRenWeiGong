@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lijiankun24.shadowlayout.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:shadowColor="#4D9B9B9B"
+    app:shadowDx="@dimen/distance_dp_2"
+    app:shadowDy="@dimen/distance_dp_2"
+    app:shadowRadius="@dimen/distance_dp_5"
+    app:shadowShape="rectangle"
+    app:shadowSide="all">
+
+    <LinearLayout
+        android:layout_width="@dimen/distance_dp_175"
+        android:layout_height="@dimen/distance_dp_234"
+        android:background="@drawable/bg_bac_white_4"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_video_cover"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_175">
+
+            <ImageView
+                android:id="@+id/img_text_video_cover"
+                android:layout_width="@dimen/distance_dp_175"
+                android:layout_height="@dimen/distance_dp_175"
+                android:background="@mipmap/default_list_big"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/img_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/list_video_play"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/te_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:layout_marginRight="@dimen/distance_dp_4"
+                android:textColor="@color/app_text_33"
+                android:textSize="@dimen/distance_dp_14"
+                tools:text="夏季新鲜上市的水果一箱约15个" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.lijiankun24.shadowlayout.ShadowLayout>

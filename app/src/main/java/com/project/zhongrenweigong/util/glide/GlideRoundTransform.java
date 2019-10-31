@@ -21,12 +21,12 @@ import java.security.MessageDigest;
 public class GlideRoundTransform extends BitmapTransformation {
     private static float radius = 0f;
 
-    public GlideRoundTransform(Context context) {
-        this(context, 4);
+    public GlideRoundTransform() {
+        this(4);
     }
 
-    public GlideRoundTransform(Context context, int dp) {
-        super(context);
+    public GlideRoundTransform(int dp) {
+        super();
         this.radius = Resources.getSystem().getDisplayMetrics().density * dp;
     }
 
@@ -52,8 +52,12 @@ public class GlideRoundTransform extends BitmapTransformation {
         return result;
     }
 
-    @Override
     public String getId() {
         return getClass().getName() + Math.round(radius);
+    }
+
+    @Override
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
     }
 }

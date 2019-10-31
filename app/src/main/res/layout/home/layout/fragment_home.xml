@@ -18,7 +18,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/distance_dp_13"
             android:layout_marginTop="@dimen/distance_dp_29">
 
             <TextView
@@ -26,17 +25,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:paddingLeft="@dimen/distance_dp_10"
                 android:textSize="@dimen/distance_dp_17"
-                tools:text="北京" />
-
-            <ImageView
-                android:id="@+id/img_sanjiao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/distance_dp_5"
-                android:layout_marginTop="@dimen/distance_dp_8"
-                android:layout_toRightOf="@+id/te_address"
-                android:src="@mipmap/sanjiao" />
+                android:drawableRight="@mipmap/sanjiao"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:text="北京" />
 
             <TextView
                 android:id="@+id/te_search"
@@ -44,7 +37,7 @@
                 android:layout_height="@dimen/distance_dp_25"
                 android:layout_marginLeft="10dp"
                 android:layout_toLeftOf="@+id/img_saoyosao"
-                android:layout_toRightOf="@+id/img_sanjiao"
+                android:layout_toRightOf="@+id/te_address"
                 android:background="@drawable/bg_bac_white"
                 android:drawableLeft="@mipmap/search"
                 android:drawablePadding="@dimen/distance_dp_5"

@@ -139,7 +139,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
         XCache xCache = new XCache.Builder(getContext()).build();
         LoginMsg loginMsg = (LoginMsg) xCache.getObject(Constans.USERACCENT);
         if (loginMsg != null && loginMsg.mbId != null && !loginMsg.mbId.equals("")) {
-            GlideDownLoadImage.getInstance().loadCircleImage(this, loginMsg.headUrl, imgUserHead);
+            GlideDownLoadImage.getInstance().loadCircleImage(this, loginMsg.headUrl, imgUserHead,R.mipmap.user_default_head);
             teUserName.setText(loginMsg.mbName);
             teUserId.setText("ID:" + loginMsg.mbId);
         }

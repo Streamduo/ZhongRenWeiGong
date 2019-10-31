@@ -12,6 +12,6 @@
         android:id="@+id/recy_video_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/distance_dp_9"
+        android:layout_marginLeft="@dimen/distance_dp_5"
         android:overScrollMode="never" />
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
+import cn.droidlover.xdroidbase.kit.ToastManager;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 
@@ -63,6 +64,14 @@ public abstract class BaseFragment<M extends XPresent> extends XFragment<M> impl
      * [设置监听]
      */
     public abstract void setListener();
+
+    public void showToastShort(String toastMsg){
+        ToastManager.showShort(getContext(),toastMsg);
+    }
+
+    public void showToastLong(String toastMsg){
+        ToastManager.showLong(getContext(),toastMsg);
+    }
 
     /**
      * View点击

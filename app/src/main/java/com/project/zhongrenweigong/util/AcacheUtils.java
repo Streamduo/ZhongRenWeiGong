@@ -15,9 +15,11 @@ import cn.droidlover.xdroidmvp.router.Router;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class RouterUtils {
+public class AcacheUtils {
 
-    public static void routerToLogin(Activity activity) {
+
+
+    public static void ge(Activity activity) {
 
     }
 

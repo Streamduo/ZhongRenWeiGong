@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".currency.SearchResultActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/distance_dp_25">
+
+        <TextView
+            android:id="@+id/te_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/black_back"
+            android:drawablePadding="6dp"
+            android:paddingLeft="@dimen/distance_dp_20"
+            android:text="返回"
+            android:textColor="@color/app_text_66"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <EditText
+            android:id="@+id/ed_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_25"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="@dimen/distance_dp_18"
+            android:layout_toRightOf="@+id/te_back"
+            android:background="@drawable/bg_bac_f5_10"
+            android:drawableLeft="@mipmap/search"
+            android:drawablePadding="@dimen/distance_dp_5"
+            android:gravity="center_vertical"
+            android:hint="请输入商家名称或分类"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/distance_dp_12" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_4"
+        android:background="@color/app_F4F4F4" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sm_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@color/app_text_99"
+        app:srlEnablePreviewInEditMode="true"
+        app:srlPrimaryColor="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_business_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

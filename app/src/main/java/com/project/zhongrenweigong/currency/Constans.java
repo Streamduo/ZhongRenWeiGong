@@ -7,6 +7,7 @@ public class Constans {
      */
     public static final String FIRST_OPEN = "first_open";
     public static final String ISTOURIST = "is_tourist";
+    public static final String ADDRES = "address";
 
     /**
      * cache 文件名

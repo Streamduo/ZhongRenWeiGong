@@ -1,37 +1,33 @@
 package com.project.zhongrenweigong.net;
 
-import com.project.zhongrenweigong.BuildConfig;
-import com.project.zhongrenweigong.login.LoginNetManager;
+import com.project.zhongrenweigong.home.HomeNetManager;
+import com.project.zhongrenweigong.square.SquareNetManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.internal.Utils;
+import cn.droidlover.xdroidmvp.XDroidConf;
 import cn.droidlover.xdroidmvp.net.XApi;
 
-/**
- * Created by liyalong on 2017/12/20.
- */
-
-public class Api {
+public class SquareApi {
 
     //测试环境
-    private static String TEST_SERVER = "http://192.168.3.20:9999/";
+    private static String TEST_SERVER = "http://192.168.3.20:1111/";
     //正式环境
     private static String RELEASE_SERVER = "http://api.wakeyoga.com/";
 
-    public static final String BASE_PATH = (BuildConfig.BUILD_TYPE.equals("debug") ? TEST_SERVER : RELEASE_SERVER);
-    private static LoginNetManager loginNetManager;
+    public static final String BASE_PATH = (XDroidConf.DEV ? TEST_SERVER : RELEASE_SERVER);
+    private static SquareNetManager squareNetManager;
 
-    public static LoginNetManager loginNetManager() {
-        if (loginNetManager == null) {
-            synchronized (Api.class) {
-                if (loginNetManager == null) {
-                    loginNetManager = XApi.getInstance().getRetrofit(BASE_PATH, true).create(LoginNetManager.class);
+    public static SquareNetManager squareNetManager() {
+        if (squareNetManager == null) {
+            synchronized (SquareApi.class) {
+                if (squareNetManager == null) {
+                    squareNetManager = XApi.getInstance().getRetrofit(BASE_PATH, true).create(SquareNetManager.class);
                 }
             }
         }
-        return loginNetManager;
+        return squareNetManager;
     }
 
     public static Map<String, String> getBasicParamsUidAndToken() {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/distance_dp_10"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/te_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bac_white_2"
+        android:paddingBottom="@dimen/distance_dp_10"
+        android:paddingLeft="@dimen/distance_dp_14"
+        android:paddingRight="@dimen/distance_dp_12"
+        android:paddingTop="@dimen/distance_dp_10"
+        android:textColor="@color/app_text_33"
+        android:textSize="@dimen/distance_dp_12"
+        tools:text="外婆家的菜" />
+
+    <TextView
+        android:id="@+id/te_nearby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bac_white_2"
+        android:drawableLeft="@mipmap/dingwei"
+        android:drawablePadding="@dimen/distance_dp_5"
+        android:paddingBottom="@dimen/distance_dp_10"
+        android:paddingLeft="@dimen/distance_dp_14"
+        android:paddingRight="@dimen/distance_dp_12"
+        android:paddingTop="@dimen/distance_dp_10"
+        android:text="附近的店"
+        android:textColor="@color/app_text_33"
+        android:textSize="@dimen/distance_dp_12"
+        android:visibility="gone" />
+</LinearLayout>

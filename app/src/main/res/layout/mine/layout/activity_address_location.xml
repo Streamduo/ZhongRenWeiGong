@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.AddressLocationActivity">
+
+    <LinearLayout
+        android:id="@+id/line_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_70"
+        android:background="@mipmap/login_img">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginTop="@dimen/distance_dp_25">
+
+            <TextView
+                android:id="@+id/te_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/back_white"
+                android:drawablePadding="6dp"
+                android:paddingLeft="@dimen/distance_dp_20"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_15" />
+
+            <EditText
+                android:id="@+id/ed_search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_25"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@+id/img_msg"
+                android:layout_toRightOf="@+id/te_back"
+                android:background="@drawable/bg_bac_f5_10"
+                android:drawableLeft="@mipmap/black_search"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:hint="请输入城市/拼音"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColorHint="@color/app_text_66"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <ImageView
+                android:id="@+id/img_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/distance_dp_15"
+                android:paddingRight="18dp"
+                android:src="@mipmap/message" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_show_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_F5F5F5"
+        android:layout_below="@+id/line_title"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/line_lately_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/distance_dp_11"
+                    android:layout_marginLeft="@dimen/distance_dp_10"
+                    android:layout_marginTop="@dimen/distance_dp_19"
+                    android:text="定位/最近访问"
+                    android:textColor="@color/app_717171"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/distance_dp_15"
+                    android:layout_marginTop="@dimen/distance_dp_19"
+                    android:background="@mipmap/delete" />
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_lately_address_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/distance_dp_10"
+                android:overScrollMode="never" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_history_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distance_dp_11"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:layout_marginTop="@dimen/distance_dp_19"
+                android:text="已开通城市"
+                android:textColor="@color/app_717171"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_history_address_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/distance_dp_10"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/line_search_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line_title"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_search_address_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:overScrollMode="never" />
+    </LinearLayout>
+</RelativeLayout>

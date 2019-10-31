@@ -4,7 +4,7 @@ import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
-import com.project.zhongrenweigong.net.Api;
+import com.project.zhongrenweigong.net.LoginApi;
 import com.project.zhongrenweigong.util.GsonProvider;
 import com.project.zhongrenweigong.util.XCache;
 import com.project.zhongrenweigong.util.AES;
@@ -32,7 +32,7 @@ public class LoginPresent extends XPresent<LoginActivity> {
     public void login(String loginAddr, String loginIp,
                       String loginType, String mbPassword, String mbPhone) {
         LoadingDialog.show(getV());
-        Map<String, String> stringMap = Api.getBasicParamsUidAndToken();
+        Map<String, String> stringMap = LoginApi.getBasicParamsUidAndToken();
         stringMap.put("loginAddr", loginAddr);
         stringMap.put("loginIp", loginIp);
         stringMap.put("loginType", loginType);
@@ -50,27 +50,21 @@ public class LoginPresent extends XPresent<LoginActivity> {
 
 //        RequestBody requestBody = RequestBody.create(MediaType.parse("application/text"),
 //                encode3DesBody);
-        Api.loginNetManager().login(encode3DesBody)
+        LoginApi.loginNetManager().login(encode3DesBody)
                 .compose(XApi.<BaseModel>getApiTransformer())
                 .compose(XApi.<BaseModel>getScheduler())
                 .compose(getV().<BaseModel>bindToLifecycle())
                 .subscribe(new ApiSubscriber<BaseModel>() {
 
                     @Override
-                    public void onComplete() {
-                        super.onComplete();
-                        LoadingDialog.dismiss(getV());
-                    }
-
-                    @Override
                     protected void onFail(NetError error) {
-//                        if (error.getType() == OtherError) {
-//                            ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
-//                        }
+                        LoadingDialog.dismiss(getV());
+                        ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
                     }
 
                     @Override
                     public void onNext(BaseModel baseModel) {
+                        LoadingDialog.dismiss(getV());
                         SharedPref.getInstance(getV()).putBoolean(Constans.ISTOURIST, false);
                         if (baseModel.getCode() == 200) {
                             ToastManager.showShort(getV(), baseModel.getMsg());
@@ -81,7 +75,7 @@ public class LoginPresent extends XPresent<LoginActivity> {
                             LoginMsg loginMsg = GsonProvider.gson.fromJson(json, LoginMsg.class);
 
                             XCache xCache = new XCache.Builder(getV()).build();
-                            xCache.put(Constans.USERACCENT,loginMsg);
+                            xCache.put(Constans.USERACCENT, loginMsg);
                             EventBus.getDefault().post(new RefreshMineEvent());
                             getV().finish();
                         }

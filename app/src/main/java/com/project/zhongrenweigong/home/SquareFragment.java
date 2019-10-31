@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
-import com.project.zhongrenweigong.home.adapter.SquareVideoPageAdapter;
+import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.square.adapter.SquareVideoPageAdapter;
 import com.project.zhongrenweigong.util.TablayoutUtil;
 import com.zyyoona7.popup.EasyPopup;
 import com.zyyoona7.popup.XGravity;
@@ -25,6 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.droidlover.xdroidbase.kit.ToastManager;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
+import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * 作者：Fuduo on 2019/10/17 10:23
@@ -42,14 +45,37 @@ public class SquareFragment extends BaseFragment<SquarePresent> {
     ViewPager vpHomepage;
     Unbinder unbinder;
     private EasyPopup mCirclePop;
+    private boolean isTourist;
 
     @Override
     public void initView() {
+        isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
         SquareVideoPageAdapter discoverAdapter = new SquareVideoPageAdapter(getChildFragmentManager());
         vpHomepage.setAdapter(discoverAdapter);
         tabSquarePage.setupWithViewPager(vpHomepage);
         TablayoutUtil.setIndicator(tabSquarePage, 30, 30);
         vpHomepage.setCurrentItem(0);
+
+        vpHomepage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                int currentItem = vpHomepage.getCurrentItem();
+                if (isTourist && currentItem == 1) {
+                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                    vpHomepage.setCurrentItem(0);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override

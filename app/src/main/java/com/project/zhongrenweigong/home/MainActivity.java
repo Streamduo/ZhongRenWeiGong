@@ -1,12 +1,12 @@
 package com.project.zhongrenweigong.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
@@ -14,7 +14,6 @@ import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.LoginActivity;
-import com.project.zhongrenweigong.util.RouterUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -39,6 +38,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     @BindView(R.id.home_square)
     TextView homeSquare;
     private FactoryFragment factoryFragment;
+    private boolean isTourist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,24 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         ButterKnife.bind(this);
         factoryFragment = new FactoryFragment(savedInstanceState, getSupportFragmentManager());
         selectTab(savedInstanceState);
+        isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
+
     }
 
     @Override
     public void initView() {
+        homeMine.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if (isTourist) {
+                        Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -150,10 +164,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             case R.id.home_mine:
                 homeSquare.setTextColor(getResources().getColor(R.color.app_7d7d7d));
                 factoryFragment.changeToFragment(2);
-                boolean isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
-                if (isTourist) {
-                    Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
-                }
+
                 break;
         }
     }

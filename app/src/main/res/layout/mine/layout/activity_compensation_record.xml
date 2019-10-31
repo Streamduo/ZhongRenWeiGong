@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mine.CompensationRecordActivity">
+
+    <include
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tb_recode_industy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_50"
+        app:tabIndicatorColor="@color/app_369EFF"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/app_000000"
+        app:tabTextAppearance="@style/TabTextSize"
+        app:tabTextColor="@color/app_7d7d7d" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:background="@color/app_E9E9E9" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_record"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

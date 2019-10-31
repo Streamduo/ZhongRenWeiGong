@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -25,9 +26,8 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.base.PressionListener;
-import com.project.zhongrenweigong.business.MerchantCertificationActivity;
 import com.project.zhongrenweigong.currency.ActivitySelectImage;
-import com.project.zhongrenweigong.net.Api;
+import com.project.zhongrenweigong.net.LoginApi;
 import com.project.zhongrenweigong.util.CheckInputUtil;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 import com.project.zhongrenweigong.view.LoadingDialog;
@@ -37,9 +37,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import cn.droidlover.xdroidbase.cache.SharedPref;
 import cn.droidlover.xdroidbase.kit.ToastManager;
-import cn.droidlover.xdroidmvp.router.Router;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -88,6 +86,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
     private File justFile;
     private File backFile;
     private String cardNum;
+    private String phoneNum;
+    private CountDownTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +128,19 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                 finish();
                 break;
             case R.id.te_send_ems:
-//                Router.newIntent(this).to(MerchantCertificationActivity.class).launch();
+                teSendEms.setEnabled(false);
+                String phone = edPhoneNum.getText().toString();
+                phoneNum = phone.replaceAll("\\D", "");
+                if (TextUtils.isEmpty(phoneNum)) {
+                    showToastShort(getString(R.string.phonenumber_null));
+                    return;
+                }
+                if (!CheckInputUtil.checkPhoneForLogin(phoneNum)) {
+                    showToastShort(getResources().getString(R.string.phonenumber_error));
+                    return;
+                }
+                getPhoneCode();//成功之后开始倒计时
+
                 break;
             case R.id.te_next_shiming:
                 String phoneNumText = edPhoneNum.getText().toString();
@@ -178,6 +190,41 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
                 }
                 initShiMing(phoneNum, textEmsNum, passwordText);
                 break;
+        }
+    }
+
+    private void getPhoneCode() {
+        getP().getVerification(phoneNum);
+    }
+
+    public void sendEmsFail(){
+        teSendEms.setEnabled(true);
+    }
+
+    public void sendEmsSuccess(){
+        teSendEms.setEnabled(true);
+        initCountDownTimer();
+    }
+
+    private void initCountDownTimer() {
+        timer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long l) {
+                teSendEms.setEnabled(false);
+                teSendEms.setText(l / 1000 + "s");
+            }
+
+            @Override
+            public void onFinish() {
+                teSendEms.setText("再次发送");
+                teSendEms.setEnabled(true);
+            }
+        }.start();
+    }
+
+    private void cancleTimer() {
+        if (timer != null) {
+            timer.cancel();
         }
     }
 
@@ -347,7 +394,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(Api.BASE_PATH)
+                .baseUrl(LoginApi.BASE_PATH)
                 .build();
         LoginNetManager service = retrofit.create(LoginNetManager.class);
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
@@ -363,7 +410,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
                 String msg = response.body().getMsg();
-                int code = response.body().getCode();
+//                int code = response.body().getCode();
                 showToastShort(msg);
 //                if (code == 200) {
 //
@@ -439,4 +486,9 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cancleTimer();
+    }
 }

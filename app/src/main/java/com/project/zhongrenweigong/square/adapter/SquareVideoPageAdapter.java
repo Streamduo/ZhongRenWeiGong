@@ -1,12 +1,10 @@
-package com.project.zhongrenweigong.home.adapter;
+package com.project.zhongrenweigong.square.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.project.zhongrenweigong.business.BusinessDynamicFragment;
-import com.project.zhongrenweigong.business.HomePageXinXiFragment;
-import com.project.zhongrenweigong.home.VideoSquareFragement;
+import com.project.zhongrenweigong.square.VideoSquareFragement;
 
 
 public class SquareVideoPageAdapter extends FragmentPagerAdapter {
@@ -20,9 +18,9 @@ public class SquareVideoPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new VideoSquareFragement();
+                return VideoSquareFragement.getInstance(0);
             case 1:
-                return new VideoSquareFragement();
+                return VideoSquareFragement.getInstance(1);
         }
         return null;
     }

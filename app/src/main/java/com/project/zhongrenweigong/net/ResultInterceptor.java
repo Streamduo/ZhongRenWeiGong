@@ -2,10 +2,6 @@ package com.project.zhongrenweigong.net;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-import com.project.zhongrenweigong.App;
-import com.project.zhongrenweigong.base.BaseModel;
-
 import java.io.IOException;
 
 import cn.droidlover.xdroidbase.kit.ToastManager;
@@ -32,10 +28,10 @@ public class ResultInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         Response response = chain.proceed(request);
-        return checkResponse(request,response);
+        return checkResponse(request, response);
     }
 
-    private Response checkResponse(Request request,Response response) {
+    private Response checkResponse(Request request, Response response) {
         try {
             Response.Builder builder = response.newBuilder();
             Response clone = builder.build();
@@ -48,18 +44,24 @@ public class ResultInterceptor implements Interceptor {
 //                        if (!request.url().toString().contains("testLogin")){
 //
 //                        }
-                        BaseModel baseModel = new BaseModel();
-                        Gson gson = new Gson();
-                        baseModel = gson.fromJson(json, BaseModel.class);
-
-                        Integer status = baseModel.getCode();
-                        if (status != null && status != 200) {
-//                            onError(new ApiException(baseModel.getCode(), baseModel.getMsg()));
-                            String msg = baseModel.getMsg();
-                            if (msg != null && !msg.equals("")) {
-                                ToastManager.showShort(App.getContext(), msg);
-                            }
-                        }
+//                        BaseModel baseModel = new BaseModel();
+//                        Gson gson = new Gson();
+//                        baseModel = gson.fromJson(json, BaseModel.class);
+//                        Integer status = baseModel.getCode();
+//                        onNoNetError();
+//                        try {
+//                            if (status != null && status != 200) {
+//    //                            onError(new ApiException(baseModel.getCode(), baseModel.getMsg()));
+//                                String msg = baseModel.getMsg();
+//                                if (msg != null && !msg.equals("")) {
+//                                    ToastManager.showShort(context, msg);
+//                                } else {
+//                                    onNoNetError();
+//                                }
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
                         body = ResponseBody.create(mediaType, json);
 //                        if(status != null && status.equals(3)){
 //                            ToastUtils.showToast(baseModel.getRespMsg());
@@ -103,7 +105,7 @@ public class ResultInterceptor implements Interceptor {
     }
 
     private void onNoNetError() {
-        ToastManager.showShort(App.getContext(), "当前网络不可用，请检查你的网络设置");
+        ToastManager.showShort(context, "当前网络不可用，请检查你的网络设置");
     }
 
     private void onApiError(ApiException e) {
@@ -114,7 +116,7 @@ public class ResultInterceptor implements Interceptor {
     }
 
     private void onErrorElse(Exception e) {
-        ToastManager.showShort(App.getContext(), "当前网络环境不稳定，请稍后重试");
+        ToastManager.showShort(context, "当前网络环境不稳定，请稍后重试");
     }
 
 }

@@ -35,13 +35,13 @@ public class BusinessTypeListAdapter extends BaseQuickAdapter<BusinessTypeBean, 
         helper.setText(R.id.te_type_name, item.name);
         if (getItem() == helper.getAdapterPosition()) {
             //1.1为原来的大小+1的0.1倍放大
-            helper.getView(R.id.line_all).setScaleX(1.1f);
-            helper.getView(R.id.line_all).setScaleY(1.1f);
+            helper.getView(R.id.img_business_fenlei_head).setScaleX(1.1f);
+            helper.getView(R.id.img_business_fenlei_head).setScaleY(1.1f);
             helper.setTextColor(R.id.te_type_name, helper.itemView.getContext().getResources().getColor(R.color.app_369EFF));
         } else {
             //缩小同理   1为布局设定的大小
-            helper.getView(R.id.line_all).setScaleX(1f);
-            helper.getView(R.id.line_all).setScaleY(1f);
+            helper.getView(R.id.img_business_fenlei_head).setScaleX(1f);
+            helper.getView(R.id.img_business_fenlei_head).setScaleY(1f);
             helper.setTextColor(R.id.te_type_name, helper.itemView.getContext().getResources().getColor(R.color.app_text_66));
         }
     }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_40"
+    android:layout_marginLeft="@dimen/distance_dp_18">
+
+    <TextView
+        android:id="@+id/te_address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/app_text_33"
+        android:textSize="@dimen/distance_dp_15"
+        tools:text="外婆家的菜" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_F4F4F4" />
+</RelativeLayout>

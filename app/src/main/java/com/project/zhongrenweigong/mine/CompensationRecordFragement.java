@@ -1,5 +1,6 @@
-package com.project.zhongrenweigong.home;
+package com.project.zhongrenweigong.mine;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,40 +10,38 @@ import android.view.ViewGroup;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * 作者：Fuduo on 2019/10/24 11:52
+ * 作者：Fuduo on 2019/10/29 10:42
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class VideoSquareFragement extends BaseFragment<VideoSquarePresent> {
-    @BindView(R.id.recy_video_list)
-    RecyclerView recyVideoList;
-    Unbinder unbinder;
+
+public class CompensationRecordFragement extends BaseFragment<CompensationRecordPresent> {
+
+    @BindView(R.id.recy_compensation_list)
+    RecyclerView recyCompensationList;
     @BindView(R.id.sm_refresh)
     SmartRefreshLayout smRefresh;
+    Unbinder unbinder;
+    private int index;
+
+    public static CompensationRecordFragement getInstance(int index){
+        CompensationRecordFragement fragement = new CompensationRecordFragement();
+        Bundle bundle = new Bundle();
+        bundle.putInt("index",index);
+        fragement.setArguments(bundle);
+        return fragement;
+    }
 
     @Override
     public void initView() {
-        smRefresh.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
-            }
-        });
-        smRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
-            }
-        });
+        Bundle arguments = getArguments();
+        index = arguments.getInt("index");
     }
 
     @Override
@@ -52,12 +51,12 @@ public class VideoSquareFragement extends BaseFragment<VideoSquarePresent> {
 
     @Override
     public int bindLayout() {
-        return R.layout.fragment_video_square_list;
+        return R.layout.fragment_compensation_layout;
     }
 
     @Override
-    public VideoSquarePresent bindPresent() {
-        return new VideoSquarePresent();
+    public CompensationRecordPresent bindPresent() {
+        return new CompensationRecordPresent();
     }
 
     @Override

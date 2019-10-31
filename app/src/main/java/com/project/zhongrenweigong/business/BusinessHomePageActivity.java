@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.business.adapter.HomePageAdapter;
+import com.project.zhongrenweigong.util.TablayoutUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +45,7 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         HomePageAdapter adapter = new HomePageAdapter(getSupportFragmentManager());
         vpHomepage.setAdapter(adapter);
         tabShopPage.setupWithViewPager(vpHomepage);
+        TablayoutUtil.setIndicator(tabShopPage, 30, 30);
     }
 
     @Override

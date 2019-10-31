@@ -38,6 +38,7 @@
             android:maxLength="11"
             android:hint="请输入手机号"
             android:inputType="number"
+            android:nextFocusDown="@+id/ed_password"
             android:textSize="@dimen/distance_dp_15" />
 
         <View

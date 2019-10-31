@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.login;
 
 import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.login.bean.LoginResponseBean;
 
 import io.reactivex.Flowable;
@@ -42,6 +43,16 @@ public interface LoginNetManager {
     Flowable<BaseModel> register(@Field("dataMsg") String dataMsg);
 
     /**
+     * 找回密码
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    @POST("findPwd")
+    Flowable<BaseModel> findPwd(@Field("dataMsg") String dataMsg);
+
+    /**
      * @author fuduo
      * @time 2018/1/21  10:38
      * @describe 上传身份证正反面图片
@@ -49,4 +60,11 @@ public interface LoginNetManager {
     @POST()
     Call<BaseModel> uploadCardImage(@Url() String url,
                                 @Body RequestBody Body);
+
+    /**
+     * 获取验证码
+     * @return
+     */
+    @POST("getVerification")
+    Flowable<BaseModel> getVerification(@Body RequestBody Body);
 }

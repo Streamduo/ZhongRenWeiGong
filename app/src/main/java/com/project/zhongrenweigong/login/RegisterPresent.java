@@ -1,7 +1,8 @@
 package com.project.zhongrenweigong.login;
 
 import com.project.zhongrenweigong.base.BaseModel;
-import com.project.zhongrenweigong.net.Api;
+import com.project.zhongrenweigong.net.BusinessApi;
+import com.project.zhongrenweigong.net.LoginApi;
 import com.project.zhongrenweigong.util.GsonProvider;
 import com.project.zhongrenweigong.util.AES;
 
@@ -12,6 +13,8 @@ import cn.droidlover.xdroidmvp.mvp.XPresent;
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.XApi;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 
 /**
@@ -22,16 +25,16 @@ import cn.droidlover.xdroidmvp.net.XApi;
 public class RegisterPresent extends XPresent<RegisterActivity> {
 
     public void register(String idcard, String idcardDeadline,
-                      String mbName, String mbPassword, String mbPhone,
-                         String sex,String verification) {
-        Map<String, String> stringMap = Api.getBasicParamsUidAndToken();
+                         String mbName, String mbPassword, String mbPhone,
+                         String sex, String verification) {
+        Map<String, String> stringMap = LoginApi.getBasicParamsUidAndToken();
         stringMap.put("idcard", idcard);
         stringMap.put("idcardDeadline", idcardDeadline);
         stringMap.put("mbName", mbName);
         stringMap.put("mbPassword", mbPassword);
         stringMap.put("mbPhone", mbPhone);
         stringMap.put("sex", sex);
-        stringMap.put("verification",verification);
+        stringMap.put("verification", verification);
         String body = GsonProvider.gson.toJson(stringMap);
         final AES aes = new AES();
         String encode3DesBody = null;
@@ -41,10 +44,7 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("application/text"),
-//                encode3DesBody);
-        Api.loginNetManager().register(encode3DesBody)
+        LoginApi.loginNetManager().register(encode3DesBody)
                 .compose(XApi.<BaseModel>getApiTransformer())
                 .compose(XApi.<BaseModel>getScheduler())
                 .compose(getV().<BaseModel>bindToLifecycle())
@@ -52,9 +52,7 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
 
                     @Override
                     protected void onFail(NetError error) {
-//                        if (error.getType() == OtherError) {
-//                            ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
-//                        }
+                        ToastManager.showShort(getV(), "网络连接失败，请检查网络设置");
                     }
 
                     @Override
@@ -66,4 +64,31 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
                     }
                 });
     }
+
+    public void getVerification(String mcPhone) {
+        Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
+        stringMap.put("mcPhone", mcPhone);
+        String body = GsonProvider.gson.toJson(stringMap);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
+                body);
+        LoginApi.loginNetManager().getVerification(requestBody)
+                .compose(XApi.<BaseModel>getApiTransformer())
+                .compose(XApi.<BaseModel>getScheduler())
+                .compose(getV().<BaseModel>bindToLifecycle())
+                .subscribe(new ApiSubscriber<BaseModel>() {
+
+                    @Override
+                    protected void onFail(NetError error) {
+                        ToastManager.showShort(getV(), "发送验证码失败，请检查网络设置");
+                        getV().sendEmsFail();
+                    }
+
+                    @Override
+                    public void onNext(BaseModel baseModel) {
+                        ToastManager.showShort(getV(), baseModel.msg);
+                        getV().sendEmsSuccess();
+                    }
+                });
+    }
+
 }
