@@ -74,8 +74,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
     ImageView imgTop;
     @BindView(R.id.te_title)
     TextView teTitle;
-    @BindView(R.id.vs_xinxi_edit)
-    ViewStub vsXinxiEdit;
     @BindView(R.id.vs_register_ok)
     ViewStub vsRegisterOk;
     private View shiMingView;
@@ -323,25 +321,6 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         imgTop.setBackgroundResource(R.mipmap.register_ok);
         shiMingView.setVisibility(View.GONE);
         vsRegisterOk.inflate();
-    }
-
-    private void initXinxiEdit() {
-        teTitle.setText("信息编辑");
-        imgTop.setBackgroundResource(R.mipmap.register_num03);
-        shiMingView.setVisibility(View.GONE);
-
-        xinXiEditView = vsXinxiEdit.inflate();
-        RecyclerView recyPeopleList = shiMingView.findViewById(R.id.recy_people_list);
-        Spinner spCommodityIndustry = shiMingView.findViewById(R.id.sp_commodity_industry);
-        RelativeLayout rlSelectArea = xinXiEditView.findViewById(R.id.rl_select_area);
-        TextView teArea = (TextView) shiMingView.findViewById(R.id.te_area);
-        ImageView imgUpload = shiMingView.findViewById(R.id.img_upload);
-        ImageView upLoad = shiMingView.findViewById(R.id.upload);
-        EditText edShopName = shiMingView.findViewById(R.id.ed_shop_name);
-        EditText edPhoneNum = shiMingView.findViewById(R.id.ed_phone_num);
-        EditText edAddress = shiMingView.findViewById(R.id.ed_address);
-        TextView teJump = (TextView) shiMingView.findViewById(R.id.te_jump);
-        TextView teOk = (TextView) shiMingView.findViewById(R.id.te_ok);
     }
 
     @Override

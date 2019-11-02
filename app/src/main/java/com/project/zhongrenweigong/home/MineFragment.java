@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.project.zhongrenweigong.business.manager.BusinessManagerActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.mine.MyAuthenticationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
 import com.project.zhongrenweigong.util.XCache;
@@ -26,7 +28,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import cn.droidlover.xdroidmvp.cache.DiskCache;
 import cn.droidlover.xdroidmvp.router.Router;
 
 /**
@@ -96,6 +97,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.img_user_head:
+                Router.newIntent(getActivity()).to(MineHomePageActivity.class).launch();
                 break;
             case R.id.mine_renzheng:
                 Router.newIntent(getActivity()).to(MyAuthenticationActivity.class).launch();
@@ -108,6 +110,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
             case R.id.rl_mine_pay_record:
                 break;
             case R.id.rl_mine_industry:
+                Router.newIntent(getActivity()).to(BusinessManagerActivity.class).launch();
                 break;
             case R.id.rl_mine_help_center:
                 break;

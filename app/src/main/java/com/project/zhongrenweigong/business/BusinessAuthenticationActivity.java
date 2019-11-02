@@ -1,18 +1,21 @@
 package com.project.zhongrenweigong.business;
 
+
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.XCache;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,41 +27,36 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * 作者：Fuduo on 2019/10/18 15:24
- * 邮箱：duoendeavor@163.com
- * 意图：
- */
-public class MerchantCertificationActivity extends BaseActivity<MerchantCertificationPresent> {
+import static com.project.zhongrenweigong.currency.Constans.USERACCENT;
+
+public class BusinessAuthenticationActivity extends BaseActivity<BusinessAuthenticationPresent> {
+
     @BindView(R.id.te_back)
     TextView teBack;
     @BindView(R.id.te_title)
     TextView teTitle;
-    @BindView(R.id.sp_commodity_industry)
-    Spinner spCommodityIndustry;
-    @BindView(R.id.ed_shop_name)
-    EditText edShopName;
-    @BindView(R.id.ed_phone_num)
-    EditText edPhoneNum;
+    @BindView(R.id.ed_company_name)
+    EditText edCompanyName;
+    @BindView(R.id.ed_license_key)
+    EditText edLicenseKey;
+    @BindView(R.id.ed_legal_person)
+    EditText edLegalPerson;
     @BindView(R.id.te_area)
     TextView teArea;
     @BindView(R.id.rl_select_area)
     RelativeLayout rlSelectArea;
     @BindView(R.id.ed_address)
     EditText edAddress;
-    @BindView(R.id.rl_dianzhao)
-    RelativeLayout rlDianzhao;
-    @BindView(R.id.img_upload)
-    ImageView imgUpload;
-    @BindView(R.id.upload)
-    ImageView upload;
+    @BindView(R.id.img_upload_license)
+    ImageView imgUploadLicense;
+    @BindView(R.id.img_business_license)
+    ImageView imgBusinessLicense;
+    @BindView(R.id.img_upload_qualifications)
+    ImageView imgUploadQualifications;
+    @BindView(R.id.img_qualifications)
+    ImageView imgQualifications;
     @BindView(R.id.te_ok)
     TextView teOk;
-    @BindView(R.id.img_other_upload)
-    ImageView imgOtherUpload;
-    @BindView(R.id.other_upload)
-    ImageView otherUpload;
-
     private OptionsPickerView datePickerView;
     // 省数据集合
     private ArrayList<String> mListProvince = new ArrayList<>();
@@ -67,6 +65,7 @@ public class MerchantCertificationActivity extends BaseActivity<MerchantCertific
     // 区数据集合
     private ArrayList<ArrayList<ArrayList<String>>> mListArea = new ArrayList<>();
     private JSONObject mJsonObj;
+    private String address_str;
 
     @Override
     public void initView() {
@@ -82,18 +81,79 @@ public class MerchantCertificationActivity extends BaseActivity<MerchantCertific
 
     @Override
     public int bindLayout() {
-        return R.layout.activity_merchantcertification_layout;
+        return R.layout.activity_business_authentication;
     }
 
     @Override
-    public MerchantCertificationPresent bindPresent() {
-        return new MerchantCertificationPresent();
+    public BusinessAuthenticationPresent bindPresent() {
+        return new BusinessAuthenticationPresent();
     }
 
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
         rlSelectArea.setOnClickListener(this);
+        imgUploadLicense.setOnClickListener(this);
+        imgUploadQualifications.setOnClickListener(this);
+        teOk.setOnClickListener(this);
+    }
+
+    @Override
+    public void widgetClick(View v) {
+        switch (v.getId()) {
+            case R.id.te_back:
+                finish();
+                break;
+            case R.id.rl_select_area:
+                datePickerView.show();
+                break;
+            case R.id.img_upload_license:
+
+                break;
+            case R.id.img_upload_qualifications:
+
+                break;
+            case R.id.te_ok:
+                String companyName = edCompanyName.getText().toString();
+                String licenseKey = edLicenseKey.getText().toString();
+                String legalPerson = edLegalPerson.getText().toString();
+                String address = edAddress.getText().toString();
+                XCache cache = new XCache.Builder(BusinessAuthenticationActivity.this).build();
+                LoginMsg loginMsg = (LoginMsg) cache.getObject(USERACCENT);
+                String mbId = loginMsg.mbId;
+                if (TextUtils.isEmpty(companyName)) {
+                    showToastShort("请输入单位名称");
+                    return;
+                }
+                if (TextUtils.isEmpty(licenseKey)) {
+                    showToastShort("请输入许可证号");
+                    return;
+                }
+                if (licenseKey.length() != 18) {
+                    showToastShort("许可证号格式错误");
+                    return;
+                }
+                if (TextUtils.isEmpty(legalPerson)) {
+                    showToastShort("请输入法人代表");
+                    return;
+                }
+                if (TextUtils.isEmpty(address_str)) {
+                    showToastShort("请输入省市区");
+                    return;
+                }
+                if (TextUtils.isEmpty(address)) {
+                    showToastShort("请输入详细地址");
+                    return;
+                }
+                getP().authMerchantEncryptionApi(companyName, licenseKey, legalPerson, address_str, address, mbId);
+                break;
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 
     private void initAreaPicker() {
@@ -106,8 +166,8 @@ public class MerchantCertificationActivity extends BaseActivity<MerchantCertific
                         String prov = mListProvince.get(option1);
                         String city = mListCity.get(option1).get(option2);
                         String area = mListArea.get(option1).get(option2).get(option3);
-
-                        teArea.setText(prov + " " + city + " " + area);
+                        address_str = prov + " " + city + " " + area;
+                        teArea.setText(address_str);
                     }
                 }
 
@@ -190,21 +250,4 @@ public class MerchantCertificationActivity extends BaseActivity<MerchantCertific
         mJsonObj = null;
     }
 
-    @Override
-    public void widgetClick(View v) {
-        switch (v.getId()) {
-            case R.id.te_back:
-                finish();
-                break;
-            case R.id.rl_select_area:
-                datePickerView.show();
-                break;
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-    }
 }

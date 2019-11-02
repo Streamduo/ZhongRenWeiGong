@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".business.manager.AddCommodityActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/distance_dp_25">
+
+        <TextView
+            android:id="@+id/te_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/black_back"
+            android:drawablePadding="6dp"
+            android:paddingLeft="@dimen/distance_dp_20"
+            android:text="返回"
+            android:textColor="@color/app_text_66"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <ImageView
+            android:id="@+id/img_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/distance_dp_23"
+            android:paddingRight="@dimen/distance_dp_10"
+            android:src="@mipmap/send" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/ed_commodity_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_53"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="请输入商品名称"
+        android:maxEms="18"
+        android:singleLine="true"
+        android:textColor="@color/app_777777"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:background="@color/app_E9E9E9" />
+
+    <EditText
+        android:id="@+id/ed_commodity_price"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_53"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="请输入商品价格"
+        android:maxEms="18"
+        android:singleLine="true"
+        android:textColor="@color/app_777777"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_5"
+        android:background="@color/app_F4F4F4" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_46"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:layout_marginRight="@dimen/distance_dp_17"
+        android:gravity="center_vertical"
+        android:hint="请上传商品图片"
+        android:textColor="@color/app_777777"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <ImageView
+        android:id="@+id/img_upload"
+        android:layout_width="@dimen/distance_dp_113"
+        android:layout_height="@dimen/distance_dp_113"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:background="@mipmap/img_upload_add"
+        android:scaleType="centerCrop" />
+</LinearLayout>

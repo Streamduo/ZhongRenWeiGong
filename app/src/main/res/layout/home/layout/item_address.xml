@@ -29,6 +29,6 @@
         android:paddingTop="@dimen/distance_dp_10"
         android:textColor="@color/app_text_33"
         android:textSize="@dimen/distance_dp_12"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:text="北京" />
 </LinearLayout>

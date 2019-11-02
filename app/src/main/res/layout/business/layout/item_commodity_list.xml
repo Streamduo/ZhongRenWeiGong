@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_66">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_56"
+        android:layout_marginTop="@dimen/distance_dp_9"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_commodity"
+            android:layout_width="@dimen/distance_dp_59"
+            android:layout_height="@dimen/distance_dp_47"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:paddingBottom="@dimen/distance_dp_10"
+            android:paddingTop="@dimen/distance_dp_5">
+
+            <TextView
+                android:id="@+id/te_commodity_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_000000"
+                android:textSize="@dimen/distance_dp_14"
+                tools:text="极品羊肉" />
+
+            <TextView
+                android:id="@+id/te_commodity_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/app_747474"
+                android:textSize="@dimen/distance_dp_12"
+                tools:text="价格:4.2" />
+
+            <TextView
+                android:id="@+id/te_commodity_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/distance_dp_18"
+                android:layout_toLeftOf="@+id/te_commodity_delete"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:drawableTop="@mipmap/commodity_edit"
+                android:text="编辑"
+                android:textColor="@color/app_747474"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <TextView
+                android:id="@+id/te_commodity_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/distance_dp_11"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:drawableTop="@mipmap/delete"
+                android:text="删除"
+                android:textColor="@color/app_747474"
+                android:textSize="@dimen/distance_dp_12" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_E9E9E9" />
+</RelativeLayout>

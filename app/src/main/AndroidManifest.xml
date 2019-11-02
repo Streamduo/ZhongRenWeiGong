@@ -64,9 +64,6 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".business.MerchantCertificationActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".business.BusinessListActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
@@ -97,6 +94,12 @@
         <activity
             android:name=".home.AddressLocationActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".business.manager.BusinessManagerActivity" />
+        <activity android:name=".mine.MineHomePageActivity" />
+        <activity android:name=".business.manager.CommodityManagerActivity" />
+        <activity android:name=".business.manager.AddCommodityActivity" />
+        <activity android:name=".business.manager.SendNoticeActivity" />
+        <activity android:name=".business.BusinessAuthenticationActivity"></activity>
     </application>
 
 </manifest>

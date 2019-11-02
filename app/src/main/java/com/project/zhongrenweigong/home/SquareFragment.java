@@ -45,11 +45,9 @@ public class SquareFragment extends BaseFragment<SquarePresent> {
     ViewPager vpHomepage;
     Unbinder unbinder;
     private EasyPopup mCirclePop;
-    private boolean isTourist;
 
     @Override
     public void initView() {
-        isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
         SquareVideoPageAdapter discoverAdapter = new SquareVideoPageAdapter(getChildFragmentManager());
         vpHomepage.setAdapter(discoverAdapter);
         tabSquarePage.setupWithViewPager(vpHomepage);
@@ -65,10 +63,14 @@ public class SquareFragment extends BaseFragment<SquarePresent> {
             @Override
             public void onPageSelected(int position) {
                 int currentItem = vpHomepage.getCurrentItem();
-                if (isTourist && currentItem == 1) {
-                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
-                    vpHomepage.setCurrentItem(0);
+                if (currentItem == 1) {
+                    boolean isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
+                    if (isTourist) {
+                        Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                        vpHomepage.setCurrentItem(0);
+                    }
                 }
+
             }
 
             @Override

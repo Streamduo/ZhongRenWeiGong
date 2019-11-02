@@ -73,7 +73,6 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
 
         edSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -110,6 +109,7 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
                 AddressDataBean addressDataBean = listAdapter.getData().get(position);
                 if (addressDataBean != null) {
                     EventBus.getDefault().post(new RefreshHomeEvent(addressDataBean.address));
+                    finish();
                 }
             }
         });
@@ -123,6 +123,7 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
                 SearchHistoryBean searchHistoryBean = latelylistAdapter.getData().get(position);
                 if (searchHistoryBean != null) {
                     EventBus.getDefault().post(new RefreshHomeEvent(searchHistoryBean.searchHistory));
+                    finish();
                 }
             }
         });

@@ -1,6 +1,5 @@
 package com.project.zhongrenweigong.home;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,7 +37,6 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     @BindView(R.id.home_square)
     TextView homeSquare;
     private FactoryFragment factoryFragment;
-    private boolean isTourist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +44,6 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         ButterKnife.bind(this);
         factoryFragment = new FactoryFragment(savedInstanceState, getSupportFragmentManager());
         selectTab(savedInstanceState);
-        isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
-
     }
 
     @Override
@@ -55,6 +51,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         homeMine.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+                boolean  isTourist = SharedPref.getInstance(MainActivity.this).getBoolean(Constans.ISTOURIST, true);
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     if (isTourist) {
                         Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();

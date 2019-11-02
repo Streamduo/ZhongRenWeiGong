@@ -1,10 +1,14 @@
 package com.project.zhongrenweigong.business;
 
+import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -28,5 +32,15 @@ public interface BusinessNetManager {
      */
     @POST("findAllShopByLikeName")
     Flowable<BusinessShopListBean> findAllShopByLikeName(@Body RequestBody Body);
+
+
+    /**
+     * 商家认证
+     * @return
+     */
+    @FormUrlEncoded
+    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    @POST("authMerchantEncryptionApi")
+    Flowable<BaseModel> authMerchantEncryptionApi(@Field("dataMsg") String dataMsg);
 
 }

@@ -213,11 +213,4 @@
         android:layout_marginTop="@dimen/distance_dp_209"
         android:layout="@layout/layout_register_ok" />
 
-    <ViewStub
-        android:id="@+id/vs_xinxi_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/distance_dp_151"
-        android:layout="@layout/layout_xinxi_edit" />
-
 </RelativeLayout>

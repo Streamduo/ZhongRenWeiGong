@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.business.BusinessAuthenticationActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class MyAuthenticationActivity extends BaseActivity<MyAuthenticationPresent> {
 
@@ -43,7 +45,7 @@ public class MyAuthenticationActivity extends BaseActivity<MyAuthenticationPrese
 
     @Override
     public void initView() {
-       teTitle.setText("我的认证");
+        teTitle.setText("我的认证");
     }
 
     @Override
@@ -64,6 +66,7 @@ public class MyAuthenticationActivity extends BaseActivity<MyAuthenticationPrese
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        rlBusinessStatus.setOnClickListener(this);
     }
 
     @Override
@@ -71,6 +74,9 @@ public class MyAuthenticationActivity extends BaseActivity<MyAuthenticationPrese
         switch (v.getId()) {
             case R.id.te_back:
                 finish();
+                break;
+            case R.id.rl_business_status:
+                Router.newIntent(MyAuthenticationActivity.this).to(BusinessAuthenticationActivity.class).launch();
                 break;
         }
     }

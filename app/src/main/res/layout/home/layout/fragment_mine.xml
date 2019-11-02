@@ -197,7 +197,7 @@
                         android:drawableLeft="@mipmap/mine_industry"
                         android:drawablePadding="@dimen/distance_dp_24"
                         android:gravity="center_vertical"
-                        android:text="行业管理"
+                        android:text="我是商家"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 

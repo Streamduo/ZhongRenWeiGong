@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sm_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlAccentColor="@color/app_text_99"
+    app:srlEnablePreviewInEditMode="true"
+    app:srlPrimaryColor="@color/white"
+    tools:context=".mine.MineHomePageActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_tuceng"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_186"
+            android:background="@mipmap/login_img" />
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/bus_layout_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.lijiankun24.shadowlayout.ShadowLayout
+            android:id="@+id/sl_xinxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_121"
+            app:shadowColor="#593B73F6"
+            app:shadowDx="@dimen/distance_dp_2"
+            app:shadowDy="@dimen/distance_dp_2"
+            app:shadowRadius="@dimen/distance_dp_5"
+            app:shadowShape="rectangle"
+            app:shadowSide="all">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_bac_white_5"
+                android:paddingBottom="@dimen/distance_dp_15"
+                android:paddingLeft="@dimen/distance_dp_17"
+                android:paddingRight="@dimen/distance_dp_15"
+                android:paddingTop="@dimen/distance_dp_15">
+
+                <ImageView
+                    android:id="@+id/img_user_head"
+                    android:layout_width="@dimen/distance_dp_70"
+                    android:layout_height="@dimen/distance_dp_70"
+                    android:background="@mipmap/user_default_head" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_70"
+                    android:layout_marginLeft="@dimen/distance_dp_13"
+                    android:layout_toRightOf="@+id/img_user_head">
+
+                    <TextView
+                        android:id="@+id/te_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_13"
+                        android:text="张小山"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_21"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/te_user_occupation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_15"
+                        android:layout_marginTop="@dimen/distance_dp_18"
+                        android:layout_toRightOf="@+id/te_user_name"
+                        android:text="职业:医生"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_15" />
+
+                    <TextView
+                        android:id="@+id/te_user_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/distance_dp_5"
+                        android:text="ID:236542513"
+                        android:textColor="@color/app_text_99"
+                        android:textSize="@dimen/distance_dp_13" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/line_xinxi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_user_head"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_1"
+                        android:text="动态"
+                        android:textColor="@color/app_text_44"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <TextView
+                        android:id="@+id/te_dynamic_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_4"
+                        android:textColor="@color/app_222222"
+                        android:textSize="@dimen/distance_dp_18"
+                        android:textStyle="bold"
+                        tools:text="66" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_17"
+                        android:layout_marginTop="@dimen/distance_dp_1"
+                        android:text="关注"
+                        android:textColor="@color/app_text_44"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <TextView
+                        android:id="@+id/te_follow_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_4"
+                        android:textColor="@color/app_222222"
+                        android:textSize="@dimen/distance_dp_18"
+                        android:textStyle="bold"
+                        tools:text="66" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_17"
+                        android:layout_marginTop="@dimen/distance_dp_1"
+                        android:text="粉丝"
+                        android:textColor="@color/app_text_44"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <TextView
+                        android:id="@+id/te_fans_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_4"
+                        android:textColor="@color/app_222222"
+                        android:textSize="@dimen/distance_dp_18"
+                        android:textStyle="bold"
+                        tools:text="66" />
+
+                    <TextView
+                        android:id="@+id/te_guanzhu"
+                        android:layout_width="@dimen/distance_dp_90"
+                        android:layout_height="@dimen/distance_dp_25"
+                        android:layout_marginLeft="@dimen/distance_dp_17"
+                        android:background="@drawable/bg_bac_blue"
+                        android:gravity="center"
+                        android:text="+ 关注"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/te_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line_xinxi"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:text="认证主体："
+                    android:textColor="@color/app_22222"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:id="@+id/te_authentication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line_xinxi"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:layout_toRightOf="@+id/te_text"
+                    android:text="北京维公科技发展有限公司"
+                    android:textColor="@color/app_22222"
+                    android:textSize="@dimen/distance_dp_14" />
+            </RelativeLayout>
+        </com.lijiankun24.shadowlayout.ShadowLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_dynamic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sl_xinxi"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:overScrollMode="never" />
+
+    </RelativeLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
