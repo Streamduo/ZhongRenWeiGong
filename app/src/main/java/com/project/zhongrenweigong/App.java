@@ -101,8 +101,8 @@ public class App extends Application {
 
             @Override
             public Interceptor[] configInterceptors() {
-                Interceptor resultinterceptor = new ResultInterceptor(mContext);
-                return new Interceptor[]{resultinterceptor};
+//                Interceptor resultinterceptor = new ResultInterceptor(mContext);
+                return new Interceptor[0];
             }
 
             @Override

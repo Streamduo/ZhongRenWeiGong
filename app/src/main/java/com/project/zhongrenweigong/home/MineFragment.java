@@ -18,6 +18,8 @@ import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.mine.MyAuthenticationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
+import com.project.zhongrenweigong.mine.set.SetActivity;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.XCache;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
@@ -115,6 +117,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
             case R.id.rl_mine_help_center:
                 break;
             case R.id.rl_mine_set:
+                Router.newIntent(getActivity()).to(SetActivity.class).launch();
                 break;
         }
     }
@@ -139,8 +142,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
     }
 
     private void setData() {
-        XCache xCache = new XCache.Builder(getContext()).build();
-        LoginMsg loginMsg = (LoginMsg) xCache.getObject(Constans.USERACCENT);
+        LoginMsg loginMsg = AcacheUtils.getInstance(getContext()).getUserAccent();
         if (loginMsg != null && loginMsg.mbId != null && !loginMsg.mbId.equals("")) {
             GlideDownLoadImage.getInstance().loadCircleImage(this, loginMsg.headUrl, imgUserHead,R.mipmap.user_default_head);
             teUserName.setText(loginMsg.mbName);

@@ -77,16 +77,14 @@ public class BusinessManagerActivity extends BaseActivity<BusinessManagerPresent
                 Router.newIntent(BusinessManagerActivity.this).to(CommodityManagerActivity.class).launch();
                 break;
             case R.id.rl_shop_xinxi:
-
+                Router.newIntent(BusinessManagerActivity.this).to(EditStoreIntroActivity.class).launch();
                 break;
             case R.id.rl_shop_notice:
                 Router.newIntent(BusinessManagerActivity.this).to(SendNoticeActivity.class).launch();
                 break;
             case R.id.rl_worker_manager:
-
+                Router.newIntent(BusinessManagerActivity.this).to(WorkerManagerActivity.class).launch();
                 break;
-
-
         }
     }
 

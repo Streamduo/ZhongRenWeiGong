@@ -87,6 +87,15 @@
     <color name="app_DCDCDC">#FFDCDCDC</color>
     <color name="app_222222">#222222</color>
     <color name="app_777777">#777777</color>
+    <color name="app_dddddd">#dddddd</color>
+    <color name="app_ECECEC">#FFECECEC</color>
+    <color name="app_EBEBEB">#FFEBEBEB</color>
+    <color name="app_203F91">#FF203F91</color>
+    <color name="app_1282FF">#FF1282FF</color>
+    <color name="app_E1E1E1">#FFE1E1E1</color>
+    <color name="app_B0B0B0">#FFB0B0B0</color>
+    <color name="app_FF0000">#FFFF0000</color>
+    <color name="app_54618D">#FF54618D</color>
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>

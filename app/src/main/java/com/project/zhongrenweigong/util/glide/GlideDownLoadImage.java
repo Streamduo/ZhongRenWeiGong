@@ -626,6 +626,22 @@ public class GlideDownLoadImage {
         }
     }
 
+    public void loadCircleImage(Activity activity, String url, ImageView view,int resId) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(resId)
+                .error(resId)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .circleCrop();
+        if (!activity.isDestroyed()) {
+            Glide.with(activity)
+                    .load(url)
+                    .apply(options)
+                    .into(view);
+        } else {
+            Log.i(TAG, "Picture loading failed,fragment is null");
+        }
+    }
+
     /**
      * @param fragment
      * @param resId

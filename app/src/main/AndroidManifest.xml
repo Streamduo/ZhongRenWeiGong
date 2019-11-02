@@ -99,7 +99,11 @@
         <activity android:name=".business.manager.CommodityManagerActivity" />
         <activity android:name=".business.manager.AddCommodityActivity" />
         <activity android:name=".business.manager.SendNoticeActivity" />
-        <activity android:name=".business.BusinessAuthenticationActivity"></activity>
+        <activity android:name=".business.BusinessAuthenticationActivity" />
+        <activity android:name=".business.manager.EditStoreIntroActivity" />
+        <activity android:name=".business.manager.WorkerManagerActivity" />
+        <activity android:name=".mine.set.SetActivity" />
+        <activity android:name=".mine.set.ChangePhoneActivity"></activity>
     </application>
 
 </manifest>
