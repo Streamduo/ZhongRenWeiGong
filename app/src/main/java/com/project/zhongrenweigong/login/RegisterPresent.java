@@ -58,8 +58,9 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
                     @Override
                     public void onNext(BaseModel baseModel) {
                         if (baseModel.getCode() == 200) {
-                            ToastManager.showShort(getV(), baseModel.getMsg());
                             getV().initRegisterOk();
+                        }else {
+                            ToastManager.showShort(getV(), baseModel.getMsg());
                         }
                     }
                 });
@@ -86,7 +87,9 @@ public class RegisterPresent extends XPresent<RegisterActivity> {
                     @Override
                     public void onNext(BaseModel baseModel) {
                         ToastManager.showShort(getV(), baseModel.msg);
-                        getV().sendEmsSuccess();
+                        if (baseModel.getCode() == 200) {
+                            getV().sendEmsSuccess();
+                        }
                     }
                 });
     }

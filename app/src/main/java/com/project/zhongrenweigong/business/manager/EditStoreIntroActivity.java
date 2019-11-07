@@ -1,36 +1,51 @@
 package com.project.zhongrenweigong.business.manager;
 
-
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.CustomListener;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
-import com.project.zhongrenweigong.business.BusinessAuthenticationActivity;
-import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.business.adapter.CategorySpinnerAdapter;
+import com.project.zhongrenweigong.business.bean.BusinessCategoryListBean;
+import com.project.zhongrenweigong.business.bean.CategoryDataBean;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.CheckInputUtil;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.util.XCache;
+import com.zyyoona7.popup.EasyPopup;
+import com.zyyoona7.popup.XGravity;
+import com.zyyoona7.popup.YGravity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.droidlover.xdroidbase.kit.ToastManager;
 
 import static com.project.zhongrenweigong.currency.Constans.USERACCENT;
 
@@ -64,6 +79,10 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
     RelativeLayout rlFenlei;
     @BindView(R.id.rl_select_area)
     RelativeLayout rlSelectArea;
+    @BindView(R.id.te_fenlei_detail)
+    TextView teFenleiDetail;
+    @BindView(R.id.rl_fenlei_detail)
+    RelativeLayout rlFenleiDetail;
 
     private OptionsPickerView datePickerView;
     // 省数据集合
@@ -74,14 +93,19 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
     private ArrayList<ArrayList<ArrayList<String>>> mListArea = new ArrayList<>();
     private JSONObject mJsonObj;
     private String address_str;
-    private String store_fenlei;
     private String startTime;
     private String endTime;
+    private CategorySpinnerAdapter categorySpinnerAdapter;
+    private CategorySpinnerAdapter categoryDetailSpinnerAdapter;
+    private EasyPopup mCategoryPop;
+    private EasyPopup mCategoryDetailPop;
+    private List<CategoryDataBean> categoryData;
+    private String categoryId;
+    private String categoryDetailId;
+    private List<CategoryDataBean> categoryDetaildata;
 
     @Override
     public void initView() {
-
-        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override
@@ -89,6 +113,13 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
         initJsonData();
         initJsonDatas();
         initAreaPicker();
+        getP().getGoodsCategory();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override
@@ -106,10 +137,98 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
         teBack.setOnClickListener(this);
         imgSend.setOnClickListener(this);
         rlUploadLogo.setOnClickListener(this);
-        rlFenlei.setOnClickListener(this);
+        teFenlei.setOnClickListener(this);
+        teFenleiDetail.setOnClickListener(this);
         rlSelectArea.setOnClickListener(this);
         teStartTime.setOnClickListener(this);
         teNdTime.setOnClickListener(this);
+    }
+
+    private void showCategoryDialog(Context context, int layoutid, View v) {
+
+        //是否允许点击PopupWindow之外的地方消失
+        //允许背景变暗
+        //变暗的透明度(0-1)，0为完全透明
+        //变暗的背景颜色
+        //指定任意 ViewGroup 背景变暗
+        mCategoryPop = EasyPopup.create()
+                .setContentView(context, layoutid)
+                .setAnimationStyle(R.style.ActionSheetDialogStyle)
+                //是否允许点击PopupWindow之外的地方消失
+                .setFocusAndOutsideEnable(true)
+                .apply();
+
+        ListView listCategory = (ListView) mCategoryPop.findViewById(R.id.list_category);
+        if (categoryData != null && categoryData.size() > 0) {
+            categorySpinnerAdapter = new CategorySpinnerAdapter(EditStoreIntroActivity.this,
+                    categoryData);
+            listCategory.setAdapter(categorySpinnerAdapter);
+        }
+
+        listCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mCategoryPop.dismiss();
+                CategoryDataBean item = (CategoryDataBean) categorySpinnerAdapter.getItem(i);
+                categoryId = item.categoryId;
+                teFenlei.setText(item.categoryName);
+                getP().getGoodsCategory(item.categoryId);
+            }
+        });
+
+        /**
+         * 相对anchor view显示，适用 宽高不为match_parent
+         *
+         * @param anchor
+         * @param yGravity  垂直方向的对齐方式
+         * @param xGravity  水平方向的对齐方式
+         * @param x            水平方向的偏移
+         * @param y            垂直方向的偏移
+         */
+        mCategoryPop.showAtAnchorView(v, YGravity.BELOW, XGravity.CENTER, 0, 10);
+    }
+
+    private void showCategoryDetailDialog(Context context, int layoutid, View v) {
+
+        //是否允许点击PopupWindow之外的地方消失
+        //允许背景变暗
+        //变暗的透明度(0-1)，0为完全透明
+        //变暗的背景颜色
+        //指定任意 ViewGroup 背景变暗
+        mCategoryDetailPop = EasyPopup.create()
+                .setContentView(context, layoutid)
+                .setAnimationStyle(R.style.ActionSheetDialogStyle)
+                //是否允许点击PopupWindow之外的地方消失
+                .setFocusAndOutsideEnable(true)
+                .apply();
+
+        ListView listCategory = (ListView) mCategoryDetailPop.findViewById(R.id.list_category);
+        if (categoryDetaildata != null && categoryDetaildata.size() > 0) {
+            categoryDetailSpinnerAdapter = new CategorySpinnerAdapter(EditStoreIntroActivity.this,
+                    categoryDetaildata);
+            listCategory.setAdapter(categoryDetailSpinnerAdapter);
+        }
+
+        listCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CategoryDataBean item = (CategoryDataBean) categoryDetailSpinnerAdapter.getItem(i);
+                categoryDetailId = item.categoryId;
+                teFenleiDetail.setText(item.categoryName);
+                mCategoryDetailPop.dismiss();
+            }
+        });
+
+        /**
+         * 相对anchor view显示，适用 宽高不为match_parent
+         *
+         * @param anchor
+         * @param yGravity  垂直方向的对齐方式
+         * @param xGravity  水平方向的对齐方式
+         * @param x            水平方向的偏移
+         * @param y            垂直方向的偏移
+         */
+        mCategoryDetailPop.showAtAnchorView(v, YGravity.BELOW, XGravity.CENTER, 0, 10);
     }
 
     @Override
@@ -124,14 +243,21 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
             case R.id.rl_upload_logo:
 
                 break;
-            case R.id.rl_fenlei:
-
+            case R.id.te_fenlei:
+                showCategoryDialog(EditStoreIntroActivity.this, R.layout.layout_category_list, v);
+                break;
+            case R.id.te_fenlei_detail:
+                if (categoryId != null && !categoryId.equals("")) {
+                    showCategoryDetailDialog(EditStoreIntroActivity.this, R.layout.layout_category_list, v);
+                } else {
+                    showToastShort("请先选择店铺分类");
+                }
                 break;
             case R.id.te_start_time:
-
+                initTimePicker(0);
                 break;
             case R.id.te_nd_time:
-
+                initTimePicker(1);
                 break;
             case R.id.img_send:
                 String storeName = edStoreName.getText().toString();
@@ -139,9 +265,6 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
                 String pn = storePhone.replaceAll("\\D", "");
                 String storeAddress = edStoreAddress.getText().toString();
                 String storeIntro = edStoreIntro.getText().toString();
-                XCache cache = new XCache.Builder(EditStoreIntroActivity.this).build();
-                LoginMsg loginMsg = (LoginMsg) cache.getObject(USERACCENT);
-                String mbId = loginMsg.mbId;
                 if (TextUtils.isEmpty(storeName)) {
                     showToastShort("请输入店铺名称");
                     return;
@@ -165,8 +288,12 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
                     showToastShort("请输入省市区");
                     return;
                 }
-                if (TextUtils.isEmpty(store_fenlei)) {
+                if (TextUtils.isEmpty(categoryId)) {
                     showToastShort("请选择店铺分类");
+                    return;
+                }
+                if (TextUtils.isEmpty(categoryDetailId)) {
+                    showToastShort("请选择店铺详细分类");
                     return;
                 }
                 if (TextUtils.isEmpty(startTime)) {
@@ -177,7 +304,9 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
                     showToastShort("请输入结束时间");
                     return;
                 }
-//                getP().authMerchantEncryptionApi(companyName, licenseKey, legalPerson, address_str, address, mbId);
+                LoginMsg userAccent = AcacheUtils.getInstance(EditStoreIntroActivity.this).getUserAccent();
+                getP().openShopEncryptionApi(startTime, endTime, storeIntro, storeAddress, pn,
+                        userAccent.mbId, address_str, storeName, categoryId, categoryDetailId);
                 break;
         }
     }
@@ -188,8 +317,37 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
         ButterKnife.bind(this);
     }
 
+    private void initTimePicker(final int type) {
+        TimePickerView pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                Log.i("pvTime", "onTimeSelect");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                if (type == 0) {
+                    startTime = format.format(date);
+                    teStartTime.setText(startTime);
+                } else {
+                    endTime = format.format(date);
+                    teNdTime.setText(endTime);
+                }
+            }
+        }).setType(new boolean[]{false, false, false, true, true, false})
+                .isDialog(false) //默认设置false ，内部实现将DecorView 作为它的父控件。
+                .addOnCancelClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.i("pvTime", "onCancelClickListener");
+                    }
+                })
+                .setItemVisibleCount(5) //若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
+                .setLineSpacingMultiplier(2.0f)
+                .isAlphaGradient(true)
+                .build();
+        pvTime.show();
+    }
+
     private void initAreaPicker() {
-        datePickerView = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+        datePickerView = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int option1, int option2, int option3, View v) {
                 if (mListCity.size() > option1 && mListCity.get(option1).size() > option2) {
@@ -282,4 +440,11 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
         mJsonObj = null;
     }
 
+    public void setData(BusinessCategoryListBean businessCategoryListBean) {
+        categoryData = businessCategoryListBean.getData();
+    }
+
+    public void setCategoryDetailData(BusinessCategoryListBean businessCategoryListBean) {
+        categoryDetaildata = businessCategoryListBean.getData();
+    }
 }

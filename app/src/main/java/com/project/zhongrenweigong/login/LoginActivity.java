@@ -32,6 +32,7 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
     TextView teFindPassword;
     @BindView(R.id.te_title)
     TextView teTitle;
+    private int isLoginOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
 
     @Override
     public void initAfter() {
-
+        isLoginOut = getIntent().getIntExtra("isLoginOut", 0);
     }
 
     @Override
@@ -105,7 +106,7 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
                 if (!CheckInputUtil.checkPassword(passwordText)){
                     ToastManager.showShort(LoginActivity.this,getString(R.string.password_error));
                 }
-                getP().login("adress",ipAddress,"1",passwordText,phoneNumText);
+                getP().login("adress",ipAddress,"1",passwordText,phoneNumText,isLoginOut);
                 break;
         }
     }

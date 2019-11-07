@@ -45,7 +45,7 @@
         android:hint="请输入商品名称"
         android:maxLength="18"
         android:singleLine="true"
-        android:textColor="@color/app_777777"
+        android:textColor="@color/app_222222"
         android:textSize="@dimen/distance_dp_15" />
 
     <View
@@ -64,7 +64,7 @@
         android:hint="请输入商品价格"
         android:singleLine="true"
         android:inputType="number"
-        android:textColor="@color/app_777777"
+        android:textColor="@color/app_222222"
         android:textSize="@dimen/distance_dp_15" />
 
     <View
@@ -78,8 +78,8 @@
         android:layout_marginLeft="@dimen/distance_dp_14"
         android:layout_marginRight="@dimen/distance_dp_17"
         android:gravity="center_vertical"
-        android:hint="请上传商品图片"
-        android:textColor="@color/app_777777"
+        android:text="请上传商品图片"
+        android:textColor="@color/app_222222"
         android:textSize="@dimen/distance_dp_15" />
 
     <ImageView

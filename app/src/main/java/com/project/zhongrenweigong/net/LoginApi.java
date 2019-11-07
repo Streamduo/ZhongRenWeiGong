@@ -2,6 +2,7 @@ package com.project.zhongrenweigong.net;
 
 import com.project.zhongrenweigong.BuildConfig;
 import com.project.zhongrenweigong.login.LoginNetManager;
+import com.project.zhongrenweigong.mine.MineNetManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ public class LoginApi {
 
     public static final String BASE_PATH = (XDroidConf.DEV ? TEST_SERVER : RELEASE_SERVER);
     private static LoginNetManager loginNetManager;
+    private static MineNetManager mineNetManager;
 
     public static LoginNetManager loginNetManager() {
         if (loginNetManager == null) {
@@ -28,6 +30,17 @@ public class LoginApi {
             }
         }
         return loginNetManager;
+    }
+
+    public static MineNetManager mineNetManager() {
+        if (mineNetManager == null) {
+            synchronized (LoginApi.class) {
+                if (mineNetManager == null) {
+                    mineNetManager = XApi.getInstance().getRetrofit(BASE_PATH, true).create(MineNetManager.class);
+                }
+            }
+        }
+        return mineNetManager;
     }
 
     public static Map<String, String> getBasicParamsUidAndToken() {

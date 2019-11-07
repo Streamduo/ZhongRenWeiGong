@@ -30,7 +30,7 @@ public class SquareListAdapter extends BaseQuickAdapter<SquareDataBean, BaseView
         String coverPictureUrl = item.coverPictureUrl;
         if (coverPictureUrl != null && !coverPictureUrl.equals("")) {
             GlideDownLoadImage.getInstance().loadCircleImageTopRole(helper.itemView.getContext(),
-                    item.coverPictureUrl, (ImageView) helper.getView(R.id.img_text_video_cover),
+                    coverPictureUrl, (ImageView) helper.getView(R.id.img_text_video_cover),
                     4, R.mipmap.default_list_big);
         }
         helper.setText(R.id.te_intro, item.content);

@@ -38,6 +38,8 @@ public class AddressLocationPresent extends XPresent<AddressLocationActivity> {
                     public void onNext(AddressBean addressBean) {
                         if (addressBean.getCode() == 200) {
                             getV().setData(addressBean);
+                        }else {
+                            ToastManager.showShort(getV(),addressBean.msg);
                         }
                     }
                 });
@@ -66,6 +68,8 @@ public class AddressLocationPresent extends XPresent<AddressLocationActivity> {
                     public void onNext(AddressBean addressBean) {
                         if (addressBean.getCode() == 200) {
                             getV().setSearchData(addressBean);
+                        }else {
+                            ToastManager.showShort(getV(),addressBean.msg);
                         }
                     }
                 });

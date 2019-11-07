@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.project.zhongrenweigong.util.ActivityManager;
 import com.project.zhongrenweigong.util.StatusBarUtils;
+import com.project.zhongrenweigong.util.UtilsStyle;
 
 import java.util.ArrayList;
 import java.util.List;

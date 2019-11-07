@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/distance_dp_46">
+
+    <LinearLayout
+        android:layout_width="@dimen/distance_dp_145"
+        android:layout_height="@dimen/distance_dp_45"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_14"
+            tools:text="包子粥店" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/distance_dp_145"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginLeft="@dimen/distance_dp_5"
+        android:layout_marginRight="@dimen/distance_dp_5"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_ECECEC" />
+</RelativeLayout>

@@ -12,7 +12,7 @@ public class FactoryFragment {
 
     public static final String TAG = "FactoryFragment";
 
-    private static final String[] TAGS = {HomeFragment.TAG, SquareFragment.TAG, MineFragment.TAG};
+    private static final String[] TAGS = {MessageFragment.TAG,HomeFragment.TAG, SquareFragment.TAG, MineFragment.TAG};
     private FragmentManager fragmentManager;
     private int currentIndex = -1;
 
@@ -35,6 +35,8 @@ public class FactoryFragment {
 
     private BaseFragment createFragByTag(String tag) {
         switch (tag) {
+            case MessageFragment.TAG:
+                return new MessageFragment();
             case HomeFragment.TAG:
                 return new HomeFragment();
             case SquareFragment.TAG:
@@ -63,7 +65,6 @@ public class FactoryFragment {
         } else {
             transaction.add(R.id.main_container, to, tag);
         }
-
         transaction.commitAllowingStateLoss();
     }
 

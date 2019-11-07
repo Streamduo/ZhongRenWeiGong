@@ -33,13 +33,18 @@ public class MyWalletActivity extends BaseActivity<MyWalletPresent> {
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         teTitle.setText("赔付钱包");
     }
 
     @Override
     public void initAfter() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override

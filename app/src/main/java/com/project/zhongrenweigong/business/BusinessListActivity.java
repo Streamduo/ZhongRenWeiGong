@@ -65,7 +65,6 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         Intent intent = getIntent();
         type = intent.getIntExtra(TYPE, 0);
 
@@ -147,6 +146,12 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
         });
 
         getP().selectAllShop(type, currentPage, 0, "", 1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override

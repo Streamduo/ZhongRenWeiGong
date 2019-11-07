@@ -1,7 +1,11 @@
 package com.project.zhongrenweigong.business;
 
 import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.business.bean.BusinessCategoryListBean;
+import com.project.zhongrenweigong.business.bean.BusinessNoticeBean;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
+import com.project.zhongrenweigong.business.bean.CommodityListBean;
+import com.project.zhongrenweigong.business.bean.WorkerListBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
@@ -42,5 +46,104 @@ public interface BusinessNetManager {
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     @POST("authMerchantEncryptionApi")
     Flowable<BaseModel> authMerchantEncryptionApi(@Field("dataMsg") String dataMsg);
+
+    /**
+     *
+     添加商品信息
+     * @return
+     */
+    @POST("addGoods")
+    Flowable<BaseModel> addGoods(@Body RequestBody Body);
+
+    /**
+     *
+     根据商家ID查询所有商品
+     * @return
+     */
+    @POST("findAllGoodsByMerchantId")
+    Flowable<CommodityListBean> findAllGoods(@Body RequestBody Body);
+
+
+    /**
+     *
+     删除商品
+     * @return
+     */
+    @POST("deleteGoodsByGoodsId")
+    Flowable<BaseModel> deleteGoods(@Body RequestBody Body);
+
+    /**
+     *
+     修改商品
+     * @return
+     */
+    @POST("updateGoods")
+    Flowable<BaseModel> updateGoods(@Body RequestBody Body);
+
+    /**
+     *
+     新增员工
+     * @return
+     */
+    @POST("bindingEmployees")
+    Flowable<BaseModel> addWorker(@Body RequestBody Body);
+
+    /**
+     *
+     删除员工
+     * @return
+     */
+    @POST("deleteEmployeesById")
+    Flowable<BaseModel> deleteWorker(@Body RequestBody Body);
+
+    /**
+     *
+     根据商家ID查询所有员工
+     * @return
+     */
+    @POST("findEmployeesById")
+    Flowable<WorkerListBean> findEmployees(@Body RequestBody Body);
+
+    /**
+     *
+     发布公告
+     * @return
+     */
+    @POST("addAnnouncement")
+    Flowable<BaseModel> addAnnouncement(@Body RequestBody Body);
+
+    /**
+     *
+     发布公告
+     * @return
+     */
+    @POST("findAllAnnouncement")
+    Flowable<BusinessNoticeBean> findAnnouncement(@Body RequestBody Body);
+
+    /**
+     *
+     获取分类信息接口
+     * @return
+     */
+    @POST("getGoodsCategory")
+    Flowable<BusinessCategoryListBean> getGoodsCategory();
+
+    /**
+     *
+     获取子分类信息接口
+     * @return
+     */
+    @POST("getSeedCategory")
+    Flowable<BusinessCategoryListBean> getSeedCategory(@Body RequestBody Body);
+
+
+    /**
+     * 商家信息编辑
+     * @return
+     */
+    @FormUrlEncoded
+    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    @POST("openShopEncryptionApi")
+    Flowable<BaseModel> openShopEncryptionApi(@Field("dataMsg") String dataMsg);
 
 }

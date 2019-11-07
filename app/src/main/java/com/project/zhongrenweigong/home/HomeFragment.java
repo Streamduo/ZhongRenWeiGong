@@ -15,6 +15,7 @@ import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.SearchBusinessActivity;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
+import com.project.zhongrenweigong.currency.zxing.android.CaptureActivity;
 import com.project.zhongrenweigong.home.adapter.UltraViewPagerAdapter;
 import com.project.zhongrenweigong.home.bean.DataBean;
 import com.project.zhongrenweigong.login.LoginActivity;
@@ -138,9 +139,9 @@ public class HomeFragment extends BaseFragment<HomePresent> {
                 break;
             case R.id.img_saoyosao:
                 if (isTourist) {
-                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                    Router.newIntent(getActivity()).to(CaptureActivity.class).launch();
                 } else {
-                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+                    Router.newIntent(getActivity()).to(CaptureActivity.class).launch();
                 }
                 break;
             case R.id.te_food:

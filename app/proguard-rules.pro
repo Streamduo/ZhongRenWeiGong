@@ -33,7 +33,12 @@
 
 # Application classes that will be serialized/deserialized over Gson
 # -keep class com.google.gson.examples.android.model.** { *; }
--keep class com.project.zhongrenweigong.bean.** { *; }
+-keep class com.project.zhongrenweigong.business.bean.** { *; }
+-keep class com.project.zhongrenweigong.currency.bean.** { *; }
+-keep class com.project.zhongrenweigong.currency.event.** { *; }
+-keep class com.project.zhongrenweigong.home.bean.** { *; }
+-keep class com.project.zhongrenweigong.login.bean.** { *; }
+-keep class com.project.zhongrenweigong.square.bean.** { *; }
 
 #-dontwarn jp.co.cyberagent.android.gpuimage.**
 -dontwarn com.squareup.okhttp.**

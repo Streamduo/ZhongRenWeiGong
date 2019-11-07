@@ -29,6 +29,7 @@ import java.util.Objects;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 import static com.project.zhongrenweigong.util.ScreenUtils.dip2px;
+import static com.project.zhongrenweigong.util.ScreenUtils.dp2px;
 
 
 /**
@@ -851,16 +852,11 @@ public class GlideDownLoadImage {
                 .error(defpic)
                 .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .transform(new MultiTransformation(new CenterCrop(), new RoundedCornersTransformation(dip2px(mContext, dp), 0, RoundedCornersTransformation.CornerType.TOP)));
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+                .transform(new MultiTransformation(new CenterCrop(), new RoundedCornersTransformation(dp2px(dp), 0, RoundedCornersTransformation.CornerType.TOP)));
             Glide.with(mContext)
                     .load(resId)
                     .apply(options)
                     .into(view);
-        } else {
-            Log.i(TAG, "Picture loading failed,context is null");
-        }
-
     }
 
 }

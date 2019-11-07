@@ -3,6 +3,7 @@ package com.project.zhongrenweigong.login;
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
+import com.project.zhongrenweigong.home.MainActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.net.LoginApi;
 import com.project.zhongrenweigong.util.GsonProvider;
@@ -20,6 +21,7 @@ import cn.droidlover.xdroidmvp.mvp.XPresent;
 import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.XApi;
+import cn.droidlover.xdroidmvp.router.Router;
 
 
 /**
@@ -30,7 +32,7 @@ import cn.droidlover.xdroidmvp.net.XApi;
 public class LoginPresent extends XPresent<LoginActivity> {
 
     public void login(String loginAddr, String loginIp,
-                      String loginType, String mbPassword, String mbPhone) {
+                      String loginType, String mbPassword, String mbPhone, final int isLoginOut) {
         LoadingDialog.show(getV());
         Map<String, String> stringMap = LoginApi.getBasicParamsUidAndToken();
         stringMap.put("loginAddr", loginAddr);
@@ -66,7 +68,7 @@ public class LoginPresent extends XPresent<LoginActivity> {
                     public void onNext(BaseModel baseModel) {
                         LoadingDialog.dismiss(getV());
                         SharedPref.getInstance(getV()).putBoolean(Constans.ISTOURIST, false);
-                        if (baseModel.getCode() == 200) {
+                        if (baseModel.getCode() != 200) {
                             ToastManager.showShort(getV(), baseModel.getMsg());
                         }
                         String data = baseModel.encryptionData;
@@ -77,7 +79,11 @@ public class LoginPresent extends XPresent<LoginActivity> {
                             XCache xCache = new XCache.Builder(getV()).build();
                             xCache.put(Constans.USERACCENT, loginMsg);
                             EventBus.getDefault().post(new RefreshMineEvent());
-                            getV().finish();
+                            if (isLoginOut == 1){
+                                Router.newIntent(getV()).to(MainActivity.class).launch();
+                            }else {
+                                getV().finish();
+                            }
                         }
                     }
                 });

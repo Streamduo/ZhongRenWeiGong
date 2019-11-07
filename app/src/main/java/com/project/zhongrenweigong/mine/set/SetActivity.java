@@ -12,6 +12,7 @@ import com.project.zhongrenweigong.login.LoginActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.ActivityManager;
+import com.project.zhongrenweigong.util.LoginOutUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.util.XCache;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
@@ -20,6 +21,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
+
+import static com.project.zhongrenweigong.currency.Constans.ADDRES;
+import static com.project.zhongrenweigong.currency.Constans.ISTOURIST;
 
 public class SetActivity extends BaseActivity<SetPresent> {
 
@@ -44,7 +48,6 @@ public class SetActivity extends BaseActivity<SetPresent> {
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         teTitle.setText("设置");
     }
 
@@ -56,6 +59,12 @@ public class SetActivity extends BaseActivity<SetPresent> {
                     imgHead, R.mipmap.user_default_head);
             tePhone.setText(userAccent.mbPhone);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override
@@ -91,18 +100,14 @@ public class SetActivity extends BaseActivity<SetPresent> {
                 Router.newIntent(SetActivity.this).to(ChangePhoneActivity.class).launch();
                 break;
             case R.id.rl_password_manager:
-
+                Router.newIntent(SetActivity.this).to(ChangePasswordActivity.class).launch();
                 break;
             case R.id.rl_from_company:
 
                 break;
             case R.id.te_exit_login:
-                SharedPref.getInstance(SetActivity.this).clear();
-                XCache xCache = new XCache.Builder(SetActivity.this).build();
-                xCache.clear();
-                ActivityManager screenManager = ActivityManager.getScreenManager();
-                screenManager.popAllActivity();
-                Router.newIntent(SetActivity.this).to(LoginActivity.class).launch();
+                LoginOutUtils.loginOut(SetActivity.this);
+                Router.newIntent(SetActivity.this).putInt("isLoginOut",1).to(LoginActivity.class).launch();
                 finish();
                 break;
         }

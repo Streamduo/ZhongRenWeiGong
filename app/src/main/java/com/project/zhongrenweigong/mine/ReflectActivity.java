@@ -41,13 +41,18 @@ public class ReflectActivity extends BaseActivity<ReflectPresent> {
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         teTitle.setText("提现");
     }
 
     @Override
     public void initAfter() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override

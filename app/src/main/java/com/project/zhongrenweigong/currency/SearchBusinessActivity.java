@@ -53,7 +53,6 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
 
         edSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -151,6 +150,7 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
     @Override
     protected void onResume() {
         super.onResume();
+        UtilsStyle.statusBarLightMode(this);
         updateSearchHistoryAdapter();
     }
 

@@ -71,7 +71,6 @@ public class FindPasswordActivity extends BaseActivity<FindPasswordPresent> {
                 finish();
                 break;
             case R.id.te_send_ems:
-                teSendEms.setEnabled(false);
                 String phone = edPhoneNum.getText().toString();
                 phoneNum = phone.replaceAll("\\D", "");
                 if (TextUtils.isEmpty(phoneNum)) {

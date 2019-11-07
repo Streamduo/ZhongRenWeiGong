@@ -1,7 +1,10 @@
 package com.project.zhongrenweigong.base;
 
+import android.support.annotation.Keep;
+
 import cn.droidlover.xdroidmvp.net.IModel;
 
+@Keep
 public class BaseModel implements IModel {
 
     public int code;

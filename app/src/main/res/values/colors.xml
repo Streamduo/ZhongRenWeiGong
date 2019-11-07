@@ -96,10 +96,18 @@
     <color name="app_B0B0B0">#FFB0B0B0</color>
     <color name="app_FF0000">#FFFF0000</color>
     <color name="app_54618D">#FF54618D</color>
+    <color name="app_f2f2f4">#f2f2f4</color>
+    <color name="app_8C8D91">#FF8C8D91</color>
+    <color name="app_FE2B54">#FFFE2B54</color>
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
     <color name="colorPrimary">#33aaff</color>
     <color name="viewfinder_mask">#60000000</color>
+
+    <!--二维码扫描-->
+    <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
 
 </resources>

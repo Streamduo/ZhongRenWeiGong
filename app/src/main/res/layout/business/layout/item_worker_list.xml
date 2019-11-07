@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_66">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_56"
+        android:layout_marginTop="@dimen/distance_dp_9"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_worker"
+            android:layout_width="@dimen/distance_dp_45"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginLeft="@dimen/distance_dp_13"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:paddingBottom="@dimen/distance_dp_10"
+            android:paddingTop="@dimen/distance_dp_5">
+
+            <TextView
+                android:id="@+id/te_worker_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_000000"
+                android:textSize="@dimen/distance_dp_14"
+                tools:text="张小山" />
+
+            <TextView
+                android:id="@+id/te_workeer_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/app_8C8D91"
+                android:textSize="@dimen/distance_dp_12"
+                tools:text="ID：16583945" />
+
+            <TextView
+                android:id="@+id/te_worker_delete"
+                android:layout_width="@dimen/distance_dp_83"
+                android:layout_height="@dimen/distance_dp_25"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/distance_dp_11"
+                android:text="删除"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_bac_fe2b54_2"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_12" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_E9E9E9" />
+</RelativeLayout>

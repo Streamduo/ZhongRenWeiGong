@@ -50,6 +50,8 @@ public class SearchResultPresent extends XPresent<SearchResultActivity> {
                     public void onNext(BusinessShopListBean businessShopListBean) {
                         if (businessShopListBean.getCode() == 200) {
                             getV().setData(businessShopListBean);
+                        }else {
+                            ToastManager.showShort(getV(),businessShopListBean.msg);
                         }
                     }
                 });

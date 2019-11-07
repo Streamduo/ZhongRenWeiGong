@@ -50,7 +50,9 @@ public class FindPasswordPresent extends XPresent<FindPasswordActivity> {
                     @Override
                     public void onNext(BaseModel baseModel) {
                         ToastManager.showShort(getV(), baseModel.msg);
-                        getV().sendEmsSuccess();
+                        if (baseModel.getCode() == 200) {
+                            getV().sendEmsSuccess();
+                        }
                     }
                 });
     }
@@ -89,9 +91,10 @@ public class FindPasswordPresent extends XPresent<FindPasswordActivity> {
                     public void onNext(BaseModel baseModel) {
                         LoadingDialog.dismiss(getV());
                         if (baseModel.getCode() == 200) {
-                            ToastManager.showShort(getV(), baseModel.getMsg());
+                            getV().finish();
                         }
-                        getV().finish();
+                        ToastManager.showShort(getV(), baseModel.getMsg());
+
                     }
                 });
     }

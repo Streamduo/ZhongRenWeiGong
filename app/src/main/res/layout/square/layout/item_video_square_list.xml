@@ -22,13 +22,20 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/distance_dp_175">
 
-            <ImageView
-                android:id="@+id/img_text_video_cover"
-                android:layout_width="@dimen/distance_dp_175"
-                android:layout_height="@dimen/distance_dp_175"
-                android:background="@mipmap/default_list_big"
-                android:scaleType="centerCrop" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/img_text_video_cover"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/default_list_big"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="175:175"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+            </android.support.constraint.ConstraintLayout>
             <ImageView
                 android:id="@+id/img_video"
                 android:layout_width="wrap_content"

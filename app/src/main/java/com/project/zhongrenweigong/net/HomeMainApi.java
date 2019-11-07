@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.net;
 
 import com.project.zhongrenweigong.home.HomeNetManager;
+import com.project.zhongrenweigong.home.MessageNetManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ public class HomeMainApi {
     private static String RELEASE_SERVER = "http://api.wakeyoga.com/";
 
     public static final String BASE_PATH = (XDroidConf.DEV ? TEST_SERVER : RELEASE_SERVER);
+    public static final String MESSAGE_BASE_PATH = "http://192.168.3.20:2222/";
     private static HomeNetManager homeNetManager;
 
     public static HomeNetManager homeNetManager() {
@@ -27,6 +29,19 @@ public class HomeMainApi {
             }
         }
         return homeNetManager;
+    }
+
+    private static MessageNetManager messageNetManager;
+
+    public static MessageNetManager messageNetManager() {
+        if (messageNetManager == null) {
+            synchronized (HomeMainApi.class) {
+                if (messageNetManager == null) {
+                    messageNetManager = XApi.getInstance().getRetrofit(MESSAGE_BASE_PATH, true).create(MessageNetManager.class);
+                }
+            }
+        }
+        return messageNetManager;
     }
 
     public static Map<String, String> getBasicParamsUidAndToken() {

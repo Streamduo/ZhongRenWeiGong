@@ -61,6 +61,8 @@ public class BusinessAuthenticationPresent extends XPresent<BusinessAuthenticati
                         if (baseModel.getCode() == 200) {
                             ToastManager.showShort(getV(), baseModel.getMsg());
                             getV().finish();
+                        }else {
+                            ToastManager.showShort(getV(),baseModel.msg);
                         }
                     }
                 });

@@ -10,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.CustomListener;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
@@ -157,7 +159,7 @@ public class BusinessAuthenticationActivity extends BaseActivity<BusinessAuthent
     }
 
     private void initAreaPicker() {
-        datePickerView = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+        datePickerView = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int option1, int option2, int option3, View v) {
                 if (mListCity.size() > option1 && mListCity.get(option1).size() > option2) {

@@ -103,7 +103,10 @@
         <activity android:name=".business.manager.EditStoreIntroActivity" />
         <activity android:name=".business.manager.WorkerManagerActivity" />
         <activity android:name=".mine.set.SetActivity" />
-        <activity android:name=".mine.set.ChangePhoneActivity"></activity>
+        <activity android:name=".mine.set.ChangePhoneActivity" />
+        <activity android:name=".mine.set.ChangePasswordActivity"/>
+        <activity android:name=".currency.zxing.android.CaptureActivity"/>
+        <activity android:name=".currency.zxing.android.CaptureResultActivity"/>
     </application>
 
 </manifest>

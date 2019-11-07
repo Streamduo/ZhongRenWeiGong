@@ -29,7 +29,6 @@ public class CompensationRecordActivity extends BaseActivity<CompensationPresent
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
         teTitle.setText("赔付记录");
         recordType = getIntent().getIntExtra("recordType", 0);
     }
@@ -41,6 +40,12 @@ public class CompensationRecordActivity extends BaseActivity<CompensationPresent
         tbRecodeIndusty.setupWithViewPager(vpRecord);
         TablayoutUtil.setIndicator(tbRecodeIndusty, 20, 20);
         vpRecord.setCurrentItem(recordType);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UtilsStyle.statusBarLightMode(this);
     }
 
     @Override

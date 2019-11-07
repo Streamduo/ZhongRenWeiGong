@@ -29,17 +29,23 @@
             android:saveEnabled="false">
 
             <RadioButton
+                android:id="@+id/home_msg"
+                style="@style/home_radiobutton"
+                android:drawableTop="@drawable/tab_home"
+                android:saveEnabled="false"
+                android:text="@string/msg" />
+
+            <RadioButton
                 android:id="@+id/home_main"
                 style="@style/home_radiobutton"
-                android:layout_marginRight="@dimen/distance_dp_43"
                 android:drawableTop="@drawable/tab_home"
+                android:layout_marginRight="@dimen/distance_dp_90"
                 android:saveEnabled="false"
                 android:text="@string/home" />
 
             <RadioButton
                 android:id="@+id/home_mine"
                 style="@style/home_radiobutton"
-                android:layout_marginLeft="@dimen/distance_dp_43"
                 android:drawableTop="@drawable/tab_mine"
                 android:saveEnabled="false"
                 android:text="@string/mine" />
@@ -56,7 +62,8 @@
         android:id="@+id/home_square"
         style="@style/home_radiobutton_guangchang"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/distance_dp_110"
         android:drawableTop="@mipmap/guangchang"
         android:gravity="center_horizontal"
         android:paddingLeft="15dp"
