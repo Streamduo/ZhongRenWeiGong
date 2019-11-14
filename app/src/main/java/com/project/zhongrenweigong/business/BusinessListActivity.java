@@ -141,7 +141,8 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
         listAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Router.newIntent(BusinessListActivity.this).to(BusinessHomePageActivity.class).launch();
+                DataBean item = listAdapter.getItem(position);
+                Router.newIntent(BusinessListActivity.this).putString("shopId",item.shopId).to(BusinessHomePageActivity.class).launch();
             }
         });
 

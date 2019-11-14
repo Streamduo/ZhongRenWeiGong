@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.project.zhongrenweigong.R;
+import com.yanzhenjie.sofia.Sofia;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -92,20 +95,21 @@ public class UtilsStyle {
      * @return 1:MIUUI 2:Flyme 3:android6.0 0:设置失败
      */
     public static void statusBarLightMode(Activity activity) {
-        int result = 0;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (MIUISetStatusBarLightMode(activity.getWindow(), true)) {
-                //result = 1;
-                StatusBarLightMode(activity, 1);
-            } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
-                //result = 2;
-                StatusBarLightMode(activity, 2);
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                //activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                //result = 3;
-                StatusBarLightMode(activity, 3);
-            }
-        }
+        Sofia.with(activity).statusBarDarkFont().statusBarBackground(activity.getResources().getColor(R.color.white));
+//        int result = 0;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            if (MIUISetStatusBarLightMode(activity.getWindow(), true)) {
+//                //result = 1;
+//                StatusBarLightMode(activity, 1);
+//            } else if (FlymeSetStatusBarLightMode(activity.getWindow(), true)) {
+//                //result = 2;
+//                StatusBarLightMode(activity, 2);
+//            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                //activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//                //result = 3;
+//                StatusBarLightMode(activity, 3);
+//            }
+//        }
     }
 
     /**

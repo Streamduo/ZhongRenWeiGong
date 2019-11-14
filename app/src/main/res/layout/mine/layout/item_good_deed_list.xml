@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_35">
+
+    <TextView
+        android:id="@+id/te_good_deed_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_12"
+        tools:text="扶老人过马路" />
+
+    <TextView
+        android:id="@+id/te_good_deed_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginRight="@dimen/distance_dp_56"
+        android:textColor="@color/app_BEBEBE"
+        android:textSize="@dimen/distance_dp_9"
+        tools:text="2019.10.11" />
+
+    <TextView
+        android:id="@+id/te_good_deed_branch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginRight="@dimen/distance_dp_10"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_9"
+        tools:text="+3" />
+
+</RelativeLayout>

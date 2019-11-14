@@ -26,13 +26,11 @@
                 android:textColor="@color/app_6D6D6D"
                 android:textSize="@dimen/distance_dp_14" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recy_faren_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/distance_dp_10"
-                android:layout_marginTop="@dimen/distance_dp_10"
-                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+            <ImageView
+                android:id="@+id/img_faren"
+                android:layout_width="@dimen/distance_dp_30"
+                android:layout_height="@dimen/distance_dp_30"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
 
         <LinearLayout
@@ -56,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/distance_dp_10"
                 android:layout_marginTop="@dimen/distance_dp_10"
-                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+                android:overScrollMode="never"/>
         </LinearLayout>
 
         <View
@@ -153,8 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/distance_dp_10"
-                android:overScrollMode="never"></android.support.v7.widget.RecyclerView>
+                android:overScrollMode="never"/>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

@@ -2,10 +2,12 @@ package com.project.zhongrenweigong.business;
 
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.business.bean.BusinessCategoryListBean;
+import com.project.zhongrenweigong.business.bean.BusinessHomePageBean;
 import com.project.zhongrenweigong.business.bean.BusinessNoticeBean;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.business.bean.CommodityListBean;
 import com.project.zhongrenweigong.business.bean.WorkerListBean;
+import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
@@ -145,5 +147,20 @@ public interface BusinessNetManager {
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     @POST("openShopEncryptionApi")
     Flowable<BaseModel> openShopEncryptionApi(@Field("dataMsg") String dataMsg);
+
+    /**
+     *
+     根据商家ID获取商家主页头信息
+     * @return
+     */
+    @POST("getMerchantHead")
+    Flowable<BusinessHomePageBean> getMerchantHead(@Body RequestBody Body);
+
+    /**
+     * 获取商家个人主页
+     * @return
+     */
+    @POST("getMerchantPersonalHomepage")
+    Flowable<BusinessSystemBean> getMerchantPersonalHomepage(@Body RequestBody body);
 
 }

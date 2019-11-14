@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scro_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.project.zhongrenweigong.view.disk.DiscView
+                android:id="@+id/cs_staistics"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_230"
+                android:layout_marginLeft="@dimen/distance_dp_61"
+                android:layout_marginRight="@dimen/distance_dp_61" />
+
+            <TextView
+                android:id="@+id/te_total_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="96.5"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_30" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_16"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:layout_marginRight="@dimen/distance_dp_15"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/fang_red"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:text="职业行为"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/fang_blue"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:text="日常行为"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/fang_yellow"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:text="诚信行为"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/fang_green"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:text="社会贡献"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_180"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:background="@mipmap/daode_bac"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_more_worker"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_37"
+                android:layout_marginLeft="@dimen/distance_dp_6"
+                android:layout_marginRight="@dimen/distance_dp_6"
+                android:background="@drawable/bg_bac_ff3c3c_5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:text="职业行为"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:layout_marginRight="@dimen/distance_dp_5"
+                    android:text="更多>>"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_worke_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distance_dp_15"
+                android:layout_marginLeft="@dimen/distance_dp_15"
+                android:layout_marginRight="@dimen/distance_dp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_180"
+            android:layout_marginBottom="@dimen/distance_dp_15"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:background="@mipmap/daode_bac"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_more_orality"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_37"
+                android:layout_marginLeft="@dimen/distance_dp_6"
+                android:layout_marginRight="@dimen/distance_dp_6"
+                android:background="@drawable/bg_bac_3b76f2_5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:text="日常行为"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:layout_marginRight="@dimen/distance_dp_5"
+                    android:text="更多>>"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_orality_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distance_dp_15"
+                android:layout_marginLeft="@dimen/distance_dp_15"
+                android:layout_marginRight="@dimen/distance_dp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_180"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:background="@mipmap/daode_bac"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_more_sincerity"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_37"
+                android:layout_marginLeft="@dimen/distance_dp_6"
+                android:layout_marginRight="@dimen/distance_dp_6"
+                android:background="@drawable/bg_bac_f49c2e_5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:text="诚信行为"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:layout_marginRight="@dimen/distance_dp_5"
+                    android:text="更多>>"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_sincerity_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distance_dp_15"
+                android:layout_marginLeft="@dimen/distance_dp_15"
+                android:layout_marginRight="@dimen/distance_dp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_180"
+            android:layout_marginBottom="@dimen/distance_dp_15"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:background="@mipmap/daode_bac"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_more_dedication"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_37"
+                android:layout_marginLeft="@dimen/distance_dp_6"
+                android:layout_marginRight="@dimen/distance_dp_6"
+                android:background="@drawable/bg_bac_29ab91_5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:text="社会奉献"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/distance_dp_16"
+                    android:layout_marginRight="@dimen/distance_dp_5"
+                    android:text="更多>>"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_14" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_dedication_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distance_dp_15"
+                android:layout_marginLeft="@dimen/distance_dp_15"
+                android:layout_marginRight="@dimen/distance_dp_15" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -99,11 +99,23 @@
     <color name="app_f2f2f4">#f2f2f4</color>
     <color name="app_8C8D91">#FF8C8D91</color>
     <color name="app_FE2B54">#FFFE2B54</color>
+    <color name="app_29AB91">#FF29AB91</color>
+    <color name="app_F49C2E">#FFF49C2E</color>
+    <color name="app_1B82D2">#FF1B82D2</color>
+    <color name="app_FF3C3C">#FFFF3C3C</color>
+    <color name="app_3B76F2">#FF3B76F2</color>
+    <color name="app_43B959">#FF43B959</color>
+    <color name="app_f6f6f6">#f6f6f6</color>
+    <color name="app_5F5B5B">#FF5F5B5B</color>
+    <color name="app_bfbfbf">#bfbfbf</color>
+    <color name="app_272626">#FF272626</color>
+    <color name="app_ACACAC">#FFACACAC</color>
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
     <color name="colorPrimary">#33aaff</color>
     <color name="viewfinder_mask">#60000000</color>
+    <color name="FF000000">#FF000000</color>
 
     <!--二维码扫描-->
     <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->

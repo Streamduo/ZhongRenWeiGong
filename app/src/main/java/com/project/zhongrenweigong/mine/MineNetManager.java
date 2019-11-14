@@ -3,6 +3,9 @@ package com.project.zhongrenweigong.mine;
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
+import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
+import com.project.zhongrenweigong.mine.bean.MineInfoBean;
+import com.project.zhongrenweigong.mine.bean.MineSystemBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
@@ -37,4 +40,20 @@ public interface MineNetManager {
      */
     @POST("updatePassword")
     Flowable<BaseModel> updatePassword(@Body RequestBody body);
+
+    /**
+     *  获取个人主页信息接口
+     * @return
+     */
+    @POST("getPersonalHomepage")
+    Flowable<MineInfoBean> getPersonalHomepage(@Body RequestBody body);
+
+
+    /**
+     *  获取个人道德体系
+     * @return
+     */
+    @POST("getIndividualSystem")
+    Flowable<MineSystemBean> getIndividualSystem(@Body RequestBody body);
+
 }

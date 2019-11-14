@@ -10,7 +10,9 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.business.adapter.HomePageAdapter;
+import com.project.zhongrenweigong.business.bean.BusinessHomeDataBean;
 import com.project.zhongrenweigong.util.TablayoutUtil;
+import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +44,8 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
 
     @Override
     public void initView() {
-        HomePageAdapter adapter = new HomePageAdapter(getSupportFragmentManager());
+        String shopId = getIntent().getStringExtra("shopId");
+        HomePageAdapter adapter = new HomePageAdapter(getSupportFragmentManager(),shopId);
         vpHomepage.setAdapter(adapter);
         tabShopPage.setupWithViewPager(vpHomepage);
         TablayoutUtil.setIndicator(tabShopPage, 30, 30);
@@ -51,6 +54,14 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     @Override
     public void initAfter() {
 
+    }
+
+    public void setHeadData(BusinessHomeDataBean businessHomeDataBean){
+        GlideDownLoadImage.getInstance().loadCircleImageRole2(mContext,businessHomeDataBean.backgroundImage,
+                imgTrademark,7,R.mipmap.fang_list_default);
+        teGuanzhuSize.setText(String.valueOf(businessHomeDataBean.attentionNum));
+        teFansSize.setText(String.valueOf(businessHomeDataBean.fansNum));
+        teCompanyName.setText(businessHomeDataBean.shopName);
     }
 
     @Override

@@ -15,6 +15,8 @@ import com.project.zhongrenweigong.business.manager.BusinessManagerActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
+import com.project.zhongrenweigong.mine.EditMineHomePageActivity;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.mine.MyAuthenticationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
@@ -102,9 +104,11 @@ public class MineFragment extends BaseFragment<MinePresent> {
                 Router.newIntent(getActivity()).to(MineHomePageActivity.class).launch();
                 break;
             case R.id.mine_renzheng:
-                Router.newIntent(getActivity()).to(MyAuthenticationActivity.class).launch();
+//                Router.newIntent(getActivity()).to(MyAuthenticationActivity.class).launch();
+                Router.newIntent(getActivity()).to(EditMineHomePageActivity.class).launch();
                 break;
             case R.id.line_member:
+                Router.newIntent(getActivity()).to(BusinessMineHomePageActivity.class).launch();
                 break;
             case R.id.rl_mine_wallet:
                 Router.newIntent(getActivity()).to(MyWalletActivity.class).launch();

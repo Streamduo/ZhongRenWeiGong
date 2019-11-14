@@ -6,6 +6,7 @@ package com.project.zhongrenweigong.business.bean;
  * 意图：
  */
 public class DataBean {
+    public String shopId;
     public String shopName;
     public String mcId;
     public String shopCategory;

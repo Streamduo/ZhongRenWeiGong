@@ -110,3 +110,7 @@
      <init>(...);
 }
 
+-keep class cn.trinea.android.** { *; }
+-keepclassmembers class cn.trinea.android.** { *; }
+-dontwarn cn.trinea.android.**
+

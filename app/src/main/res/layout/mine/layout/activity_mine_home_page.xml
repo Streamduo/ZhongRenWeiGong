@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".mine.MineHomePageActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_new_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        layout="@layout/layout_morality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title" />
+
+    <LinearLayout
+        android:id="@+id/line_mine"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:background="@color/viewfinder_mask"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/line_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/distance_dp_134" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_153"
+                android:background="@drawable/bg_bac_3b76f2_5"
+                android:paddingLeft="@dimen/distance_dp_17"
+                android:paddingTop="@dimen/distance_dp_22">
+
+                <TextView
+                    android:id="@+id/te_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="张三"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_21" />
+
+                <ImageView
+                    android:id="@+id/img_user_head"
+                    android:layout_width="@dimen/distance_dp_36"
+                    android:layout_height="@dimen/distance_dp_36"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/distance_dp_18" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/distance_dp_17"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/te_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_14"
+                        tools:text="ID:123456789" />
+
+                    <TextView
+                        android:id="@+id/te_morality_branch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_14"
+                        tools:text="道德综合分数：96.5" />
+
+                    <TextView
+                        android:id="@+id/te_renzheng"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_14"
+                        tools:text="职业认证：已认证" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_xuanshi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/distance_dp_316"
+                android:layout_height="@dimen/distance_dp_260"
+                android:layout_marginBottom="@dimen/distance_dp_20"
+                android:layout_marginLeft="@dimen/distance_dp_30"
+                android:layout_marginRight="@dimen/distance_dp_28"
+                android:layout_marginTop="@dimen/distance_dp_28"
+                android:background="@mipmap/xuanshi_img" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

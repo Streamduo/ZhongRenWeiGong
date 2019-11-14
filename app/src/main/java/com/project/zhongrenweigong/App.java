@@ -2,9 +2,14 @@ package com.project.zhongrenweigong;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.Service;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 
+import com.baidu.mapapi.CoordType;
+import com.baidu.mapapi.SDKInitializer;
+import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.net.ResultInterceptor;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -32,6 +37,8 @@ public class App extends Application {
 
     public static Context mContext;
     public static App app;
+    public LocationService locationService;
+//    public Vibrator mVibrator;
 
     @Override
     public void onCreate() {
@@ -75,6 +82,17 @@ public class App extends Application {
             }
         });
         initXNet();
+        initBaiduMap();
+    }
+
+    private void initBaiduMap() {
+        /***
+         * 初始化定位sdk
+         */
+        locationService = new LocationService(getApplicationContext());
+//        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+//        SDKInitializer.initialize(getApplicationContext());
+//        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
     static {
