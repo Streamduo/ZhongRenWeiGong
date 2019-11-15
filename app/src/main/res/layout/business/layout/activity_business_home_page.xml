@@ -5,127 +5,356 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_tuceng"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_145"
-        android:background="@mipmap/login_img" />
+        android:layout_height="@dimen/distance_dp_165"
+        android:background="@color/app_23A0F2">
 
-    <include
-        android:id="@+id/title"
-        layout="@layout/bus_layout_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/title"
+            layout="@layout/layout_new_white_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_25" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="@dimen/distance_dp_16"
+            android:layout_marginRight="@dimen/distance_dp_16"
+            android:layout_marginTop="@dimen/distance_dp_10"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/te_mine_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/white_dingwei"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_13"
+                tools:text="北京.朝阳区" />
+        </RelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_tuceng"
-        android:layout_marginLeft="@dimen/distance_dp_56"
-        android:layout_marginTop="@dimen/distance_dp_15"
-        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/distance_dp_160"
+        android:background="@drawable/top_radius_white_12"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/te_guanzhu_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8888"
-            android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_15" />
+        <com.project.zhongrenweigong.view.ObservableScrollview
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/distance_dp_53"
+            android:layout_marginBottom="@dimen/distance_dp_59"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="关注"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_11" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_text_f8"
+                    android:paddingLeft="@dimen/distance_dp_15"
+                    android:text="法人"
+                    android:textColor="@color/FF000000" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_legal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_78"
+                    android:layout_marginTop="@dimen/distance_dp_20"
+                    android:paddingLeft="@dimen/distance_dp_15"
+                    android:paddingRight="@dimen/distance_dp_15">
+
+                    <ImageView
+                        android:id="@+id/img_legal_head"
+                        android:layout_width="@dimen/distance_dp_61"
+                        android:layout_height="@dimen/distance_dp_64"
+                        android:background="@mipmap/big_default_user_head"
+                        android:scaleType="centerCrop" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_10"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_toRightOf="@+id/img_legal_head">
+
+                        <TextView
+                            android:id="@+id/te_legal_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="小明"
+                            android:textColor="@color/FF000000"
+                            android:textSize="@dimen/distance_dp_15"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/te_legal_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/te_legal_name"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="ID:113456789"
+                            android:textColor="@color/app_272626"
+                            android:textSize="@dimen/distance_dp_10" />
+
+                        <TextView
+                            android:id="@+id/te_legal_renzheng"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/te_legal_id"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="商家认证:已认证"
+                            android:textColor="@color/FF000000"
+                            android:textSize="@dimen/distance_dp_10" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/img_legal_isshow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="@dimen/distance_dp_13"
+                        android:background="@mipmap/legal_hide" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/app_bfbfbf" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/line_shareholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="股东"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_32"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recy_shareholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:overScrollMode="never" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_marginRight="@dimen/distance_dp_15"
+                        android:background="@color/app_bfbfbf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/line_worker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="员工"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_32"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recy_worker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:overScrollMode="never" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_marginRight="@dimen/distance_dp_15"
+                        android:background="@color/app_bfbfbf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="本店简介"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_55"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <TextView
+                        android:id="@+id/te_shop_intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:lineSpacingExtra="5dp"
+                        android:text="  火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_15" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/te_shop_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/blue_address"
+                            android:drawablePadding="@dimen/distance_dp_5"
+                            android:textColor="@color/app_ACACAC"
+                            android:textSize="@dimen/distance_dp_10"
+                            tools:text="北京市朝阳区劲松" />
+
+                        <TextView
+                            android:id="@+id/te_shop_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/distance_dp_13"
+                            android:drawableLeft="@mipmap/blue_phone"
+                            android:drawablePadding="@dimen/distance_dp_5"
+                            android:textColor="@color/app_ACACAC"
+                            android:textSize="@dimen/distance_dp_10"
+                            tools:text="12345698742" />
+
+                        <TextView
+                            android:id="@+id/te_shop_fans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/distance_dp_13"
+                            android:drawableLeft="@mipmap/fans_shop"
+                            android:drawablePadding="@dimen/distance_dp_5"
+                            android:textColor="@color/app_ACACAC"
+                            android:textSize="@dimen/distance_dp_10"
+                            tools:text="12345698742" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/te_shop_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:drawableLeft="@mipmap/shop_time"
+                        android:drawablePadding="@dimen/distance_dp_5"
+                        android:textColor="@color/app_ACACAC"
+                        android:textSize="@dimen/distance_dp_10"
+                        tools:text="营业时间：早9:00-晚9:00" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_marginRight="@dimen/distance_dp_15"
+                        android:background="@color/app_bfbfbf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="推荐菜"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_43"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginBottom="@dimen/distance_dp_7"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recy_vegetable"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.project.zhongrenweigong.view.ObservableScrollview>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/img_trademark"
-        android:layout_width="@dimen/distance_dp_88"
-        android:layout_height="@dimen/distance_dp_88"
+        android:layout_width="@dimen/distance_dp_84"
+        android:layout_height="@dimen/distance_dp_78"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_114"
-        android:background="@mipmap/fang_list_default"
+        android:layout_marginTop="@dimen/distance_dp_124"
         android:scaleType="centerCrop" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/img_tuceng"
-        android:layout_marginRight="@dimen/distance_dp_56"
-        android:layout_marginTop="@dimen/distance_dp_15"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/distance_dp_15"
+        android:paddingLeft="@dimen/distance_dp_22"
+        android:paddingRight="@dimen/distance_dp_22">
 
         <TextView
-            android:id="@+id/te_fans_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="8888"
-            android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="粉丝"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_11" />
+            android:id="@+id/te_shop_test"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_44"
+            android:background="@drawable/bg_bac_23a0f2_22"
+            android:gravity="center"
+            android:text="查看维公测评"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_17" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/te_company_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_trademark"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_5"
-        android:textColor="@color/app_text_33"
-        android:textSize="@dimen/distance_dp_15"
-        tools:text="千库科技有限公司" />
-
-    <ImageView
-        android:id="@+id/img_renzheng"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_trademark"
-        android:layout_marginLeft="@dimen/distance_dp_4"
-        android:layout_marginTop="@dimen/distance_dp_8"
-        android:layout_toRightOf="@+id/te_company_name"
-        android:background="@mipmap/renzheng" />
-
-    <TextView
-        android:id="@+id/te_guanzhu"
-        android:layout_width="@dimen/distance_dp_56"
-        android:layout_height="@dimen/distance_dp_24"
-        android:layout_below="@+id/te_company_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_5"
-        android:background="@drawable/bg_bac_blue"
-        android:gravity="center"
-        android:text="+ 关注"
-        android:textColor="@color/white" />
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_shop_page"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_45"
-        android:layout_below="@+id/te_guanzhu"
-        android:layout_marginTop="@dimen/distance_dp_5"
-        app:tabIndicatorColor="@color/app_369EFF"
-        app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/app_369EFF"
-        app:tabTextAppearance="@style/TabTextSize"
-        app:tabTextColor="@color/app_text_66" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_homepage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tab_shop_page" />
-
 </RelativeLayout>

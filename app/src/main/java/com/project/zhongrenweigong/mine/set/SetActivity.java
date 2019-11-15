@@ -1,7 +1,11 @@
 package com.project.zhongrenweigong.mine.set;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,6 +49,7 @@ public class SetActivity extends BaseActivity<SetPresent> {
     RelativeLayout rlFromCompany;
     @BindView(R.id.te_exit_login)
     TextView teExitLogin;
+    private Dialog exitLoginDialog;
 
     @Override
     public void initView() {
@@ -106,9 +111,7 @@ public class SetActivity extends BaseActivity<SetPresent> {
 
                 break;
             case R.id.te_exit_login:
-                LoginOutUtils.loginOut(SetActivity.this);
-                Router.newIntent(SetActivity.this).putInt("isLoginOut",1).to(LoginActivity.class).launch();
-                finish();
+                showExitLoginDialog();
                 break;
         }
     }
@@ -118,4 +121,45 @@ public class SetActivity extends BaseActivity<SetPresent> {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
     }
+
+    private void showExitLoginDialog() {
+        exitLoginDialog = new Dialog(this, R.style.dialog_bottom_full);
+        exitLoginDialog.setCanceledOnTouchOutside(true);
+        exitLoginDialog.setCancelable(true);
+        Window window = exitLoginDialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+
+        View view = View.inflate(this, R.layout.dialog_layout_two_line, null);
+        TextView teLineOne = (TextView) view.findViewById(R.id.te_line_one);
+        TextView teLineTwo = (TextView) view.findViewById(R.id.te_line_two);
+        TextView teOk = (TextView) view.findViewById(R.id.te_ok);
+        TextView teCancel = (TextView) view.findViewById(R.id.te_cancel);
+        teLineOne.setText("退出登录");
+        teLineTwo.setText("确定退出登录？");
+
+        teOk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                exitLoginDialog.dismiss();
+                LoginOutUtils.loginOut(SetActivity.this);
+                Router.newIntent(SetActivity.this).putInt("isLoginOut",1).to(LoginActivity.class).launch();
+                finish();
+
+            }
+        });
+
+        teCancel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                exitLoginDialog.dismiss();
+            }
+        });
+
+        window.setContentView(view);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);//设置横向全屏
+        exitLoginDialog.show();
+    }
+    
 }

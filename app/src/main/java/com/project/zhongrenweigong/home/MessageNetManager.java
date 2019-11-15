@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.home;
 
+import com.project.zhongrenweigong.business.bean.WeiGongTestBean;
 import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
@@ -29,5 +30,12 @@ public interface MessageNetManager {
      */
     @POST("getMessageDetailById")
     Flowable<MessageListBean> getMessageDetail(@Body RequestBody body);
+
+    /**
+     * 获取评测信息
+     * @return
+     */
+    @POST("getEvaluatingInfo")
+    Flowable<WeiGongTestBean> getEvaluatingInfo(@Body RequestBody body);
 
 }

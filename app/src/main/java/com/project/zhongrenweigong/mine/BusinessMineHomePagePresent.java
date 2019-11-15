@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine;
 
+import com.project.zhongrenweigong.mine.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 import com.project.zhongrenweigong.mine.bean.MineSystemBean;
 import com.project.zhongrenweigong.net.BusinessApi;

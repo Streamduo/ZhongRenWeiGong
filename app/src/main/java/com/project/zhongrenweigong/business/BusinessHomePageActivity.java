@@ -1,21 +1,48 @@
 package com.project.zhongrenweigong.business;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.project.zhongrenweigong.App;
 import com.project.zhongrenweigong.R;
+import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.base.BaseActivity;
-import com.project.zhongrenweigong.business.adapter.HomePageAdapter;
+import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
+import com.project.zhongrenweigong.business.adapter.VegetableListAdapter;
 import com.project.zhongrenweigong.business.bean.BusinessHomeDataBean;
-import com.project.zhongrenweigong.util.TablayoutUtil;
+import com.project.zhongrenweigong.business.bean.EmployeesBean;
+import com.project.zhongrenweigong.business.bean.GoodsListsBean;
+import com.project.zhongrenweigong.business.bean.ShopHomePageBean;
+import com.project.zhongrenweigong.business.teach.TeachListActivity;
+import com.project.zhongrenweigong.currency.NavigationActivity;
+import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
+import com.project.zhongrenweigong.mine.MineHomePageActivity;
+import com.project.zhongrenweigong.util.KeyboardUtils;
+import com.project.zhongrenweigong.util.SpacingItemDecoration;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * 作者：Fuduo on 2019/10/21 14:34
@@ -27,41 +54,108 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     TextView teBack;
     @BindView(R.id.te_title)
     TextView teTitle;
-    @BindView(R.id.te_guanzhu_size)
-    TextView teGuanzhuSize;
     @BindView(R.id.img_trademark)
     ImageView imgTrademark;
-    @BindView(R.id.te_fans_size)
-    TextView teFansSize;
-    @BindView(R.id.te_company_name)
-    TextView teCompanyName;
-    @BindView(R.id.te_guanzhu)
-    TextView teGuanzhu;
-    @BindView(R.id.tab_shop_page)
-    TabLayout tabShopPage;
-    @BindView(R.id.vp_homepage)
-    ViewPager vpHomepage;
+    @BindView(R.id.te_right_title)
+    TextView teRightTitle;
+    @BindView(R.id.te_mine_address)
+    TextView teMineAddress;
+    @BindView(R.id.img_legal_head)
+    ImageView imgLegalHead;
+    @BindView(R.id.te_legal_name)
+    TextView teLegalName;
+    @BindView(R.id.te_legal_id)
+    TextView teLegalId;
+    @BindView(R.id.te_legal_renzheng)
+    TextView teLegalRenzheng;
+    @BindView(R.id.img_legal_isshow)
+    ImageView imgLegalIsshow;
+    @BindView(R.id.rl_legal)
+    RelativeLayout rlLegal;
+    @BindView(R.id.recy_shareholder)
+    RecyclerView recyShareholder;
+    @BindView(R.id.line_shareholder)
+    LinearLayout lineShareholder;
+    @BindView(R.id.recy_worker)
+    RecyclerView recyWorker;
+    @BindView(R.id.line_worker)
+    LinearLayout lineWorker;
+    @BindView(R.id.te_shop_address)
+    TextView teShopAddress;
+    @BindView(R.id.te_shop_phone)
+    TextView teShopPhone;
+    @BindView(R.id.te_shop_fans)
+    TextView teShopFans;
+    @BindView(R.id.te_shop_time)
+    TextView teShopTime;
+    @BindView(R.id.recy_vegetable)
+    RecyclerView recyVegetable;
+    @BindView(R.id.te_shop_test)
+    TextView teShopTest;
+    @BindView(R.id.te_shop_intro)
+    TextView teShopIntro;
+    private LocationService locationService;
+    private String shopId;
+    private VegetableListAdapter vegetableListAdapter;
+    private BusinessWorkerListAdapter workerListAdapter;
+    private BusinessWorkerListAdapter holderListAdapter;
+    private String address;
 
     @Override
     public void initView() {
-        String shopId = getIntent().getStringExtra("shopId");
-        HomePageAdapter adapter = new HomePageAdapter(getSupportFragmentManager(),shopId);
-        vpHomepage.setAdapter(adapter);
-        tabShopPage.setupWithViewPager(vpHomepage);
-        TablayoutUtil.setIndicator(tabShopPage, 30, 30);
+        teRightTitle.setText("关注");
+        shopId = "1111";//getIntent().getStringExtra("shopId")
+
+        recyShareholder.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyShareholder.addItemDecoration(new SpacingItemDecoration(LinearLayoutManager.HORIZONTAL, 40));
+        holderListAdapter = new BusinessWorkerListAdapter(R.layout.item_people_list);
+        recyShareholder.setAdapter(holderListAdapter);
+
+        recyWorker.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyWorker.addItemDecoration(new SpacingItemDecoration(LinearLayoutManager.HORIZONTAL, 40));
+        workerListAdapter = new BusinessWorkerListAdapter(R.layout.item_people_list);
+        recyWorker.setAdapter(workerListAdapter);
+
+        recyVegetable.setLayoutManager(new GridLayoutManager(this, 3));
+        recyVegetable.addItemDecoration(new SpacingItemDecoration(LinearLayoutManager.HORIZONTAL, 20));
+        vegetableListAdapter = new VegetableListAdapter(R.layout.item_vegetable_list);
+        recyVegetable.setAdapter(vegetableListAdapter);
+        recyVegetable.setHasFixedSize(true);
+
+        holderListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                EmployeesBean item = holderListAdapter.getItem(position);
+                String employeesId = item.employeesId;
+
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("mbId", employeesId)
+                        .putString("shopId", shopId)
+                        .to(BusinessMineHomePageActivity.class)
+                        .launch();
+            }
+        });
+        workerListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                EmployeesBean item = holderListAdapter.getItem(position);
+                String employeesId = item.employeesId;
+
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("mbId", employeesId)
+                        .to(MineHomePageActivity.class)
+                        .launch();
+            }
+        });
     }
 
     @Override
     public void initAfter() {
-
+        getP().getShopHomepage(shopId);
     }
 
-    public void setHeadData(BusinessHomeDataBean businessHomeDataBean){
-        GlideDownLoadImage.getInstance().loadCircleImageRole2(mContext,businessHomeDataBean.backgroundImage,
-                imgTrademark,7,R.mipmap.fang_list_default);
-        teGuanzhuSize.setText(String.valueOf(businessHomeDataBean.attentionNum));
-        teFansSize.setText(String.valueOf(businessHomeDataBean.fansNum));
-        teCompanyName.setText(businessHomeDataBean.shopName);
+    public void setHeadData(BusinessHomeDataBean businessHomeDataBean) {
+
     }
 
     @Override
@@ -77,6 +171,10 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        rlLegal.setOnClickListener(this);
+        teRightTitle.setOnClickListener(this);
+        teShopTest.setOnClickListener(this);
+        teShopAddress.setOnClickListener(this);
     }
 
     @Override
@@ -85,6 +183,31 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
             case R.id.te_back:
                 finish();
                 break;
+            case R.id.rl_legal:
+                if (lineShareholder.getVisibility() == View.GONE) {
+                    lineShareholder.setVisibility(View.VISIBLE);
+                    lineWorker.setVisibility(View.VISIBLE);
+                    imgLegalIsshow.setBackgroundResource(R.mipmap.legal_show);
+                } else {
+                    lineShareholder.setVisibility(View.GONE);
+                    lineWorker.setVisibility(View.GONE);
+                    imgLegalIsshow.setBackgroundResource(R.mipmap.legal_hide);
+                }
+                break;
+            case R.id.te_shop_address:
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("address", address)
+                        .to(NavigationActivity.class).launch();
+                break;
+            case R.id.te_right_title:
+
+                break;
+            case R.id.te_shop_test:
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("address", address)
+                        .putString("shopId", shopId)
+                        .to(WeiGongTestActivity.class).launch();
+                break;
         }
     }
 
@@ -92,5 +215,118 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        locationService = App.getInstance().locationService;
+        //获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
+        locationService.registerListener(mListener);
+        //注册监听
+        locationService.setLocationOption(locationService.getDefaultLocationClientOption());
+        locationService.start();
+    }
+
+    private BDAbstractLocationListener mListener = new BDAbstractLocationListener() {
+
+        /**
+         * 定位请求回调函数
+         * @param location 定位结果
+         */
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+
+            if (null != location && location.getLocType() != BDLocation.TypeServerError) {
+//                String province = location.getProvince();
+//                double longitude = location.getLongitude();//经度
+//                double latitude = location.getLatitude();//纬度
+                String district = location.getDistrict();//地区
+                String street = location.getStreet();//街道
+                teMineAddress.setText(district + "." + street);
+                if (location.getLocType() == BDLocation.TypeServerError) {//"服务端网络定位失败，可以反馈IMEI号和大体定位时间到
+                    // loc-bugs@baidu.com，会有人追查原因"
+                } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
+                    //"网络不同导致定位失败，请检查网络是否通畅"
+                    showToastShort("定位失败，请检查网络后重试");
+                } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
+                    showToastShort("定位失败，请检查网络后重试");
+                    //"无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
+                }
+            }
+        }
+
+        @Override
+        public void onConnectHotSpotMessage(String s, int i) {
+            super.onConnectHotSpotMessage(s, i);
+        }
+
+        /**
+         * 回调定位诊断信息，开发者可以根据相关信息解决定位遇到的一些问题
+         * @param locType 当前定位类型
+         * @param diagnosticType 诊断类型（1~9）
+         * @param diagnosticMessage 具体的诊断信息释义
+         */
+        @Override
+        public void onLocDiagnosticMessage(int locType, int diagnosticType, String diagnosticMessage) {
+            super.onLocDiagnosticMessage(locType, diagnosticType, diagnosticMessage);
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
+        locationService.unregisterListener(mListener);
+        locationService.stop();
+    }
+
+    public void setData(ShopHomePageBean shopHomePageBean) {
+        ShopHomePageBean.ShopHomePageDataBean data = shopHomePageBean.getData();
+        if (data == null) {
+            return;
+        }
+        GlideDownLoadImage.getInstance().loadImage(mContext, data.shopLogo,
+                imgTrademark, R.mipmap.fang_list_default);
+        GlideDownLoadImage.getInstance().loadCircleImage(mContext, data.headUrl,
+                imgLegalHead);
+        teTitle.setText(data.shopName);
+        teLegalId.setText("ID:" + data.mcId);
+        String isMerchantAuth = data.isMerchantAuth;
+        if (isMerchantAuth.equals("1")) {
+            teLegalRenzheng.setText("商家认证:已认证");
+        } else {
+            teLegalRenzheng.setText("商家认证:未认证");
+        }
+        SpannableStringBuilder span = new SpannableStringBuilder("缩进" + data.details);
+        span.setSpan(new ForegroundColorSpan(Color.TRANSPARENT), 0, 2,
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        address = data.detailedAddr;
+        teShopIntro.setText(span);
+        teShopAddress.setText(address);
+        teShopPhone.setText(data.mcPhone);
+        teShopFans.setText(data.fansNum);
+        teShopTime.setText("营业时间:" + data.beignTime + "-" + data.endTime);
+
+        List<GoodsListsBean> goodsLists = data.goodsLists;
+        if (goodsLists != null && goodsLists.size() > 0) {
+            vegetableListAdapter.setNewData(goodsLists);
+        }
+
+        List<EmployeesBean> shareholder = data.shareholder;
+        if (shareholder != null && shareholder.size() > 0) {
+            holderListAdapter.setNewData(shareholder);
+        }
+
+        List<EmployeesBean> employees = data.employees;
+        if (employees != null && employees.size() > 0) {
+            workerListAdapter.setNewData(employees);
+        }
+
     }
 }

@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
+import com.project.zhongrenweigong.mine.adapter.ShopMineShopListAdapter;
+import com.project.zhongrenweigong.mine.bean.BusinessShopListBean;
+import com.project.zhongrenweigong.mine.bean.ShopListDataBean;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-
 
 /**
  * 作者：Fuduo on 2019/10/21 15:47
@@ -23,14 +27,16 @@ import butterknife.Unbinder;
  */
 public class MineShopListFragment extends BaseFragment<MineShopListPresent> {
     Unbinder unbinder;
+
     @BindView(R.id.recy_shop_list)
     RecyclerView recyShopList;
-    private int index;
+    private int categoryId;
+    private ShopMineShopListAdapter shopListAdapter;
 
-    public static MineShopListFragment getInstance(int index) {//String shopId
+    public static MineShopListFragment getInstance(int categoryId) {//String shopId
         MineShopListFragment homePageXinXiFragment = new MineShopListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("index", index);
+        bundle.putInt("categoryId", categoryId);
         homePageXinXiFragment.setArguments(bundle);
         return homePageXinXiFragment;
     }
@@ -38,15 +44,22 @@ public class MineShopListFragment extends BaseFragment<MineShopListPresent> {
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        index = bundle.getInt("index", 0);
+        categoryId = bundle.getInt("categoryId", 0);
         recyShopList.setLayoutManager(new LinearLayoutManager(getContext()));
-//        workerListAdapter = new BusinessWorkerListAdapter(R.layout.item_people_list);
-//        recyShopList.setAdapter(workerListAdapter);
+        shopListAdapter = new ShopMineShopListAdapter(R.layout.item_shop_list);
+        recyShopList.setAdapter(shopListAdapter);
+    }
+
+    public void setShopList(BusinessShopListBean businessShopListBean) {
+        List<ShopListDataBean> data = businessShopListBean.getData();
+        if (data != null && data.size() > 0) {
+            shopListAdapter.setNewData(data);
+        }
     }
 
     @Override
     public void initAfter() {
-
+        getP().getMerchantPersonalHomepageShop(String.valueOf(categoryId), "346534891132948480");
     }
 
     @Override
@@ -61,14 +74,11 @@ public class MineShopListFragment extends BaseFragment<MineShopListPresent> {
 
     @Override
     public void setListener() {
-
     }
 
     @Override
     public void widgetClick(View v) {
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

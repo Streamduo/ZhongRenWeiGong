@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +48,8 @@ public class MineHomePageActivity extends BaseActivity<MineHomePagePresent> {
     TextView teUserName;
     @BindView(R.id.img_user_head)
     ImageView imgUserHead;
+    @BindView(R.id.img_tester)
+    ImageView imgTester;
     @BindView(R.id.te_id)
     TextView teId;
     @BindView(R.id.te_morality_branch)
@@ -77,21 +80,29 @@ public class MineHomePageActivity extends BaseActivity<MineHomePagePresent> {
     RelativeLayout rlMoreSincerity;
     @BindView(R.id.rl_more_dedication)
     RelativeLayout rlMoreDedication;
+    @BindView(R.id.rl_top)
+    RelativeLayout rlTop;
     private float mPosX;
     private float mPosY;
     private float mCurPosX;
     private float mCurPosY;
-    private LoginMsg userAccent;
     private GoodDeedListAdapter goodDedicationListAdapter;
     private GoodDeedListAdapter goodOralityListAdapter;
     private GoodDeedListAdapter goodSincerityListAdapter;
     private GoodDeedListAdapter goodWorkeListAdapter;
+    private String mbId;
+    private int userType;
 
     @Override
     public void initView() {
         teTitle.setText("个人中心");
-
-        userAccent = AcacheUtils.getInstance(this).getUserAccent();
+        Intent intent = getIntent();
+        userType = intent.getIntExtra("userType", 0);
+        mbId = intent.getStringExtra("mbId");
+        if (userType == 1) {
+            rlTop.setBackgroundResource(R.drawable.bg_bac_43b959_5);
+            imgTester.setVisibility(View.VISIBLE);
+        }
         recyDedicationList.setLayoutManager(new LinearLayoutManager(this));
         recyOralityList.setLayoutManager(new LinearLayoutManager(this));
         recySincerityList.setLayoutManager(new LinearLayoutManager(this));
@@ -109,8 +120,8 @@ public class MineHomePageActivity extends BaseActivity<MineHomePagePresent> {
 
     @Override
     public void initAfter() {
-        getP().getPersonalHomepage("346534891132948480");
-        getP().getIndividualSystem("444");
+        getP().getPersonalHomepage(mbId);
+        getP().getIndividualSystem(mbId);
         lineHead.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

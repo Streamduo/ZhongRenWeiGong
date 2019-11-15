@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".business.WeiGongTestActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_165"
+        android:background="@color/app_23A0F2">
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/layout_new_white_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_25" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/distance_dp_123"
+        android:background="@drawable/top_radius_white_12"
+        android:orientation="vertical">
+
+        <com.project.zhongrenweigong.view.ObservableScrollview
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/distance_dp_53"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/distance_dp_15"
+                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:text="区域负责人"
+                    android:textColor="@color/FF000000"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <View
+                    android:layout_width="@dimen/distance_dp_71"
+                    android:layout_height="@dimen/distance_dp_4"
+                    android:layout_marginLeft="@dimen/distance_dp_15"
+                    android:layout_marginTop="@dimen/distance_dp_3"
+                    android:background="@color/app_23A0F2" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_70"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:paddingLeft="@dimen/distance_dp_15"
+                    android:paddingRight="@dimen/distance_dp_15">
+
+                    <ImageView
+                        android:id="@+id/img_tester_head"
+                        android:layout_width="@dimen/distance_dp_61"
+                        android:layout_height="@dimen/distance_dp_64"
+                        android:background="@mipmap/big_default_user_head"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_10"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_toRightOf="@+id/img_tester_head"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/te_tester_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="小明"
+                            android:textColor="@color/FF000000"
+                            android:textSize="@dimen/distance_dp_15"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/te_tester_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="ID:113456789"
+                            android:textColor="@color/app_272626"
+                            android:textSize="@dimen/distance_dp_10" />
+
+                        <TextView
+                            android:id="@+id/te_tester_region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="管辖区域：北京市.朝阳区"
+                            android:textColor="@color/FF000000"
+                            android:textSize="@dimen/distance_dp_10" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/app_bfbfbf" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="检测人员"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_60"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recy_tester_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:overScrollMode="never" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/distance_dp_1"
+                        android:layout_marginTop="@dimen/distance_dp_8"
+                        android:layout_marginRight="@dimen/distance_dp_15"
+                        android:background="@color/app_bfbfbf" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/distance_dp_5"
+                        android:text="检测结果"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <View
+                        android:layout_width="@dimen/distance_dp_60"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recy_test_img_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_marginTop="@dimen/distance_dp_10"
+                        android:layout_marginRight="@dimen/distance_dp_15"
+                        android:layout_marginBottom="@dimen/distance_dp_25"
+                        android:overScrollMode="never" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.project.zhongrenweigong.view.ObservableScrollview>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_trademark"
+        android:layout_width="@dimen/distance_dp_84"
+        android:layout_height="@dimen/distance_dp_78"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_86"
+        android:background="@mipmap/fang_logo"
+        android:scaleType="centerCrop" />
+</RelativeLayout>

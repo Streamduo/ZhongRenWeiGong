@@ -33,7 +33,7 @@
             android:drawableLeft="@mipmap/search"
             android:drawablePadding="@dimen/distance_dp_5"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/distance_dp_10"
             android:singleLine="true"
             android:maxLines="1"
             android:imeOptions="actionSearch"

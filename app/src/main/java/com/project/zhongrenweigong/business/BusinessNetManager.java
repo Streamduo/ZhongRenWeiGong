@@ -6,6 +6,7 @@ import com.project.zhongrenweigong.business.bean.BusinessHomePageBean;
 import com.project.zhongrenweigong.business.bean.BusinessNoticeBean;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.business.bean.CommodityListBean;
+import com.project.zhongrenweigong.business.bean.ShopHomePageBean;
 import com.project.zhongrenweigong.business.bean.WorkerListBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 
@@ -163,4 +164,17 @@ public interface BusinessNetManager {
     @POST("getMerchantPersonalHomepage")
     Flowable<BusinessSystemBean> getMerchantPersonalHomepage(@Body RequestBody body);
 
+    /**
+     * 获取商家个人主页店铺
+     * @return
+     */
+    @POST("getMerchantPersonalHomepageShop")
+    Flowable<com.project.zhongrenweigong.mine.bean.BusinessShopListBean> getMerchantPersonalHomepageShop(@Body RequestBody body);
+
+    /**
+     * 获取店铺主页
+     * @return
+     */
+    @POST("getShopHomepage")
+    Flowable<ShopHomePageBean> getShopHomepage(@Body RequestBody body);
 }

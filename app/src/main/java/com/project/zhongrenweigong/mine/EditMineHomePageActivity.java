@@ -13,9 +13,11 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.mine.adapter.GoodDeedListAdapter;
 import com.project.zhongrenweigong.mine.bean.MineSystemBean;
 import com.project.zhongrenweigong.mine.bean.SystemDataBean;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.view.disk.DataItem;
 import com.project.zhongrenweigong.view.disk.DiscView;
@@ -105,7 +107,8 @@ public class EditMineHomePageActivity extends BaseActivity<EditMineHomePagePrese
 
     @Override
     public void initAfter() {
-        getP().getIndividualSystem("444");
+        LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+        getP().getIndividualSystem(userAccent.mbId);
         scroInfo.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {

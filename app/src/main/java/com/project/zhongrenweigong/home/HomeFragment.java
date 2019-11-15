@@ -17,6 +17,7 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessListActivity;
+import com.project.zhongrenweigong.business.teach.TeachListActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.SearchBusinessActivity;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
@@ -161,7 +162,7 @@ public class HomeFragment extends BaseFragment<HomePresent> {
                 break;
             case R.id.te_teach:
                 Router.newIntent(getActivity()).putInt(TYPE, 2)
-                        .to(BusinessListActivity.class)
+                        .to(TeachListActivity.class)
                         .launch();
                 break;
             case R.id.te_house:
@@ -416,5 +417,7 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        locationService.unregisterListener(mListener);
+        locationService.stop();
     }
 }

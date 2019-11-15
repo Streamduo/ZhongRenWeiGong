@@ -38,7 +38,7 @@ public class App extends Application {
     public static Context mContext;
     public static App app;
     public LocationService locationService;
-//    public Vibrator mVibrator;
+    public Vibrator mVibrator;
 
     @Override
     public void onCreate() {
@@ -90,9 +90,9 @@ public class App extends Application {
          * 初始化定位sdk
          */
         locationService = new LocationService(getApplicationContext());
-//        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
-//        SDKInitializer.initialize(getApplicationContext());
-//        SDKInitializer.setCoordType(CoordType.BD09LL);
+        mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+        SDKInitializer.initialize(getApplicationContext());
+        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
     static {

@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.mine.adapter.GoodDeedListAdapter;
 import com.project.zhongrenweigong.mine.adapter.ShopListPageAdapter;
+import com.project.zhongrenweigong.mine.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 import com.project.zhongrenweigong.mine.bean.CategoryListsBean;
 import com.project.zhongrenweigong.mine.bean.MineDataBean;
@@ -35,7 +37,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class BusinessMineHomePageActivity extends BaseActivity<BusinessMineHomePagePresent> {
-
 
     @BindView(R.id.te_back)
     TextView teBack;
@@ -85,10 +86,16 @@ public class BusinessMineHomePageActivity extends BaseActivity<BusinessMineHomeP
     private GoodDeedListAdapter goodOralityListAdapter;
     private GoodDeedListAdapter goodSincerityListAdapter;
     private GoodDeedListAdapter goodWorkeListAdapter;
+    private String mbId;
+    private String shopId;
 
     @Override
     public void initView() {
         teTitle.setText("个人中心");
+        Intent intent = getIntent();
+        mbId = intent.getStringExtra("mbId");
+        shopId = intent.getStringExtra("shopId");
+
         recyDedicationList.setLayoutManager(new LinearLayoutManager(this));
         recyOralityList.setLayoutManager(new LinearLayoutManager(this));
         recySincerityList.setLayoutManager(new LinearLayoutManager(this));
@@ -106,8 +113,8 @@ public class BusinessMineHomePageActivity extends BaseActivity<BusinessMineHomeP
 
     @Override
     public void initAfter() {
-        getP().getMerchantPersonalHomepage("444");
-        getP().getIndividualSystem("444");
+        getP().getMerchantPersonalHomepage(shopId);
+        getP().getIndividualSystem(mbId);
         lineHead.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -262,4 +269,5 @@ public class BusinessMineHomePageActivity extends BaseActivity<BusinessMineHomeP
             goodDedicationListAdapter.setNewData(data.socialContributionBehavior);
         }
     }
+
 }

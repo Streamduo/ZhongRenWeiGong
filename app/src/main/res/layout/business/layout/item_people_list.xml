@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/img_people_head"
-        android:layout_width="@dimen/distance_dp_30"
-        android:layout_height="@dimen/distance_dp_30"
-        android:layout_marginLeft="@dimen/distance_dp_6"
+        android:layout_width="@dimen/distance_dp_34"
+        android:layout_height="@dimen/distance_dp_36"
+        android:layout_centerHorizontal="true"
         android:background="@mipmap/shenhe_ren_head" />
+
+    <TextView
+        android:id="@+id/te_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_people_head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        android:text="张三郭"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <ImageView
+        android:id="@+id/img_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_25"
+        android:layout_marginTop="@dimen/distance_dp_13"
+        android:layout_toRightOf="@+id/img_people_head"
+        android:visibility="gone"
+        android:background="@mipmap/gray_back" />
 </RelativeLayout>

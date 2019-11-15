@@ -24,5 +24,12 @@ public class BusinessWorkerListAdapter extends BaseQuickAdapter<EmployeesBean, B
     protected void convert(BaseViewHolder helper, EmployeesBean item) {
         GlideDownLoadImage.getInstance().loadCircleImage(mContext, item.employeesTitleUrl,
                 (ImageView) helper.getView(R.id.img_people_head));
+        helper.setText(R.id.te_name, item.employeesName);
+        if (helper.getAdapterPosition() == getData().size() - 1) {
+            helper.setVisible(R.id.img_return, true);
+        } else {
+            helper.setVisible(R.id.img_return, false);
+        }
+
     }
 }

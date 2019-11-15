@@ -30,8 +30,10 @@
         <LinearLayout
             android:id="@+id/line_mine"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/viewfinder_mask"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -130,8 +132,9 @@
             <com.project.zhongrenweigong.view.MyViewPager
                 android:id="@+id/discover_list_vp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/distance_dp_15" />
 
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

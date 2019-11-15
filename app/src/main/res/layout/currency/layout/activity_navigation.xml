@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".currency.NavigationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_430">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:layout_marginTop="@dimen/distance_dp_30"
+            android:background="@mipmap/map_back" />
+
+        <ImageView
+            android:id="@+id/img_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/distance_dp_12"
+            android:layout_marginRight="@dimen/distance_dp_48"
+            android:background="@mipmap/img_location" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/te_shop_addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginTop="@dimen/distance_dp_35"
+        android:text="北京市朝阳区劲松南路15号楼1单元2-3"
+        android:textColor="@color/app_text_a7"
+        android:textSize="@dimen/distance_dp_13" />
+
+    <TextView
+        android:id="@+id/te_go_shop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_44"
+        android:layout_marginLeft="@dimen/distance_dp_20"
+        android:layout_marginRight="@dimen/distance_dp_20"
+        android:layout_marginTop="@dimen/distance_dp_35"
+        android:background="@drawable/bg_bac_23a0f2_22"
+        android:gravity="center"
+        android:text="查看路线"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_17" />
+</LinearLayout>

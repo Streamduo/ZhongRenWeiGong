@@ -38,6 +38,7 @@
                 android:layout_height="@dimen/distance_dp_134" />
 
             <RelativeLayout
+                android:id="@+id/rl_top"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/distance_dp_153"
                 android:background="@drawable/bg_bac_3b76f2_5"
@@ -57,7 +58,18 @@
                     android:layout_width="@dimen/distance_dp_36"
                     android:layout_height="@dimen/distance_dp_36"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/distance_dp_18" />
+                    android:layout_marginRight="@dimen/distance_dp_18"
+                    android:background="@mipmap/img_default_gray_head" />
+
+                <ImageView
+                    android:id="@+id/img_tester"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/distance_dp_15"
+                    android:layout_marginTop="@dimen/distance_dp_23"
+                    android:background="@mipmap/small_renzheng_icon" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

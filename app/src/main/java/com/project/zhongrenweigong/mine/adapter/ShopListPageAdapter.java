@@ -29,13 +29,19 @@ public class ShopListPageAdapter extends FragmentPagerAdapter {
                 return MineShopListFragment.getInstance(categoryLists.get(position).categoryId);
             case 2:
                 return MineShopListFragment.getInstance(categoryLists.get(position).categoryId);
+            case 3:
+                return MineShopListFragment.getInstance(categoryLists.get(position).categoryId);
+            case 4:
+                return MineShopListFragment.getInstance(categoryLists.get(position).categoryId);
+            case 5:
+                return MineShopListFragment.getInstance(categoryLists.get(position).categoryId);
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return categoryLists.size();
     }
 
     @Override

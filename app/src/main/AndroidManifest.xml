@@ -102,6 +102,7 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".business.BusinessHomePageActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".home.MessageListActivity"
@@ -141,7 +142,14 @@
         <activity android:name=".currency.zxing.android.CaptureActivity" />
         <activity android:name=".currency.zxing.android.CaptureResultActivity" />
         <activity android:name=".mine.BusinessMineHomePageActivity" />
-        <activity android:name=".mine.EditMineHomePageActivity"></activity>
+        <activity android:name=".mine.EditMineHomePageActivity" />
+        <activity
+            android:name=".business.teach.TeachListActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".business.WeiGongTestActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".currency.NavigationActivity" />
     </application>
 
 </manifest>
