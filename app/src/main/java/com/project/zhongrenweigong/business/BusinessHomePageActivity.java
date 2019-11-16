@@ -266,15 +266,9 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
             super.onConnectHotSpotMessage(s, i);
         }
 
-        /**
-         * 回调定位诊断信息，开发者可以根据相关信息解决定位遇到的一些问题
-         * @param locType 当前定位类型
-         * @param diagnosticType 诊断类型（1~9）
-         * @param diagnosticMessage 具体的诊断信息释义
-         */
         @Override
-        public void onLocDiagnosticMessage(int locType, int diagnosticType, String diagnosticMessage) {
-            super.onLocDiagnosticMessage(locType, diagnosticType, diagnosticMessage);
+        public void onLocDiagnosticMessage(int i, int i1, String s) {
+            super.onLocDiagnosticMessage(i, i1, s);
         }
     };
 

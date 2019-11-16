@@ -400,6 +400,13 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     };
 
     @Override
+    public void onPause() {
+        super.onPause();
+        locationService.unregisterListener(mListener);
+        locationService.stop();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -417,7 +424,5 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        locationService.unregisterListener(mListener);
-        locationService.stop();
     }
 }
