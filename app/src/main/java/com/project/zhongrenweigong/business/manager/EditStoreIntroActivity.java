@@ -2,6 +2,7 @@ package com.project.zhongrenweigong.business.manager;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -106,6 +107,9 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
     }
 
     @Override

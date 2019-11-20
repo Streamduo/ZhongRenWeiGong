@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.home;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,9 @@ public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         typeId = getIntent().getStringExtra("typeId");
         if (typeId.equals("0")) {
             teTitle.setText("系统通知");

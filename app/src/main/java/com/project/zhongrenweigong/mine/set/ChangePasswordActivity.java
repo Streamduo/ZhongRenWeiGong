@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine.set;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -33,6 +34,9 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordPresent> 
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("修改密码");
     }
 

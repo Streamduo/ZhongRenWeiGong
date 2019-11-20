@@ -22,6 +22,7 @@ import com.project.zhongrenweigong.mine.MyAuthenticationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
 import com.project.zhongrenweigong.mine.set.SetActivity;
 import com.project.zhongrenweigong.util.AcacheUtils;
+import com.project.zhongrenweigong.util.StatusBarUtils;
 import com.project.zhongrenweigong.util.XCache;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
@@ -63,6 +64,18 @@ public class MineFragment extends BaseFragment<MinePresent> {
     @BindView(R.id.rl_mine_set)
     RelativeLayout rlMineSet;
     Unbinder unbinder;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        StatusBarUtils.with(getActivity()).init();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        StatusBarUtils.with(getActivity()).init();
+    }
 
     @Override
     public void initView() {

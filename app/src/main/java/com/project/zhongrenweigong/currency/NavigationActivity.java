@@ -26,6 +26,8 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.baidumap.BaiDuMapUtils;
 import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.currency.bean.NavigationBean;
+import com.project.zhongrenweigong.util.GsonProvider;
 import com.project.zhongrenweigong.util.UtilsStyle;
 
 import java.util.LinkedList;
@@ -50,6 +52,9 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
     private LinkedList<LocationEntity> locationList = new LinkedList<LocationEntity>(); // 存放历史定位结果的链表，最大存放当前结果的前5次定位结果
     private double longitude;
     private double latitude;
+    private String json = "{status:0,result:{location:{lng:116.3084202915042,lat:40.05703033345938}," +
+            "precise:1,confidence:80,comprehension:100,level:门址}}";
+    private NavigationBean navigationBean;
 
     @Override
     public void initView() {
@@ -69,6 +74,7 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
 
     @Override
     public void initAfter() {
+        navigationBean = GsonProvider.gson.fromJson(json, NavigationBean.class);
     }
 
     @Override
@@ -98,22 +104,26 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
                 locService.start();
                 break;
             case R.id.te_go_shop:
+                if (longitude == 0 || latitude == 0) {
+                    return;
+                }
                 setAddress();
                 break;
         }
     }
 
     private void setAddress() {
+        NavigationBean.ResultBean.LocationBean location1 = navigationBean.getResult().getLocation();
         //定义起终点坐标（天安门和百度大厦）
         LatLng startPoint = new LatLng(longitude, latitude);
-        LatLng endPoint = new LatLng(40.056858, 116.308194);
+        LatLng endPoint = new LatLng(location1.getLat(), location1.getLng());
 
-         //构建RouteParaOption参数以及策略
-         //也可以通过startName和endName来构造
+        //构建RouteParaOption参数以及策略
+        //也可以通过startName和endName来构造
         RouteParaOption paraOption = new RouteParaOption()
                 .startPoint(startPoint)
                 .endPoint(endPoint)
-                .busStrategyType(RouteParaOption.EBusStrategyType.bus_recommend_way);
+                .busStrategyType(RouteParaOption.EBusStrategyType.bus_time_first);
         //调起百度地图
         try {
             BaiduMapRoutePlan.openBaiduMapTransitRoute(paraOption, this);
@@ -214,9 +224,11 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
                 longitude = location.getLongitude();
                 //纬度
                 latitude = location.getLatitude();
+
                 int iscal = msg.getData().getInt("iscalculate");
                 if (location != null) {
-                    LatLng point = new LatLng(location.getLatitude(), location.getLongitude());
+                    NavigationBean.ResultBean.LocationBean location1 = navigationBean.getResult().getLocation();
+                    LatLng point = new LatLng(location1.getLat(), location1.getLng());
                     // 构建Marker图标
                     BitmapDescriptor bitmap = null;
                     if (iscal == 0) {

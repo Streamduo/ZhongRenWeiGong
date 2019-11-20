@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.mine;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -33,6 +34,9 @@ public class MyWalletActivity extends BaseActivity<MyWalletPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("赔付钱包");
     }
 

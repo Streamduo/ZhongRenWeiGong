@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.business.manager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,6 +31,9 @@ public class SendNoticeActivity extends BaseActivity<SendNoticePresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
     }
 
     @Override

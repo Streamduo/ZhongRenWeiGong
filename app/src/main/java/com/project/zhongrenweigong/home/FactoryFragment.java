@@ -12,7 +12,7 @@ public class FactoryFragment {
 
     public static final String TAG = "FactoryFragment";
 
-    private static final String[] TAGS = {MessageFragment.TAG,HomeFragment.TAG, SquareFragment.TAG, MineFragment.TAG};
+    private static final String[] TAGS = {HomeFragment.TAG, IndustryFragment.TAG, SquareFragment.TAG, MineFragment.TAG};
     private FragmentManager fragmentManager;
     private int currentIndex = -1;
 
@@ -35,10 +35,10 @@ public class FactoryFragment {
 
     private BaseFragment createFragByTag(String tag) {
         switch (tag) {
-            case MessageFragment.TAG:
-                return new MessageFragment();
             case HomeFragment.TAG:
-                return new HomeFragment();
+                return HomeFragment.getInstance();
+            case IndustryFragment.TAG:
+                return new IndustryFragment();
             case SquareFragment.TAG:
                 return new SquareFragment();
             case MineFragment.TAG:

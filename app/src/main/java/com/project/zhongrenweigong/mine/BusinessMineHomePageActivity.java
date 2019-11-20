@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.mine;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -91,6 +92,9 @@ public class BusinessMineHomePageActivity extends BaseActivity<BusinessMineHomeP
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("个人中心");
         Intent intent = getIntent();
         mbId = intent.getStringExtra("mbId");

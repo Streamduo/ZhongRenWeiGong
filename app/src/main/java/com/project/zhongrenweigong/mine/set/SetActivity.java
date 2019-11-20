@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.mine.set;
 
 import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -53,6 +54,9 @@ public class SetActivity extends BaseActivity<SetPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("设置");
     }
 

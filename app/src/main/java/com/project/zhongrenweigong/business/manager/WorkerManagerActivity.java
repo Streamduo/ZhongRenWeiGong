@@ -3,6 +3,7 @@ package com.project.zhongrenweigong.business.manager;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,6 +59,9 @@ public class WorkerManagerActivity extends BaseActivity<WorkerManagerPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("员工绑定");
         teRightTitle.setText("新增员工");
         recyBusinessList.setLayoutManager(new LinearLayoutManager(this));
@@ -144,7 +148,7 @@ public class WorkerManagerActivity extends BaseActivity<WorkerManagerPresent> {
     }
 
     public void setData(WorkerListBean workerListBean) {
-        int pageSize = workerListBean.getPageSize();
+        int pageSize = workerListBean.pageSize;
         List<WorkerDataBean> data = workerListBean.getData();
         if (data != null && data.size() > 0) {
             if (currentPage == 1) {

@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.currency;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,6 +54,9 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
 
         edSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {

@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+
+android {
+  compileSdkVersion 27
+  buildToolsVersion "27.0.3"
+  resourcePrefix "__picker_"
+
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+  defaultConfig {
+    minSdkVersion 21
+    targetSdkVersion 27
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  implementation 'com.android.support:support-v4:27.1.1'
+  implementation 'com.android.support:recyclerview-v7:27.1.1'
+  implementation 'com.android.support:design:27.1.1'
+  implementation 'com.github.bumptech.glide:glide:4.9.0'
+  implementation "com.nineoldandroids:library:2.4.0"
+  implementation 'me.relex:circleindicator:1.2.2@aar'
+}

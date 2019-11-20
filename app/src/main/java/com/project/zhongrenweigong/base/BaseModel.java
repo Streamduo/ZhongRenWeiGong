@@ -10,6 +10,7 @@ public class BaseModel implements IModel {
     public int code;
     public String msg;
     public String encryptionData;
+    public int pageSize;
 
     public int getCode() {
         return code;

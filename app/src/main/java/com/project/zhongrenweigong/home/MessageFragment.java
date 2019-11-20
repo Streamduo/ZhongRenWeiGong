@@ -35,18 +35,12 @@ public class MessageFragment extends BaseFragment<MessageListFragmentPresent> {
 
     public static final String TAG = "MessageFragment";
     Unbinder unbinder;
-    @BindView(R.id.te_back)
-    TextView teBack;
-    @BindView(R.id.te_title)
-    TextView teTitle;
     @BindView(R.id.recy_message_list)
     RecyclerView recyMessageList;
     private MessageListAdapter messageListAdapter;
 
     @Override
     public void initView() {
-        teBack.setVisibility(View.GONE);
-        teTitle.setText("消息中心");
         recyMessageList.setLayoutManager(new LinearLayoutManager(getContext()));
         messageListAdapter = new MessageListAdapter(R.layout.item_message_list);
         recyMessageList.setAdapter(messageListAdapter);

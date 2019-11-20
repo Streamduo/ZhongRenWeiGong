@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.business;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,11 +32,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
 
-import static com.project.zhongrenweigong.currency.Constans.ADDRES;
-import static com.project.zhongrenweigong.home.HomeFragment.TYPE;
+import static com.project.zhongrenweigong.home.IndustryFragment.TYPE;
 
 /**
  * 作者：Fuduo on 2019/10/21 11:24
@@ -65,6 +64,9 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         Intent intent = getIntent();
         type = intent.getIntExtra(TYPE, 0);
 
@@ -73,15 +75,14 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     searchText = teSearch.getText().toString();
+                    currentPage = 1;
                     if (searchText != null && !searchText.equals("")) {
                         //关闭软键盘
                         KeyboardUtils.hideSoftInput(BusinessListActivity.this);
-                        currentPage = 1;
                         getP().selectAllShop(type, currentPage, 1, searchText, 1);
                     } else {
-                        showToastShort("请输入搜索内容");
+                        getP().selectAllShop(type, currentPage, 0, "", 1);
                     }
-
                     return true;
                 }
                 return false;
@@ -142,7 +143,10 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 DataBean item = listAdapter.getItem(position);
-                Router.newIntent(BusinessListActivity.this).putString("shopId",item.shopId).to(BusinessHomePageActivity.class).launch();
+                Router.newIntent(BusinessListActivity.this)
+                        .putString("shopId",item.shopId)
+                        .to(BusinessHomePageActivity.class)
+                        .launch();
             }
         });
 

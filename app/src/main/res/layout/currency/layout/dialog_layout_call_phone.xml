@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/distance_dp_264"
+        android:layout_height="@dimen/distance_dp_100"
+        android:background="@drawable/bg_bac_white_5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_line_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_15"
+            android:textColor="@color/app_222222"
+            android:textSize="@dimen/distance_dp_17"
+            tools:text="删除该员工" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_marginTop="@dimen/distance_dp_15"
+            android:background="@color/app_EBEBEB" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/te_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/app_text_33"
+                android:textSize="@dimen/distance_dp_15" />
+
+            <View
+                android:layout_width="@dimen/distance_dp_1"
+                android:layout_height="match_parent"
+                android:background="@color/app_EBEBEB" />
+
+            <TextView
+                android:id="@+id/te_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="呼叫"
+                android:textColor="@color/app_203F91"
+                android:textSize="@dimen/distance_dp_15" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

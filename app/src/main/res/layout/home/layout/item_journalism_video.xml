@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_journalism_cover"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@mipmap/vegetable_default"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="344:214"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/te_journalism_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_16"
+            android:layout_marginTop="@dimen/distance_dp_16"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="十年如一日，大晚上不睡觉清扫街边垃圾" />
+
+        <RelativeLayout
+            android:id="@+id/rl_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/radio_gray" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/play" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/te_video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/distance_dp_5"
+            android:layout_marginRight="@dimen/distance_dp_15"
+            android:background="@drawable/bg_bac_tran_black_12"
+            android:paddingBottom="@dimen/distance_dp_3"
+            android:paddingLeft="@dimen/distance_dp_8"
+            android:paddingRight="@dimen/distance_dp_8"
+            android:paddingTop="@dimen/distance_dp_3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="02:58" />
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_66">
+
+        <ImageView
+            android:id="@+id/te_sender_head"
+            android:layout_width="@dimen/distance_dp_41"
+            android:layout_height="@dimen/distance_dp_41"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/distance_dp_16"
+            android:background="@mipmap/img_default_gray_head" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/distance_dp_15">
+
+            <TextView
+                android:id="@+id/te_sees_journalism"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/distance_dp_20"
+                android:drawableLeft="@mipmap/see_size"
+                android:drawablePadding="@dimen/distance_dp_6"
+                android:textColor="@color/app_text_99"
+                android:textSize="@dimen/distance_dp_12"
+                tools:text="56789" />
+
+            <TextView
+                android:id="@+id/te_share_journalism"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@mipmap/share_journalism"
+                android:drawablePadding="@dimen/distance_dp_6"
+                android:textColor="@color/app_text_99"
+                android:textSize="@dimen/distance_dp_12"
+                tools:text="56789" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

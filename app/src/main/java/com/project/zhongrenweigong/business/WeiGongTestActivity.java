@@ -19,6 +19,7 @@ import com.project.zhongrenweigong.business.bean.PlatformGetAreaManagerBean;
 import com.project.zhongrenweigong.business.bean.TestImgBean;
 import com.project.zhongrenweigong.business.bean.WeiGongTestBean;
 import com.project.zhongrenweigong.business.bean.WeiGongTestDataBean;
+import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.util.SpacingItemDecoration;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
@@ -55,6 +56,7 @@ public class WeiGongTestActivity extends BaseActivity<WeiGongTestPresent> {
     private TestImgListAdapter testImgListAdapter;
     private String address;
     private String shopId;
+    private String legalId;
 
     @Override
     public void initView() {
@@ -101,6 +103,7 @@ public class WeiGongTestActivity extends BaseActivity<WeiGongTestPresent> {
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        imgTesterHead.setOnClickListener(this);
     }
 
     @Override
@@ -108,6 +111,13 @@ public class WeiGongTestActivity extends BaseActivity<WeiGongTestPresent> {
         switch (v.getId()) {
             case R.id.te_back:
                 finish();
+                break;
+            case R.id.img_tester_head:
+                Router.newIntent(WeiGongTestActivity.this)
+                        .putString("mbId", legalId)
+                        .putString("shopId", shopId)
+                        .to(BusinessMineHomePageActivity.class)
+                        .launch();
                 break;
         }
     }
@@ -123,7 +133,8 @@ public class WeiGongTestActivity extends BaseActivity<WeiGongTestPresent> {
         GlideDownLoadImage.getInstance().loadCircleImage(mContext, data.platformGetAreaManager.headUrl,
                 imgTesterHead);
         teTesterName.setText(data.platformGetAreaManager.mbName);
-        teTesterId.setText("ID:" + data.platformGetAreaManager.mbId);
+        legalId = data.platformGetAreaManager.mbId;
+        teTesterId.setText("ID:" + legalId);
         teTesterRegion.setText("管辖区域:" + data.platformGetAreaManager.managementAddress);
         List<PlatformGetAreaManagerBean> platformGetInspector = data.platformGetInspector;
         if (platformGetInspector != null && platformGetInspector.size() > 0) {

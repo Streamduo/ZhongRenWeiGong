@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:state_selected="true" android:drawable="@drawable/__picker_checkbox_marked" />
+  <item android:state_selected="false"  android:drawable="@color/__picker_black_40" />
+  <item   android:drawable="@color/__picker_black_40" />
+  <!--<item android:state_selected="false" >-->
+    <!--<layer-list>-->
+      <!--<item>-->
+        <!--<shape>-->
+          <!--<corners android:radius="2dip"/>-->
+          <!--<padding android:top="-2dip"-->
+              <!--android:left="-2dip"-->
+              <!--android:bottom="-2dip"-->
+              <!--android:right="-2dip"/>-->
+          <!--<stroke android:width="1dip"-->
+              <!--android:color="@android:color/white"/>-->
+        <!--</shape>-->
+      <!--</item>-->
+      <!--<item android:drawable="@drawable/__picker_checkbox_n"/>-->
+    <!--</layer-list>-->
+  <!--</item>-->
+
+</selector>

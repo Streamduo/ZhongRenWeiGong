@@ -16,7 +16,6 @@ public class SquareListBean extends BaseModel {
      * pageSize : 0
      */
 
-    private int pageSize;
     /**
      * commentNum : 0
      * content : string
@@ -32,14 +31,6 @@ public class SquareListBean extends BaseModel {
      */
 
     private List<SquareDataBean> data;
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
 
     public List<SquareDataBean> getData() {
         return data;

@@ -42,7 +42,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/distance_dp_160"
+        android:layout_marginTop="@dimen/distance_dp_150"
         android:background="@drawable/top_radius_white_12"
         android:orientation="vertical">
 
@@ -133,7 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/distance_dp_1"
                         android:layout_alignParentBottom="true"
-                        android:background="@color/app_bfbfbf" />
+                        android:background="@color/app_bcbcbc" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -170,7 +170,7 @@
                         android:layout_height="@dimen/distance_dp_1"
                         android:layout_marginTop="@dimen/distance_dp_8"
                         android:layout_marginRight="@dimen/distance_dp_15"
-                        android:background="@color/app_bfbfbf" />
+                        android:background="@color/app_bcbcbc" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -207,7 +207,7 @@
                         android:layout_height="@dimen/distance_dp_1"
                         android:layout_marginTop="@dimen/distance_dp_8"
                         android:layout_marginRight="@dimen/distance_dp_15"
-                        android:background="@color/app_bfbfbf" />
+                        android:background="@color/app_bcbcbc" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -295,7 +295,7 @@
                         android:layout_height="@dimen/distance_dp_1"
                         android:layout_marginTop="@dimen/distance_dp_8"
                         android:layout_marginRight="@dimen/distance_dp_15"
-                        android:background="@color/app_bfbfbf" />
+                        android:background="@color/app_bcbcbc" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -305,6 +305,7 @@
                     android:paddingLeft="@dimen/distance_dp_15">
 
                     <TextView
+                        android:id="@+id/te_shop_tuijian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/distance_dp_5"
@@ -313,10 +314,19 @@
                         android:textSize="@dimen/distance_dp_14" />
 
                     <View
+                        android:id="@+id/view_three"
                         android:layout_width="@dimen/distance_dp_43"
                         android:layout_height="@dimen/distance_dp_4"
                         android:layout_marginBottom="@dimen/distance_dp_7"
                         android:layout_marginTop="@dimen/distance_dp_3"
+                        android:background="@color/app_23A0F2" />
+                    <View
+                        android:id="@+id/view_four"
+                        android:layout_width="@dimen/distance_dp_59"
+                        android:layout_height="@dimen/distance_dp_4"
+                        android:layout_marginBottom="@dimen/distance_dp_7"
+                        android:layout_marginTop="@dimen/distance_dp_3"
+                        android:visibility="gone"
                         android:background="@color/app_23A0F2" />
 
                     <android.support.v7.widget.RecyclerView
@@ -335,25 +345,39 @@
         android:layout_width="@dimen/distance_dp_84"
         android:layout_height="@dimen/distance_dp_78"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_124"
+        android:layout_marginTop="@dimen/distance_dp_115"
         android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/distance_dp_69"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:paddingBottom="@dimen/distance_dp_15"
+        android:paddingTop="@dimen/distance_dp_5"
         android:paddingLeft="@dimen/distance_dp_22"
         android:paddingRight="@dimen/distance_dp_22">
 
         <TextView
             android:id="@+id/te_shop_test"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_44"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@drawable/bg_bac_23a0f2_22"
             android:gravity="center"
             android:text="查看维公测评"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_17" />
+        <TextView
+            android:id="@+id/te_upload_voucher"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_bac_23a0f2_22"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/distance_dp_25"
+            android:text="上传凭证"
             android:textColor="@color/white"
             android:textSize="@dimen/distance_dp_17" />
     </LinearLayout>

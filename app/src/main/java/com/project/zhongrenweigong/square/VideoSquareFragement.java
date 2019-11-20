@@ -124,7 +124,7 @@ public class VideoSquareFragement extends BaseFragment<VideoSquarePresent> {
     }
 
     public void setData(SquareListBean squareListBean) {
-        int pageSize = squareListBean.getPageSize();
+        int pageSize = squareListBean.pageSize;
         List<SquareDataBean> data = squareListBean.getData();
         if (data != null && data.size() > 0) {
             if (currentPage == 1) {

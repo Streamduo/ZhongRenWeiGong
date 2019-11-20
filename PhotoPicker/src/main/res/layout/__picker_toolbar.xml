@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#fff"
+    android:gravity="center"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="?attr/actionBarTheme"
+    app:popupTheme="?attr/actionBarPopupTheme">
+
+    <ImageView
+        android:id="@+id/picker_image_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:src="@drawable/guanbi" />
+
+    <TextView
+        android:id="@+id/picker_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableRight="@drawable/suoyouzhaopian"
+        android:drawablePadding="4dp"
+        android:textColor="#333333"
+        android:textSize="15dp"
+        tools:text="标题" />
+
+    <TextView
+        android:id="@+id/picker_text_done"
+        android:layout_width="52dp"
+        android:layout_height="19dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/__picker_appgreen_10"
+        android:clickable="false"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="#fff"
+        android:textSize="14dp"
+        android:visibility="visible" />
+</android.support.v7.widget.Toolbar>

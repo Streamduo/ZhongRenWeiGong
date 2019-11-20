@@ -31,6 +31,4 @@ public class CommodityListBean extends BaseModel {
     public void setData(List<CommodityDataBean> data) {
         this.data = data;
     }
-
-    public int pageSize;
 }

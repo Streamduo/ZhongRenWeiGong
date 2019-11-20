@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -29,6 +30,9 @@ public class CompensationRecordActivity extends BaseActivity<CompensationPresent
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("赔付记录");
         recordType = getIntent().getIntExtra("recordType", 0);
     }

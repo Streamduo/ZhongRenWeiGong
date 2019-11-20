@@ -17,7 +17,6 @@ public class WorkerListBean extends BaseModel {
      * pageSize : 0
      */
 
-    private int pageSize;
     /**
      * employeesId : string
      * employeesName : string
@@ -25,14 +24,6 @@ public class WorkerListBean extends BaseModel {
      */
 
     private List<WorkerDataBean> data;
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
 
     public List<WorkerDataBean> getData() {
         return data;

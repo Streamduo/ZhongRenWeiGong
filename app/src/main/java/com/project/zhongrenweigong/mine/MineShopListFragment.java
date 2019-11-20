@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
-import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
 import com.project.zhongrenweigong.mine.adapter.ShopMineShopListAdapter;
 import com.project.zhongrenweigong.mine.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.mine.bean.ShopListDataBean;
@@ -28,7 +27,7 @@ import butterknife.Unbinder;
 public class MineShopListFragment extends BaseFragment<MineShopListPresent> {
     Unbinder unbinder;
 
-    @BindView(R.id.recy_shop_list)
+    @BindView(R.id.recy_list)
     RecyclerView recyShopList;
     private int categoryId;
     private ShopMineShopListAdapter shopListAdapter;
@@ -64,7 +63,7 @@ public class MineShopListFragment extends BaseFragment<MineShopListPresent> {
 
     @Override
     public int bindLayout() {
-        return R.layout.fragment_shop_list;
+        return R.layout.fragment_list;
     }
 
     @Override

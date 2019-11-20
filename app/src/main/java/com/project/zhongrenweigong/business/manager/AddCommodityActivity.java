@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.business.manager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +35,9 @@ public class AddCommodityActivity extends BaseActivity<AddCommodityPresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         commodityDataBean = (CommodityDataBean) getIntent().getSerializableExtra("CommodityDataBean");
         if (commodityDataBean != null) {
             edCommodityName.setText(commodityDataBean.name);

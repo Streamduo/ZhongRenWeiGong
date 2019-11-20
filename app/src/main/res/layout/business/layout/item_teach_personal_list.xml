@@ -11,7 +11,7 @@
         android:layout_height="@dimen/distance_dp_80">
 
         <ImageView
-            android:id="@+id/img_mechanism_head"
+            android:id="@+id/img_personal_head"
             android:layout_width="@dimen/distance_dp_61"
             android:layout_height="@dimen/distance_dp_64"
             android:layout_centerVertical="true"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/distance_dp_10"
             android:layout_marginTop="@dimen/distance_dp_6"
-            android:layout_toRightOf="@+id/img_mechanism_head">
+            android:layout_toRightOf="@+id/img_personal_head">
 
             <TextView
                 android:id="@+id/te_personal_title"
@@ -44,7 +44,7 @@
                 android:textSize="@dimen/distance_dp_10" />
 
             <TextView
-                android:id="@+id/te_mechanism_address"
+                android:id="@+id/te_worker_renzheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/te_personal_id"
@@ -54,10 +54,10 @@
                 android:textSize="@dimen/distance_dp_10" />
 
             <TextView
-                android:id="@+id/te_mechanism_phone"
+                android:id="@+id/te_jigou_renzheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/te_mechanism_address"
+                android:layout_below="@+id/te_worker_renzheng"
                 android:layout_marginTop="@dimen/distance_dp_3"
                 android:text="机构:已认证"
                 android:textColor="@color/FF000000"
@@ -68,5 +68,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/distance_dp_1"
-        android:background="@color/app_bfbfbf" />
+        android:background="@color/app_bcbcbc" />
 </LinearLayout>

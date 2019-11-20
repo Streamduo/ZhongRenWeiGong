@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.currency;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,7 +45,9 @@ public class SearchResultActivity extends BaseActivity<SearchResultPresent> {
 
     @Override
     public void initView() {
-        UtilsStyle.statusBarLightMode(this);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         searchText = getIntent().getStringExtra("searchText");
         edSearch.setText(searchText);
         edSearch.setSelection(searchText.length());

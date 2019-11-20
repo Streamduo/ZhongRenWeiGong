@@ -5,8 +5,11 @@ import com.project.zhongrenweigong.business.bean.BusinessCategoryListBean;
 import com.project.zhongrenweigong.business.bean.BusinessHomePageBean;
 import com.project.zhongrenweigong.business.bean.BusinessNoticeBean;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
+import com.project.zhongrenweigong.business.bean.CarListBean;
 import com.project.zhongrenweigong.business.bean.CommodityListBean;
 import com.project.zhongrenweigong.business.bean.ShopHomePageBean;
+import com.project.zhongrenweigong.business.bean.TeachListBean;
+import com.project.zhongrenweigong.business.bean.TeacherListBean;
 import com.project.zhongrenweigong.business.bean.WorkerListBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 
@@ -177,4 +180,25 @@ public interface BusinessNetManager {
      */
     @POST("getShopHomepage")
     Flowable<ShopHomePageBean> getShopHomepage(@Body RequestBody body);
+
+    /**
+     * 查询教育信息(机构)
+     * @return
+     */
+    @POST("getEducation")
+    Flowable<TeachListBean> getEducationTeach(@Body RequestBody body);
+
+    /**
+     * 查询教育信息(个人)
+     * @return
+     */
+    @POST("getEducation")
+    Flowable<TeacherListBean> getEducationTeacher(@Body RequestBody body);
+
+    /**
+     * 查询汽车信息(机构)
+     * @return
+     */
+    @POST("getVehicle")
+    Flowable<CarListBean> getVehicle(@Body RequestBody body);
 }

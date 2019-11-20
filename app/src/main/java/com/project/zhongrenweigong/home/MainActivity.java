@@ -58,6 +58,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
 
     @Override
     public void initView() {
+        setFull(false);
         homeMine.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

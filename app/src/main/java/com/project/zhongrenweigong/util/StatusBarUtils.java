@@ -105,6 +105,17 @@ public class StatusBarUtils {
     }
 
     /**
+     * 取消全屏
+     *
+     * @param activity
+     */
+    public static void cancelFullScreen(Activity activity) {
+        activity.getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR);
+    }
+
+    /**
      * 去除 ActionBar 阴影
      */
     public StatusBarUtils clearActionBarShadow() {
@@ -173,7 +184,7 @@ public class StatusBarUtils {
      *
      * @param activity
      */
-    private void addStatusViewWithColor(Activity activity, int color) {
+    public void addStatusViewWithColor(Activity activity, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (isDrawerLayout()) {
                 //要在内容布局增加状态栏，否则会盖在侧滑菜单上
@@ -292,6 +303,25 @@ public class StatusBarUtils {
                 attributes.flags |= flagTranslucentStatus;
 //                attributes.flags |= flagTranslucentNavigation;
                 window.setAttributes(attributes);
+            }
+        }
+    }
+
+    public void setStatus(Activity activity){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
+                Window window = activity.getWindow();
+                View decorView = window.getDecorView();
+                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
+                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                decorView.setSystemUiVisibility(option);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.parseColor("#FFB0B0B0"));
+                //导航栏颜色也可以正常设置
+//                window.setNavigationBarColor(Color.TRANSPARENT);
             }
         }
     }

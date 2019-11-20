@@ -1,15 +1,26 @@
 package com.project.zhongrenweigong.business;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,13 +47,16 @@ import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.util.KeyboardUtils;
 import com.project.zhongrenweigong.util.SpacingItemDecoration;
+import com.project.zhongrenweigong.util.SystemUtil;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.droidlover.xdroidmvp.router.Router;
+import me.iwf.photopicker.PhotoPreview;
 
 /**
  * 作者：Fuduo on 2019/10/21 14:34
@@ -94,17 +108,37 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     TextView teShopTest;
     @BindView(R.id.te_shop_intro)
     TextView teShopIntro;
+    @BindView(R.id.te_shop_tuijian)
+    TextView teShopTuijian;
+    @BindView(R.id.te_upload_voucher)
+    TextView teUploadVoucher;
+    @BindView(R.id.view_three)
+    View viewThree;
+    @BindView(R.id.view_four)
+    View viewFour;
     private LocationService locationService;
     private String shopId;
     private VegetableListAdapter vegetableListAdapter;
     private BusinessWorkerListAdapter workerListAdapter;
     private BusinessWorkerListAdapter holderListAdapter;
     private String address;
+    private String shopPhone;
+    private ArrayList<String> imgList = new ArrayList<>();
+    private int shopType;
+    private String legalId;
 
     @Override
     public void initView() {
         teRightTitle.setText("关注");
+        Intent intent = getIntent();
+        shopType = intent.getIntExtra("shopType", 0);
         shopId = "1111";//getIntent().getStringExtra("shopId")
+        if (shopType == 4) {//汽车行业
+            teShopTuijian.setText("推荐车型");
+            viewFour.setVisibility(View.VISIBLE);
+            viewThree.setVisibility(View.GONE);
+            teUploadVoucher.setVisibility(View.VISIBLE);
+        }
 
         recyShareholder.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyShareholder.addItemDecoration(new SpacingItemDecoration(LinearLayoutManager.HORIZONTAL, 40));
@@ -121,6 +155,21 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         vegetableListAdapter = new VegetableListAdapter(R.layout.item_vegetable_list);
         recyVegetable.setAdapter(vegetableListAdapter);
         recyVegetable.setHasFixedSize(true);
+
+        vegetableListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                List<GoodsListsBean> data = vegetableListAdapter.getData();
+                for (GoodsListsBean goodsListsBean : data) {
+                    imgList.add(goodsListsBean.goodsTitleUrl);
+                }
+                PhotoPreview.builder()
+                        .setPhotos(imgList)
+                        .setCurrentItem(position)
+                        .setShowDeleteButton(false)
+                        .start(BusinessHomePageActivity.this);
+            }
+        });
 
         holderListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -171,10 +220,12 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        imgLegalHead.setOnClickListener(this);
         rlLegal.setOnClickListener(this);
         teRightTitle.setOnClickListener(this);
         teShopTest.setOnClickListener(this);
         teShopAddress.setOnClickListener(this);
+        teShopPhone.setOnClickListener(this);
     }
 
     @Override
@@ -182,6 +233,13 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         switch (v.getId()) {
             case R.id.te_back:
                 finish();
+                break;
+            case R.id.img_legal_head:
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("mbId", legalId)
+                        .putString("shopId", shopId)
+                        .to(BusinessMineHomePageActivity.class)
+                        .launch();
                 break;
             case R.id.rl_legal:
                 if (lineShareholder.getVisibility() == View.GONE) {
@@ -201,6 +259,12 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                 break;
             case R.id.te_right_title:
 
+                break;
+            case R.id.te_shop_phone:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                showCallPhoneDialog();
                 break;
             case R.id.te_shop_test:
                 Router.newIntent(BusinessHomePageActivity.this)
@@ -225,6 +289,7 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     @Override
     protected void onResume() {
         super.onResume();
+
         locationService = App.getInstance().locationService;
         //获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
         locationService.registerListener(mListener);
@@ -290,7 +355,8 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         GlideDownLoadImage.getInstance().loadCircleImage(mContext, data.headUrl,
                 imgLegalHead);
         teTitle.setText(data.shopName);
-        teLegalId.setText("ID:" + data.mcId);
+        legalId = data.mcId;
+        teLegalId.setText("ID:" + legalId);
         String isMerchantAuth = data.isMerchantAuth;
         if (isMerchantAuth.equals("1")) {
             teLegalRenzheng.setText("商家认证:已认证");
@@ -303,7 +369,8 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         address = data.detailedAddr;
         teShopIntro.setText(span);
         teShopAddress.setText(address);
-        teShopPhone.setText(data.mcPhone);
+        shopPhone = data.mcPhone;
+        teShopPhone.setText(shopPhone);
         teShopFans.setText(data.fansNum);
         teShopTime.setText("营业时间:" + data.beignTime + "-" + data.endTime);
 
@@ -323,4 +390,41 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         }
 
     }
+
+    private void showCallPhoneDialog() {
+        final Dialog callPhoneDialog = new Dialog(this, R.style.dialog_bottom_full);
+        callPhoneDialog.setCanceledOnTouchOutside(true);
+        callPhoneDialog.setCancelable(true);
+        Window window = callPhoneDialog.getWindow();
+        window.setGravity(Gravity.CENTER);
+
+        View view = View.inflate(this, R.layout.dialog_layout_call_phone, null);
+        TextView teLineOne = (TextView) view.findViewById(R.id.te_line_one);
+        TextView teOk = (TextView) view.findViewById(R.id.te_ok);
+        TextView teCancel = (TextView) view.findViewById(R.id.te_cancel);
+        teLineOne.setText(shopPhone);
+
+        teOk.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + shopPhone));
+                startActivity(intent);
+                callPhoneDialog.dismiss();
+            }
+        });
+
+        teCancel.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                callPhoneDialog.dismiss();
+            }
+        });
+
+        window.setContentView(view);
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);//设置横向全屏
+        callPhoneDialog.show();
+    }
+
 }

@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_125"
+        android:layout_height="@dimen/distance_dp_145"
         android:background="@color/app_23A0F2">
 
         <include
@@ -60,7 +60,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/distance_dp_118"
+        android:layout_marginTop="@dimen/distance_dp_120"
         android:background="@drawable/top_radius_white_12"
         android:orientation="vertical">
 
@@ -78,7 +78,7 @@
             app:tl_textUnselectColor="@color/app_5F5B5B"
             app:tl_textsize="@dimen/distance_dp_14" />
 
-        <com.project.zhongrenweigong.view.MyViewPager
+        <android.support.v4.view.ViewPager
             android:id="@+id/discover_list_vp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

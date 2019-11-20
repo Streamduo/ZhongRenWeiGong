@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.project.zhongrenweigong.R;
+import com.project.zhongrenweigong.base.BaseActivity;
 import com.yanzhenjie.sofia.Sofia;
 
 import java.lang.reflect.Field;
@@ -95,7 +96,9 @@ public class UtilsStyle {
      * @return 1:MIUUI 2:Flyme 3:android6.0 0:设置失败
      */
     public static void statusBarLightMode(Activity activity) {
-        Sofia.with(activity).statusBarDarkFont().statusBarBackground(activity.getResources().getColor(R.color.white));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Sofia.with(activity).statusBarDarkFont().statusBarBackground(activity.getResources().getColor(R.color.white));
+        }
 //        int result = 0;
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //            if (MIUISetStatusBarLightMode(activity.getWindow(), true)) {

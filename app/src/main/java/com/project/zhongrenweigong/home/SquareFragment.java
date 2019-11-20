@@ -17,6 +17,7 @@ import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.login.LoginActivity;
 import com.project.zhongrenweigong.square.adapter.SquareVideoPageAdapter;
+import com.project.zhongrenweigong.util.StatusBarUtils;
 import com.project.zhongrenweigong.util.TablayoutUtil;
 import com.zyyoona7.popup.EasyPopup;
 import com.zyyoona7.popup.XGravity;
@@ -45,6 +46,18 @@ public class SquareFragment extends BaseFragment<SquarePresent> {
     ViewPager vpHomepage;
     Unbinder unbinder;
     private EasyPopup mCirclePop;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        StatusBarUtils.with(getActivity()).init();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        StatusBarUtils.with(getActivity()).init();
+    }
 
     @Override
     public void initView() {

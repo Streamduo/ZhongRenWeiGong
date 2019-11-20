@@ -18,9 +18,13 @@ import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.business.BusinessListActivity;
 import com.project.zhongrenweigong.business.adapter.TeachListPageAdapter;
+import com.project.zhongrenweigong.business.bean.TeachListBean;
+import com.project.zhongrenweigong.currency.event.SearchEvent;
 import com.project.zhongrenweigong.util.KeyboardUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.view.MyViewPager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +42,10 @@ public class TeachListActivity extends BaseActivity<TeachListPresent> {
     @BindView(R.id.tab_layout)
     SlidingTabLayout tabLayout;
     @BindView(R.id.discover_list_vp)
-    MyViewPager discoverListVp;
+    ViewPager discoverListVp;
     private LocationService locationService;
+    public String province = "北京市";
+    private String searchText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +60,14 @@ public class TeachListActivity extends BaseActivity<TeachListPresent> {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    String searchText = edSearch.getText().toString();
+                    searchText = edSearch.getText().toString();
                     if (searchText != null && !searchText.equals("")) {
+                        EventBus.getDefault().post(new SearchEvent(searchText, discoverListVp.getCurrentItem()));
                         //关闭软键盘
                         KeyboardUtils.hideSoftInput(TeachListActivity.this);
                     } else {
-                        showToastShort("请输入搜索内容");
+                        EventBus.getDefault().post(new SearchEvent(searchText, discoverListVp.getCurrentItem()));
                     }
-
                     return true;
                 }
                 return false;
@@ -102,8 +108,8 @@ public class TeachListActivity extends BaseActivity<TeachListPresent> {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         locationService = App.getInstance().locationService;
         //获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
         locationService.registerListener(mListener);
@@ -146,11 +152,11 @@ public class TeachListActivity extends BaseActivity<TeachListPresent> {
         public void onReceiveLocation(BDLocation location) {
 
             if (null != location && location.getLocType() != BDLocation.TypeServerError) {
-                String province = location.getProvince();
-                double longitude = location.getLongitude();//经度
-                double latitude = location.getLatitude();//纬度
-                String district = location.getDistrict();//地区
-                teMineAddress.setText(province + "." + district);
+//                province = location.getProvince();
+//                double longitude = location.getLongitude();//经度
+//                double latitude = location.getLatitude();//纬度
+//                String district = location.getDistrict();//地区
+//                teMineAddress.setText(province + "." + district);
                 if (location.getLocType() == BDLocation.TypeServerError) {//"服务端网络定位失败，可以反馈IMEI号和大体定位时间到
                     // loc-bugs@baidu.com，会有人追查原因"
                 } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
@@ -183,9 +189,7 @@ public class TeachListActivity extends BaseActivity<TeachListPresent> {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // 在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         locationService.unregisterListener(mListener);
         locationService.stop();
     }
-
 }

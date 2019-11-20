@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.mine;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -96,6 +97,9 @@ public class MineHomePageActivity extends BaseActivity<MineHomePagePresent> {
     @Override
     public void initView() {
         teTitle.setText("个人中心");
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         Intent intent = getIntent();
         userType = intent.getIntExtra("userType", 0);
         mbId = intent.getStringExtra("mbId");

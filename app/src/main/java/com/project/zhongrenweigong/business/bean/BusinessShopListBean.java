@@ -32,6 +32,4 @@ public class BusinessShopListBean extends BaseModel {
     public void setData(List<DataBean> data) {
         this.data = data;
     }
-
-    public int pageSize;
 }

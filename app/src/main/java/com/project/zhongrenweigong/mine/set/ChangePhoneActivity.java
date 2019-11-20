@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.mine.set;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -56,6 +57,9 @@ public class ChangePhoneActivity extends BaseActivity<ChangePhonePresent> {
 
     @Override
     public void initView() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            setFull(false);
+        }
         teTitle.setText("变更手机号");
         userAccent = AcacheUtils.getInstance(this).getUserAccent();
     }

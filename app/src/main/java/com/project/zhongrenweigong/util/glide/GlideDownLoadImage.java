@@ -236,7 +236,7 @@ public class GlideDownLoadImage {
                 .dontAnimate()
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -259,7 +259,7 @@ public class GlideDownLoadImage {
                 .centerCrop()
                 .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -314,7 +314,7 @@ public class GlideDownLoadImage {
                 .fitCenter()
                 .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -338,7 +338,7 @@ public class GlideDownLoadImage {
                 .dontAnimate()
                 .override(width, hight)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             RequestManager requestManager = Glide.with(mContext);
             requestManager
                     .load(url)
@@ -363,7 +363,7 @@ public class GlideDownLoadImage {
                 .centerCrop()
                 .override(width, hight)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -387,7 +387,7 @@ public class GlideDownLoadImage {
                 .override(width, hight)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .transform(new MultiTransformation(new RoundedCornersTransformation(dip2px(mContext, dp), 0)));
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -505,7 +505,7 @@ public class GlideDownLoadImage {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .circleCrop();
 
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(resId)
                     .apply(options)
@@ -577,7 +577,7 @@ public class GlideDownLoadImage {
                 .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .circleCrop();
-        if (mContext != null && !((Activity) mContext).isDestroyed()) {
+        if (mContext != null) {
             Glide.with(mContext)
                     .load(url)
                     .apply(options)
@@ -635,6 +635,22 @@ public class GlideDownLoadImage {
                 .circleCrop();
         if (!activity.isDestroyed()) {
             Glide.with(activity)
+                    .load(url)
+                    .apply(options)
+                    .into(view);
+        } else {
+            Log.i(TAG, "Picture loading failed,fragment is null");
+        }
+    }
+
+    public void loadCircleImage(Context mContext, String url, ImageView view,int resId) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(resId)
+                .error(resId)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .circleCrop();
+        if (mContext != null) {
+            Glide.with(mContext)
                     .load(url)
                     .apply(options)
                     .into(view);
