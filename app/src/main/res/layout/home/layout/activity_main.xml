@@ -23,10 +23,24 @@
         <RadioGroup
             android:id="@+id/home_radio_group"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_49"
+            android:layout_height="@dimen/distance_dp_50"
             android:background="@color/white"
             android:orientation="horizontal"
             android:saveEnabled="false">
+
+            <RadioButton
+                android:id="@+id/home_main"
+                style="@style/home_radiobutton"
+                android:drawableTop="@drawable/tab_home"
+                android:saveEnabled="false"
+                android:text="@string/home" />
+
+            <RadioButton
+                android:id="@+id/home_industry"
+                style="@style/home_radiobutton"
+                android:drawableTop="@drawable/tab_home"
+                android:saveEnabled="false"
+                android:text="@string/industry" />
 
             <RadioButton
                 android:id="@+id/home_msg"
@@ -35,13 +49,6 @@
                 android:saveEnabled="false"
                 android:text="@string/msg" />
 
-            <RadioButton
-                android:id="@+id/home_main"
-                style="@style/home_radiobutton"
-                android:drawableTop="@drawable/tab_home"
-                android:layout_marginRight="@dimen/distance_dp_90"
-                android:saveEnabled="false"
-                android:text="@string/home" />
 
             <RadioButton
                 android:id="@+id/home_mine"
@@ -52,24 +59,18 @@
         </RadioGroup>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/home_radio_group_layout"
-        android:background="@mipmap/round_line" />
-
-    <TextView
-        android:id="@+id/home_square"
-        style="@style/home_radiobutton_guangchang"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/distance_dp_110"
-        android:drawableTop="@mipmap/guangchang"
-        android:gravity="center_horizontal"
-        android:paddingLeft="15dp"
-        android:textColor="@color/app_7d7d7d"
-        android:paddingRight="15dp"
-        android:saveEnabled="false"
-        android:text="@string/guangchang" />
+    <!--<TextView-->
+    <!--android:id="@+id/home_square"-->
+    <!--style="@style/home_radiobutton_guangchang"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginRight="@dimen/distance_dp_110"-->
+    <!--android:drawableTop="@mipmap/guangchang"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:paddingLeft="15dp"-->
+    <!--android:textColor="@color/app_7d7d7d"-->
+    <!--android:paddingRight="15dp"-->
+    <!--android:saveEnabled="false"-->
+    <!--android:text="@string/guangchang" />-->
 
 </RelativeLayout>

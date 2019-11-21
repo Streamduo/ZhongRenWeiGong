@@ -41,10 +41,10 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     RadioButton homeMain;
     @BindView(R.id.home_mine)
     RadioButton homeMine;
-    @BindView(R.id.home_square)
-    TextView homeSquare;
     @BindView(R.id.home_msg)
     RadioButton homeMsg;
+    @BindView(R.id.home_industry)
+    RadioButton homeIndustry;
     private FactoryFragment factoryFragment;
 
     @Override
@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
 
     @Override
     public void setListener() {
-        homeSquare.setOnClickListener(this);
+        homeIndustry.setOnCheckedChangeListener(this);
         homeMsg.setOnCheckedChangeListener(this);
         homeMain.setOnCheckedChangeListener(this);
         homeMine.setOnCheckedChangeListener(this);
@@ -100,13 +100,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     @Override
     public void widgetClick(View v) {
         switch (v.getId()) {
-            case R.id.home_square:
-                factoryFragment.changeToFragment(2);
-                homeSquare.setTextColor(getResources().getColor(R.color.app_369EFF));
-                homeMsg.setChecked(false);
-                homeMain.setChecked(false);
-                homeMine.setChecked(false);
-                break;
+
         }
     }
 
@@ -114,18 +108,20 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         int index = 0;
 
         if (savedInstanceState == null) {
-            index = 2;
-            homeSquare.performClick();
+            index = 0;
         } else {
             index = savedInstanceState.getInt(SAVE_KEY_TAB_INDEX, 0);
         }
         switch (index) {
             case -1:
             case 0:
-                homeMsg.setChecked(true);
+                homeMain.setChecked(true);
                 break;
             case 1:
-                homeMain.setChecked(true);
+                homeIndustry.setChecked(true);
+                break;
+            case 2:
+                homeMsg.setChecked(true);
                 break;
             case 3:
                 homeMine.setChecked(true);
@@ -217,18 +213,17 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             return;
         }
         switch (compoundButton.getId()) {
-            case R.id.home_msg:
-                homeSquare.setTextColor(getResources().getColor(R.color.app_7d7d7d));
+            case R.id.home_main:
                 factoryFragment.changeToFragment(0);
                 break;
-            case R.id.home_main:
-                homeSquare.setTextColor(getResources().getColor(R.color.app_7d7d7d));
+            case R.id.home_industry:
                 factoryFragment.changeToFragment(1);
                 break;
+            case R.id.home_msg:
+                factoryFragment.changeToFragment(2);
+                break;
             case R.id.home_mine:
-                homeSquare.setTextColor(getResources().getColor(R.color.app_7d7d7d));
                 factoryFragment.changeToFragment(3);
-
                 break;
         }
     }

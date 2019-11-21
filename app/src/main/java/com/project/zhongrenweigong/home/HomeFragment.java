@@ -79,7 +79,6 @@ public class HomeFragment extends BaseFragment<HomePresent> {
         vpHomepage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override

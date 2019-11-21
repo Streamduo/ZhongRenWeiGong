@@ -226,6 +226,7 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         teShopTest.setOnClickListener(this);
         teShopAddress.setOnClickListener(this);
         teShopPhone.setOnClickListener(this);
+        teUploadVoucher.setOnClickListener(this);
     }
 
     @Override
@@ -271,6 +272,11 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                         .putString("address", address)
                         .putString("shopId", shopId)
                         .to(WeiGongTestActivity.class).launch();
+                break;
+            case R.id.te_upload_voucher:
+                Router.newIntent(BusinessHomePageActivity.this)
+                        .putString("shopId", shopId)
+                        .to(UploadVoucherActivity.class).launch();
                 break;
         }
     }

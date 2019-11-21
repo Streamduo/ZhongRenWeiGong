@@ -24,24 +24,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableRight="@drawable/suoyouzhaopian"
         android:drawablePadding="4dp"
+        android:drawableRight="@drawable/suoyouzhaopian"
         android:textColor="#333333"
         android:textSize="15dp"
         tools:text="标题" />
 
     <TextView
         android:id="@+id/picker_text_done"
-        android:layout_width="52dp"
-        android:layout_height="19dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical|right"
         android:layout_marginRight="12dp"
         android:background="@drawable/__picker_appgreen_10"
         android:clickable="false"
         android:gravity="center"
-        android:text="下一步"
         android:textColor="#fff"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:textSize="14dp"
-        android:visibility="visible" />
+        tools:text="下一步" />
 </android.support.v7.widget.Toolbar>

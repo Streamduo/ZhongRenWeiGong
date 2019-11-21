@@ -1,0 +1,26 @@
+别名: zhongrenwigong
+创建日期: 2019-10-17
+条目类型: PrivateKeyEntry
+密码:123456
+证书链长度: 1
+证书[1]:
+所有者: CN=众仁为公, OU=zhongrenwigong, O=zhongrenwigong, L=北京, ST=zhongrenwigong, C=000000
+发布者: CN=众仁为公, OU=zhongrenwigong, O=zhongrenwigong, L=北京, ST=zhongrenwigong, C=000000
+序列号: 1010a26c
+有效期开始日期: Thu Oct 17 13:26:11 CST 2019, 截止日期: Mon Oct 10 13:26:11 CST 2044
+证书指纹:
+         MD5: CC:96:B9:04:B1:83:A2:1E:56:F8:C6:9E:5B:7C:24:CC
+         SHA1: 0E:09:F8:AD:EB:C2:FB:06:E0:1D:1B:D1:BF:3A:3D:3C:3E:EB:6F:2C
+         SHA256: 59:34:4C:97:1A:66:1C:59:A7:ED:13:71:11:69:0B:32:C2:9D:33:76:22:53:F8:8F:48:7C:45:40:F2:9D:C2:0D
+         签名算法名称: SHA256withRSA
+         版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 23 33 15 AF C0 5C 13 34   3C F0 F5 1F DF C2 D2 36  #3...\.4<......6
+0010: EF 22 E5 B2                                        ."..
+]
+]

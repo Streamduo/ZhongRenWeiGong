@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".business.UploadVoucherActivity">
+
+    <include
+        layout="@layout/home_layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/ed_voucher_intro"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_167"
+        android:layout_marginLeft="@dimen/distance_dp_14"
+        android:layout_marginTop="@dimen/distance_dp_15"
+        android:background="@null"
+        android:gravity="left"
+        android:hint="文字描述，字数要求不超过200字。"
+        android:maxLength="200"
+        android:textColor="@color/app_777777"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_img_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_17"
+        android:layout_marginRight="@dimen/distance_dp_17"
+        android:overScrollMode="never" />
+
+    <TextView
+        android:id="@+id/te_upload"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_44"
+        android:layout_marginLeft="@dimen/distance_dp_20"
+        android:layout_marginRight="@dimen/distance_dp_20"
+        android:layout_marginTop="@dimen/distance_dp_45"
+        android:background="@drawable/bg_bac_23a0f2_22"
+        android:gravity="center"
+        android:text="确定上传"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_17" />
+</LinearLayout>

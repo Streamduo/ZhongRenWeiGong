@@ -72,7 +72,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
-
         findViewById(R.id.picker_image_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +79,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
             }
         });
         pickerTextDone = (TextView) findViewById(R.id.picker_text_done);
-
+        pickerTextDone.setText("确定");
         maxCount = getIntent().getIntExtra(EXTRA_MAX_COUNT, DEFAULT_MAX_COUNT);
         initCount = getIntent().getIntExtra(EXTRA_INIT_COUNT, DEFAULT_INIT_COUNT);
         columnNumber = getIntent().getIntExtra(EXTRA_GRID_COLUMN, DEFAULT_COLUMN_NUMBER);
@@ -164,9 +163,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
 //      pickerTextDone.setEnabled(false);
 //    }
     }
-
-
-
 
     /**
      * Overriding this method allows us to run our exit animation first, then exiting
