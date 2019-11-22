@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_fafafa"
+    android:orientation="vertical"
+    tools:context=".home.MessageListActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_new_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_25" />
+
+    <TextView
+        android:id="@+id/te_clear_unread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:drawableLeft="@mipmap/msg_clear"
+        android:drawablePadding="@dimen/distance_dp_5"
+        android:paddingBottom="@dimen/distance_dp_10"
+        android:paddingLeft="@dimen/distance_dp_16"
+        android:paddingRight="@dimen/distance_dp_16"
+        android:paddingTop="@dimen/distance_dp_10"
+        android:text="清除未读"
+        android:textColor="@color/app_text_66"
+        android:textSize="@dimen/distance_dp_14" />
+
+
+    <com.lijiankun24.shadowlayout.ShadowLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:shadowColor="#4D9B9B9B"
+        app:shadowDx="@dimen/distance_dp_2"
+        app:shadowDy="@dimen/distance_dp_2"
+        app:shadowRadius="@dimen/distance_dp_10"
+        app:shadowShape="rectangle"
+        app:shadowSide="all">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_110"
+            android:background="@drawable/bg_bac_white_10"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rl_msg_sys"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_msg_sys"
+                        android:layout_width="@dimen/distance_dp_47"
+                        android:layout_height="@dimen/distance_dp_46"
+                        android:background="@mipmap/msg_sys"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2" />
+
+                    <TextView
+                        android:id="@+id/te_msg_sys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/distance_dp_13"
+                        android:text="系统消息"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/te_msg_sys_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/distance_dp_35"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:background="@mipmap/round_red"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/distance_dp_1"
+                    android:paddingLeft="@dimen/distance_dp_2"
+                    android:paddingRight="@dimen/distance_dp_2"
+                    android:paddingTop="@dimen/distance_dp_1"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_msg_activity"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_msg_activity"
+                        android:layout_width="@dimen/distance_dp_47"
+                        android:layout_height="@dimen/distance_dp_46"
+                        android:background="@mipmap/msg_hudong" />
+
+                    <TextView
+                        android:id="@+id/te_msg_activity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/distance_dp_13"
+                        android:text="活动消息"
+                        android:textColor="@color/app_text_66"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/te_msg_activity_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/distance_dp_35"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:background="@mipmap/round_red"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/distance_dp_1"
+                    android:paddingLeft="@dimen/distance_dp_2"
+                    android:paddingRight="@dimen/distance_dp_2"
+                    android:paddingTop="@dimen/distance_dp_1"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_msg_voucher"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_msg_voucher"
+                        android:layout_width="@dimen/distance_dp_47"
+                        android:layout_height="@dimen/distance_dp_46"
+                        android:background="@mipmap/msg_pingzheng" />
+
+                    <TextView
+                        android:id="@+id/te_msg_voucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/distance_dp_13"
+                        android:text="凭证消息"
+                        android:textColor="@color/app_text_66"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/te_msg_voucher_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/distance_dp_35"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:background="@mipmap/round_red"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/distance_dp_1"
+                    android:paddingLeft="@dimen/distance_dp_2"
+                    android:paddingRight="@dimen/distance_dp_2"
+                    android:paddingTop="@dimen/distance_dp_1"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_10" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.lijiankun24.shadowlayout.ShadowLayout>
+
+    <com.project.zhongrenweigong.view.MyViewPager
+        android:id="@+id/vp_msg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

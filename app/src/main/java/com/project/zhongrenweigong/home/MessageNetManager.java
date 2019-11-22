@@ -3,8 +3,10 @@ package com.project.zhongrenweigong.home;
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.business.bean.WeiGongTestBean;
 import com.project.zhongrenweigong.home.bean.AddressBean;
+import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
+import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 
 import java.util.List;
 
@@ -59,5 +61,61 @@ public interface MessageNetManager {
     @POST()
     Call<BaseModel> uploadCardImage(@Url() String url, @Query("text") String text, @Query("shopId") String shopId,
                                     @Part List<MultipartBody.Part> list);
+
+    /**
+     * 获取新闻信息
+     *
+     * @return
+     */
+    @POST("getNewsList")
+    Flowable<HomeRecommendBean> getNewsList(@Body RequestBody body);
+
+
+    /**
+     * 获取系统消息
+     *
+     * @return
+     */
+    @POST("getSystemMessages")
+    Flowable<SystemMessageBean> getSystemMessages(@Body RequestBody body);
+
+    /**
+     * 获取活动消息
+     *
+     * @return
+     */
+    @POST("getActiveMessage")
+    Flowable<SystemMessageBean> getActiveMessage(@Body RequestBody body);
+
+    /**
+     * 获取凭证消息
+     *
+     * @return
+     */
+    @POST("getVoucherMessage")
+    Flowable<SystemMessageBean> getVoucherMessage(@Body RequestBody body);
+
+    /**
+     * @author fuduo
+     * @time 2018/1/21  10:38
+     * @describe 上传举报资料图片
+     */
+    @Multipart
+    @POST()
+    Call<BaseModel> uploadReport(@Url() String url,
+                                 @Query("journalismId") String journalismId,
+                                 @Query("content") String content,
+                                 @Query("detail") String detail,
+                                 @Part List<MultipartBody.Part> list);
+
+    /**
+     * @author fuduo
+     * @time 2018/1/21  10:38
+     * @describe 上传举报资料图片
+     */
+    @POST()
+    Call<BaseModel> uploadReport(@Url() String url,
+                                 @Body RequestBody Body);
+
 
 }

@@ -49,6 +49,7 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
     public static final int CHOSE_CARD = 1001;
     public static final int CHOSE_CARD_1 = 1007;
     public static final int CHOSE_PHOTO = 1002;
+    public static final int CHOSE_IMAGE = 1003;
 
     public static final int TREND_SELECT_IMAGE = 1006;
 
@@ -78,6 +79,12 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
         Intent intent = new Intent(activity, ActivitySelectImage.class);
         intent.putExtra("type", "card1");
         activity.startActivityForResult(intent, CHOSE_CARD_1);
+    }
+
+    public static void selectImageForImage(Activity activity) {
+        Intent intent = new Intent(activity, ActivitySelectImage.class);
+        intent.putExtra("type", "image");
+        activity.startActivityForResult(intent, CHOSE_IMAGE);
     }
 
     public static void selectImageForPhoto(Activity activity) {
@@ -204,6 +211,8 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
                 startActivityForResult(intent, CHOSE_CARD_1);
             } else  if (type.equals("photo")) {
                 startActivityForResult(intent, CHOSE_PHOTO);
+            } else  if (type.equals("image")) {
+                startActivityForResult(intent, CHOSE_IMAGE);
             } else  if (type.equals(TYPE_TREND)) {
                 startActivityForResult(intent, TREND_SELECT_IMAGE);
             } else {
@@ -285,6 +294,7 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
                 case CHOSE_CARD:
                 case CHOSE_CARD_1:
                 case CHOSE_PHOTO:
+                case CHOSE_IMAGE:
                 case SCAN_OPEN_PHONE:
                     if (data != null && data.getData() != null) {
                         Log.e(TAG, "onActivityResult: SCAN_OPEN_PHONE:" + data.getData().toString());
@@ -325,6 +335,8 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
                 setResult(CHOSE_CARD_1, intent);
             } else if (type.equals("photo")) {
                 setResult(CHOSE_PHOTO, intent);
+            }  else if (type.equals("image")) {
+                setResult(CHOSE_IMAGE, intent);
             } else if (type.equals(TYPE_TREND)) {
                 setResult(TREND_SELECT_IMAGE, intent);
             } else {
@@ -430,6 +442,8 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
                 finish(uri, imgFile == null ? "" : imgFile.getAbsolutePath());
             } else if (type.equals("photo")) {
                 cropPhoto(uri, false);
+            } else if (type.equals("image")) {
+                finish(uri, imgFile == null ? "" : imgFile.getAbsolutePath());
             } else  if (type.equals(TYPE_TREND)) {
                 finish(uri, imgFile == null ? "" : imgFile.getAbsolutePath());
             } else {

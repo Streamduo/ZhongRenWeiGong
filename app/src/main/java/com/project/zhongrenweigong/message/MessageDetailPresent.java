@@ -1,4 +1,4 @@
-package com.project.zhongrenweigong.home;
+package com.project.zhongrenweigong.message;
 
 import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.net.BusinessApi;
@@ -20,7 +20,7 @@ import okhttp3.RequestBody;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class MessageDetailPresent extends XPresent<MessageDetailActivity> {
+public class MessageDetailPresent extends XPresent<SystemMessageDetailActivity> {
 
     public void getMessageDetail(String typeId) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();

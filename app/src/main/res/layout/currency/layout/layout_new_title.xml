@@ -9,17 +9,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/new_black_back"
-        android:paddingBottom="@dimen/distance_dp_10"
+        android:paddingBottom="@dimen/distance_dp_15"
         android:paddingLeft="20dp"
         android:paddingRight="@dimen/distance_dp_20"
-        android:paddingTop="@dimen/distance_dp_10" />
+        android:paddingTop="@dimen/distance_dp_15" />
 
     <TextView
         android:id="@+id/te_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_15"
         android:textColor="@color/FF000000"
         android:textSize="@dimen/distance_dp_18" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/distance_dp_20"
-        android:layout_marginTop="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_15"
         android:text=""
         android:textColor="@color/app_text_33"
         android:textSize="@dimen/distance_dp_15"

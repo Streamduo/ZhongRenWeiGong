@@ -113,12 +113,17 @@
     <color name="app_ACACAC">#FFACACAC</color>
     <color name="app_23A0F2">#FF23A0F2</color>
     <color name="app_bcbcbc">#bcbcbc</color>
+    <color name="app_ADADAD">#FFADADAD</color>
+    <color name="app_323232">#323232</color>
+    <color name="app_C6DDF3">#FFC6DDF3</color>
+    <color name="app_339AFF">#FF339AFF</color>
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>
     <color name="colorPrimary">#33aaff</color>
     <color name="viewfinder_mask">#60000000</color>
     <color name="FF000000">#FF000000</color>
+    <color name="FF0F0F0F">#FF0F0F0F</color>
 
     <!--二维码扫描-->
     <color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->

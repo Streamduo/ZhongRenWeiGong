@@ -42,16 +42,24 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     ImageView imgVideoNew;
     @BindView(R.id.video_btn_layout)
     RelativeLayout videoBtnLayout;
-    @BindView(R.id.msg_tx)
-    TextView msgTx;
-    @BindView(R.id.msg_bottom_line)
-    View msgBottomLine;
-    @BindView(R.id.msg_btn_layout)
-    RelativeLayout msgBtnLayout;
+    //    @BindView(R.id.msg_tx)
+//    TextView msgTx;
+//    @BindView(R.id.msg_bottom_line)
+//    View msgBottomLine;
+//    @BindView(R.id.msg_btn_layout)
+//    RelativeLayout msgBtnLayout;
     @BindView(R.id.tuijian_bottom_line)
     View tuijianBottomLine;
     @BindView(R.id.video_bottom_line)
     View videoBottomLine;
+    @BindView(R.id.news_tx)
+    TextView newsTx;
+    @BindView(R.id.news_bottom_line)
+    View newsBottomLine;
+    @BindView(R.id.img_news_new)
+    ImageView imgNewsNew;
+    @BindView(R.id.news_btn_layout)
+    RelativeLayout newsBtnLayout;
 
     public static HomeFragment getInstance() {
         HomeFragment homeFragment = new HomeFragment();
@@ -104,34 +112,43 @@ public class HomeFragment extends BaseFragment<HomePresent> {
             tuijianTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
             tuijianTx.setTextSize(19);
             tuijianBottomLine.setVisibility(View.VISIBLE);
+            newsTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
+            newsTx.setTextSize(17);
+            newsBottomLine.setVisibility(View.GONE);
             videoTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
             videoTx.setTextSize(17);
             videoBottomLine.setVisibility(View.GONE);
-            msgTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
-            msgTx.setTextSize(17);
-            msgBottomLine.setVisibility(View.GONE);
+//            msgTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
+//            msgTx.setTextSize(17);
+//            msgBottomLine.setVisibility(View.GONE);
             vpHomepage.setCurrentItem(0);
         } else if (position == 1) {
             tuijianTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
             tuijianTx.setTextSize(17);
             tuijianBottomLine.setVisibility(View.GONE);
-            videoTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
-            videoTx.setTextSize(19);
-            videoBottomLine.setVisibility(View.VISIBLE);
-            msgTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
-            msgTx.setTextSize(17);
-            msgBottomLine.setVisibility(View.GONE);
+            newsTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
+            newsTx.setTextSize(19);
+            newsBottomLine.setVisibility(View.VISIBLE);
+            videoTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
+            videoTx.setTextSize(17);
+            videoBottomLine.setVisibility(View.GONE);
+//            msgTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
+//            msgTx.setTextSize(19);
+//            msgBottomLine.setVisibility(View.VISIBLE);
             vpHomepage.setCurrentItem(1);
         } else if (position == 2) {
             tuijianTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
             tuijianTx.setTextSize(17);
             tuijianBottomLine.setVisibility(View.GONE);
-            videoTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
-            videoTx.setTextSize(17);
-            videoBottomLine.setVisibility(View.GONE);
-            msgTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
-            msgTx.setTextSize(19);
-            msgBottomLine.setVisibility(View.VISIBLE);
+            newsTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
+            newsTx.setTextSize(17);
+            newsBottomLine.setVisibility(View.GONE);
+            videoTx.setTextColor(getActivity().getResources().getColor(R.color.FF000000));
+            videoTx.setTextSize(19);
+            videoBottomLine.setVisibility(View.VISIBLE);
+//            msgTx.setTextColor(getActivity().getResources().getColor(R.color.app_text_99));
+//            msgTx.setTextSize(17);
+//            msgBottomLine.setVisibility(View.GONE);
             vpHomepage.setCurrentItem(2);
         }
     }
@@ -149,22 +166,26 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     @Override
     public void setListener() {
         tuijianBtnLayout.setOnClickListener(this);
+        newsBtnLayout.setOnClickListener(this);
         videoBtnLayout.setOnClickListener(this);
-        msgBtnLayout.setOnClickListener(this);
+//        msgBtnLayout.setOnClickListener(this);
     }
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tuijian_btn_layout:
                 select(0);
                 break;
-            case R.id.video_btn_layout:
+            case R.id.news_btn_layout:
                 select(1);
                 break;
-            case R.id.msg_btn_layout:
+            case R.id.video_btn_layout:
                 select(2);
                 break;
+//            case R.id.msg_btn_layout:
+//                select(2);
+//                break;
         }
     }
 

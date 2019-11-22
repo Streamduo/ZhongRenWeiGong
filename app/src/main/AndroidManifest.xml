@@ -108,7 +108,7 @@
             android:name=".home.MessageListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".home.MessageDetailActivity"
+            android:name=".message.SystemMessageDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".currency.ActivitySelectImage"
@@ -161,7 +161,17 @@
         <activity
             android:name=".business.car.CarListActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".business.UploadVoucherActivity"></activity>
+        <activity android:name=".business.UploadVoucherActivity" />
+        <activity android:name=".message.VoucherMessageDetailActivity" />
+        <activity
+            android:name=".home.NewsReportActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".business.house.HouseListActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".business.hotel.HotelListActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

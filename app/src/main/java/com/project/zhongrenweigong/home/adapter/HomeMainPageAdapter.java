@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.project.zhongrenweigong.home.HomeNewsFragment;
 import com.project.zhongrenweigong.home.HomeRecommendFragment;
 import com.project.zhongrenweigong.home.HomeVideoFragment;
 import com.project.zhongrenweigong.home.MessageFragment;
@@ -11,7 +12,7 @@ import com.project.zhongrenweigong.square.VideoSquareFragement;
 
 
 public class HomeMainPageAdapter extends FragmentPagerAdapter {
-    private String[] titles = new String[]{"推荐","视频","消息"};
+    private String[] titles = new String[]{"推荐","新闻","视频"};//,"消息"
 
     public HomeMainPageAdapter(FragmentManager fm) {
         super(fm);
@@ -23,9 +24,9 @@ public class HomeMainPageAdapter extends FragmentPagerAdapter {
             case 0:
                 return HomeRecommendFragment.getInstance(0);
             case 1:
-                return HomeVideoFragment.getInstance(1);
+                return HomeNewsFragment.getInstance(1);
             case 2:
-                return new MessageFragment();
+                return HomeVideoFragment.getInstance(2);
         }
         return null;
     }

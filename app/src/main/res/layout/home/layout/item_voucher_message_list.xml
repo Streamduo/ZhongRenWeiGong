@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/distance_dp_15"
+        android:paddingLeft="@dimen/distance_dp_15"
+        android:paddingRight="@dimen/distance_dp_15"
+        android:paddingTop="@dimen/distance_dp_21">
+
+        <ImageView
+            android:id="@+id/img_msg"
+            android:layout_width="@dimen/distance_dp_61"
+            android:layout_height="@dimen/distance_dp_61"
+            tools:background="@mipmap/small_renzheng_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_20"
+            android:layout_toRightOf="@+id/img_msg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/te_msg_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_17"
+                android:textStyle="bold"
+                tools:text="二狗 ID：245245" />
+
+            <TextView
+                android:id="@+id/te_voucher_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_3"
+                android:textColor="@color/app_text_99"
+                android:textSize="@dimen/distance_dp_14"
+                tools:text="上传凭证审核通过" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_8"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/te_mechanism_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/blue_address"
+                    android:drawablePadding="@dimen/distance_dp_5"
+                    android:text="北京市朝阳区劲松"
+                    android:textColor="@color/app_ACACAC"
+                    android:textSize="@dimen/distance_dp_10" />
+
+                <TextView
+                    android:id="@+id/te_mechanism_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/distance_dp_13"
+                    android:drawableLeft="@mipmap/shop_time"
+                    android:drawablePadding="@dimen/distance_dp_5"
+                    android:text="2019-3-2  11:32"
+                    android:textColor="@color/app_ACACAC"
+                    android:textSize="@dimen/distance_dp_10" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_voucher_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            tools:background="@mipmap/msg_shenghe_ok" />
+
+        <View
+            android:id="@+id/view_red_little"
+            android:layout_width="@dimen/distance_dp_15"
+            android:layout_height="@dimen/distance_dp_15"
+            android:layout_marginLeft="@dimen/distance_dp_49"
+            android:background="@mipmap/round_red"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginLeft="@dimen/distance_dp_84"
+        android:background="@color/app_bcbcbc" />
+</LinearLayout>

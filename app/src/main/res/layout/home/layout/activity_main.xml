@@ -73,4 +73,22 @@
     <!--android:saveEnabled="false"-->
     <!--android:text="@string/guangchang" />-->
 
+    <TextView
+        android:id="@+id/msg_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/distance_dp_30"
+        android:layout_marginRight="@dimen/distance_dp_125"
+        android:background="@mipmap/round_red"
+        android:paddingBottom="@dimen/distance_dp_1"
+        android:paddingLeft="@dimen/distance_dp_2"
+        android:paddingRight="@dimen/distance_dp_2"
+        android:paddingTop="@dimen/distance_dp_1"
+        android:text="99"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_10" />
+
 </RelativeLayout>

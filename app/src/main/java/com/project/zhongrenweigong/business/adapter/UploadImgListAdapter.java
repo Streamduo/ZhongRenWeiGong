@@ -16,6 +16,8 @@ import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
  */
 public class UploadImgListAdapter extends BaseQuickAdapter<UploadImgBean, BaseViewHolder> {
 
+    private boolean isShowDelete = true;
+
     public UploadImgListAdapter(int layoutResId) {
         super(layoutResId);
     }
@@ -29,7 +31,12 @@ public class UploadImgListAdapter extends BaseQuickAdapter<UploadImgBean, BaseVi
             GlideDownLoadImage.getInstance().loadImage(mContext, item.getImgUri(),
                     (ImageView) helper.getView(R.id.img_upload), R.mipmap.vegetable_default);
         }
+        helper.setVisible(R.id.img_delete, isShowDelete);
         helper.addOnClickListener(R.id.img_delete);
         helper.addOnClickListener(R.id.line_add);
+    }
+
+    public void setShowDelete(boolean showDelete) {
+        isShowDelete = showDelete;
     }
 }

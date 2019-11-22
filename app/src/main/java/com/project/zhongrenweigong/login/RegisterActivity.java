@@ -387,13 +387,13 @@ public class RegisterActivity extends BaseActivity<RegisterPresent> {
         call.enqueue(new Callback<BaseModel>() {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
-                String msg = response.body().getMsg();
-//                int code = response.body().getCode();
-                showToastShort(msg);
-//                if (code == 200) {
-//
-//                }
                 LoadingDialog.dismiss(RegisterActivity.this);
+                if (response.isSuccessful()) {
+                    String msg = response.body().getMsg();
+                    showToastShort(msg);
+                }else {
+                    showToastShort("请检查网络设置");
+                }
             }
 
             @Override

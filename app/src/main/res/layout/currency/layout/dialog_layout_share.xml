@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:background="@color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/te_cancel"
         android:layout_marginLeft="@dimen/distance_dp_7"
         android:layout_marginRight="@dimen/distance_dp_7"
         android:background="@drawable/bg_bac_white_10"
@@ -58,7 +58,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_13"
+                    android:drawablePadding="@dimen/distance_dp_14"
                     android:drawableTop="@mipmap/share_wx"
                     android:gravity="center_horizontal"
                     android:text="微信"
@@ -101,10 +101,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_13"
+                    android:drawablePadding="@dimen/distance_dp_14"
                     android:drawableTop="@mipmap/share_wb"
                     android:gravity="center_horizontal"
-                    android:text="空间"
+                    android:text="微博"
                     android:textColor="@color/FF000000"
                     android:textSize="@dimen/distance_dp_10" />
 
@@ -128,18 +128,25 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/te_cancel"
+    <LinearLayout
+        android:id="@+id/line_cancel"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_48"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/distance_dp_10"
-        android:layout_marginLeft="@dimen/distance_dp_7"
-        android:layout_marginRight="@dimen/distance_dp_7"
-        android:layout_marginTop="@dimen/distance_dp_11"
-        android:background="@drawable/bg_bac_white_10"
-        android:gravity="center"
-        android:text="取消"
-        android:textColor="@color/FF000000"
-        android:textSize="@dimen/distance_dp_17" />
-</RelativeLayout>
+        android:layout_height="@dimen/distance_dp_58"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/te_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_48"
+            android:layout_marginBottom="@dimen/distance_dp_10"
+            android:layout_marginLeft="@dimen/distance_dp_7"
+            android:layout_marginRight="@dimen/distance_dp_7"
+            android:background="@drawable/bg_bac_white_10"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/FF000000"
+            android:textSize="@dimen/distance_dp_17" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,34 +1,44 @@
-package com.project.zhongrenweigong.home;
+package com.project.zhongrenweigong.message;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
-import com.project.zhongrenweigong.home.adapter.MessageListAdapter;
-import com.project.zhongrenweigong.home.bean.MessageDataBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.util.UtilsStyle;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
+public class SystemMessageDetailActivity extends BaseActivity<MessageDetailPresent> {
 
     @BindView(R.id.te_back)
     TextView teBack;
     @BindView(R.id.te_title)
     TextView teTitle;
-    @BindView(R.id.xitong_msg_list)
-    RecyclerView xitongMsgList;
+    @BindView(R.id.te_msg_title)
+    TextView teMsgTitle;
+    @BindView(R.id.img_sender_head)
+    ImageView imgSenderHead;
+    @BindView(R.id.te_send_platform)
+    TextView teSendPlatform;
+    @BindView(R.id.te_send_date)
+    TextView teSendDate;
+    @BindView(R.id.img_mechanism_head)
+    ImageView imgMechanismHead;
+    @BindView(R.id.te_mechanism_title)
+    TextView teMechanismTitle;
+    @BindView(R.id.te_mechanism_intro)
+    TextView teMechanismIntro;
+    @BindView(R.id.te_mechanism_address)
+    TextView teMechanismAddress;
+    @BindView(R.id.te_mechanism_phone)
+    TextView teMechanismPhone;
     private String typeId;
-    private MessageListAdapter messageListDetailAdapter;
 
     @Override
     public void initView() {
@@ -36,14 +46,7 @@ public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
             setFull(false);
         }
         typeId = getIntent().getStringExtra("typeId");
-        if (typeId.equals("0")) {
-            teTitle.setText("系统通知");
-        } else {
-            teTitle.setText("赔付通知");
-        }
-        xitongMsgList.setLayoutManager(new LinearLayoutManager(this));
-        messageListDetailAdapter = new MessageListAdapter(R.layout.item_xitong_msg_list);
-        xitongMsgList.setAdapter(messageListDetailAdapter);
+
     }
 
     @Override
@@ -88,10 +91,7 @@ public class MessageDetailActivity extends BaseActivity<MessageDetailPresent> {
     }
 
     public void setData(MessageListBean messageListBean) {
-        List<MessageDataBean> data = messageListBean.getData();
-        if (data != null && data.size() > 0) {
-            messageListDetailAdapter.setNewData(data);
-        }
+
     }
 
 }

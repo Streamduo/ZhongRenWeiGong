@@ -17,6 +17,8 @@ import com.project.zhongrenweigong.baidumap.LocationService;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessListActivity;
 import com.project.zhongrenweigong.business.car.CarListActivity;
+import com.project.zhongrenweigong.business.hotel.HotelListActivity;
+import com.project.zhongrenweigong.business.house.HouseListActivity;
 import com.project.zhongrenweigong.business.teach.TeachListActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.SearchBusinessActivity;
@@ -178,7 +180,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 break;
             case R.id.te_house:
                 Router.newIntent(getActivity()).putInt(TYPE, 3)
-                        .to(BusinessListActivity.class)
+                        .to(HouseListActivity.class)
                         .launch();
                 break;
             case R.id.te_car:
@@ -193,7 +195,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 break;
             case R.id.te_travel:
                 Router.newIntent(getActivity()).putInt(TYPE, 6)
-                        .to(BusinessListActivity.class)
+                        .to(HotelListActivity.class)
                         .launch();
                 break;
 
