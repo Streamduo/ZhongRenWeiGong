@@ -1,11 +1,13 @@
 package com.project.zhongrenweigong.message.bean;
 
+import java.io.Serializable;
+
 /**
  * 作者：Fuduo on 2019/11/21 18:07
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class MessageListsBean {
+public class MessageListsBean implements Serializable {
     //系统基础参数
     public String messageId;
     public String messageMainId;

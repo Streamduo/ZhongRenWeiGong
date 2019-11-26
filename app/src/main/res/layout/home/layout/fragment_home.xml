@@ -117,43 +117,43 @@
         </RelativeLayout>
 
         <!--<RelativeLayout-->
-            <!--android:id="@+id/msg_btn_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1">-->
+        <!--android:id="@+id/msg_btn_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1">-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/msg_tx"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:text="消息"-->
-                <!--android:textColor="@color/app_text_99"-->
-                <!--android:textSize="@dimen/distance_dp_17" />-->
+        <!--<TextView-->
+        <!--android:id="@+id/msg_tx"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:text="消息"-->
+        <!--android:textColor="@color/app_text_99"-->
+        <!--android:textSize="@dimen/distance_dp_17" />-->
 
-            <!--<View-->
-                <!--android:id="@+id/msg_bottom_line"-->
-                <!--android:layout_width="@dimen/distance_dp_30"-->
-                <!--android:layout_height="@dimen/distance_dp_2"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:background="@color/app_23A0F2"-->
-                <!--android:visibility="gone" />-->
+        <!--<View-->
+        <!--android:id="@+id/msg_bottom_line"-->
+        <!--android:layout_width="@dimen/distance_dp_30"-->
+        <!--android:layout_height="@dimen/distance_dp_2"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@color/app_23A0F2"-->
+        <!--android:visibility="gone" />-->
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_marginRight="@dimen/distance_dp_6"-->
-                <!--android:layout_marginTop="@dimen/distance_dp_10"-->
-                <!--android:background="@mipmap/round_red"-->
-                <!--android:paddingBottom="@dimen/distance_dp_2"-->
-                <!--android:paddingLeft="@dimen/distance_dp_3"-->
-                <!--android:paddingRight="@dimen/distance_dp_3"-->
-                <!--android:paddingTop="@dimen/distance_dp_2"-->
-                <!--android:text="10"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="@dimen/distance_dp_10" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginRight="@dimen/distance_dp_6"-->
+        <!--android:layout_marginTop="@dimen/distance_dp_10"-->
+        <!--android:background="@mipmap/round_red"-->
+        <!--android:paddingBottom="@dimen/distance_dp_2"-->
+        <!--android:paddingLeft="@dimen/distance_dp_3"-->
+        <!--android:paddingRight="@dimen/distance_dp_3"-->
+        <!--android:paddingTop="@dimen/distance_dp_2"-->
+        <!--android:text="10"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="@dimen/distance_dp_10" />-->
 
         <!--</RelativeLayout>-->
     </LinearLayout>

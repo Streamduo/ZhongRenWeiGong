@@ -5,7 +5,7 @@ package com.project.zhongrenweigong.business.bean;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class CarDataBean {
+public class IndustryDataBean {
     public String shopId;
     public String shopName;
     public String mcId;

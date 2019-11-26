@@ -29,6 +29,12 @@ public class SystemMessageListAdapter extends BaseQuickAdapter<MessageListsBean,
         } else {
             helper.setText(R.id.te_msg_name, item.messageMain);
         }
+        String isRead = item.isRead;
+        if (isRead.equals("0")) {
+            helper.setTextColor(R.id.te_msg_name, mContext.getResources().getColor(R.color.FF0F0F0F));
+        } else {
+            helper.setTextColor(R.id.te_msg_name, mContext.getResources().getColor(R.color.app_ADADAD));
+        }
         helper.setText(R.id.te_msg_intro, item.messageIntro);
         helper.setText(R.id.te_msg_date, item.time);
     }

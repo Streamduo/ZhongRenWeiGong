@@ -20,6 +20,7 @@ import com.project.zhongrenweigong.home.adapter.HomeRecommedListAdapter;
 import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.NewsDataBean;
 import com.project.zhongrenweigong.home.bean.NewsDataMultiItemEntity;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -216,6 +217,7 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeRecommedListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

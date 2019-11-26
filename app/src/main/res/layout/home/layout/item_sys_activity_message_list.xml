@@ -63,5 +63,5 @@
         android:layout_height="@dimen/distance_dp_1"
         android:layout_marginLeft="@dimen/distance_dp_12"
         android:layout_marginRight="@dimen/distance_dp_15"
-        android:background="@color/app_bcbcbc" />
+        android:background="@color/app_e8e8e8" />
 </LinearLayout>

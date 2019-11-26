@@ -9,7 +9,7 @@ import java.util.List;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class CarListBean extends BaseModel {
+public class IndustryListBean extends BaseModel {
 
     /**
      * shopId : 22234
@@ -33,13 +33,13 @@ public class CarListBean extends BaseModel {
      * lat :
      */
 
-    private List<CarDataBean> data;
+    private List<IndustryDataBean> data;
 
-    public List<CarDataBean> getData() {
+    public List<IndustryDataBean> getData() {
         return data;
     }
 
-    public void setData(List<CarDataBean> data) {
+    public void setData(List<IndustryDataBean> data) {
         this.data = data;
     }
 }

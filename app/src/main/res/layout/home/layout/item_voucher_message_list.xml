@@ -94,5 +94,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/distance_dp_1"
         android:layout_marginLeft="@dimen/distance_dp_84"
-        android:background="@color/app_bcbcbc" />
+        android:background="@color/app_e8e8e8" />
 </LinearLayout>

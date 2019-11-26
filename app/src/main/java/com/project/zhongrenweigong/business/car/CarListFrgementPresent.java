@@ -1,8 +1,6 @@
 package com.project.zhongrenweigong.business.car;
 
-import com.project.zhongrenweigong.business.bean.CarListBean;
-import com.project.zhongrenweigong.business.bean.TeacherListBean;
-import com.project.zhongrenweigong.business.teach.TeachListFragment;
+import com.project.zhongrenweigong.business.bean.IndustryListBean;
 import com.project.zhongrenweigong.net.BusinessApi;
 import com.project.zhongrenweigong.util.GsonProvider;
 
@@ -35,10 +33,10 @@ public class CarListFrgementPresent extends XPresent<CarListFragment> {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
         BusinessApi.businessNetManager().getVehicle(requestBody)
-                .compose(XApi.<CarListBean>getApiTransformer())
-                .compose(XApi.<CarListBean>getScheduler())
-                .compose(getV().<CarListBean>bindToLifecycle())
-                .subscribe(new ApiSubscriber<CarListBean>() {
+                .compose(XApi.<IndustryListBean>getApiTransformer())
+                .compose(XApi.<IndustryListBean>getScheduler())
+                .compose(getV().<IndustryListBean>bindToLifecycle())
+                .subscribe(new ApiSubscriber<IndustryListBean>() {
 
                     @Override
                     protected void onFail(NetError error) {
@@ -47,11 +45,11 @@ public class CarListFrgementPresent extends XPresent<CarListFragment> {
                     }
 
                     @Override
-                    public void onNext(CarListBean carListBean) {
-                        if (carListBean.getCode() == 200) {
-                            getV().setCarData(carListBean);
+                    public void onNext(IndustryListBean industryListBean) {
+                        if (industryListBean.getCode() == 200) {
+                            getV().setCarData(industryListBean);
                         } else {
-                            ToastManager.showShort(getV().getContext(), carListBean.msg);
+                            ToastManager.showShort(getV().getContext(), industryListBean.msg);
                         }
                     }
                 });

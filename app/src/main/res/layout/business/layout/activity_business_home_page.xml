@@ -94,7 +94,7 @@
                             android:id="@+id/te_legal_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="小明"
+                            tools:text="小明"
                             android:textColor="@color/FF000000"
                             android:textSize="@dimen/distance_dp_15"
                             android:textStyle="bold" />
@@ -105,7 +105,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/te_legal_name"
                             android:layout_marginTop="@dimen/distance_dp_3"
-                            android:text="ID:113456789"
+                            tools:text="ID:113456789"
                             android:textColor="@color/app_272626"
                             android:textSize="@dimen/distance_dp_10" />
 
@@ -115,7 +115,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/te_legal_id"
                             android:layout_marginTop="@dimen/distance_dp_3"
-                            android:text="商家认证:已认证"
+                            tools:text="商家认证:已认证"
                             android:textColor="@color/FF000000"
                             android:textSize="@dimen/distance_dp_10" />
                     </RelativeLayout>
@@ -236,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/distance_dp_10"
                         android:lineSpacingExtra="5dp"
-                        android:text="  火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火"
+                        tools:text="  火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火锅好吃，火"
                         android:textColor="@color/FF000000"
                         android:textSize="@dimen/distance_dp_15" />
 

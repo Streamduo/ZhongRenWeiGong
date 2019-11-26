@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".home.MainActivity">
 
     <FrameLayout
@@ -38,17 +39,22 @@
             <RadioButton
                 android:id="@+id/home_industry"
                 style="@style/home_radiobutton"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/tab_industry"
                 android:saveEnabled="false"
                 android:text="@string/industry" />
 
             <RadioButton
+                android:id="@+id/home_center"
+                style="@style/home_radiobutton"
+                android:drawableTop="@drawable/tab_center"
+                android:saveEnabled="false" />
+
+            <RadioButton
                 android:id="@+id/home_msg"
                 style="@style/home_radiobutton"
-                android:drawableTop="@drawable/tab_home"
+                android:drawableTop="@drawable/tab_message"
                 android:saveEnabled="false"
                 android:text="@string/msg" />
-
 
             <RadioButton
                 android:id="@+id/home_mine"
@@ -79,15 +85,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/distance_dp_30"
-        android:layout_marginRight="@dimen/distance_dp_125"
+        android:layout_marginBottom="@dimen/distance_dp_35"
+        android:layout_marginRight="@dimen/distance_dp_95"
         android:background="@mipmap/round_red"
+        android:gravity="center"
         android:paddingBottom="@dimen/distance_dp_1"
         android:paddingLeft="@dimen/distance_dp_2"
         android:paddingRight="@dimen/distance_dp_2"
         android:paddingTop="@dimen/distance_dp_1"
         android:text="99"
-        android:gravity="center"
         android:textColor="@color/white"
         android:textSize="@dimen/distance_dp_10" />
 

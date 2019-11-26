@@ -13,7 +13,10 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.home.adapter.MessagePageAdapter;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.StatusBarUtils;
+import com.project.zhongrenweigong.view.MineViewPager;
 import com.project.zhongrenweigong.view.MyViewPager;
 
 import butterknife.BindView;
@@ -36,21 +39,21 @@ public class MessageFragment extends BaseFragment<MessageFragmentPresent> {
     @BindView(R.id.te_msg_sys)
     TextView teMsgSys;
     @BindView(R.id.te_msg_sys_size)
-    TextView teMsgSysSize;
+    public TextView teMsgSysSize;
     @BindView(R.id.img_msg_activity)
     ImageView imgMsgActivity;
     @BindView(R.id.te_msg_activity)
     TextView teMsgActivity;
     @BindView(R.id.te_msg_activity_size)
-    TextView teMsgActivitySize;
+    public TextView teMsgActivitySize;
     @BindView(R.id.img_msg_voucher)
     ImageView imgMsgVoucher;
     @BindView(R.id.te_msg_voucher)
     TextView teMsgVoucher;
     @BindView(R.id.te_msg_voucher_size)
-    TextView teMsgVoucherSize;
+    public TextView teMsgVoucherSize;
     @BindView(R.id.vp_msg)
-    MyViewPager vpMsg;
+    MineViewPager vpMsg;
     @BindView(R.id.rl_msg_sys)
     RelativeLayout rlMsgSys;
     @BindView(R.id.rl_msg_activity)
@@ -63,11 +66,13 @@ public class MessageFragment extends BaseFragment<MessageFragmentPresent> {
     TextView teTitle;
     private float enlargeSize = 1.2f;
     private float size = 1.0f;
+    private LoginMsg userAccent;
 
     @Override
     public void initView() {
         teBack.setVisibility(View.GONE);
         teTitle.setText("消息中心");
+        userAccent = AcacheUtils.getInstance(getContext()).getUserAccent();
         MessagePageAdapter messagePageAdapter = new MessagePageAdapter(getChildFragmentManager());
         vpMsg.setAdapter(messagePageAdapter);
         vpMsg.setCurrentItem(0);
@@ -149,7 +154,7 @@ public class MessageFragment extends BaseFragment<MessageFragmentPresent> {
     public void widgetClick(View v) {
         switch (v.getId()) {
             case R.id.te_clear_unread:
-
+                getP().updateUnread(userAccent.mbId);
                 break;
             case R.id.rl_msg_sys:
                 if (teMsgSysSize.getVisibility() == View.VISIBLE) {
@@ -227,5 +232,11 @@ public class MessageFragment extends BaseFragment<MessageFragmentPresent> {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public void setReaded() {
+        teMsgSysSize.setVisibility(View.GONE);
+        teMsgActivitySize.setVisibility(View.GONE);
+        teMsgVoucherSize.setVisibility(View.GONE);
     }
 }

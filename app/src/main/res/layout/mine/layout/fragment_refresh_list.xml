@@ -7,6 +7,7 @@
     app:srlAccentColor="@color/app_text_99"
     app:srlEnablePreviewInEditMode="true"
     app:srlPrimaryColor="@color/white">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recy_list"
         android:layout_width="match_parent"

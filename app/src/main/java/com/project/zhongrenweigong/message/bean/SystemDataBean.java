@@ -8,7 +8,7 @@ import java.util.List;
  * 意图：
  */
 public class SystemDataBean {
-    public String noReadNum;
+    public int noReadNum;
     /**
      * messageId : 357374846704947200
      * messageMainId :

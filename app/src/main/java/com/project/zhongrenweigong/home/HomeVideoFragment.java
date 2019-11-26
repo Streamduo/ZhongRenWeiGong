@@ -24,7 +24,7 @@ import butterknife.Unbinder;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class HomeVideoFragment extends BaseFragment<HomeRecommendPresent> {
+public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
     Unbinder unbinder;
     @BindView(R.id.recy_list)
     RecyclerView recyVideoList;
@@ -74,8 +74,8 @@ public class HomeVideoFragment extends BaseFragment<HomeRecommendPresent> {
     }
 
     @Override
-    public HomeRecommendPresent bindPresent() {
-        return new HomeRecommendPresent();
+    public HomeVideoPresent bindPresent() {
+        return new HomeVideoPresent();
     }
 
     @Override

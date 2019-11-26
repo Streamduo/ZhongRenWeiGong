@@ -25,6 +25,7 @@ import com.project.zhongrenweigong.currency.event.RefreshCommodityEvent;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.util.AcacheUtils;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -166,6 +167,7 @@ public class CommodityManagerActivity extends BaseActivity<CommodityManagerPrese
 
     public void getDataError() {
         if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,commodityListAdapter,smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

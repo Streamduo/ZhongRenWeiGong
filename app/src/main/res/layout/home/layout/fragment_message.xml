@@ -19,9 +19,9 @@
         android:id="@+id/te_clear_unread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         android:drawableLeft="@mipmap/msg_clear"
         android:drawablePadding="@dimen/distance_dp_5"
+        android:layout_marginTop="@dimen/distance_dp_20"
         android:paddingBottom="@dimen/distance_dp_10"
         android:paddingLeft="@dimen/distance_dp_16"
         android:paddingRight="@dimen/distance_dp_16"
@@ -95,9 +95,10 @@
                     android:paddingTop="@dimen/distance_dp_1"
                     android:scaleX="1.2"
                     android:scaleY="1.2"
-                    android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_10" />
+                    android:textSize="@dimen/distance_dp_10"
+                    android:visibility="gone"
+                    tools:text="1" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -144,9 +145,10 @@
                     android:paddingLeft="@dimen/distance_dp_2"
                     android:paddingRight="@dimen/distance_dp_2"
                     android:paddingTop="@dimen/distance_dp_1"
-                    android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_10" />
+                    android:textSize="@dimen/distance_dp_10"
+                    android:visibility="gone"
+                    tools:text="1" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -193,14 +195,15 @@
                     android:paddingLeft="@dimen/distance_dp_2"
                     android:paddingRight="@dimen/distance_dp_2"
                     android:paddingTop="@dimen/distance_dp_1"
-                    android:text="1"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_10" />
+                    android:textSize="@dimen/distance_dp_10"
+                    android:visibility="gone"
+                    tools:text="1" />
             </RelativeLayout>
         </LinearLayout>
     </com.lijiankun24.shadowlayout.ShadowLayout>
 
-    <com.project.zhongrenweigong.view.MyViewPager
+    <com.project.zhongrenweigong.view.MineViewPager
         android:id="@+id/vp_msg"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

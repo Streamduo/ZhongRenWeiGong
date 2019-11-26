@@ -23,7 +23,10 @@ import com.project.zhongrenweigong.business.bean.UploadImgBean;
 import com.project.zhongrenweigong.home.MessageNetManager;
 import com.project.zhongrenweigong.login.LoginNetManager;
 import com.project.zhongrenweigong.login.RegisterActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.net.HomeMainApi;
 import com.project.zhongrenweigong.net.LoginApi;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.SpacingItemDecoration;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.view.LoadingDialog;
@@ -67,6 +70,8 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
     private List<UploadImgBean> uploadImgBeanList = new ArrayList<>();
     private String intro;
     private String shopId;
+    private String mbId;
+    private List<File> files = new ArrayList<>();
 
     @Override
     public void initView() {
@@ -74,6 +79,8 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
             setFull(false);
         }
         teTitle.setText("上传凭证");
+        LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+        mbId = userAccent.mbId;
         shopId = getIntent().getStringExtra("shopId");
         UploadImgBean uploadImgBean = new UploadImgBean();
         uploadImgBean.setImgUri("");
@@ -143,6 +150,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
                         path.add(imgUri);
                     }
                 }
+                files.clear();
                 setCompressImg(path);
                 break;
         }
@@ -159,7 +167,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
      * @time 2018/2/1  18:22
      * @describe 上传图片
      */
-    private void uploadPic(List<File> files) {
+    private void uploadPic() {
         LoadingDialog.show(UploadVoucherActivity.this);
         List<MultipartBody.Part> partList = new ArrayList<>();
         for (File file : files) {
@@ -175,10 +183,10 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(LoginApi.BASE_PATH)
+                .baseUrl(HomeMainApi.MESSAGE_BASE_PATH)
                 .build();
         MessageNetManager service = retrofit.create(MessageNetManager.class);
-        Call<BaseModel> call = service.uploadCardImage("uploadTextImages",intro,shopId, partList);
+        Call<BaseModel> call = service.uploadVoucher("uploadVoucher", intro, shopId, mbId, partList);
         // 执行
         call.enqueue(new Callback<BaseModel>() {
             @Override
@@ -187,7 +195,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
                     String msg = response.body().getMsg();
                     showToastShort(msg);
                     finish();
-                }else {
+                } else {
                     showToastShort("请检查网络设置");
                 }
                 LoadingDialog.dismiss(UploadVoucherActivity.this);
@@ -201,7 +209,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
         });
     }
 
-    private void setCompressImg(List<String> path) {
+    private void setCompressImg(final List<String> path) {
         Luban.with(this).
                 load(path).
                 ignoreBy(1000).
@@ -212,20 +220,18 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
 
                     @Override
                     public void onSuccess(File file) {
-                        setFileList(file);
+                        files.add(file);
+                        if (path.size() == files.size()){
+                            uploadPic();
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        files.clear();
                         showToastShort("上传错误，请重试！");
                     }
                 }).launch();
-    }
-
-    private void setFileList(File file) {
-        List<File> files = new ArrayList<>();
-        files.add(file);
-        uploadPic(files);
     }
 
     @Override

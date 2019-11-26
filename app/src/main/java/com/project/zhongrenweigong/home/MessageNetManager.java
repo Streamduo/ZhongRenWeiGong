@@ -7,6 +7,7 @@ import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
+import com.project.zhongrenweigong.message.bean.VoucherMessageDetailBean;
 
 import java.util.List;
 
@@ -59,8 +60,11 @@ public interface MessageNetManager {
      */
     @Multipart
     @POST()
-    Call<BaseModel> uploadCardImage(@Url() String url, @Query("text") String text, @Query("shopId") String shopId,
-                                    @Part List<MultipartBody.Part> list);
+    Call<BaseModel> uploadVoucher(@Url() String url,
+                                  @Query("text") String text,
+                                  @Query("shopId") String shopId,
+                                  @Query("mbId") String mbId,
+                                  @Part List<MultipartBody.Part> list);
 
     /**
      * 获取新闻信息
@@ -111,11 +115,40 @@ public interface MessageNetManager {
     /**
      * @author fuduo
      * @time 2018/1/21  10:38
-     * @describe 上传举报资料图片
+     * @describe 上传举报资料(无图片)
      */
     @POST()
     Call<BaseModel> uploadReport(@Url() String url,
                                  @Body RequestBody Body);
 
+    /**
+     * 获取凭证接口根据ID
+     *
+     * @return
+     */
+    @POST("getUploadVoucherById")
+    Flowable<VoucherMessageDetailBean> getUploadVoucherById(@Body RequestBody body);
 
+
+    /**
+    * 修改凭证消息审核状态
+    * @return
+    */
+    @POST("updateVoucherStatus")
+    Flowable<BaseModel> updateVoucherStatus(@Body RequestBody body);
+
+
+    /**
+     * 消除全部类型未读消息
+     * @return
+     */
+    @POST("updateUnread")
+    Flowable<BaseModel> updateUnread(@Body RequestBody body);
+
+    /**
+     * 修改是否已读状态
+     * @return
+     */
+    @POST("updateIsReadStatus")
+    Flowable<BaseModel> updateIsReadStatus(@Body RequestBody body);
 }

@@ -20,7 +20,7 @@ import okhttp3.RequestBody;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class MessageDetailPresent extends XPresent<SystemMessageDetailActivity> {
+public class SystemMessageDetailPresent extends XPresent<SystemMessageDetailActivity> {
 
     public void getMessageDetail(String typeId) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
@@ -42,12 +42,11 @@ public class MessageDetailPresent extends XPresent<SystemMessageDetailActivity> 
                     @Override
                     public void onNext(MessageListBean messageListBean) {
                         if (messageListBean.getCode() == 200) {
-                            getV().setData(messageListBean);
+
                         }else {
                             ToastManager.showShort(getV(),messageListBean.msg);
                         }
                     }
                 });
     }
-
 }

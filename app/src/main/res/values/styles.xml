@@ -8,9 +8,7 @@
     </style>
 
     <style name="home_radiobutton">
-        <item name="android:paddingBottom">@dimen/distance_dp_5</item>
-        <item name="android:paddingTop">@dimen/distance_dp_5</item>
-        <item name="android:drawablePadding">@dimen/distance_dp_5</item>
+        <item name="android:paddingBottom">@dimen/distance_dp_3</item>
         <item name="android:textSize">@dimen/distance_dp_11</item>
         <item name="android:textColor">@drawable/tab_rb_textcolor_seletor</item>
         <item name="android:layout_width">0dp</item>

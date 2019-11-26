@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".message.ActivityMessageDetailActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_new_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/te_msg_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="5dp"
+        android:text="全场8折"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_40"
+        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_10">
+
+        <ImageView
+            android:id="@+id/img_sender_head"
+            android:layout_width="@dimen/distance_dp_40"
+            android:layout_height="@dimen/distance_dp_40"
+            android:background="@mipmap/big_default_user_head" />
+
+        <TextView
+            android:id="@+id/te_send_platform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:layout_toRightOf="@+id/img_sender_head"
+            android:text="维公科技"
+            android:textColor="@color/app_22222"
+            android:textSize="@dimen/distance_dp_14" />
+
+        <TextView
+            android:id="@+id/te_send_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/distance_dp_15"
+            android:layout_toRightOf="@+id/img_sender_head"
+            android:textColor="@color/app_C3C3C3"
+            android:textSize="@dimen/distance_dp_14"
+            tools:text="1分钟前发布" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginRight="@dimen/distance_dp_15"
+        android:layout_marginTop="@dimen/distance_dp_19"
+        android:background="@color/app_e8e8e8" />
+
+    <TextView
+        android:id="@+id/te_msg_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginRight="@dimen/distance_dp_15"
+        android:layout_marginTop="@dimen/distance_dp_19"
+        android:lineSpacingExtra="5dp"
+        android:text="大润发朝阳门店简介，大润发朝阳门店简介，大润发朝阳门店简介，大润发朝阳门店简介，"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_img_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginRight="@dimen/distance_dp_15"
+        android:overScrollMode="never" />
+</LinearLayout>

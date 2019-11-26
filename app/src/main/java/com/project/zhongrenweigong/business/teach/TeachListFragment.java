@@ -19,6 +19,7 @@ import com.project.zhongrenweigong.business.teach.adapter.TeachListAdapter;
 import com.project.zhongrenweigong.business.teach.adapter.TeacherListAdapter;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
 import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -217,6 +218,11 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
+            if (index == 0) {
+                QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, teachListAdapter, smRefresh);
+            } else if (index == 1) {
+                QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, teacherListAdapter, smRefresh);
+            }
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

@@ -17,7 +17,6 @@ import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.LoginActivity;
-import com.project.zhongrenweigong.util.UtilsStyle;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,6 +47,8 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     RadioButton homeIndustry;
     @BindView(R.id.msg_size)
     TextView msgSize;
+    @BindView(R.id.home_center)
+    RadioButton homeCenter;
     private FactoryFragment factoryFragment;
 
     @Override
@@ -98,6 +99,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         homeMsg.setOnCheckedChangeListener(this);
         homeMain.setOnCheckedChangeListener(this);
         homeMine.setOnCheckedChangeListener(this);
+        homeCenter.setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -227,6 +229,9 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
                 break;
             case R.id.home_mine:
                 factoryFragment.changeToFragment(3);
+                break;
+            case R.id.home_center:
+
                 break;
         }
     }

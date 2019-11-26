@@ -21,6 +21,7 @@ import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
 import com.project.zhongrenweigong.business.bean.BusinessTypeBean;
 import com.project.zhongrenweigong.business.bean.DataBean;
 import com.project.zhongrenweigong.util.KeyboardUtils;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -211,6 +212,7 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,listAdapter,smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

@@ -38,6 +38,7 @@ public class HomeNewsPresent extends XPresent<HomeNewsFragment> {
                     @Override
                     protected void onFail(NetError error) {
                         ToastManager.showShort(getV().getContext(), "网络连接失败，请检查网络设置");
+                        getV().getDataError();
                     }
 
                     @Override

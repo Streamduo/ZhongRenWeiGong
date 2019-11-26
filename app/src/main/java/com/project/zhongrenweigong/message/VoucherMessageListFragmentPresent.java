@@ -1,10 +1,14 @@
 package com.project.zhongrenweigong.message;
 
+import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.currency.event.RefreshMessageEvent;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 import com.project.zhongrenweigong.net.BusinessApi;
 import com.project.zhongrenweigong.net.HomeMainApi;
 import com.project.zhongrenweigong.util.GsonProvider;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Map;
 
@@ -24,9 +28,11 @@ import okhttp3.RequestBody;
  */
 public class VoucherMessageListFragmentPresent extends XPresent<VoucherMessageFragment> {
 
-    public void getVoucherMessage(String mbId) {
+    public void getVoucherMessage(String mbId,int currentPage) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("mbId", mbId);
+        stringMap.put("currentPage", String.valueOf(currentPage));
+        stringMap.put("pageNum", String.valueOf(10));
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
@@ -39,6 +45,7 @@ public class VoucherMessageListFragmentPresent extends XPresent<VoucherMessageFr
                     @Override
                     protected void onFail(NetError error) {
                         ToastManager.showShort(getV().getContext(), "网络连接失败，请检查网络设置");
+                        getV().getDataError();
                     }
 
                     @Override
@@ -51,5 +58,4 @@ public class VoucherMessageListFragmentPresent extends XPresent<VoucherMessageFr
                     }
                 });
     }
-    
 }

@@ -132,7 +132,7 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         teRightTitle.setText("关注");
         Intent intent = getIntent();
         shopType = intent.getIntExtra("shopType", 0);
-        shopId = "1111";//getIntent().getStringExtra("shopId")
+        shopId =getIntent().getStringExtra("shopId");
         if (shopType == 4) {//汽车行业
             teShopTuijian.setText("推荐车型");
             viewFour.setVisibility(View.VISIBLE);

@@ -23,9 +23,11 @@ import okhttp3.RequestBody;
  */
 public class SystemMessageListFragmentPresent extends XPresent<SystemMessageFragment> {
 
-    public void getSystemMessages(String mbId) {
+    public void getSystemMessages(String mbId,int currentPage) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("mbId", mbId);
+        stringMap.put("currentPage", String.valueOf(currentPage));
+        stringMap.put("pageNum", String.valueOf(10));
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
@@ -38,6 +40,7 @@ public class SystemMessageListFragmentPresent extends XPresent<SystemMessageFrag
                     @Override
                     protected void onFail(NetError error) {
                         ToastManager.showShort(getV().getContext(), "网络连接失败，请检查网络设置");
+                        getV().getDataError();
                     }
 
                     @Override

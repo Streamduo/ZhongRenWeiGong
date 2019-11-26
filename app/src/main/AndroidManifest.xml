@@ -172,6 +172,10 @@
         <activity
             android:name=".business.hotel.HotelListActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".business.commerce.CommerecListActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".message.ActivityMessageDetailActivity" />
     </application>
 
 </manifest>

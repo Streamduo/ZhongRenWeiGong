@@ -11,19 +11,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessHomePageActivity;
-import com.project.zhongrenweigong.business.BusinessListActivity;
-import com.project.zhongrenweigong.business.bean.CarDataBean;
-import com.project.zhongrenweigong.business.bean.CarListBean;
-import com.project.zhongrenweigong.business.bean.TeachDataBean;
-import com.project.zhongrenweigong.business.bean.TeachListBean;
-import com.project.zhongrenweigong.business.bean.TeacherDataBean;
-import com.project.zhongrenweigong.business.bean.TeacherListBean;
+import com.project.zhongrenweigong.business.bean.IndustryDataBean;
+import com.project.zhongrenweigong.business.bean.IndustryListBean;
 import com.project.zhongrenweigong.business.car.adapter.CarListAdapter;
-import com.project.zhongrenweigong.business.teach.TeachListActivity;
-import com.project.zhongrenweigong.business.teach.TeachListFrgementPresent;
-import com.project.zhongrenweigong.business.teach.adapter.TeachListAdapter;
-import com.project.zhongrenweigong.business.teach.adapter.TeacherListAdapter;
 import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -75,7 +67,7 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
         carListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                CarDataBean item = carListAdapter.getItem(position);
+                IndustryDataBean item = carListAdapter.getItem(position);
                 String shopId = item.shopId;
                 Router.newIntent(getActivity())
                         .putString("shopId", shopId)
@@ -181,12 +173,12 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
         EventBus.getDefault().unregister(this);
     }
 
-    public void setCarData(CarListBean carListBean) {
+    public void setCarData(IndustryListBean industryListBean) {
         if (carListAdapter == null) {
             return;
         }
-        int pageSize = carListBean.pageSize;
-        List<CarDataBean> data = carListBean.getData();
+        int pageSize = industryListBean.pageSize;
+        List<IndustryDataBean> data = industryListBean.getData();
         if (data != null && data.size() > 0) {
             if (currentPage == 1) {
                 carListAdapter.setNewData(data);
@@ -206,6 +198,7 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,carListAdapter,smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

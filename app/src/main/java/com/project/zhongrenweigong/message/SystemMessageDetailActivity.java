@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
-import com.project.zhongrenweigong.home.bean.MessageListBean;
+import com.project.zhongrenweigong.message.bean.MessageListsBean;
 import com.project.zhongrenweigong.util.UtilsStyle;
+import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SystemMessageDetailActivity extends BaseActivity<MessageDetailPresent> {
+public class SystemMessageDetailActivity extends BaseActivity<SystemMessageDetailPresent> {
 
     @BindView(R.id.te_back)
     TextView teBack;
@@ -28,30 +29,30 @@ public class SystemMessageDetailActivity extends BaseActivity<MessageDetailPrese
     TextView teSendPlatform;
     @BindView(R.id.te_send_date)
     TextView teSendDate;
-    @BindView(R.id.img_mechanism_head)
-    ImageView imgMechanismHead;
-    @BindView(R.id.te_mechanism_title)
-    TextView teMechanismTitle;
-    @BindView(R.id.te_mechanism_intro)
-    TextView teMechanismIntro;
-    @BindView(R.id.te_mechanism_address)
-    TextView teMechanismAddress;
-    @BindView(R.id.te_mechanism_phone)
-    TextView teMechanismPhone;
-    private String typeId;
+    @BindView(R.id.te_msg_intro)
+    TextView teMsgIntro;
+
+    private MessageListsBean messageListsBean;
 
     @Override
     public void initView() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             setFull(false);
         }
-        typeId = getIntent().getStringExtra("typeId");
-
+        messageListsBean = (MessageListsBean) getIntent().getSerializableExtra("MessageListsBean");
+        if (messageListsBean == null) {
+            return;
+        } else {
+//            teTitle.setText(messageListsBean.shopName);
+//            teMsgTitle.setText(messageListsBean.messageIntro);
+//            GlideDownLoadImage.getInstance().loadCircleImage(mContext, messageListsBean.shopLogo,
+//                    imgSenderHead, R.mipmap.big_default_user_head);
+//            teSendPlatform.setText(messageListsBean.shopName);
+        }
     }
 
     @Override
     public void initAfter() {
-        getP().getMessageDetail(typeId);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class SystemMessageDetailActivity extends BaseActivity<MessageDetailPrese
     }
 
     @Override
-    public MessageDetailPresent bindPresent() {
+    public SystemMessageDetailPresent bindPresent() {
         return null;
     }
 
@@ -88,10 +89,6 @@ public class SystemMessageDetailActivity extends BaseActivity<MessageDetailPrese
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-    }
-
-    public void setData(MessageListBean messageListBean) {
-
     }
 
 }

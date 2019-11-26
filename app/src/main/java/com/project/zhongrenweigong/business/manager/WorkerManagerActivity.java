@@ -28,6 +28,7 @@ import com.project.zhongrenweigong.business.bean.WorkerDataBean;
 import com.project.zhongrenweigong.business.bean.WorkerListBean;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.util.AcacheUtils;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -168,6 +169,7 @@ public class WorkerManagerActivity extends BaseActivity<WorkerManagerPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, workerListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);
