@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.message.bean.MessageListsBean;
+import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
+import com.project.zhongrenweigong.message.bean.SystemAndActivityDataBean;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
@@ -40,14 +42,10 @@ public class SystemMessageDetailActivity extends BaseActivity<SystemMessageDetai
             setFull(false);
         }
         messageListsBean = (MessageListsBean) getIntent().getSerializableExtra("MessageListsBean");
-        if (messageListsBean == null) {
+        if (messageListsBean == null || messageListsBean.messageId == null) {
             return;
         } else {
-//            teTitle.setText(messageListsBean.shopName);
-//            teMsgTitle.setText(messageListsBean.messageIntro);
-//            GlideDownLoadImage.getInstance().loadCircleImage(mContext, messageListsBean.shopLogo,
-//                    imgSenderHead, R.mipmap.big_default_user_head);
-//            teSendPlatform.setText(messageListsBean.shopName);
+            getP().getMessageDetail(messageListsBean.messageId);
         }
     }
 
@@ -68,7 +66,7 @@ public class SystemMessageDetailActivity extends BaseActivity<SystemMessageDetai
 
     @Override
     public SystemMessageDetailPresent bindPresent() {
-        return null;
+        return new SystemMessageDetailPresent();
     }
 
     @Override
@@ -91,4 +89,14 @@ public class SystemMessageDetailActivity extends BaseActivity<SystemMessageDetai
         ButterKnife.bind(this);
     }
 
+    public void setData(SystemAndActivityBean systemAndActivityBean) {
+        SystemAndActivityDataBean data = systemAndActivityBean.getData();
+        teTitle.setText(data.messageMain);
+        teMsgTitle.setText(data.title);
+        teSendDate.setText(data.time);
+        GlideDownLoadImage.getInstance().loadCircleImage(mContext, data.messageMainLogo,
+                imgSenderHead, R.mipmap.big_default_user_head);
+        teSendPlatform.setText(data.messageMain);
+        teMsgIntro.setText(data.content);
+    }
 }

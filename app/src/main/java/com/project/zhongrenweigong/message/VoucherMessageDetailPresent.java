@@ -51,11 +51,14 @@ public class VoucherMessageDetailPresent extends XPresent<VoucherMessageDetailAc
                 });
     }
 
-    public void updateVoucherStatus(String mcId, String messageId, int status) {
+    public void updateVoucherStatus(String mcId, String mbId, String messageId,
+                                    final int status, String voucherId) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("mcId", mcId);
         stringMap.put("messageId", messageId);
-        stringMap.put("status", String.valueOf(status));
+        stringMap.put("checkStatus", String.valueOf(status));
+        stringMap.put("mbId", mbId);
+        stringMap.put("voucherId", voucherId);
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
@@ -73,7 +76,14 @@ public class VoucherMessageDetailPresent extends XPresent<VoucherMessageDetailAc
                     @Override
                     public void onNext(BaseModel baseModel) {
                         if (baseModel.getCode() == 200) {
-                            ToastManager.showShort(getV(), "审核成功");
+                            switch (status) {
+                                case 1:
+                                    ToastManager.showShort(getV(), "审核已通过");
+                                    break;
+                                case 2:
+                                    ToastManager.showShort(getV(), "审核已拒绝");
+                                    break;
+                            }
                             getV().finish();
                         } else {
                             ToastManager.showShort(getV(), baseModel.msg);

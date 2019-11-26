@@ -76,6 +76,19 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
                 return false;
             }
         });
+        homeMsg.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                boolean isTourist = SharedPref.getInstance(MainActivity.this).getBoolean(Constans.ISTOURIST, true);
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if (isTourist) {
+                        Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override

@@ -48,7 +48,7 @@ public class CommerecListFrgementPresent extends XPresent<CommerecListFragment> 
                     @Override
                     public void onNext(IndustryListBean industryListBean) {
                         if (industryListBean.getCode() == 200) {
-                            getV().setCarData(industryListBean);
+                            getV().setData(industryListBean);
                         } else {
                             ToastManager.showShort(getV().getContext(), industryListBean.msg);
                         }

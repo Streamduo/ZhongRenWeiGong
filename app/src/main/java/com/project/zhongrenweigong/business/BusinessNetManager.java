@@ -201,4 +201,18 @@ public interface BusinessNetManager {
      */
     @POST("getVehicle")
     Flowable<IndustryListBean> getVehicle(@Body RequestBody body);
+
+    /**
+     * 查询房产列表
+     * @return
+     */
+    @POST("getHouse")
+    Flowable<IndustryListBean> getHouse(@Body RequestBody body);
+
+    /**
+     * 查询酒店列表
+     * @return
+     */
+    @POST("getHotel")
+    Flowable<IndustryListBean> getHotel(@Body RequestBody body);
 }

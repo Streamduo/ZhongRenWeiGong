@@ -21,7 +21,8 @@ import okhttp3.RequestBody;
  */
 public class CarListFrgementPresent extends XPresent<CarListFragment> {
 
-    public void getVehicle(int currentPage, String name,String thisAddr,int shopCategoryDetail) {
+    public void getVehicle(int currentPage, String name,String thisAddr,int shopCategoryDetail,
+                           String lat, String lng) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("pageNum", String.valueOf(10));
         stringMap.put("currentPage", String.valueOf(currentPage));
@@ -29,6 +30,8 @@ public class CarListFrgementPresent extends XPresent<CarListFragment> {
         stringMap.put("shopCategoryDetail", String.valueOf(shopCategoryDetail));
         stringMap.put("thisAddr", thisAddr);
         stringMap.put("name", name);
+        stringMap.put("lat", lat);
+        stringMap.put("lng", lng);
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);

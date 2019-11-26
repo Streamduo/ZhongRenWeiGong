@@ -64,6 +64,12 @@ import me.iwf.photopicker.PhotoPreview;
  * 意图：
  */
 public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePresent> {
+
+    public static final int SHOP_TYPE_CAR = 4;
+    public static final int SHOP_TYPE_TEACH = 5;
+    public static final int SHOP_TYPE_HOUSE = 6;
+    public static final int SHOP_TYPE_HOTEL = 7;
+
     @BindView(R.id.te_back)
     TextView teBack;
     @BindView(R.id.te_title)
@@ -133,8 +139,23 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         Intent intent = getIntent();
         shopType = intent.getIntExtra("shopType", 0);
         shopId =getIntent().getStringExtra("shopId");
-        if (shopType == 4) {//汽车行业
+        if (shopType == SHOP_TYPE_CAR) {//汽车行业
             teShopTuijian.setText("推荐车型");
+            viewFour.setVisibility(View.VISIBLE);
+            viewThree.setVisibility(View.GONE);
+            teUploadVoucher.setVisibility(View.VISIBLE);
+        }else if (shopType == SHOP_TYPE_TEACH) {//教育行业
+            teShopTuijian.setText("推荐课程");
+            viewFour.setVisibility(View.VISIBLE);
+            viewThree.setVisibility(View.GONE);
+            teUploadVoucher.setVisibility(View.VISIBLE);
+        }else if (shopType == SHOP_TYPE_HOUSE) {//房产行业
+            teShopTuijian.setText("推荐户型");
+            viewFour.setVisibility(View.VISIBLE);
+            viewThree.setVisibility(View.GONE);
+            teUploadVoucher.setVisibility(View.VISIBLE);
+        }else if (shopType == SHOP_TYPE_HOTEL) {//酒店旅游行业
+            teShopTuijian.setText("推荐房间");
             viewFour.setVisibility(View.VISIBLE);
             viewThree.setVisibility(View.GONE);
             teUploadVoucher.setVisibility(View.VISIBLE);

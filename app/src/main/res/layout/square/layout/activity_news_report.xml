@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
+        android:background="@color/white"
         android:scrollbars="none">
 
         <LinearLayout
@@ -50,24 +51,26 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/distance_dp_100"
+                android:layout_height="@dimen/distance_dp_150"
                 android:layout_marginLeft="@dimen/distance_dp_15"
                 android:layout_marginTop="@dimen/distance_dp_15">
 
                 <EditText
                     android:id="@+id/ed_report_intro"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_100"
+                    android:layout_height="match_parent"
                     android:background="@null"
+                    android:layout_marginBottom="@dimen/distance_dp_25"
                     android:gravity="left"
                     android:hint="请描述你遇到的问题" />
 
                 <TextView
+                    android:id="@+id/te_max_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginBottom="@dimen/distance_dp_15"
+                    android:layout_marginBottom="@dimen/distance_dp_5"
                     android:layout_marginRight="@dimen/distance_dp_15"
                     android:text="0/200"
                     android:textColor="@color/app_text_99"

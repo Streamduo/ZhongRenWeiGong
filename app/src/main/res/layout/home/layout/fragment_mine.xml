@@ -5,34 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_25"
+        android:text="都看见"
+        android:textColor="@color/app_FF0000"
+        />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_187"
-        android:background="@mipmap/login_img">
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_47"
-            android:layout_marginLeft="@dimen/distance_dp_18"
-            android:layout_marginRight="@dimen/distance_dp_22"
-            android:layout_marginTop="@dimen/distance_dp_64"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/img_user_head"
-                android:layout_width="@dimen/distance_dp_47"
-                android:layout_height="@dimen/distance_dp_47"
-                android:background="@mipmap/user_default_head" />
-
-            <RelativeLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/distance_dp_16">
+                android:layout_height="@dimen/distance_dp_217"
+                android:background="@mipmap/black_round" />
+
+            <LinearLayout
+                android:id="@+id/line_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_199"
+                android:layout_marginLeft="@dimen/distance_dp_4"
+                android:layout_marginRight="-4dp"
+                android:layout_marginTop="@dimen/distance_dp_120"
+                android:background="@mipmap/mine_bac"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/te_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/distance_dp_34"
+                    android:layout_marginTop="@dimen/distance_dp_25"
                     android:textColor="@color/white"
                     android:textSize="@dimen/distance_dp_16"
                     tools:text="张小山" />
@@ -41,163 +53,232 @@
                     android:id="@+id/te_user_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/distance_dp_34"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:textColor="@color/white"
                     android:textSize="@dimen/distance_dp_13"
                     tools:text="ID:88888" />
 
-                <ImageView
-                    android:id="@+id/mine_renzheng"
+                <TextView
+                    android:id="@+id/te_user_morality"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/distance_dp_22"
-                    android:background="@mipmap/mine_renzheng" />
+                    android:layout_marginLeft="@dimen/distance_dp_34"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_13"
+                    tools:text="道德综合分数：96.5" />
 
-            </RelativeLayout>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/te_work_authentication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/distance_dp_34"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_13"
+                    tools:text="职业认证：已认证" />
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/line_member"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_62"
-        android:layout_marginLeft="@dimen/distance_dp_15"
-        android:layout_marginRight="@dimen/distance_dp_15"
-        android:layout_marginTop="@dimen/distance_dp_159"
-        android:background="@mipmap/mine_member_bac"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/distance_dp_16"
-            android:background="@mipmap/mine_member" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/distance_dp_9">
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="会员道德体系"
-                android:textColor="@color/white"
-                android:textSize="@dimen/distance_dp_14" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/text"
-                android:layout_marginTop="@dimen/distance_dp_4"
-                android:text="根据诚信/生活行为/职业行为更新数据"
-                android:textColor="@color/white"
-                android:textSize="@dimen/distance_dp_10" />
+            </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/img_user_head"
+                android:layout_width="@dimen/distance_dp_74"
+                android:layout_height="@dimen/distance_dp_74"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/distance_dp_12"
-                android:background="@mipmap/see_detail" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_marginRight="@dimen/distance_dp_34"
+                android:layout_marginTop="@dimen/distance_dp_100"
+                android:background="@mipmap/big_default_user_head" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/line_member"
-        android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/line_second"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_85"
+                android:layout_below="@+id/line_user_info"
+                android:orientation="horizontal">
 
-        <com.lijiankun24.shadowlayout.ShadowLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:shadowColor="#309B9B9B"
-            app:shadowDx="@dimen/distance_dp_2"
-            app:shadowDy="@dimen/distance_dp_2"
-            app:shadowRadius="@dimen/distance_dp_10"
-            app:shadowShape="rectangle"
-            app:shadowSide="all">
+                <TextView
+                    android:id="@+id/te_jifen"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/distance_dp_10"
+                    android:drawableTop="@mipmap/mine_jifen"
+                    android:gravity="center_horizontal"
+                    android:text="积分"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_13" />
+
+                <TextView
+                    android:id="@+id/te_mine_coupon"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/distance_dp_10"
+                    android:drawableTop="@mipmap/mine_coupon"
+                    android:gravity="center_horizontal"
+                    android:text="优惠券"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_13" />
+
+                <TextView
+                    android:id="@+id/te_pay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/distance_dp_10"
+                    android:drawableTop="@mipmap/mine_wallet"
+                    android:gravity="center_horizontal"
+                    android:text="赔付"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_13" />
+
+                <TextView
+                    android:id="@+id/te_guanzhu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/distance_dp_10"
+                    android:drawableTop="@mipmap/mine_guanzhu"
+                    android:gravity="center_horizontal"
+                    android:text="关注"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_13" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_10"
+                android:layout_below="@+id/line_second"
+                android:background="#FFF4F6FA" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_bac_white_10"
+                android:layout_below="@+id/view"
                 android:orientation="vertical"
-                android:paddingLeft="15dp"
-                android:paddingRight="12dp">
+                android:paddingLeft="16dp"
+                android:paddingRight="15dp">
 
                 <RelativeLayout
-                    android:id="@+id/rl_mine_wallet"
+                    android:id="@+id/rl_mine_daode"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_40"
-                    android:layout_marginTop="@dimen/distance_dp_10">
+                    android:layout_height="@dimen/distance_dp_47">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:drawableLeft="@mipmap/mine_wallet"
-                        android:drawablePadding="@dimen/distance_dp_21"
+                        android:drawableLeft="@mipmap/mine_daode"
+                        android:drawablePadding="@dimen/distance_dp_12"
                         android:gravity="center_vertical"
-                        android:text="赔付钱包"
+                        android:text="道德体系"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 
-                    <ImageView
+                    <TextView
+                        android:id="@+id/te_daode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@mipmap/right_back" />
+                        android:drawablePadding="@dimen/distance_dp_5"
+                        android:drawableRight="@mipmap/gray_back"
+                        android:textColor="@color/app_B2B2B2"
+                        android:textSize="@dimen/distance_dp_14"
+                        tools:text="96.5分" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_mine_pay_record"
+                    android:id="@+id/rl_mine_renzheng"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_40"
-                    android:layout_marginTop="@dimen/distance_dp_10">
+                    android:layout_height="@dimen/distance_dp_47">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:drawableLeft="@mipmap/mine_pay_record"
-                        android:drawablePadding="@dimen/distance_dp_26"
+                        android:drawableLeft="@mipmap/mine_personal_renzheng"
+                        android:drawablePadding="@dimen/distance_dp_13"
                         android:gravity="center_vertical"
-                        android:text="我的消费"
+                        android:text="个人认证"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 
+                    <TextView
+                        android:id="@+id/te_mine_renzheng_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/distance_dp_8"
+                        android:layout_toLeftOf="@+id/img"
+                        android:drawableLeft="@mipmap/blue_authentication"
+                        android:drawablePadding="@dimen/distance_dp_5"
+                        android:gravity="center_vertical"
+                        android:text="已认证"
+                        android:textColor="@color/app_B2B2B2"
+                        android:textSize="@dimen/distance_dp_14" />
+
                     <ImageView
+                        android:id="@+id/img"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@mipmap/right_back" />
+                        android:background="@mipmap/gray_back" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_business_renzheng"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_47">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/mine_business_renzheng"
+                        android:drawablePadding="@dimen/distance_dp_15"
+                        android:gravity="center_vertical"
+                        android:text="商业认证"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <TextView
+                        android:id="@+id/te_business_renzheng_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/distance_dp_8"
+                        android:layout_toLeftOf="@+id/img_01"
+                        android:drawableLeft="@mipmap/blue_authentication"
+                        android:drawablePadding="@dimen/distance_dp_5"
+                        android:gravity="center_vertical"
+                        android:text="已认证"
+                        android:textColor="@color/app_B2B2B2"
+                        android:textSize="@dimen/distance_dp_14" />
+
+                    <ImageView
+                        android:id="@+id/img_01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/gray_back" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_mine_industry"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_40"
-                    android:layout_marginTop="@dimen/distance_dp_10">
+                    android:layout_height="@dimen/distance_dp_47">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:drawableLeft="@mipmap/mine_industry"
-                        android:drawablePadding="@dimen/distance_dp_24"
+                        android:drawableLeft="@mipmap/mine_shop"
+                        android:drawablePadding="@dimen/distance_dp_14"
                         android:gravity="center_vertical"
-                        android:text="我是商家"
+                        android:text="店铺管理"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 
@@ -206,23 +287,45 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@mipmap/right_back" />
+                        android:background="@mipmap/gray_back" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_mine_fankui"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_47">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@mipmap/mine_fankui"
+                        android:drawablePadding="@dimen/distance_dp_15"
+                        android:gravity="center_vertical"
+                        android:text="意见反馈"
+                        android:textColor="@color/app_text_33"
+                        android:textSize="@dimen/distance_dp_13" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/gray_back" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_mine_help_center"
+                    android:id="@+id/rl_mine_about_our"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_40"
-                    android:layout_marginTop="@dimen/distance_dp_10">
+                    android:layout_height="@dimen/distance_dp_47">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:drawableLeft="@mipmap/mine_help_center"
-                        android:drawablePadding="@dimen/distance_dp_22"
+                        android:drawableLeft="@mipmap/mine_about"
+                        android:drawablePadding="@dimen/distance_dp_12"
                         android:gravity="center_vertical"
-                        android:text="帮助中心"
+                        android:text="关于我们"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 
@@ -231,24 +334,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@mipmap/right_back" />
+                        android:background="@mipmap/gray_back" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rl_mine_set"
+                    android:id="@+id/rl_change_login"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_40"
-                    android:layout_marginBottom="@dimen/distance_dp_10"
-                    android:layout_marginTop="@dimen/distance_dp_10">
+                    android:layout_marginBottom="@dimen/distance_dp_20"
+                    android:layout_height="@dimen/distance_dp_47">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:drawableLeft="@mipmap/mine_set"
-                        android:drawablePadding="@dimen/distance_dp_23"
+                        android:drawableLeft="@mipmap/change_login"
+                        android:drawablePadding="@dimen/distance_dp_15"
                         android:gravity="center_vertical"
-                        android:text="设置"
+                        android:text="切换账号"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_13" />
 
@@ -257,10 +359,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@mipmap/right_back" />
+                        android:background="@mipmap/gray_back" />
                 </RelativeLayout>
             </LinearLayout>
-        </com.lijiankun24.shadowlayout.ShadowLayout>
-    </LinearLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

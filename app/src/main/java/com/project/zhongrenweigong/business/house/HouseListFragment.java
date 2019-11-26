@@ -49,6 +49,8 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
     private int currentPage = 1;
     private HouseListAdapter houseListAdapter;
     private String teachName = "";
+    private String lat = "1";
+    private String lng = "1";
 
     public static HouseListFragment getInstance(int index) {
         HouseListFragment houseListFragment = new HouseListFragment();
@@ -72,7 +74,7 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
                 String shopId = item.shopId;
                 Router.newIntent(getActivity())
                         .putString("shopId", shopId)
-                        .putInt("shopType", 5)
+                        .putInt("shopType", BusinessHomePageActivity.SHOP_TYPE_HOUSE)
                         .to(BusinessHomePageActivity.class)
                         .launch();
             }
@@ -83,9 +85,9 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
             public void onRefresh(RefreshLayout refreshlayout) {
                 currentPage = 1;
                 if (index == 0) {
-                    getVehicle(teachName, 0);
+                    getHouse(teachName, 0);
                 } else {
-                    getVehicle(teachName, 1);
+                    getHouse(teachName, 1);
                 }
             }
         });
@@ -94,31 +96,31 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
             public void onLoadMore(RefreshLayout refreshlayout) {
                 currentPage++;
                 if (index == 0) {
-                    getVehicle(teachName, 0);
+                    getHouse(teachName, 0);
                 } else {
-                    getVehicle(teachName, 1);
+                    getHouse(teachName, 1);
                 }
             }
         });
 
     }
 
-    public void getVehicle(String name, int type) {
+    public void getHouse(String name, int type) {
         teachName = name;
         String province = ((HouseListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
         }
-        getP().getVehicle(currentPage, name, province, type);
+        getP().getHouse(currentPage, name, province, type, lat, lng);
     }
 
     @Override
     public void initAfter() {
         if (index == 0) {
-            getVehicle(teachName, 0);
+            getHouse(teachName, 0);
         } else if (index == 1) {
-            getVehicle(teachName, 1);
+            getHouse(teachName, 1);
         }
     }
 
@@ -155,9 +157,9 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
         if (searchEvent.searchText != null) {
             currentPage = 1;
             if (searchEvent.index == 0) {
-                getVehicle(searchEvent.searchText, 0);
+                getHouse(searchEvent.searchText, 0);
             } else {
-                getVehicle(searchEvent.searchText, 1);
+                getHouse(searchEvent.searchText, 1);
             }
         }
     }
@@ -174,7 +176,7 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
         EventBus.getDefault().unregister(this);
     }
 
-    public void setCarData(IndustryListBean industryListBean) {
+    public void setData(IndustryListBean industryListBean) {
         if (houseListAdapter == null) {
             return;
         }

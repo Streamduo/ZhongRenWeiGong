@@ -20,12 +20,12 @@ import okhttp3.RequestBody;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class SystemMessageDetailPresent extends XPresent<SystemMessageDetailActivity> {
+public class ActivityMessageDetailPresent extends XPresent<ActivityMessageDetailActivity> {
 
     public void getMessageDetail(String messageId) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("messageId", messageId);
-        stringMap.put("messageType", String.valueOf(0));
+        stringMap.put("messageType", String.valueOf(1));
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);

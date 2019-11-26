@@ -6,6 +6,7 @@ import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
+import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 import com.project.zhongrenweigong.message.bean.VoucherMessageDetailBean;
 
@@ -38,12 +39,12 @@ public interface MessageNetManager {
     Flowable<MessageListBean> getMessageList();
 
     /**
-     * 获取消息详情
+     * 获取系统和活动消息详情
      *
      * @return
      */
-    @POST("getMessageDetailById")
-    Flowable<MessageListBean> getMessageDetail(@Body RequestBody body);
+    @POST("getMessageDetailContent")
+    Flowable<SystemAndActivityBean> getMessageDetailContent(@Body RequestBody body);
 
     /**
      * 获取评测信息

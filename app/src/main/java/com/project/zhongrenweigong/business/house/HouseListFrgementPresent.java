@@ -21,18 +21,20 @@ import okhttp3.RequestBody;
  */
 public class HouseListFrgementPresent extends XPresent<HouseListFragment> {
 
-    public void getVehicle(int currentPage, String name,String thisAddr,int shopCategoryDetail) {
+    public void getHouse(int currentPage, String name,String thisAddr,int shopCategoryDetail,String lat, String lng) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("pageNum", String.valueOf(10));
         stringMap.put("currentPage", String.valueOf(currentPage));
-        stringMap.put("shopCategory", String.valueOf(4));
+        stringMap.put("shopCategory", String.valueOf(5));
         stringMap.put("shopCategoryDetail", String.valueOf(shopCategoryDetail));
         stringMap.put("thisAddr", thisAddr);
         stringMap.put("name", name);
+        stringMap.put("lat", lat);
+        stringMap.put("lng", lng);
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
-        BusinessApi.businessNetManager().getVehicle(requestBody)
+        BusinessApi.businessNetManager().getHouse(requestBody)
                 .compose(XApi.<IndustryListBean>getApiTransformer())
                 .compose(XApi.<IndustryListBean>getScheduler())
                 .compose(getV().<IndustryListBean>bindToLifecycle())
@@ -47,7 +49,7 @@ public class HouseListFrgementPresent extends XPresent<HouseListFragment> {
                     @Override
                     public void onNext(IndustryListBean industryListBean) {
                         if (industryListBean.getCode() == 200) {
-                            getV().setCarData(industryListBean);
+                            getV().setData(industryListBean);
                         } else {
                             ToastManager.showShort(getV().getContext(), industryListBean.msg);
                         }

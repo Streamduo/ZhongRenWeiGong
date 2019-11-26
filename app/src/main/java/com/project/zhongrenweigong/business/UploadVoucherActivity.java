@@ -192,8 +192,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
             @Override
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
                 if (response.isSuccessful()) {
-                    String msg = response.body().getMsg();
-                    showToastShort(msg);
+                    showToastShort("上传成功");
                     finish();
                 } else {
                     showToastShort("请检查网络设置");

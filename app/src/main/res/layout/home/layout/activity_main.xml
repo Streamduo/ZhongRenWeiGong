@@ -94,6 +94,7 @@
         android:paddingRight="@dimen/distance_dp_2"
         android:paddingTop="@dimen/distance_dp_1"
         android:text="99"
+        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="@dimen/distance_dp_10" />
 

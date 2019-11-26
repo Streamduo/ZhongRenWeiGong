@@ -72,7 +72,7 @@ public class CommerecListFragment extends BaseFragment<CommerecListFrgementPrese
                 String shopId = item.shopId;
                 Router.newIntent(getActivity())
                         .putString("shopId", shopId)
-                        .putInt("shopType",4)
+                        .putInt("shopType", 4)
                         .to(BusinessHomePageActivity.class)
                         .launch();
             }
@@ -105,7 +105,7 @@ public class CommerecListFragment extends BaseFragment<CommerecListFrgementPrese
 
     public void getVehicle(String name, int type) {
         teachName = name;
-        String province = ((CarListActivity) getActivity()).province;
+        String province = ((CommerecListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
@@ -174,7 +174,7 @@ public class CommerecListFragment extends BaseFragment<CommerecListFrgementPrese
         EventBus.getDefault().unregister(this);
     }
 
-    public void setCarData(IndustryListBean industryListBean) {
+    public void setData(IndustryListBean industryListBean) {
         if (commerecListAdapter == null) {
             return;
         }
@@ -199,7 +199,7 @@ public class CommerecListFragment extends BaseFragment<CommerecListFrgementPrese
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,commerecListAdapter,smRefresh);
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, commerecListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

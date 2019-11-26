@@ -170,7 +170,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 }
                 break;
             case R.id.te_food:
-                Router.newIntent(getActivity()).putInt(TYPE, 1)
+                Router.newIntent(getActivity()).putInt(TYPE, 0)
                         .to(BusinessListActivity.class)
                         .launch();
                 break;
@@ -220,9 +220,9 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
         //注册监听
 //        int type = getIntent().getIntExtra("from", 0);
 //        if (type == 0) {
-            locationService.setLocationOption(locationService.getDefaultLocationClientOption());
+        locationService.setLocationOption(locationService.getDefaultLocationClientOption());
 //        } else if (type == 1) {
-            locationService.start();
+        locationService.start();
 //        }
     }
 
@@ -344,9 +344,11 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 String province = location.getProvince();
                 double longitude = location.getLongitude();//经度
                 double latitude = location.getLatitude();//纬度
-                showToastShort(province);
+                if (province != null) {
+                    teAddress.setText(province);
+                }
                 if (location.getLocType() == BDLocation.TypeServerError) {//"服务端网络定位失败，可以反馈IMEI号和大体定位时间到
-                                                                          // loc-bugs@baidu.com，会有人追查原因"
+                    // loc-bugs@baidu.com，会有人追查原因"
                 } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
                     //"网络不同导致定位失败，请检查网络是否通畅"
                     showToastShort("定位失败，请检查网络后重试");

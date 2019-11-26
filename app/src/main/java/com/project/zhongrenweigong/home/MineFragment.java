@@ -5,25 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.manager.BusinessManagerActivity;
-import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
-import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
 import com.project.zhongrenweigong.mine.EditMineHomePageActivity;
-import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.mine.MyAuthenticationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
 import com.project.zhongrenweigong.mine.set.SetActivity;
 import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.StatusBarUtils;
-import com.project.zhongrenweigong.util.XCache;
 import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import org.greenrobot.eventbus.EventBus;
@@ -49,21 +44,38 @@ public class MineFragment extends BaseFragment<MinePresent> {
     TextView teUserName;
     @BindView(R.id.te_user_id)
     TextView teUserId;
-    @BindView(R.id.mine_renzheng)
-    ImageView mineRenzheng;
-    @BindView(R.id.line_member)
-    LinearLayout lineMember;
-    @BindView(R.id.rl_mine_wallet)
-    RelativeLayout rlMineWallet;
-    @BindView(R.id.rl_mine_pay_record)
-    RelativeLayout rlMinePayRecord;
     @BindView(R.id.rl_mine_industry)
     RelativeLayout rlMineIndustry;
-    @BindView(R.id.rl_mine_help_center)
-    RelativeLayout rlMineHelpCenter;
-    @BindView(R.id.rl_mine_set)
-    RelativeLayout rlMineSet;
+
     Unbinder unbinder;
+    @BindView(R.id.te_user_morality)
+    TextView teUserMorality;
+    @BindView(R.id.te_work_authentication)
+    TextView teWorkAuthentication;
+    @BindView(R.id.te_jifen)
+    TextView teJifen;
+    @BindView(R.id.te_mine_coupon)
+    TextView teMineCoupon;
+    @BindView(R.id.te_pay)
+    TextView tePay;
+    @BindView(R.id.te_guanzhu)
+    TextView teGuanzhu;
+    @BindView(R.id.te_daode)
+    TextView teDaode;
+    @BindView(R.id.rl_mine_daode)
+    RelativeLayout rlMineDaode;
+    @BindView(R.id.te_mine_renzheng_status)
+    TextView teMineRenzhengStatus;
+    @BindView(R.id.rl_mine_renzheng)
+    RelativeLayout rlMineRenzheng;
+    @BindView(R.id.te_business_renzheng_status)
+    TextView teBusinessRenzhengStatus;
+    @BindView(R.id.rl_business_renzheng)
+    RelativeLayout rlBusinessRenzheng;
+    @BindView(R.id.rl_mine_about_our)
+    RelativeLayout rlMineAboutOur;
+    @BindView(R.id.rl_mine_fankui)
+    RelativeLayout rlMineFankui;
 
     @Override
     public void onResume() {
@@ -101,13 +113,18 @@ public class MineFragment extends BaseFragment<MinePresent> {
     @Override
     public void setListener() {
         imgUserHead.setOnClickListener(this);
-        mineRenzheng.setOnClickListener(this);
-        lineMember.setOnClickListener(this);
-        rlMineWallet.setOnClickListener(this);
-        rlMinePayRecord.setOnClickListener(this);
+
+        rlMineDaode.setOnClickListener(this);
+        rlMineRenzheng.setOnClickListener(this);
+        rlBusinessRenzheng.setOnClickListener(this);
         rlMineIndustry.setOnClickListener(this);
-        rlMineHelpCenter.setOnClickListener(this);
-        rlMineSet.setOnClickListener(this);
+        rlMineAboutOur.setOnClickListener(this);
+        rlMineFankui.setOnClickListener(this);
+
+        teJifen.setOnClickListener(this);
+        teMineCoupon.setOnClickListener(this);
+        tePay.setOnClickListener(this);
+        teGuanzhu.setOnClickListener(this);
     }
 
     @Override
@@ -116,24 +133,30 @@ public class MineFragment extends BaseFragment<MinePresent> {
             case R.id.img_user_head:
                 Router.newIntent(getActivity()).to(EditMineHomePageActivity.class).launch();
                 break;
-            case R.id.mine_renzheng:
-                Router.newIntent(getActivity()).to(MyAuthenticationActivity.class).launch();
+            case R.id.te_jifen:
+                Router.newIntent(getActivity()).to(SetActivity.class).launch();
                 break;
-            case R.id.line_member:
-
+            case R.id.te_mine_coupon:
                 break;
-            case R.id.rl_mine_wallet:
+            case R.id.te_pay:
                 Router.newIntent(getActivity()).to(MyWalletActivity.class).launch();
                 break;
-            case R.id.rl_mine_pay_record:
+            case R.id.te_guanzhu:
+                break;
+            case R.id.rl_mine_daode:
+
+                break;
+            case R.id.rl_mine_renzheng:
+                break;
+            case R.id.rl_business_renzheng:
                 break;
             case R.id.rl_mine_industry:
                 Router.newIntent(getActivity()).to(BusinessManagerActivity.class).launch();
                 break;
-            case R.id.rl_mine_help_center:
-                break;
-            case R.id.rl_mine_set:
+            case R.id.rl_mine_fankui:
                 Router.newIntent(getActivity()).to(SetActivity.class).launch();
+                break;
+            case R.id.rl_mine_about_our:
                 break;
         }
     }
@@ -160,7 +183,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
     private void setData() {
         LoginMsg loginMsg = AcacheUtils.getInstance(getContext()).getUserAccent();
         if (loginMsg != null && loginMsg.mbId != null && !loginMsg.mbId.equals("")) {
-            GlideDownLoadImage.getInstance().loadCircleImage(this, loginMsg.headUrl, imgUserHead,R.mipmap.user_default_head);
+            GlideDownLoadImage.getInstance().loadCircleImage(this, loginMsg.headUrl, imgUserHead, R.mipmap.big_default_user_head);
             teUserName.setText(loginMsg.mbName);
             teUserId.setText("ID:" + loginMsg.mbId);
         }

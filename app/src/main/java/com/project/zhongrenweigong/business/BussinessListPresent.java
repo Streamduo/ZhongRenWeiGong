@@ -28,14 +28,17 @@ import static com.project.zhongrenweigong.currency.Constans.ADDRES;
 public class BussinessListPresent extends XPresent<BusinessListActivity> {
 
     public void selectAllShop(int shopCategory, int currentPage, int flag,
-                              String shopName, int shopCategoryDetail) {
-        String address = SharedPref.getInstance(getV()).getString(ADDRES, "");
+                              String shopName, int shopCategoryDetail, String address,
+                              String lat, String lng) {
+
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("pageNum", String.valueOf(10));
         stringMap.put("currentPage", String.valueOf(currentPage));
         stringMap.put("flag", String.valueOf(flag));
-        stringMap.put("thisAddr",address);
-        switch (flag){
+        stringMap.put("thisAddr", address);
+        stringMap.put("lat", lat);
+        stringMap.put("lng", lng);
+        switch (flag) {
             case 0:
                 stringMap.put("shopCategory", String.valueOf(shopCategory));
                 stringMap.put("shopCategoryDetail", String.valueOf(shopCategoryDetail));
@@ -65,8 +68,8 @@ public class BussinessListPresent extends XPresent<BusinessListActivity> {
                     public void onNext(BusinessShopListBean businessShopListBean) {
                         if (businessShopListBean.getCode() == 200) {
                             getV().setData(businessShopListBean);
-                        }else {
-                            ToastManager.showShort(getV(),businessShopListBean.msg);
+                        } else {
+                            ToastManager.showShort(getV(), businessShopListBean.msg);
                         }
                     }
                 });

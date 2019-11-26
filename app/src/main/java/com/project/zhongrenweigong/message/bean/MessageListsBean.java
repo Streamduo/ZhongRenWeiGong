@@ -47,4 +47,5 @@ public class MessageListsBean implements Serializable {
     public String checkStatus;
     public String shopAddr;
     public String phone;
+    public String mcId;
 }

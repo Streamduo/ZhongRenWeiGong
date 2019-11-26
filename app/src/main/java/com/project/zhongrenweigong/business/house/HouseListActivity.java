@@ -159,6 +159,7 @@ public class HouseListActivity extends BaseActivity<HouseListPresent> {
                     // loc-bugs@baidu.com，会有人追查原因"
                 } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
                     //"网络不同导致定位失败，请检查网络是否通畅"
+
                     showToastShort("定位失败，请检查网络后重试");
                 } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
                     showToastShort("定位失败，请检查网络后重试");

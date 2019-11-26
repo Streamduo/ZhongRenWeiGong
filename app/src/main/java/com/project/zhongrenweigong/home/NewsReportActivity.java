@@ -1,24 +1,16 @@
 package com.project.zhongrenweigong.home;
 
-import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -26,17 +18,14 @@ import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.base.BaseModel;
-import com.project.zhongrenweigong.base.PressionListener;
-import com.project.zhongrenweigong.business.UploadVoucherActivity;
 import com.project.zhongrenweigong.business.adapter.UploadImgListAdapter;
 import com.project.zhongrenweigong.business.bean.UploadImgBean;
-import com.project.zhongrenweigong.currency.ActivitySelectImage;
 import com.project.zhongrenweigong.home.adapter.ReportListAdapter;
 import com.project.zhongrenweigong.home.bean.ReportBean;
 import com.project.zhongrenweigong.net.HomeMainApi;
+import com.project.zhongrenweigong.util.EditChangedListener;
 import com.project.zhongrenweigong.util.SpacingItemDecoration;
 import com.project.zhongrenweigong.util.UtilsStyle;
-import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 import com.project.zhongrenweigong.view.LoadingDialog;
 
 import java.io.File;
@@ -76,6 +65,8 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
     TextView teSend;
     @BindView(R.id.recy_img_list)
     RecyclerView recyImgList;
+    @BindView(R.id.te_max_size)
+    TextView teMaxSize;
     private List<ReportBean> reportBeanList = new ArrayList<>();
     private ReportListAdapter reportListAdapter;
     private String reportIntro;
@@ -168,7 +159,8 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
 
     @Override
     public void initAfter() {
-
+        edReportIntro.addTextChangedListener(new EditChangedListener(edReportIntro,
+                NewsReportActivity.this, 200, teMaxSize));
     }
 
     @Override
@@ -196,7 +188,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
             case R.id.te_send:
                 reportIntro = edReportIntro.getText().toString();
                 selectedStr = getSelectedStr();
-                if (selectedStr.equals("")){
+                if (selectedStr.equals("")) {
                     showToastShort("请选择举报原因");
                     return;
                 }
@@ -212,7 +204,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
                         }
                     }
                     setCompressImg(path);
-                }else {
+                } else {
                     uploadPic(null);
                 }
 
@@ -309,7 +301,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
 
     private String getSelectedStr() {
         List<ReportBean> reportBeanList = reportListAdapter.getReportBeanList();
-        if (reportBeanList!=null&&reportBeanList.size()>0) {
+        if (reportBeanList != null && reportBeanList.size() > 0) {
             StringBuilder sb = new StringBuilder();
             for (ReportBean reportBean : reportBeanList) {
                 if (sb.length() > 0) {//该步即不会第一位有逗号，也防止最后一位拼接逗号！
@@ -318,7 +310,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
                 sb.append(reportBean.getReportIntro());
             }
             return sb.toString();
-        }else {
+        } else {
             return "";
         }
 

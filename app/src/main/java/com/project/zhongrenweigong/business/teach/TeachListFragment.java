@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.project.zhongrenweigong.business.BusinessHomePageActivity;
 import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
+import com.project.zhongrenweigong.business.bean.IndustryDataBean;
 import com.project.zhongrenweigong.business.bean.TeachDataBean;
 import com.project.zhongrenweigong.business.bean.TeachListBean;
 import com.project.zhongrenweigong.business.bean.TeacherDataBean;
@@ -19,6 +21,7 @@ import com.project.zhongrenweigong.business.teach.adapter.TeachListAdapter;
 import com.project.zhongrenweigong.business.teach.adapter.TeacherListAdapter;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
 import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -34,6 +37,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.droidlover.xdroidmvp.router.Router;
 
 
 /**
@@ -53,6 +57,8 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
     private TeacherListAdapter teacherListAdapter;
     private String teachName = "";
     private String teacherName = "";
+    private String lat = "1";
+    private String lng = "1";
 
     public static TeachListFragment getInstance(int index) {//String shopId
         TeachListFragment homePageXinXiFragment = new TeachListFragment();
@@ -73,7 +79,13 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
             teachListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                    TeachDataBean item = teachListAdapter.getItem(position);
+                    String shopId = item.shopId;
+                    Router.newIntent(getActivity())
+                            .putString("shopId", shopId)
+                            .putInt("shopType", BusinessHomePageActivity.SHOP_TYPE_TEACH)
+                            .to(BusinessHomePageActivity.class)
+                            .launch();
                 }
             });
         } else {
@@ -82,7 +94,12 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
             teacherListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                    TeacherDataBean item = teacherListAdapter.getItem(position);
+                    String mbId = item.mbId;
+                    Router.newIntent(getActivity())
+                            .putString("mbId", mbId)
+                            .to(MineHomePageActivity.class)
+                            .launch();
                 }
             });
         }
@@ -119,7 +136,7 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
             getDataError();
             return;
         }
-        getP().getEducationTeach(currentPage, name, province);
+        getP().getEducationTeach(currentPage, name, province, lat, lng);
     }
 
     public void getEducationTeacher(String name) {

@@ -38,11 +38,11 @@ public class VoucherMessageListAdapter extends BaseQuickAdapter<MessageListsBean
         if (checkStatus.equals("0")) {
             helper.setText(R.id.te_voucher_status, "上传凭证待审核");
         } else if (checkStatus.equals("1")) {
-            helper.setText(R.id.te_voucher_status, "上传凭证审核未通过");
-            helper.setBackgroundRes(R.id.img_voucher_status, R.mipmap.msg_shenhe_error);
-        } else {
             helper.setText(R.id.te_voucher_status, "上传凭证审核已通过");
             helper.setBackgroundRes(R.id.img_voucher_status, R.mipmap.msg_shenghe_ok);
+        } else {
+            helper.setText(R.id.te_voucher_status, "上传凭证审核未通过");
+            helper.setBackgroundRes(R.id.img_voucher_status, R.mipmap.msg_shenhe_error);
         }
         String isRead = item.isRead;
         if (isRead.equals("0")) {

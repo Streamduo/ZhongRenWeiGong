@@ -8,13 +8,13 @@
     app:srlAccentColor="@color/app_text_99"
     app:srlEnablePreviewInEditMode="true"
     app:srlPrimaryColor="@color/white"
+    android:background="@color/white"
     tools:context=".home.MessageListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recy_message_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:overScrollMode="never" />
 
 </com.scwang.smartrefresh.layout.SmartRefreshLayout>

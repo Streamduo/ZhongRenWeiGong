@@ -48,6 +48,8 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
     private int currentPage = 1;
     private HotelListAdapter hotelListAdapter;
     private String teachName = "";
+    private String lat = "1";
+    private String lng = "1";
 
     public static HotelListFragment getInstance(int index) {//String shopId
         HotelListFragment carListFragment = new HotelListFragment();
@@ -71,7 +73,7 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
                 String shopId = item.shopId;
                 Router.newIntent(getActivity())
                         .putString("shopId", shopId)
-                        .putInt("shopType",4)
+                        .putInt("shopType", BusinessHomePageActivity.SHOP_TYPE_HOTEL)
                         .to(BusinessHomePageActivity.class)
                         .launch();
             }
@@ -82,9 +84,9 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
             public void onRefresh(RefreshLayout refreshlayout) {
                 currentPage = 1;
                 if (index == 0) {
-                    getVehicle(teachName, 0);
+                    getHotel(teachName, 0);
                 } else {
-                    getVehicle(teachName, 1);
+                    getHotel(teachName, 1);
                 }
             }
         });
@@ -93,31 +95,31 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
             public void onLoadMore(RefreshLayout refreshlayout) {
                 currentPage++;
                 if (index == 0) {
-                    getVehicle(teachName, 0);
+                    getHotel(teachName, 0);
                 } else {
-                    getVehicle(teachName, 1);
+                    getHotel(teachName, 1);
                 }
             }
         });
 
     }
 
-    public void getVehicle(String name, int type) {
+    public void getHotel(String name, int type) {
         teachName = name;
         String province = ((HotelListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
         }
-        getP().getVehicle(currentPage, name, province, type);
+        getP().getHotel(currentPage, name, province, type, lat, lng);
     }
 
     @Override
     public void initAfter() {
         if (index == 0) {
-            getVehicle(teachName, 0);
+            getHotel(teachName, 0);
         } else if (index == 1) {
-            getVehicle(teachName, 1);
+            getHotel(teachName, 1);
         }
     }
 
@@ -154,9 +156,9 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
         if (searchEvent.searchText != null) {
             currentPage = 1;
             if (searchEvent.index == 0) {
-                getVehicle(searchEvent.searchText, 0);
+                getHotel(searchEvent.searchText, 0);
             } else {
-                getVehicle(searchEvent.searchText, 1);
+                getHotel(searchEvent.searchText, 1);
             }
         }
     }
@@ -173,7 +175,7 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
         EventBus.getDefault().unregister(this);
     }
 
-    public void setCarData(IndustryListBean industryListBean) {
+    public void setData(IndustryListBean industryListBean) {
         if (hotelListAdapter == null) {
             return;
         }
@@ -198,7 +200,7 @@ public class HotelListFragment extends BaseFragment<HotelListFrgementPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,hotelListAdapter,smRefresh);
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, hotelListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

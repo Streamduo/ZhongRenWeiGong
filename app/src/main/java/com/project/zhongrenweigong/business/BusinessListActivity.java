@@ -62,6 +62,9 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
     private BusinessTypeListAdapter businessTypeListAdapter;
     private BusinessListAdapter listAdapter;
     private String searchText;
+    private String address = "北京市";
+    private String lat = "1";
+    private String lng = "1";
 
     @Override
     public void initView() {
@@ -80,9 +83,11 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
                     if (searchText != null && !searchText.equals("")) {
                         //关闭软键盘
                         KeyboardUtils.hideSoftInput(BusinessListActivity.this);
-                        getP().selectAllShop(type, currentPage, 1, searchText, 1);
+                        getP().selectAllShop(type, currentPage, 1, searchText, 1,
+                                address, lat, lng);
                     } else {
-                        getP().selectAllShop(type, currentPage, 0, "", 1);
+                        getP().selectAllShop(type, currentPage, 0, "", 1,
+                                address, lat, lng);
                     }
                     return true;
                 }
@@ -95,9 +100,11 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             public void onRefresh(RefreshLayout refreshlayout) {
                 currentPage = 1;
                 if (searchText != null && !searchText.equals("")) {
-                    getP().selectAllShop(type, currentPage, 1, searchText, 1);
+                    getP().selectAllShop(type, currentPage, 1, searchText, 1,
+                            address, lat, lng);
                 } else {
-                    getP().selectAllShop(type, currentPage, 0, "", 1);
+                    getP().selectAllShop(type, currentPage, 0, "", 1,
+                            address, lat, lng);
                 }
             }
         });
@@ -106,9 +113,11 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             public void onLoadMore(RefreshLayout refreshlayout) {
                 currentPage++;
                 if (searchText != null && !searchText.equals("")) {
-                    getP().selectAllShop(type, currentPage, 1, searchText, 1);
+                    getP().selectAllShop(type, currentPage, 1, searchText, 1,
+                            address, lat, lng);
                 } else {
-                    getP().selectAllShop(type, currentPage, 0, "", 1);
+                    getP().selectAllShop(type, currentPage, 0, "", 1,
+                            address, lat, lng);
                 }
             }
         });
@@ -145,13 +154,14 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 DataBean item = listAdapter.getItem(position);
                 Router.newIntent(BusinessListActivity.this)
-                        .putString("shopId",item.shopId)
+                        .putString("shopId", item.shopId)
                         .to(BusinessHomePageActivity.class)
                         .launch();
             }
         });
 
-        getP().selectAllShop(type, currentPage, 0, "", 1);
+        getP().selectAllShop(type, currentPage, 0, "", 1,
+                address, lat, lng);
     }
 
     @Override
@@ -212,7 +222,7 @@ public class BusinessListActivity extends BaseActivity<BussinessListPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,listAdapter,smRefresh);
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, listAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

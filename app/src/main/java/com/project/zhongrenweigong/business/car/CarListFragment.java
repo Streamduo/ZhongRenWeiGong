@@ -32,6 +32,8 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import cn.droidlover.xdroidmvp.router.Router;
 
+import static com.project.zhongrenweigong.business.BusinessHomePageActivity.SHOP_TYPE_CAR;
+
 
 /**
  * 作者：Fuduo on 2019/10/21 15:47
@@ -48,6 +50,8 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
     private int currentPage = 1;
     private CarListAdapter carListAdapter;
     private String teachName = "";
+    private String lat = "1";
+    private String lng = "1";
 
     public static CarListFragment getInstance(int index) {//String shopId
         CarListFragment carListFragment = new CarListFragment();
@@ -71,7 +75,7 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
                 String shopId = item.shopId;
                 Router.newIntent(getActivity())
                         .putString("shopId", shopId)
-                        .putInt("shopType",4)
+                        .putInt("shopType", SHOP_TYPE_CAR)
                         .to(BusinessHomePageActivity.class)
                         .launch();
             }
@@ -109,7 +113,7 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
             getDataError();
             return;
         }
-        getP().getVehicle(currentPage, name, province, type);
+        getP().getVehicle(currentPage, name, province, type, lat, lng);
     }
 
     @Override
@@ -198,7 +202,7 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1,carListAdapter,smRefresh);
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, carListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);
