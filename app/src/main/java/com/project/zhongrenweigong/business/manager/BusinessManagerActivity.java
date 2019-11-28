@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.business.bean.IndustryDataBean;
+import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,15 +34,24 @@ public class BusinessManagerActivity extends BaseActivity<BusinessManagerPresent
     RelativeLayout rlShopNotice;
     @BindView(R.id.rl_worker_manager)
     RelativeLayout rlWorkerManager;
+    @BindView(R.id.te_business_name)
+    TextView teBusinessName;
+    private IndustryDataBean industryDataBean;
 
     @Override
     public void initView() {
         teTitle.setText("商家管理");
-        teRightTitle.setText("发布动态");
+        industryDataBean = (IndustryDataBean) getIntent().getSerializableExtra("IndustryDataBean");
     }
 
     @Override
     public void initAfter() {
+        if (industryDataBean == null) {
+            return;
+        }
+        GlideDownLoadImage.getInstance().loadCircleImage(this, industryDataBean.shopLogo,
+                imgBusinessHead, R.mipmap.user_default_head);
+        teBusinessName.setText(industryDataBean.shopName);
 
     }
 
@@ -66,7 +77,7 @@ public class BusinessManagerActivity extends BaseActivity<BusinessManagerPresent
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.te_back:
                 finish();
                 break;
@@ -80,7 +91,11 @@ public class BusinessManagerActivity extends BaseActivity<BusinessManagerPresent
                 Router.newIntent(BusinessManagerActivity.this).to(EditStoreIntroActivity.class).launch();
                 break;
             case R.id.rl_shop_notice:
-                Router.newIntent(BusinessManagerActivity.this).to(SendNoticeActivity.class).launch();
+                if (industryDataBean == null) {
+                    return;
+                }
+                Router.newIntent(BusinessManagerActivity.this)
+                        .putString("shopId", industryDataBean.shopId).to(SendLooseActivity.class).launch();
                 break;
             case R.id.rl_worker_manager:
                 Router.newIntent(BusinessManagerActivity.this).to(WorkerManagerActivity.class).launch();

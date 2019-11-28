@@ -34,7 +34,7 @@ public class HouseListFrgementPresent extends XPresent<HouseListFragment> {
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
-        BusinessApi.businessNetManager().getHouse(requestBody)
+        BusinessApi.businessNetManager().getVehicle(requestBody)
                 .compose(XApi.<IndustryListBean>getApiTransformer())
                 .compose(XApi.<IndustryListBean>getScheduler())
                 .compose(getV().<IndustryListBean>bindToLifecycle())

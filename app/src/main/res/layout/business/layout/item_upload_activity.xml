@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/distance_dp_100"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/distance_dp_12">
+
+    <ImageView
+        android:id="@+id/img_upload"
+        android:layout_width="@dimen/distance_dp_100"
+        android:layout_height="@dimen/distance_dp_100"
+        android:background="@mipmap/vegetable_default"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/img_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="@dimen/distance_dp_10"
+        android:paddingLeft="@dimen/distance_dp_10"
+        android:src="@mipmap/cha_delete" />
+
+    <ImageView
+        android:id="@+id/img_add"
+        android:layout_width="@dimen/distance_dp_100"
+        android:layout_height="@dimen/distance_dp_100"
+        android:visibility="gone"
+        android:src="@mipmap/activity_img_default" />
+</RelativeLayout>

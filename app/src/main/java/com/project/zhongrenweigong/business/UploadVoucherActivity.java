@@ -96,7 +96,7 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
             public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
                     case R.id.img_delete:
-                        uploadImgListAdapter.remove(position - 1);
+                        uploadImgListAdapter.remove(position == 0 ? position : position - 1);
                         break;
                     case R.id.line_add:
                         int size = uploadImgBeanList.size();
@@ -195,14 +195,14 @@ public class UploadVoucherActivity extends BaseActivity<UploadVoucherPresent> {
                     showToastShort("上传成功");
                     finish();
                 } else {
-                    showToastShort("请检查网络设置");
+                    showToastShort("提交失败，请检查网络设置");
                 }
                 LoadingDialog.dismiss(UploadVoucherActivity.this);
             }
 
             @Override
             public void onFailure(Call<BaseModel> call, Throwable t) {
-                showToastShort("请检查网络设置");
+                showToastShort("提交失败，请检查网络设置");
                 LoadingDialog.dismiss(UploadVoucherActivity.this);
             }
         });

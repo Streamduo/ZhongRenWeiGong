@@ -40,6 +40,7 @@
 -keep class com.project.zhongrenweigong.login.bean.** { *; }
 -keep class com.project.zhongrenweigong.square.bean.** { *; }
 -keep class com.project.zhongrenweigong.mine.bean.** { *; }
+-keep class com.project.zhongrenweigong.message.bean.** { *; }
 
 #-dontwarn jp.co.cyberagent.android.gpuimage.**
 -dontwarn com.squareup.okhttp.**

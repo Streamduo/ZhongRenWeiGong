@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mine.ProfessionalCertificationActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_195"
+        android:background="@mipmap/bottom_round" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_new_white_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_25" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_175"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginRight="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_90"
+        android:background="@mipmap/jifen_bac"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/distance_dp_23"
+        android:paddingTop="@dimen/distance_dp_23">
+
+        <TextView
+            android:id="@+id/te_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的积分"
+            android:textColor="@color/app_text_66"
+            android:textSize="@dimen/distance_dp_14" />
+
+        <TextView
+            android:id="@+id/te_integral_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_FC4945"
+            android:textSize="@dimen/distance_dp_40"
+            tools:text="32,463.65" />
+
+        <TextView
+            android:id="@+id/te_yesterday_integral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_text_66"
+            android:textSize="@dimen/distance_dp_14"
+            tools:text="昨日赚取积分         +300" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_ti_xian"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_60"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="@dimen/distance_dp_105"
+        android:layout_marginRight="@dimen/distance_dp_105"
+        android:layout_marginTop="@dimen/distance_dp_40"
+        android:background="@drawable/bg_bac_339aff_35"
+        android:gravity="center"
+        android:text="提现"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_19" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/te_ti_xian"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginRight="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="积分明细"
+            android:textColor="@color/FF000000"
+            android:textSize="@dimen/distance_dp_18"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_marginTop="@dimen/distance_dp_8"
+            android:background="@color/app_F1F1F1" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/sm_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlAccentColor="@color/app_text_99"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@color/white">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_integral_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</RelativeLayout>

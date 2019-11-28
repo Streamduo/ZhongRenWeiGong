@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_F4F4F4"
+    tools:context=".mine.ProfessionalCertificationActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_below="@+id/title"
+        android:background="@color/app_e8e8e8" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_227"
+        android:layout_below="@+id/view"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:layout_marginRight="@dimen/distance_dp_15"
+        android:layout_marginTop="@dimen/distance_dp_10"
+        android:background="@mipmap/fang_gray_storke">
+
+        <EditText
+            android:id="@+id/ed_report_intro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/distance_dp_25"
+            android:background="@null"
+            android:gravity="left"
+            android:hint="请输入您的反馈"
+            android:paddingLeft="@dimen/distance_dp_8"
+            android:paddingTop="@dimen/distance_dp_7"
+            android:textColor="@color/FF000000"
+            android:textSize="@dimen/distance_dp_16" />
+
+        <TextView
+            android:id="@+id/te_max_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/distance_dp_5"
+            android:layout_marginRight="@dimen/distance_dp_15"
+            android:text="不超过200字"
+            android:textColor="@color/app_text_99"
+            android:textSize="@dimen/distance_dp_13" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/te_send"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_44"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/distance_dp_23"
+        android:layout_marginLeft="@dimen/distance_dp_20"
+        android:layout_marginRight="@dimen/distance_dp_20"
+        android:background="@drawable/bg_bac_339aff_10"
+        android:gravity="center"
+        android:text="提交认证"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_19" />
+
+</RelativeLayout>

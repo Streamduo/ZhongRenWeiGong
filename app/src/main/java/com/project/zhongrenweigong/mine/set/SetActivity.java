@@ -24,11 +24,7 @@ import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.router.Router;
-
-import static com.project.zhongrenweigong.currency.Constans.ADDRES;
-import static com.project.zhongrenweigong.currency.Constans.ISTOURIST;
 
 public class SetActivity extends BaseActivity<SetPresent> {
 

@@ -25,4 +25,5 @@ public class TeachDataBean {
     public String provinces;
     public String lng;
     public String lat;
+    public String distance;
 }

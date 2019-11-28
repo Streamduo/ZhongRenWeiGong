@@ -30,12 +30,13 @@
             android:scaleType="centerCrop" />
 
         <TextView
+            android:id="@+id/te_business_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_business_head"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/distance_dp_14"
-            android:text="商家店铺名称"
+            tools:text="商家店铺名称"
             android:textColor="@color/white"
             android:textSize="15dp" />
 
@@ -150,7 +151,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="商家公告"
+                    android:text="发布活动"
                     android:textColor="@color/app_text_33"
                     android:textSize="@dimen/distance_dp_14" />
 

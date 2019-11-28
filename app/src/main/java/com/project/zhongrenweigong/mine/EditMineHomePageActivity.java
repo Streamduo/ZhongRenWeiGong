@@ -14,10 +14,14 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.business.manager.BusinessManagerActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.mine.adapter.GoodDeedListAdapter;
 import com.project.zhongrenweigong.mine.bean.MineSystemBean;
 import com.project.zhongrenweigong.mine.bean.SystemDataBean;
+import com.project.zhongrenweigong.mine.set.ChangePasswordActivity;
+import com.project.zhongrenweigong.mine.set.ChangePhoneActivity;
+import com.project.zhongrenweigong.mine.set.SetActivity;
 import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 import com.project.zhongrenweigong.view.disk.DataItem;
@@ -28,6 +32,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class EditMineHomePageActivity extends BaseActivity<EditMineHomePagePresent> {
 
@@ -94,6 +100,14 @@ public class EditMineHomePageActivity extends BaseActivity<EditMineHomePagePrese
             setFull(false);
         }
         teTitle.setText("个人中心");
+        LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+        teIdNum.setText(userAccent.mbId);
+        tePhoneNum.setText(userAccent.mbPhone);
+        if (userAccent.isAuthMerchant.equals("1")){
+            teMineAuthenticationStatus.setVisibility(View.VISIBLE);
+        }else {
+            teMineAuthenticationStatus.setVisibility(View.GONE);
+        }
         recyDedicationList.setLayoutManager(new LinearLayoutManager(this));
         recyOralityList.setLayoutManager(new LinearLayoutManager(this));
         recySincerityList.setLayoutManager(new LinearLayoutManager(this));
@@ -188,6 +202,11 @@ public class EditMineHomePageActivity extends BaseActivity<EditMineHomePagePrese
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
+        rlShopAuthentication.setOnClickListener(this);
+        rlShopManager.setOnClickListener(this);
+        rlMineAuthentication.setOnClickListener(this);
+        rlPhone.setOnClickListener(this);
+        rlChangePsd.setOnClickListener(this);
     }
 
     @Override
@@ -195,6 +214,21 @@ public class EditMineHomePageActivity extends BaseActivity<EditMineHomePagePrese
         switch (v.getId()) {
             case R.id.te_back:
                 finish();
+                break;
+            case R.id.rl_shop_authentication:
+                break;
+            case R.id.rl_shop_manager:
+                Router.newIntent(EditMineHomePageActivity.this).to(BusinessManagerActivity.class).launch();
+                break;
+            case R.id.rl_mine_authentication:
+                Router.newIntent(EditMineHomePageActivity.this).to(ProfessionalCertificationActivity.class).launch();
+
+                break;
+            case R.id.rl_phone:
+                Router.newIntent(EditMineHomePageActivity.this).to(ChangePhoneActivity.class).launch();
+                break;
+            case R.id.rl_change_psd:
+                Router.newIntent(EditMineHomePageActivity.this).to(ChangePasswordActivity.class).launch();
                 break;
         }
     }

@@ -9,10 +9,21 @@ import android.view.ViewGroup;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
+import com.project.zhongrenweigong.home.adapter.HomeVideoListAdapter;
+import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
+import com.project.zhongrenweigong.home.bean.HomeVideoBean;
+import com.project.zhongrenweigong.home.bean.HomeVideoDataBean;
+import com.project.zhongrenweigong.home.bean.NewsDataBean;
+import com.project.zhongrenweigong.home.bean.NewsDataMultiItemEntity;
+import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +43,7 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
     SmartRefreshLayout smRefresh;
     private int index;
     private int currentPage = 1;;
+    private HomeVideoListAdapter homeVideoListAdapter;
 
     public static HomeVideoFragment getInstance(int index) {
         HomeVideoFragment homePageXinXiFragment = new HomeVideoFragment();
@@ -46,26 +58,27 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
         recyVideoList.setLayoutManager(new LinearLayoutManager(getContext()));
-//        workerListAdapter = new BusinessWorkerListAdapter(R.layout.item_people_list);
-//        recyShopList.setAdapter(workerListAdapter);
+        homeVideoListAdapter = new HomeVideoListAdapter(R.layout.item_journalism_video);
+        recyVideoList.setAdapter(homeVideoListAdapter);
         smRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 currentPage = 1;
-
+                initAfter();
             }
         });
         smRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshlayout) {
                 currentPage++;
+                initAfter();
             }
         });
     }
 
     @Override
     public void initAfter() {
-
+        getP().getVideo(currentPage);
     }
 
     @Override
@@ -86,6 +99,32 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
     @Override
     public void widgetClick(View v) {
 
+    }
+
+    public void setData(HomeVideoBean homeVideoBean) {
+        int pageSize = homeVideoBean.pageSize;
+        List<HomeVideoDataBean> data = homeVideoBean.getData();
+        if (data != null && data.size() > 0) {
+            if (currentPage == 1) {
+                homeVideoListAdapter.setNewData(data);
+            } else {
+                homeVideoListAdapter.addData(data);
+            }
+        } else {
+            getDataError();
+        }
+        if (currentPage == pageSize) {
+            smRefresh.setEnableLoadMore(false);
+        }
+    }
+
+    public void getDataError() {
+        if (currentPage == 1) {
+            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeVideoListAdapter, smRefresh);
+            smRefresh.finishRefresh(false);
+        } else {
+            smRefresh.finishLoadMore(false);
+        }
     }
 
 

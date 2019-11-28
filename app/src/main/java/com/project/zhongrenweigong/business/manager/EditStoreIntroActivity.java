@@ -345,6 +345,8 @@ public class EditStoreIntroActivity extends BaseActivity<EditStoreIntroPresent> 
                 })
                 .setItemVisibleCount(5) //若设置偶数，实际值会加1（比如设置6，则最大可见条目为7）
                 .setLineSpacingMultiplier(2.0f)
+                .setCancelColor(getResources().getColor(R.color.app_text_33))
+                .setSubmitColor(getResources().getColor(R.color.app_369EFF))
                 .isAlphaGradient(true)
                 .build();
         pvTime.show();

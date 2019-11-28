@@ -7,14 +7,11 @@
         android:id="@+id/te_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/back_white"
+        android:drawableLeft="@mipmap/new_white_back"
         android:drawablePadding="@dimen/distance_dp_6"
-        android:paddingLeft="@dimen/distance_dp_20"
-        android:paddingTop="@dimen/distance_dp_30"
         android:paddingBottom="@dimen/distance_dp_10"
-        android:text="返回"
-        android:textColor="@color/white"
-        android:textSize="@dimen/distance_dp_15" />
+        android:paddingLeft="@dimen/distance_dp_20"
+        android:paddingTop="@dimen/distance_dp_30" />
 
     <TextView
         android:id="@+id/te_title"

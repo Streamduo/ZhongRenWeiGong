@@ -59,7 +59,8 @@ public class TeachListFrgementPresent extends XPresent<TeachListFragment> {
                 });
     }
 
-    public void getEducationTeacher(int currentPage, String name,String thisAddr) {
+    public void getEducationTeacher(int currentPage, String name,String thisAddr,
+                                    String lat, String lng) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("pageNum", String.valueOf(10));
         stringMap.put("currentPage", String.valueOf(currentPage));
@@ -67,6 +68,8 @@ public class TeachListFrgementPresent extends XPresent<TeachListFragment> {
         stringMap.put("shopCategoryDetail", String.valueOf(1));
         stringMap.put("thisAddr", thisAddr);
         stringMap.put("name", name);
+        stringMap.put("lat", lat);
+        stringMap.put("lng", lng);
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);

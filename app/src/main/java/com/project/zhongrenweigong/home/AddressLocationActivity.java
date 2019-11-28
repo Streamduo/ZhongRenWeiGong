@@ -27,6 +27,8 @@ import com.project.zhongrenweigong.home.adapter.AddressSearchHistoryListAdapter;
 import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.AddressDataBean;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.KeyboardUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 
@@ -65,7 +67,6 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
     RecyclerView recySearchAddressList;
     @BindView(R.id.line_search_address)
     LinearLayout lineSearchAddress;
-    private boolean isTourist;
     private AddressListAdapter listAdapter;
     private List<SearchHistoryBean> searchHistoryList;
     private AddressHistoryListAdapter latelylistAdapter;
@@ -73,7 +74,6 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
 
     @Override
     public void initView() {
-        isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
 
         edSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -166,7 +166,8 @@ public class AddressLocationActivity extends BaseActivity<AddressLocationPresent
                 finish();
                 break;
             case R.id.img_msg:
-                if (isTourist) {
+                LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+                if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
                     Router.newIntent(AddressLocationActivity.this).to(LoginActivity.class).launch();
                 } else {
                     Router.newIntent(AddressLocationActivity.this).to(MessageListActivity.class).launch();

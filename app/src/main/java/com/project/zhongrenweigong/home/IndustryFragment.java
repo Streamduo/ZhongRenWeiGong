@@ -28,6 +28,8 @@ import com.project.zhongrenweigong.currency.zxing.android.CaptureActivity;
 import com.project.zhongrenweigong.home.adapter.UltraViewPagerAdapter;
 import com.project.zhongrenweigong.home.bean.DataBean;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.ScreenUtils;
 import com.project.zhongrenweigong.util.StatusBarUtils;
 import com.tmall.ultraviewpager.UltraViewPager;
@@ -79,8 +81,8 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
     TextView teTravel;
 
     Unbinder unbinder;
-    private boolean isTourist;
     private LocationService locationService;
+    private BDLocation bdLocation;
 
     @Override
     public void onResume() {
@@ -96,7 +98,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
 
     @Override
     public void initView() {
-        isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
+
     }
 
     public void initViewPager(List<DataBean> carouselEntities) {
@@ -156,14 +158,16 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 Router.newIntent(getActivity()).to(SearchBusinessActivity.class).launch();
                 break;
             case R.id.img_message:
-                if (isTourist) {
-                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
-                } else {
-                    Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
-                }
+//                LoginMsg userAccent = AcacheUtils.getInstance(getContext()).getUserAccent();
+//                if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
+//                    Router.newIntent(getActivity()).to(LoginActivity.class).launch();
+//                } else {
+//                    Router.newIntent(getActivity()).to(MessageListActivity.class).launch();
+//                }
                 break;
             case R.id.img_saoyosao:
-                if (isTourist) {
+                LoginMsg userAccent1 = AcacheUtils.getInstance(getContext()).getUserAccent();
+                if (userAccent1 == null || userAccent1.mbId == null || userAccent1.mbId.equals("")) {
                     Router.newIntent(getActivity()).to(CaptureActivity.class).launch();
                 } else {
                     Router.newIntent(getActivity()).to(CaptureActivity.class).launch();
@@ -176,26 +180,31 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 break;
             case R.id.te_teach:
                 Router.newIntent(getActivity()).putInt(TYPE, 2)
+                        .putParcelable("bdLocation",bdLocation)
                         .to(TeachListActivity.class)
                         .launch();
                 break;
             case R.id.te_house:
                 Router.newIntent(getActivity()).putInt(TYPE, 3)
+                        .putParcelable("bdLocation",bdLocation)
                         .to(HouseListActivity.class)
                         .launch();
                 break;
             case R.id.te_car:
                 Router.newIntent(getActivity()).putInt(TYPE, 4)
+                        .putParcelable("bdLocation",bdLocation)
                         .to(CarListActivity.class)
                         .launch();
                 break;
             case R.id.te_retailers:
                 Router.newIntent(getActivity()).putInt(TYPE, 5)
+                        .putParcelable("bdLocation",bdLocation)
                         .to(CommerecListActivity.class)
                         .launch();
                 break;
             case R.id.te_travel:
                 Router.newIntent(getActivity()).putInt(TYPE, 6)
+                        .putParcelable("bdLocation",bdLocation)
                         .to(HotelListActivity.class)
                         .launch();
                 break;
@@ -341,6 +350,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
 //                    sb.append("\ndescribe : ");
 //                    sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
 //                }
+                bdLocation = location;
                 String province = location.getProvince();
                 double longitude = location.getLongitude();//经度
                 double latitude = location.getLatitude();//纬度

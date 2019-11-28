@@ -75,6 +75,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
 
     private UploadImgListAdapter uploadImgListAdapter;
     private List<UploadImgBean> uploadImgBeanList = new ArrayList<>();
+    private List<File> files = new ArrayList<>();
 
     @Override
     public void initView() {
@@ -135,13 +136,15 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
         recyImgList.setLayoutManager(new GridLayoutManager(this, 3));
         recyImgList.addItemDecoration(new SpacingItemDecoration(LinearLayoutManager.HORIZONTAL, 20));
         uploadImgListAdapter = new UploadImgListAdapter(R.layout.item_upload_voucher);
-        uploadImgListAdapter.setShowDelete(false);
         recyImgList.setAdapter(uploadImgListAdapter);
         uploadImgListAdapter.setNewData(uploadImgBeanList);
         recyImgList.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()) {
+                    case R.id.img_delete:
+                        uploadImgListAdapter.remove(position == 0 ? position : position - 1);
+                        break;
                     case R.id.line_add:
                         int size = uploadImgBeanList.size();
                         PhotoPicker.builder()
@@ -203,9 +206,10 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
                             path.add(imgUri);
                         }
                     }
+                    files.clear();
                     setCompressImg(path);
                 } else {
-                    uploadPic(null);
+                    uploadPic();
                 }
 
                 break;
@@ -316,7 +320,7 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
 
     }
 
-    private void setCompressImg(List<String> path) {
+    private void setCompressImg(final List<String> path) {
         Luban.with(this).
                 load(path).
                 ignoreBy(1000).
@@ -327,23 +331,22 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
 
                     @Override
                     public void onSuccess(File file) {
-                        setFileList(file);
+                        files.add(file);
+                        if (path.size() == files.size()){
+                            uploadPic();
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        files.clear();
                         showToastShort("上传错误，请重试！");
                     }
                 }).launch();
     }
 
-    private void setFileList(File file) {
-        List<File> files = new ArrayList<>();
-        files.add(file);
-        uploadPic(files);
-    }
 
-    private void uploadPic(List<File> files) {
+    private void uploadPic() {
         LoadingDialog.show(NewsReportActivity.this);
 
         OkHttpClient client = new OkHttpClient.Builder().
@@ -381,16 +384,16 @@ public class NewsReportActivity extends BaseActivity<NewsReportPresent> {
             public void onResponse(Call<BaseModel> call, Response<BaseModel> response) {
                 LoadingDialog.dismiss(NewsReportActivity.this);
                 if (response.isSuccessful()) {
-                    String msg = response.body().getMsg();
-                    showToastShort(msg);
+                    showToastShort("提交成功");
+                    finish();
                 } else {
-                    showToastShort("请检查网络设置");
+                    showToastShort("提交失败，请检查网络设置");
                 }
             }
 
             @Override
             public void onFailure(Call<BaseModel> call, Throwable t) {
-                showToastShort("请检查网络设置");
+                showToastShort("提交失败，请检查网络设置");
                 LoadingDialog.dismiss(NewsReportActivity.this);
             }
         });

@@ -5,16 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/distance_dp_25"
-        android:text="都看见"
-        android:textColor="@color/app_FF0000"
-        />
+    <include
+        layout="@layout/layout_morality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <ScrollView
+        android:id="@+id/scro_mine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
@@ -24,60 +21,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <View
+            <RelativeLayout
+                android:id="@+id/rl_top"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/distance_dp_217"
-                android:background="@mipmap/black_round" />
+                android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/line_user_info"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/distance_dp_199"
-                android:layout_marginLeft="@dimen/distance_dp_4"
-                android:layout_marginRight="-4dp"
-                android:layout_marginTop="@dimen/distance_dp_120"
-                android:background="@mipmap/mine_bac"
-                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_217"
+                    android:background="@mipmap/black_round" />
 
-                <TextView
-                    android:id="@+id/te_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/distance_dp_34"
-                    android:layout_marginTop="@dimen/distance_dp_25"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_16"
-                    tools:text="张小山" />
+                <LinearLayout
+                    android:id="@+id/line_user_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_199"
+                    android:layout_marginLeft="@dimen/distance_dp_4"
+                    android:layout_marginRight="-4dp"
+                    android:layout_marginTop="@dimen/distance_dp_120"
+                    android:background="@mipmap/mine_bac"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/te_user_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/distance_dp_34"
-                    android:layout_marginTop="@dimen/distance_dp_15"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_13"
-                    tools:text="ID:88888" />
+                    <TextView
+                        android:id="@+id/te_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_34"
+                        android:layout_marginTop="@dimen/distance_dp_25"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_16"
+                        tools:text="张小山" />
 
-                <TextView
-                    android:id="@+id/te_user_morality"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/distance_dp_34"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_13"
-                    tools:text="道德综合分数：96.5" />
+                    <TextView
+                        android:id="@+id/te_user_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_34"
+                        android:layout_marginTop="@dimen/distance_dp_15"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_13"
+                        tools:text="ID:88888" />
 
-                <TextView
-                    android:id="@+id/te_work_authentication"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/distance_dp_34"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/distance_dp_13"
-                    tools:text="职业认证：已认证" />
+                    <TextView
+                        android:id="@+id/te_user_morality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_34"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_13"
+                        tools:text="道德综合分数：96.5" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/te_work_authentication"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/distance_dp_34"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/distance_dp_13"
+                        tools:text="职业认证：已认证" />
+
+                </LinearLayout>
+            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/img_user_head"
@@ -92,7 +95,9 @@
                 android:id="@+id/line_second"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/distance_dp_85"
-                android:layout_below="@+id/line_user_info"
+                android:layout_below="@+id/rl_top"
+                android:layout_marginTop="-5dp"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <TextView
@@ -155,6 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view"
+                android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingLeft="16dp"
                 android:paddingRight="15dp">
@@ -289,6 +295,7 @@
                         android:layout_centerVertical="true"
                         android:background="@mipmap/gray_back" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/rl_mine_fankui"
                     android:layout_width="match_parent"
@@ -340,8 +347,8 @@
                 <RelativeLayout
                     android:id="@+id/rl_change_login"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="@dimen/distance_dp_20"
-                    android:layout_height="@dimen/distance_dp_47">
+                    android:layout_height="@dimen/distance_dp_47"
+                    android:layout_marginBottom="@dimen/distance_dp_20">
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -25,7 +25,6 @@ public class HouseListAdapter extends BaseQuickAdapter<IndustryDataBean,BaseView
                 (ImageView)helper.getView(R.id.img_mechanism_head),R.mipmap.fang_list_default);
         helper.setText(R.id.te_mechanism_title,item.shopName);
         helper.setText(R.id.te_mechanism_intro,item.details);
-        helper.setText(R.id.te_mechanism_address,item.detailedAddr);
-        helper.setText(R.id.te_mechanism_phone,item.mcPhone);
+        helper.setText(R.id.te_mechanism_address, "距你" + item.distance);
     }
 }

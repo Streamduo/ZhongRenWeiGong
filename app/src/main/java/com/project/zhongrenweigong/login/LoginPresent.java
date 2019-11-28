@@ -67,7 +67,6 @@ public class LoginPresent extends XPresent<LoginActivity> {
                     @Override
                     public void onNext(BaseModel baseModel) {
                         LoadingDialog.dismiss(getV());
-                        SharedPref.getInstance(getV()).putBoolean(Constans.ISTOURIST, false);
                         if (baseModel.getCode() != 200) {
                             ToastManager.showShort(getV(), baseModel.getMsg());
                         }

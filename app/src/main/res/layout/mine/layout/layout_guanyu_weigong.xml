@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_375"
+    android:background="@mipmap/weigong_bac"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_20"
+        android:layout_marginRight="@dimen/distance_dp_20"
+        android:layout_marginTop="@dimen/distance_dp_7"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="北京维公科技发展有限公司成立与2019年4月，
+总部位于北京朝阳区。公司秉承“仁者爱人、天
+下为公”的核心观念，聚集了一大批仁人志士，
+依托现代先进网络技术优势，打造出“众仁为公”百姓权益监督平台，致力于为人们提供安全、可靠的产品和生活方式，从而改变整个社会浮躁、失信失德的现状。勇于承担社会责任，以自己的行为感染他人和社会，实现个人人生价值，继而影响整个社会的价值观和道德理念。"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+
+</LinearLayout>

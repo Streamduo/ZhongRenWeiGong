@@ -120,6 +120,10 @@
     <color name="app_e8e8e8">#FFE8E8E8</color>
     <color name="app_C3C3C3">#FFC3C3C3</color>
     <color name="app_B2B2B2">#FFB2B2B2</color>
+    <color name="app_FC4945">#FFFC4945</color>
+    <color name="app_F1F1F1">#FFF1F1F1</color>
+    <color name="app_F4F6FA">#FFF4F6FA</color>
+    <color name="app_61A6D3">#FF61A6D3</color>
 
     <color name="white">#fff</color>
     <color name="transparent">#00000000</color>

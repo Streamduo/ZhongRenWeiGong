@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="餐饮业"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="用户在本平台入驻的饭店消费，会获得终身权益保障，如果发现用户消费过的饭店有食品安全等问题，那么用户将获得巨额的赔偿金。"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="其他行业"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="用户在本平台入驻的商家消费，会获得终身权益保障，如果发现购买的商品有质量问题，会立刻为用户退换货或直接退款，以便保障消费者的权益不受到商家的制约。 "
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+</LinearLayout>

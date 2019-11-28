@@ -20,6 +20,8 @@ import com.project.zhongrenweigong.currency.adapter.SearchHistoryAdapter;
 import com.project.zhongrenweigong.currency.bean.SearchHistoryBean;
 import com.project.zhongrenweigong.home.MessageListActivity;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.KeyboardUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 
@@ -48,7 +50,6 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
     LinearLayout lineFindSearch;
     @BindView(R.id.line_history_search)
     LinearLayout lineHistorySearch;
-    private boolean isTourist;
     private List<SearchHistoryBean> searchHistoryList;
     private SearchHistoryAdapter searchHistoryAdapter;
 
@@ -57,7 +58,6 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             setFull(false);
         }
-        isTourist = SharedPref.getInstance(this).getBoolean(Constans.ISTOURIST, true);
 
         edSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -136,7 +136,8 @@ public class SearchBusinessActivity extends BaseActivity<SearchBusinessPresent> 
                 finish();
                 break;
             case R.id.img_msg:
-                if (isTourist) {
+                LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+                if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
                     Router.newIntent(SearchBusinessActivity.this).to(LoginActivity.class).launch();
                 } else {
                     Router.newIntent(SearchBusinessActivity.this).to(MessageListActivity.class).launch();

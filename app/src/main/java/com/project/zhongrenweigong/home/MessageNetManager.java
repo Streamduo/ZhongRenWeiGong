@@ -4,6 +4,7 @@ import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.business.bean.WeiGongTestBean;
 import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
+import com.project.zhongrenweigong.home.bean.HomeVideoBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
@@ -75,6 +76,14 @@ public interface MessageNetManager {
     @POST("getNewsList")
     Flowable<HomeRecommendBean> getNewsList(@Body RequestBody body);
 
+    /**
+     * 获取首页视频列表
+     *
+     * @return
+     */
+    @POST("getVideo")
+    Flowable<HomeVideoBean> getVideo(@Body RequestBody body);
+
 
     /**
      * 获取系统消息
@@ -132,15 +141,17 @@ public interface MessageNetManager {
 
 
     /**
-    * 修改凭证消息审核状态
-    * @return
-    */
+     * 修改凭证消息审核状态
+     *
+     * @return
+     */
     @POST("updateVoucherStatus")
     Flowable<BaseModel> updateVoucherStatus(@Body RequestBody body);
 
 
     /**
      * 消除全部类型未读消息
+     *
      * @return
      */
     @POST("updateUnread")
@@ -148,8 +159,35 @@ public interface MessageNetManager {
 
     /**
      * 修改是否已读状态
+     *
      * @return
      */
     @POST("updateIsReadStatus")
     Flowable<BaseModel> updateIsReadStatus(@Body RequestBody body);
+
+
+    /**
+     * @author fuduo
+     * @time 2018/1/21  10:38
+     * @describe 上传发布活动资料图片
+     */
+    @Multipart
+    @POST()
+    Call<BaseModel> addActiveMessage(@Url() String url,
+                                     @Query("shopId") String shopId,
+                                     @Query("title") String title,
+                                     @Query("content") String content,
+                                     @Query("address") String address,
+                                     @Query("beignTime") String beignTime,
+                                     @Query("endTime") String endTime,
+                                     @Part List<MultipartBody.Part> list);
+
+    /**
+     * @author fuduo
+     * @time 2018/1/21  10:38
+     * @describe 上传发布活动资料(无图片)
+     */
+    @POST()
+    Call<BaseModel> addActiveMessage(@Url() String url,
+                                     @Body RequestBody Body);
 }

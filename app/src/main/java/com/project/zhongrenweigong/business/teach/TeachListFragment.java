@@ -1,26 +1,25 @@
 package com.project.zhongrenweigong.business.teach;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baidu.location.BDLocation;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.business.BusinessHomePageActivity;
-import com.project.zhongrenweigong.business.adapter.BusinessWorkerListAdapter;
-import com.project.zhongrenweigong.business.bean.IndustryDataBean;
 import com.project.zhongrenweigong.business.bean.TeachDataBean;
 import com.project.zhongrenweigong.business.bean.TeachListBean;
 import com.project.zhongrenweigong.business.bean.TeacherDataBean;
 import com.project.zhongrenweigong.business.bean.TeacherListBean;
 import com.project.zhongrenweigong.business.teach.adapter.TeachListAdapter;
 import com.project.zhongrenweigong.business.teach.adapter.TeacherListAdapter;
-import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
-import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.currency.event.RefreshIndustrySearchEvent;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -59,11 +58,14 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
     private String teacherName = "";
     private String lat = "1";
     private String lng = "1";
+    private String province;
+    private BDLocation bdLocation;
 
-    public static TeachListFragment getInstance(int index) {//String shopId
+    public static TeachListFragment getInstance(int index, BDLocation bdLocation) {
         TeachListFragment homePageXinXiFragment = new TeachListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("index", index);
+        bundle.putParcelable("bdLocation", bdLocation);
         homePageXinXiFragment.setArguments(bundle);
         return homePageXinXiFragment;
     }
@@ -72,6 +74,7 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
+        bdLocation = bundle.getParcelable("bdLocation");
         recyTeachList.setLayoutManager(new LinearLayoutManager(getContext()));
         if (index == 0) {
             teachListAdapter = new TeachListAdapter(R.layout.item_teach_mechanism_list);
@@ -131,7 +134,6 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
 
     public void getEducationTeach(String name) {
         teachName = name;
-        String province = ((TeachListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
@@ -141,20 +143,25 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
 
     public void getEducationTeacher(String name) {
         teacherName = name;
-        String province = ((TeachListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
         }
-        getP().getEducationTeacher(currentPage, name, province);
+        getP().getEducationTeacher(currentPage, name, province, lat, lng);
     }
 
     @Override
     public void initAfter() {
+        if (bdLocation == null) {
+            return;
+        }
+        lat = String.valueOf(bdLocation.getLatitude());
+        lng = String.valueOf(bdLocation.getLongitude());
+        province = bdLocation.getProvince();
         if (index == 0) {
-            getEducationTeach(teachName);
+            getEducationTeach("");
         } else if (index == 1) {
-            getEducationTeacher(teacherName);
+            getEducationTeacher("");
         }
     }
 
@@ -170,12 +177,10 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
 
     @Override
     public void setListener() {
-
     }
 
     @Override
     public void widgetClick(View v) {
-
     }
 
     @Override
@@ -187,13 +192,24 @@ public class TeachListFragment extends BaseFragment<TeachListFrgementPresent> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(SearchEvent searchEvent) {
-        if (searchEvent.searchText != null) {
+    public void onEventMainThread(RefreshIndustrySearchEvent refreshIndustrySearchEvent) {
+        if (refreshIndustrySearchEvent != null) {
             currentPage = 1;
-            if (searchEvent.index == 0) {
-                getEducationTeach(searchEvent.searchText);
-            } else {
-                getEducationTeacher(searchEvent.searchText);
+            lat = refreshIndustrySearchEvent.lat;
+            lng = refreshIndustrySearchEvent.lng;
+            province = refreshIndustrySearchEvent.province;
+            String searchText = refreshIndustrySearchEvent.searchText;
+
+            if (refreshIndustrySearchEvent.index == 0) {//搜索机构
+                getEducationTeach(searchText);
+            } else if (refreshIndustrySearchEvent.index == 1) {//搜索个人
+                getEducationTeacher(searchText);
+            }else if (refreshIndustrySearchEvent.index == 2) {//全部数据
+                if (index == 0) {
+                    getEducationTeach(searchText);
+                } else if (index == 1) {
+                    getEducationTeacher(searchText);
+                }
             }
         }
     }

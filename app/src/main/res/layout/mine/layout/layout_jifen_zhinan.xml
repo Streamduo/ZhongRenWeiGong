@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="获得积分"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="用户首次注册并且完善信息获得50积分
+用户每转发一条视频获得随机积分（2~30）不等
+转发的视频邀请新用户转发会获得更多积分"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="兑换积分"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="每100积分可兑现1元钱"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="说明"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_18"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:lineSpacingExtra="@dimen/distance_dp_5"
+        android:text="积分有效期为一年，一年内没有将积分兑换会
+被清零
+不可恶意刷积分，如有发现必将严惩
+最终解释权为本公司所有"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_16" />
+</LinearLayout>

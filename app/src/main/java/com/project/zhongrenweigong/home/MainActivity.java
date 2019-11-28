@@ -17,6 +17,8 @@ import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -66,9 +68,9 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         homeMine.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                boolean isTourist = SharedPref.getInstance(MainActivity.this).getBoolean(Constans.ISTOURIST, true);
                 if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    if (isTourist) {
+                    LoginMsg userAccent = AcacheUtils.getInstance(MainActivity.this).getUserAccent();
+                    if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
                         Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
                         return true;
                     }
@@ -79,9 +81,9 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         homeMsg.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                boolean isTourist = SharedPref.getInstance(MainActivity.this).getBoolean(Constans.ISTOURIST, true);
                 if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    if (isTourist) {
+                    LoginMsg userAccent = AcacheUtils.getInstance(MainActivity.this).getUserAccent();
+                    if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
                         Router.newIntent(MainActivity.this).to(LoginActivity.class).launch();
                         return true;
                     }

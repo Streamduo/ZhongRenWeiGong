@@ -47,7 +47,7 @@
                 android:drawableLeft="@mipmap/black_search"
                 android:drawablePadding="@dimen/distance_dp_5"
                 android:gravity="center_vertical"
-                android:hint="搜酒店"
+                android:hint="搜4S店、品牌..."
                 android:imeOptions="actionSearch"
                 android:maxLines="1"
                 android:paddingLeft="@dimen/distance_dp_30"

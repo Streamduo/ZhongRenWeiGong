@@ -8,14 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:drawableLeft="@mipmap/black_back"
+        android:drawableLeft="@mipmap/new_black_back"
         android:drawablePadding="@dimen/distance_dp_6"
         android:paddingBottom="@dimen/distance_dp_15"
         android:paddingLeft="@dimen/distance_dp_20"
-        android:paddingTop="@dimen/distance_dp_15"
-        android:text="返回"
-        android:textColor="@color/app_text_33"
-        android:textSize="@dimen/distance_dp_15" />
+        android:paddingTop="@dimen/distance_dp_15" />
 
     <TextView
         android:id="@+id/te_title"

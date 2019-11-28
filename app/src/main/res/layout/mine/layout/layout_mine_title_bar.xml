@@ -7,14 +7,11 @@
         android:id="@+id/te_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/black_back"
+        android:drawableLeft="@mipmap/new_black_back"
         android:drawablePadding="6dp"
         android:paddingBottom="@dimen/distance_dp_15"
         android:paddingLeft="20dp"
-        android:paddingTop="15dp"
-        android:text="返回"
-        android:textColor="@color/app_text_33"
-        android:textSize="@dimen/distance_dp_15" />
+        android:paddingTop="15dp" />
 
     <TextView
         android:id="@+id/te_title"

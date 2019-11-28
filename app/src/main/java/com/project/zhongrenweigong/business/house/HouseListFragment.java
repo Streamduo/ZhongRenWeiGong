@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baidu.location.BDLocation;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
@@ -14,7 +15,7 @@ import com.project.zhongrenweigong.business.BusinessHomePageActivity;
 import com.project.zhongrenweigong.business.bean.IndustryDataBean;
 import com.project.zhongrenweigong.business.bean.IndustryListBean;
 import com.project.zhongrenweigong.business.house.adapter.HouseListAdapter;
-import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.currency.event.RefreshIndustrySearchEvent;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -51,11 +52,14 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
     private String teachName = "";
     private String lat = "1";
     private String lng = "1";
+    private String province;
+    private BDLocation bdLocation;
 
-    public static HouseListFragment getInstance(int index) {
+    public static HouseListFragment getInstance(int index, BDLocation bdLocation) {
         HouseListFragment houseListFragment = new HouseListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("index", index);
+        bundle.putParcelable("bdLocation", bdLocation);
         houseListFragment.setArguments(bundle);
         return houseListFragment;
     }
@@ -64,8 +68,9 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
+        bdLocation = bundle.getParcelable("bdLocation");
         recyCarList.setLayoutManager(new LinearLayoutManager(getContext()));
-        houseListAdapter = new HouseListAdapter(R.layout.item_car_shop_list);
+        houseListAdapter = new HouseListAdapter(R.layout.item_industry_list);
         recyCarList.setAdapter(houseListAdapter);
         houseListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -107,7 +112,6 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
 
     public void getHouse(String name, int type) {
         teachName = name;
-        String province = ((HouseListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
@@ -117,6 +121,12 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
 
     @Override
     public void initAfter() {
+        if (bdLocation == null) {
+            return;
+        }
+        lat = String.valueOf(bdLocation.getLatitude());
+        lng = String.valueOf(bdLocation.getLongitude());
+        province = bdLocation.getProvince();
         if (index == 0) {
             getHouse(teachName, 0);
         } else if (index == 1) {
@@ -153,13 +163,23 @@ public class HouseListFragment extends BaseFragment<HouseListFrgementPresent> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(SearchEvent searchEvent) {
-        if (searchEvent.searchText != null) {
+    public void onEventMainThread(RefreshIndustrySearchEvent refreshIndustrySearchEvent) {
+        if (refreshIndustrySearchEvent != null) {
             currentPage = 1;
-            if (searchEvent.index == 0) {
-                getHouse(searchEvent.searchText, 0);
-            } else {
-                getHouse(searchEvent.searchText, 1);
+            lat = refreshIndustrySearchEvent.lat;
+            lng = refreshIndustrySearchEvent.lng;
+            province = refreshIndustrySearchEvent.province;
+            String searchText = refreshIndustrySearchEvent.searchText;
+
+            if (refreshIndustrySearchEvent.index == index) {
+                getHouse(searchText, index);
+            }
+            if (refreshIndustrySearchEvent.index == 2) {//全部数据
+                if (index == 0) {
+                    getHouse(searchText, 0);
+                } else if (index == 1) {
+                    getHouse(searchText, 1);
+                }
             }
         }
     }

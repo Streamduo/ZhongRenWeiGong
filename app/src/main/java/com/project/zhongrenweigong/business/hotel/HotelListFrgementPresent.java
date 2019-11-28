@@ -35,7 +35,7 @@ public class HotelListFrgementPresent extends XPresent<HotelListFragment> {
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
-        BusinessApi.businessNetManager().getHotel(requestBody)
+        BusinessApi.businessNetManager().getVehicle(requestBody)
                 .compose(XApi.<IndustryListBean>getApiTransformer())
                 .compose(XApi.<IndustryListBean>getScheduler())
                 .compose(getV().<IndustryListBean>bindToLifecycle())

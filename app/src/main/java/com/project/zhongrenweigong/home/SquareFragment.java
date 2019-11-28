@@ -16,7 +16,9 @@ import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
 import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.square.adapter.SquareVideoPageAdapter;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.StatusBarUtils;
 import com.project.zhongrenweigong.util.TablayoutUtil;
 import com.zyyoona7.popup.EasyPopup;
@@ -77,8 +79,8 @@ public class SquareFragment extends BaseFragment<SquarePresent> {
             public void onPageSelected(int position) {
                 int currentItem = vpHomepage.getCurrentItem();
                 if (currentItem == 1) {
-                    boolean isTourist = SharedPref.getInstance(getContext()).getBoolean(Constans.ISTOURIST, true);
-                    if (isTourist) {
+                    LoginMsg userAccent = AcacheUtils.getInstance(getContext()).getUserAccent();
+                    if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
                         Router.newIntent(getActivity()).to(LoginActivity.class).launch();
                         vpHomepage.setCurrentItem(0);
                     }

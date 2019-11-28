@@ -5,21 +5,29 @@ import com.project.zhongrenweigong.business.bean.BusinessCategoryListBean;
 import com.project.zhongrenweigong.business.bean.BusinessHomePageBean;
 import com.project.zhongrenweigong.business.bean.BusinessNoticeBean;
 import com.project.zhongrenweigong.business.bean.BusinessShopListBean;
+import com.project.zhongrenweigong.business.bean.BussinessTypeBean;
 import com.project.zhongrenweigong.business.bean.CommodityListBean;
 import com.project.zhongrenweigong.business.bean.IndustryListBean;
 import com.project.zhongrenweigong.business.bean.ShopHomePageBean;
 import com.project.zhongrenweigong.business.bean.TeachListBean;
 import com.project.zhongrenweigong.business.bean.TeacherListBean;
 import com.project.zhongrenweigong.business.bean.WorkerListBean;
+import com.project.zhongrenweigong.currency.bean.NavigationBean;
+import com.project.zhongrenweigong.home.bean.AddressBean;
+import com.project.zhongrenweigong.home.bean.AddressDataBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * 作者：Fuduo on 2019/10/23 10:40
@@ -30,6 +38,7 @@ public interface BusinessNetManager {
 
     /**
      * 查询所有商家
+     *
      * @return
      */
     @POST("findShop")
@@ -38,6 +47,7 @@ public interface BusinessNetManager {
 
     /**
      * 模糊查询所有店铺根据店铺名称
+     *
      * @return
      */
     @POST("findAllShopByLikeName")
@@ -46,6 +56,7 @@ public interface BusinessNetManager {
 
     /**
      * 商家认证
+     *
      * @return
      */
     @FormUrlEncoded
@@ -54,16 +65,16 @@ public interface BusinessNetManager {
     Flowable<BaseModel> authMerchantEncryptionApi(@Field("dataMsg") String dataMsg);
 
     /**
+     * 添加商品信息
      *
-     添加商品信息
      * @return
      */
     @POST("addGoods")
     Flowable<BaseModel> addGoods(@Body RequestBody Body);
 
     /**
+     * 根据商家ID查询所有商品
      *
-     根据商家ID查询所有商品
      * @return
      */
     @POST("findAllGoodsByMerchantId")
@@ -71,72 +82,72 @@ public interface BusinessNetManager {
 
 
     /**
+     * 删除商品
      *
-     删除商品
      * @return
      */
     @POST("deleteGoodsByGoodsId")
     Flowable<BaseModel> deleteGoods(@Body RequestBody Body);
 
     /**
+     * 修改商品
      *
-     修改商品
      * @return
      */
     @POST("updateGoods")
     Flowable<BaseModel> updateGoods(@Body RequestBody Body);
 
     /**
+     * 新增员工
      *
-     新增员工
      * @return
      */
     @POST("bindingEmployees")
     Flowable<BaseModel> addWorker(@Body RequestBody Body);
 
     /**
+     * 删除员工
      *
-     删除员工
      * @return
      */
     @POST("deleteEmployeesById")
     Flowable<BaseModel> deleteWorker(@Body RequestBody Body);
 
     /**
+     * 根据商家ID查询所有员工
      *
-     根据商家ID查询所有员工
      * @return
      */
     @POST("findEmployeesById")
     Flowable<WorkerListBean> findEmployees(@Body RequestBody Body);
 
     /**
+     * 发布公告
      *
-     发布公告
      * @return
      */
     @POST("addAnnouncement")
     Flowable<BaseModel> addAnnouncement(@Body RequestBody Body);
 
     /**
+     * 发布公告
      *
-     发布公告
      * @return
      */
     @POST("findAllAnnouncement")
     Flowable<BusinessNoticeBean> findAnnouncement(@Body RequestBody Body);
 
     /**
+     * 获取分类信息接口
      *
-     获取分类信息接口
      * @return
      */
     @POST("getGoodsCategory")
     Flowable<BusinessCategoryListBean> getGoodsCategory();
 
     /**
+     * 获取子分类信息接口
      *
-     获取子分类信息接口
      * @return
      */
     @POST("getSeedCategory")
@@ -145,6 +156,7 @@ public interface BusinessNetManager {
 
     /**
      * 商家信息编辑
+     *
      * @return
      */
     @FormUrlEncoded
@@ -153,8 +165,8 @@ public interface BusinessNetManager {
     Flowable<BaseModel> openShopEncryptionApi(@Field("dataMsg") String dataMsg);
 
     /**
+     * 根据商家ID获取商家主页头信息
      *
-     根据商家ID获取商家主页头信息
      * @return
      */
     @POST("getMerchantHead")
@@ -162,6 +174,7 @@ public interface BusinessNetManager {
 
     /**
      * 获取商家个人主页
+     *
      * @return
      */
     @POST("getMerchantPersonalHomepage")
@@ -169,6 +182,7 @@ public interface BusinessNetManager {
 
     /**
      * 获取商家个人主页店铺
+     *
      * @return
      */
     @POST("getMerchantPersonalHomepageShop")
@@ -176,6 +190,7 @@ public interface BusinessNetManager {
 
     /**
      * 获取店铺主页
+     *
      * @return
      */
     @POST("getShopHomepage")
@@ -183,6 +198,7 @@ public interface BusinessNetManager {
 
     /**
      * 查询教育信息(机构)
+     *
      * @return
      */
     @POST("getEducation")
@@ -190,6 +206,7 @@ public interface BusinessNetManager {
 
     /**
      * 查询教育信息(个人)
+     *
      * @return
      */
     @POST("getEducation")
@@ -197,6 +214,7 @@ public interface BusinessNetManager {
 
     /**
      * 查询汽车信息(机构)
+     *
      * @return
      */
     @POST("getVehicle")
@@ -204,6 +222,7 @@ public interface BusinessNetManager {
 
     /**
      * 查询房产列表
+     *
      * @return
      */
     @POST("getHouse")
@@ -211,8 +230,26 @@ public interface BusinessNetManager {
 
     /**
      * 查询酒店列表
+     *
      * @return
      */
     @POST("getHotel")
     Flowable<IndustryListBean> getHotel(@Body RequestBody body);
+
+
+    /**
+     * 获取我的店铺分类接口
+     *
+     * @return
+     */
+    @POST("getMyShopCategory")
+    Flowable<BussinessTypeBean> getMyShopCategory(@Body RequestBody body);
+
+    /**
+     * 根据分类ID获取店铺信息
+     *
+     * @return
+     */
+    @POST("getShopByCategoryId")
+    Flowable<IndustryListBean> getShopByCategoryId(@Body RequestBody body);
 }

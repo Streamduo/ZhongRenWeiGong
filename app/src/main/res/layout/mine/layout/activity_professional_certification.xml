@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFE9E9EA"
+    tools:context=".mine.ProfessionalCertificationActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_300"
+        android:background="@mipmap/work_bac" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_new_white_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_25" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_30"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/distance_dp_65"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="职     业:"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+
+            <EditText
+                android:id="@+id/ed_work"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_14"
+                android:background="@color/white"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_30"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/distance_dp_75"
+                android:layout_height="wrap_content"
+                android:text="认证公司:"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+
+            <EditText
+                android:id="@+id/ed_company"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_5"
+                android:background="@color/white"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_30"
+            android:layout_marginLeft="@dimen/distance_dp_10"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/distance_dp_75"
+                android:layout_height="wrap_content"
+                android:text="公司地址:"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+
+            <EditText
+                android:id="@+id/ed_company_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_5"
+                android:background="@color/white"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_send"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_44"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/distance_dp_23"
+        android:layout_marginLeft="@dimen/distance_dp_20"
+        android:layout_marginRight="@dimen/distance_dp_20"
+        android:background="@drawable/bg_bac_339aff_10"
+        android:gravity="center"
+        android:text="提交认证"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_19" />
+
+</RelativeLayout>

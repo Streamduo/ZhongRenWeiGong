@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baidu.location.BDLocation;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
@@ -14,7 +15,7 @@ import com.project.zhongrenweigong.business.BusinessHomePageActivity;
 import com.project.zhongrenweigong.business.bean.IndustryDataBean;
 import com.project.zhongrenweigong.business.bean.IndustryListBean;
 import com.project.zhongrenweigong.business.car.adapter.CarListAdapter;
-import com.project.zhongrenweigong.currency.event.SearchEvent;
+import com.project.zhongrenweigong.currency.event.RefreshIndustrySearchEvent;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -52,11 +53,14 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
     private String teachName = "";
     private String lat = "1";
     private String lng = "1";
+    private String province;
+    private BDLocation bdLocation;
 
-    public static CarListFragment getInstance(int index) {//String shopId
+    public static CarListFragment getInstance(int index, BDLocation bdLocation) {//String shopId
         CarListFragment carListFragment = new CarListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("index", index);
+        bundle.putParcelable("bdLocation", bdLocation);
         carListFragment.setArguments(bundle);
         return carListFragment;
     }
@@ -65,8 +69,10 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
+        bdLocation = bundle.getParcelable("bdLocation");
         recyCarList.setLayoutManager(new LinearLayoutManager(getContext()));
-        carListAdapter = new CarListAdapter(R.layout.item_car_shop_list);
+
+        carListAdapter = new CarListAdapter(R.layout.item_industry_list);
         recyCarList.setAdapter(carListAdapter);
         carListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -108,7 +114,6 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
 
     public void getVehicle(String name, int type) {
         teachName = name;
-        String province = ((CarListActivity) getActivity()).province;
         if (province == null || province.equals("")) {
             getDataError();
             return;
@@ -118,6 +123,12 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
 
     @Override
     public void initAfter() {
+        if (bdLocation == null) {
+            return;
+        }
+        lat = String.valueOf(bdLocation.getLatitude());
+        lng = String.valueOf(bdLocation.getLongitude());
+        province = bdLocation.getProvince();
         if (index == 0) {
             getVehicle(teachName, 0);
         } else if (index == 1) {
@@ -137,12 +148,10 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
 
     @Override
     public void setListener() {
-
     }
 
     @Override
     public void widgetClick(View v) {
-
     }
 
     @Override
@@ -154,13 +163,23 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(SearchEvent searchEvent) {
-        if (searchEvent.searchText != null) {
+    public void onEventMainThread(RefreshIndustrySearchEvent refreshIndustrySearchEvent) {
+        if (refreshIndustrySearchEvent != null) {
             currentPage = 1;
-            if (searchEvent.index == 0) {
-                getVehicle(searchEvent.searchText, 0);
-            } else {
-                getVehicle(searchEvent.searchText, 1);
+            lat = refreshIndustrySearchEvent.lat;
+            lng = refreshIndustrySearchEvent.lng;
+            province = refreshIndustrySearchEvent.province;
+            String searchText = refreshIndustrySearchEvent.searchText;
+
+            if (refreshIndustrySearchEvent.index == index) {
+                getVehicle(searchText, index);
+            }
+            if (refreshIndustrySearchEvent.index == 2) {//全部数据
+                if (index == 0) {
+                    getVehicle(searchText, 0);
+                } else if (index == 1) {
+                    getVehicle(searchText, 1);
+                }
             }
         }
     }
@@ -178,9 +197,6 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
     }
 
     public void setCarData(IndustryListBean industryListBean) {
-        if (carListAdapter == null) {
-            return;
-        }
         int pageSize = industryListBean.pageSize;
         List<IndustryDataBean> data = industryListBean.getData();
         if (data != null && data.size() > 0) {
@@ -208,6 +224,4 @@ public class CarListFragment extends BaseFragment<CarListFrgementPresent> {
             smRefresh.finishLoadMore(false);
         }
     }
-
-
 }

@@ -1,11 +1,13 @@
 package com.project.zhongrenweigong.business.bean;
 
+import java.io.Serializable;
+
 /**
  * 作者：Fuduo on 2019/11/20 10:01
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class IndustryDataBean {
+public class IndustryDataBean implements Serializable {
     public String shopId;
     public String shopName;
     public String mcId;
@@ -25,4 +27,5 @@ public class IndustryDataBean {
     public String provinces;
     public String lng;
     public String lat;
+    public String distance;
 }
