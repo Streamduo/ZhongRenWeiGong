@@ -40,6 +40,7 @@
                 android:layout_below="@+id/te_mechanism_title"
                 android:layout_marginTop="@dimen/distance_dp_5"
                 android:text="新东方介绍..."
+                android:lines="1"
                 android:textColor="@color/app_272626"
                 android:textSize="@dimen/distance_dp_10" />
 

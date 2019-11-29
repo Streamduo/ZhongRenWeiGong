@@ -1,8 +1,8 @@
 package com.project.zhongrenweigong.mine;
 
-import com.project.zhongrenweigong.base.BaseModel;
+import com.project.zhongrenweigong.business.bean.BussinessTypeBean;
+import com.project.zhongrenweigong.business.manager.MineShopListActivity;
 import com.project.zhongrenweigong.net.BusinessApi;
-import com.project.zhongrenweigong.net.HomeMainApi;
 import com.project.zhongrenweigong.util.GsonProvider;
 
 import java.util.Map;
@@ -16,24 +16,22 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
- * 作者：Fuduo on 2019/11/28 11:36
+ * 作者：Fuduo on 2019/11/28 15:31
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class YiJianFanKuiPesent extends XPresent<YiJianFanKuiActivity> {
-
-    public void commitFeedback(String mbId, String feedbackContent) {
+public class MyFollowShopListPresent extends XPresent<MyFollowListActivity> {
+    public void getLickShopCatagory(String mbId) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("mbId", mbId);
-        stringMap.put("feedbackContent", feedbackContent);
         String body = GsonProvider.gson.toJson(stringMap);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
                 body);
-        BusinessApi.businessNetManager().commitFeedback(requestBody)
-                .compose(XApi.<BaseModel>getApiTransformer())
-                .compose(XApi.<BaseModel>getScheduler())
-                .compose(getV().<BaseModel>bindToLifecycle())
-                .subscribe(new ApiSubscriber<BaseModel>() {
+        BusinessApi.businessNetManager().getLickShopCatagory(requestBody)
+                .compose(XApi.<BussinessTypeBean>getApiTransformer())
+                .compose(XApi.<BussinessTypeBean>getScheduler())
+                .compose(getV().<BussinessTypeBean>bindToLifecycle())
+                .subscribe(new ApiSubscriber<BussinessTypeBean>() {
 
                     @Override
                     protected void onFail(NetError error) {
@@ -41,12 +39,11 @@ public class YiJianFanKuiPesent extends XPresent<YiJianFanKuiActivity> {
                     }
 
                     @Override
-                    public void onNext(BaseModel baseModel) {
-                        if (baseModel.getCode() == 200) {
-                            ToastManager.showShort(getV(), "提交成功，感谢您的反馈");
-                            getV().finish();
+                    public void onNext(BussinessTypeBean bussinessTypeBean) {
+                        if (bussinessTypeBean.getCode() == 200) {
+                            getV().setCatagoryData(bussinessTypeBean);
                         } else {
-                            ToastManager.showShort(getV(), baseModel.msg);
+                            ToastManager.showShort(getV(), bussinessTypeBean.msg);
                         }
                     }
                 });

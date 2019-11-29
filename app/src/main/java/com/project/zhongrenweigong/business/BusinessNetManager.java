@@ -252,4 +252,36 @@ public interface BusinessNetManager {
      */
     @POST("getShopByCategoryId")
     Flowable<IndustryListBean> getShopByCategoryId(@Body RequestBody body);
+
+    /**
+     * 提交意见反馈
+     *
+     * @return
+     */
+    @POST("commitFeedback")
+    Flowable<BaseModel> commitFeedback(@Body RequestBody body);
+
+    /**
+     * 取消/关注店铺
+     *
+     * @return
+     */
+    @POST("likeShop")
+    Flowable<BaseModel> likeShop(@Body RequestBody body);
+
+    /**
+     * 获取关注店铺分类接口
+     *
+     * @return
+     */
+    @POST("getLickShopCatagory")
+    Flowable<BussinessTypeBean> getLickShopCatagory(@Body RequestBody body);
+
+    /**
+     * 根据分类ID获取关注的店铺
+     *
+     * @return
+     */
+    @POST("getLikeShopByCategoryId")
+    Flowable<IndustryListBean> getLikeShopByCategoryId(@Body RequestBody body);
 }

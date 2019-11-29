@@ -43,8 +43,12 @@ import com.project.zhongrenweigong.business.bean.GoodsListsBean;
 import com.project.zhongrenweigong.business.bean.ShopHomePageBean;
 import com.project.zhongrenweigong.business.teach.TeachListActivity;
 import com.project.zhongrenweigong.currency.NavigationActivity;
+import com.project.zhongrenweigong.home.MainActivity;
+import com.project.zhongrenweigong.login.LoginActivity;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.mine.BusinessMineHomePageActivity;
 import com.project.zhongrenweigong.mine.MineHomePageActivity;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.KeyboardUtils;
 import com.project.zhongrenweigong.util.SpacingItemDecoration;
 import com.project.zhongrenweigong.util.SystemUtil;
@@ -65,10 +69,10 @@ import me.iwf.photopicker.PhotoPreview;
  */
 public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePresent> {
 
+    public static final int SHOP_TYPE_TEACH = 3;
     public static final int SHOP_TYPE_CAR = 4;
-    public static final int SHOP_TYPE_TEACH = 5;
-    public static final int SHOP_TYPE_HOUSE = 6;
-    public static final int SHOP_TYPE_HOTEL = 7;
+    public static final int SHOP_TYPE_HOUSE = 5;
+    public static final int SHOP_TYPE_HOTEL = 6;
 
     @BindView(R.id.te_back)
     TextView teBack;
@@ -132,29 +136,31 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     private ArrayList<String> imgList = new ArrayList<>();
     private int shopType;
     private String legalId;
+    private int isLike;
+    private String mbId;
 
     @Override
     public void initView() {
-        teRightTitle.setText("关注");
         Intent intent = getIntent();
         shopType = intent.getIntExtra("shopType", 0);
-        shopId =getIntent().getStringExtra("shopId");
+        shopId = getIntent().getStringExtra("shopId");
+
         if (shopType == SHOP_TYPE_CAR) {//汽车行业
             teShopTuijian.setText("推荐车型");
             viewFour.setVisibility(View.VISIBLE);
             viewThree.setVisibility(View.GONE);
             teUploadVoucher.setVisibility(View.VISIBLE);
-        }else if (shopType == SHOP_TYPE_TEACH) {//教育行业
+        } else if (shopType == SHOP_TYPE_TEACH) {//教育行业
             teShopTuijian.setText("推荐课程");
             viewFour.setVisibility(View.VISIBLE);
             viewThree.setVisibility(View.GONE);
             teUploadVoucher.setVisibility(View.VISIBLE);
-        }else if (shopType == SHOP_TYPE_HOUSE) {//房产行业
+        } else if (shopType == SHOP_TYPE_HOUSE) {//房产行业
             teShopTuijian.setText("推荐户型");
             viewFour.setVisibility(View.VISIBLE);
             viewThree.setVisibility(View.GONE);
             teUploadVoucher.setVisibility(View.VISIBLE);
-        }else if (shopType == SHOP_TYPE_HOTEL) {//酒店旅游行业
+        } else if (shopType == SHOP_TYPE_HOTEL) {//酒店旅游行业
             teShopTuijian.setText("推荐房间");
             viewFour.setVisibility(View.VISIBLE);
             viewThree.setVisibility(View.GONE);
@@ -221,7 +227,13 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
 
     @Override
     public void initAfter() {
-        getP().getShopHomepage(shopId);
+        LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+        if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
+            mbId = "-1";
+        } else {
+            mbId = userAccent.mbId;
+        }
+        getP().getShopHomepage(shopId, mbId);
     }
 
     public void setHeadData(BusinessHomeDataBean businessHomeDataBean) {
@@ -280,7 +292,13 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                         .to(NavigationActivity.class).launch();
                 break;
             case R.id.te_right_title:
-
+                LoginMsg userAccent = AcacheUtils.getInstance(this).getUserAccent();
+                if (userAccent == null || userAccent.mbId == null || userAccent.mbId.equals("")) {
+                    Router.newIntent(BusinessHomePageActivity.this).to(LoginActivity.class).launch();
+                    break;
+                } else {
+                    getP().likeShop(isLike == 0 ? 1 : 0, userAccent.mbId, shopId);
+                }
                 break;
             case R.id.te_shop_phone:
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -295,9 +313,15 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                         .to(WeiGongTestActivity.class).launch();
                 break;
             case R.id.te_upload_voucher:
-                Router.newIntent(BusinessHomePageActivity.this)
-                        .putString("shopId", shopId)
-                        .to(UploadVoucherActivity.class).launch();
+                LoginMsg user = AcacheUtils.getInstance(this).getUserAccent();
+                if (user == null || user.mbId == null || user.mbId.equals("")) {
+                    Router.newIntent(BusinessHomePageActivity.this).to(LoginActivity.class).launch();
+                    break;
+                } else {
+                    Router.newIntent(BusinessHomePageActivity.this)
+                            .putString("shopId", shopId)
+                            .to(UploadVoucherActivity.class).launch();
+                }
                 break;
         }
     }
@@ -311,18 +335,17 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     @Override
     public void onStart() {
         super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
         locationService = App.getInstance().locationService;
         //获取locationservice实例，建议应用中只初始化1个location实例，然后使用，可以参考其他示例的activity，都是通过此种方式获取locationservice实例的
         locationService.registerListener(mListener);
         //注册监听
         locationService.setLocationOption(locationService.getDefaultLocationClientOption());
         locationService.start();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private BDAbstractLocationListener mListener = new BDAbstractLocationListener() {
@@ -335,11 +358,9 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         public void onReceiveLocation(BDLocation location) {
 
             if (null != location && location.getLocType() != BDLocation.TypeServerError) {
-//                String province = location.getProvince();
-//                double longitude = location.getLongitude();//经度
-//                double latitude = location.getLatitude();//纬度
                 String district = location.getDistrict();//地区
                 String street = location.getStreet();//街道
+                String addrStr = location.getAddrStr();
                 teMineAddress.setText(district + "." + street);
                 if (location.getLocType() == BDLocation.TypeServerError) {//"服务端网络定位失败，可以反馈IMEI号和大体定位时间到
                     // loc-bugs@baidu.com，会有人追查原因"
@@ -381,6 +402,12 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                 imgTrademark, R.mipmap.fang_list_default);
         GlideDownLoadImage.getInstance().loadCircleImage(mContext, data.headUrl,
                 imgLegalHead);
+        isLike = data.isLike;
+        if (isLike == 0) {
+            teRightTitle.setText("关注");
+        } else {
+            teRightTitle.setText("已关注");
+        }
         teTitle.setText(data.shopName);
         legalId = data.mcId;
         teLegalId.setText("ID:" + legalId);
@@ -454,4 +481,12 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         callPhoneDialog.show();
     }
 
+    public void setLikeStatus(int i) {
+        isLike = i;
+        if (isLike == 0) {
+            teRightTitle.setText("关注");
+        } else {
+            teRightTitle.setText("已关注");
+        }
+    }
 }

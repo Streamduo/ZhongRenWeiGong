@@ -25,6 +25,7 @@ import com.project.zhongrenweigong.login.LoginActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.mine.AboutActivity;
 import com.project.zhongrenweigong.mine.EditMineHomePageActivity;
+import com.project.zhongrenweigong.mine.MyFollowListActivity;
 import com.project.zhongrenweigong.mine.MyIntegralCompensationActivity;
 import com.project.zhongrenweigong.mine.MyWalletActivity;
 import com.project.zhongrenweigong.mine.ProfessionalCertificationActivity;
@@ -272,10 +273,10 @@ public class MineFragment extends BaseFragment<MinePresent> {
 
                 break;
             case R.id.te_pay:
-                Router.newIntent(getActivity()).to(MyWalletActivity.class).launch();
+                MyIntegralCompensationActivity.start(getContext(),1);
                 break;
             case R.id.te_guanzhu:
-
+                Router.newIntent(getActivity()).to(MyFollowListActivity.class).launch();
                 break;
             case R.id.rl_mine_daode:
                 scroMine.setVisibility(View.GONE);

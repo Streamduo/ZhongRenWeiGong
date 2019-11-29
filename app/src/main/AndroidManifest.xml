@@ -184,7 +184,9 @@
         <activity android:name=".mine.YiJianFanKuiActivity" />
         <activity android:name=".mine.AboutActivity" />
         <activity android:name=".business.manager.SendLooseActivity" />
-        <activity android:name=".business.manager.MineShopListActivity"></activity>
+        <activity android:name=".business.manager.MineShopListActivity" />
+        <activity android:name=".mine.AddBankCardActivity"/>
+        <activity android:name=".mine.MyFollowListActivity"/>
     </application>
 
 </manifest>

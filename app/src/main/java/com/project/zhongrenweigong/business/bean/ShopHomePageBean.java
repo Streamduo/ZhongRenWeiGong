@@ -54,6 +54,7 @@ public class ShopHomePageBean extends BaseModel {
         public String fansNum;
         public String beignTime;
         public String endTime;
+        public int isLike;
         /**
          * goodsId : 350166172349632512
          * mcId :

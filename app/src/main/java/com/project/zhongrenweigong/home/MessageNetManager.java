@@ -10,6 +10,7 @@ import com.project.zhongrenweigong.home.bean.MessageListBean;
 import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 import com.project.zhongrenweigong.message.bean.VoucherMessageDetailBean;
+import com.project.zhongrenweigong.mine.bean.IntegralCompensationBean;
 
 import java.util.List;
 
@@ -157,14 +158,6 @@ public interface MessageNetManager {
     @POST("updateUnread")
     Flowable<BaseModel> updateUnread(@Body RequestBody body);
 
-    /**
-     * 修改是否已读状态
-     *
-     * @return
-     */
-    @POST("updateIsReadStatus")
-    Flowable<BaseModel> updateIsReadStatus(@Body RequestBody body);
-
 
     /**
      * @author fuduo
@@ -190,4 +183,20 @@ public interface MessageNetManager {
     @POST()
     Call<BaseModel> addActiveMessage(@Url() String url,
                                      @Body RequestBody Body);
+
+    /**
+     * 获取赔付明细列表
+     *
+     * @return
+     */
+    @POST("getCompensationRecords")
+    Flowable<IntegralCompensationBean> getCompensationRecords(@Body RequestBody body);
+
+    /**
+     * 获取积分明细列表
+     *
+     * @return
+     */
+    @POST("getIntegralSubsidiary")
+    Flowable<IntegralCompensationBean> getIntegralSubsidiary(@Body RequestBody body);
 }

@@ -9,34 +9,30 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
-import com.project.zhongrenweigong.login.bean.LoginMsg;
-import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.UtilsStyle;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class YiJianFanKuiActivity extends BaseActivity<YiJianFanKuiPesent> {
+public class AddBankCardActivity extends BaseActivity<AddBankCardPresent> {
 
-    @BindView(R.id.view)
-    View view;
     @BindView(R.id.te_back)
     TextView teBack;
     @BindView(R.id.te_title)
     TextView teTitle;
-    @BindView(R.id.ed_report_intro)
-    EditText edReportIntro;
-    @BindView(R.id.te_max_size)
-    TextView teMaxSize;
-    @BindView(R.id.te_send)
-    TextView teSend;
+    @BindView(R.id.ed_card_people)
+    EditText edCardPeople;
+    @BindView(R.id.ed_card_num)
+    EditText edCardNum;
+    @BindView(R.id.te_next)
+    TextView teNext;
 
     @Override
     public void initView() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             setFull(false);
         }
-        teTitle.setText("意见反馈");
+        teTitle.setText("添加银行卡");
     }
 
     @Override
@@ -46,34 +42,37 @@ public class YiJianFanKuiActivity extends BaseActivity<YiJianFanKuiPesent> {
 
     @Override
     public int bindLayout() {
-        return R.layout.activity_fanui;
+        return R.layout.activity_add_bankcard;
     }
 
     @Override
-    public YiJianFanKuiPesent bindPresent() {
-        return new YiJianFanKuiPesent();
+    public AddBankCardPresent bindPresent() {
+        return new AddBankCardPresent();
     }
 
     @Override
     public void setListener() {
         teBack.setOnClickListener(this);
-        teSend.setOnClickListener(this);
+        teNext.setOnClickListener(this);
     }
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.te_back:
                 finish();
                 break;
-            case R.id.te_send:
-                String reportIntro = edReportIntro.getText().toString();
-                if (TextUtils.isEmpty(reportIntro)) {
-                    showToastShort("反馈建议不能为空");
+            case R.id.te_next:
+                String cardPeople = edCardPeople.getText().toString();
+                String cardNum = edCardNum.getText().toString();
+                if (TextUtils.isEmpty(cardPeople)){
+                    showToastShort("持卡人不能为空");
                     return;
                 }
-                LoginMsg userAccent = AcacheUtils.getInstance(YiJianFanKuiActivity.this).getUserAccent();
-                getP().commitFeedback(userAccent.mbId, reportIntro);
+                if (TextUtils.isEmpty(cardNum)){
+                    showToastShort("银行卡号不能为空");
+                    return;
+                }
                 break;
         }
     }

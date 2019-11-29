@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".business.manager.MineShopListActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/top_radius_white_12"
+        android:orientation="vertical">
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            app:tl_tab_width="@dimen/distance_dp_70"
+            app:tl_textSelectColor="@color/app_61A6D3"
+            app:tl_textUnselectColor="@color/FF000000"
+            app:tl_textsize="@dimen/distance_dp_16" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/discover_list_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vs_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/layout_no_data_quesheng" />
+</LinearLayout>

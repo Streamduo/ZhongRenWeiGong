@@ -17,6 +17,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.XCache;
 
 import org.json.JSONArray;
@@ -120,8 +121,8 @@ public class BusinessAuthenticationActivity extends BaseActivity<BusinessAuthent
                 String licenseKey = edLicenseKey.getText().toString();
                 String legalPerson = edLegalPerson.getText().toString();
                 String address = edAddress.getText().toString();
-                XCache cache = new XCache.Builder(BusinessAuthenticationActivity.this).build();
-                LoginMsg loginMsg = (LoginMsg) cache.getObject(USERACCENT);
+
+                LoginMsg loginMsg = AcacheUtils.getInstance(BusinessAuthenticationActivity.this).getUserAccent();
                 String mbId = loginMsg.mbId;
                 if (TextUtils.isEmpty(companyName)) {
                     showToastShort("请输入单位名称");

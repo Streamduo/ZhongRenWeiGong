@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_F4F4F4"
+    android:orientation="vertical"
+    tools:context=".mine.AddBankCardActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:background="@color/app_e8e8e8" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_38"
+        android:layout_marginLeft="@dimen/distance_dp_15"
+        android:gravity="center_vertical"
+        android:text="请绑定持卡人本人的银行卡"
+        android:textColor="@color/app_text_99"
+        android:textSize="@dimen/distance_dp_15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_58"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/distance_dp_65"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/distance_dp_16"
+                android:text="持卡人"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+
+            <EditText
+                android:id="@+id/ed_card_people"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_34"
+                android:background="@null"
+                android:hint="请输入持卡人"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_marginLeft="@dimen/distance_dp_13"
+            android:layout_marginRight="@dimen/distance_dp_13"
+            android:background="@color/app_e8e8e8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_58"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/distance_dp_65"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/distance_dp_16"
+                android:text="卡号"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+
+            <EditText
+                android:id="@+id/ed_card_num"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_34"
+                android:background="@null"
+                android:hint="请输入银行卡号"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_16" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_44"
+        android:layout_marginLeft="@dimen/distance_dp_17"
+        android:layout_marginRight="@dimen/distance_dp_17"
+        android:layout_marginTop="@dimen/distance_dp_20"
+        android:background="@drawable/bg_bac_339aff_10"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/distance_dp_19" />
+</LinearLayout>

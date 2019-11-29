@@ -18,10 +18,8 @@
         android:id="@+id/te_integra_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/te_integra_branch"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/distance_dp_10"
-        android:layout_marginRight="@dimen/distance_dp_56"
         android:textColor="@color/app_text_99"
         android:textSize="@dimen/distance_dp_14"
         tools:text="2019.10.11" />
@@ -32,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/distance_dp_10"
+        android:layout_marginLeft="@dimen/distance_dp_14"
         android:textColor="@color/FF000000"
         android:textSize="@dimen/distance_dp_16"
         tools:text="+3" />
