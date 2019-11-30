@@ -196,4 +196,12 @@ public class MyFollowListActivity extends BaseActivity<MyFollowShopListPresent> 
         super.onResume();
         UtilsStyle.statusBarLightMode(this);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
+        locationService.unregisterListener(mListener);
+        locationService.stop();
+    }
 }

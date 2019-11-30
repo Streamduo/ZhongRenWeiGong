@@ -176,17 +176,16 @@
             android:name=".business.commerce.CommerecListActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".message.ActivityMessageDetailActivity" />
-        <activity
-            android:name=".mine.ProfessionalCertificationActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".mine.ProfessionalCertificationActivity" />
         <activity android:name=".mine.StatementActivity" />
         <activity android:name=".mine.MyIntegralCompensationActivity" />
         <activity android:name=".mine.YiJianFanKuiActivity" />
         <activity android:name=".mine.AboutActivity" />
         <activity android:name=".business.manager.SendLooseActivity" />
         <activity android:name=".business.manager.MineShopListActivity" />
-        <activity android:name=".mine.AddBankCardActivity"/>
-        <activity android:name=".mine.MyFollowListActivity"/>
+        <activity android:name=".mine.AddBankCardActivity" />
+        <activity android:name=".mine.MyFollowListActivity" />
+        <activity android:name=".home.SendPublishActivity"></activity>
     </application>
 
 </manifest>

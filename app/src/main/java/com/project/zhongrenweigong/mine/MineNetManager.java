@@ -3,9 +3,11 @@ package com.project.zhongrenweigong.mine;
 import com.project.zhongrenweigong.base.BaseModel;
 import com.project.zhongrenweigong.home.bean.AddressBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
+import com.project.zhongrenweigong.mine.bean.BankCardBean;
 import com.project.zhongrenweigong.mine.bean.BusinessSystemBean;
 import com.project.zhongrenweigong.mine.bean.MineInfoBean;
 import com.project.zhongrenweigong.mine.bean.MineSystemBean;
+import com.project.zhongrenweigong.mine.bean.ProfessionalBean;
 
 import io.reactivex.Flowable;
 import okhttp3.RequestBody;
@@ -56,4 +58,31 @@ public interface MineNetManager {
     @POST("getIndividualSystem")
     Flowable<MineSystemBean> getIndividualSystem(@Body RequestBody body);
 
+    /**
+     *  会员职业认证
+     * @return
+     */
+    @POST("authMemberProfession")
+    Flowable<BaseModel> authMemberProfession(@Body RequestBody body);
+
+    /**
+     *  获取职业认证信息
+     * @return
+     */
+    @POST("getProfessionAuth")
+    Flowable<ProfessionalBean> getProfessionAuth(@Body RequestBody body);
+
+    /**
+     *  添加银行卡
+     * @return
+     */
+    @POST("addBoundBankCard")
+    Flowable<BaseModel> addBoundBankCard(@Body RequestBody body);
+
+    /**
+     *  查询添加银行卡
+     * @return
+     */
+    @POST("getBankCardList")
+    Flowable<BaseModel> getBankCardList(@Body RequestBody body);
 }

@@ -39,4 +39,5 @@ public class LoginMsg implements Serializable {
     public String role;
     public String isFreeze;
     public String industryId;
+    public String isAuthProfession;
 }

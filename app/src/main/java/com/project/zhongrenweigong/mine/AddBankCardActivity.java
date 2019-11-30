@@ -9,10 +9,28 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseActivity;
+import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.currency.bean.NavigationBean;
+import com.project.zhongrenweigong.currency.event.RefreshIndustrySearchEvent;
+import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.util.AcacheUtils;
+import com.project.zhongrenweigong.util.CheckInputUtil;
+import com.project.zhongrenweigong.util.GsonProvider;
 import com.project.zhongrenweigong.util.UtilsStyle;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class AddBankCardActivity extends BaseActivity<AddBankCardPresent> {
 
@@ -26,6 +44,9 @@ public class AddBankCardActivity extends BaseActivity<AddBankCardPresent> {
     EditText edCardNum;
     @BindView(R.id.te_next)
     TextView teNext;
+    private LoginMsg userAccent;
+    private String cardNum;
+    private String cardPeople;
 
     @Override
     public void initView() {
@@ -33,6 +54,7 @@ public class AddBankCardActivity extends BaseActivity<AddBankCardPresent> {
             setFull(false);
         }
         teTitle.setText("添加银行卡");
+        userAccent = AcacheUtils.getInstance(this).getUserAccent();
     }
 
     @Override
@@ -58,23 +80,71 @@ public class AddBankCardActivity extends BaseActivity<AddBankCardPresent> {
 
     @Override
     public void widgetClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.te_back:
                 finish();
                 break;
             case R.id.te_next:
-                String cardPeople = edCardPeople.getText().toString();
-                String cardNum = edCardNum.getText().toString();
-                if (TextUtils.isEmpty(cardPeople)){
+                cardPeople = edCardPeople.getText().toString();
+                cardNum = edCardNum.getText().toString();
+                if (TextUtils.isEmpty(cardPeople)) {
                     showToastShort("持卡人不能为空");
                     return;
                 }
-                if (TextUtils.isEmpty(cardNum)){
+                if (TextUtils.isEmpty(cardNum)) {
                     showToastShort("银行卡号不能为空");
                     return;
                 }
+                checkingCard(cardNum);
                 break;
         }
+    }
+
+    private void checkingCard(String card) {
+        //创建OkHttpClient对象
+        OkHttpClient okhttpClient = new OkHttpClient();
+        //创建Request对象
+        Request request = new Request.Builder()
+                .url("https://ccdcapi.alipay.com/validateAndCacheCardInfo.json?" +
+                        "_input_charset=utf-8&cardNo=" + card + "&cardBinCheck=true")//请求的地址,根据需求带参
+                .build();
+        //创建call对象
+        Call call = okhttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            /**
+             * 请求失败后执行
+             * @param call
+             * @param e
+             */
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+
+            /**
+             * 请求成功后执行
+             * @param call
+             * @param response
+             * @throws IOException
+             */
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String json = response.body().string();
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+                        boolean validated = jsonObject.getBoolean("validated");
+                        if (validated) {
+                            getP().addBoundBankCard(userAccent.mbId, cardNum, cardPeople);
+                        }else {
+                            showToastShort("银行卡号错误");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_302"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_54">
+
+            <ImageView
+                android:id="@+id/img_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/distance_dp_14"
+                android:paddingRight="@dimen/distance_dp_14"
+                android:src="@mipmap/gray_exit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="选择银行卡"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_18" />
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_bank_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_top"
+            android:layout_marginBottom="@dimen/distance_dp_51"
+            android:overScrollMode="never" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_above="@+id/te_add_bank"
+            android:background="@color/app_e8e8e8" />
+
+        <TextView
+            android:id="@+id/te_add_bank"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_50"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="+添加银行卡"
+            android:textColor="@color/app_369EFF"
+            android:textSize="@dimen/distance_dp_17" />
+    </RelativeLayout>
+</RelativeLayout>

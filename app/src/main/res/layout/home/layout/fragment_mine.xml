@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
     android:layout_height="match_parent">
 
     <include
@@ -221,6 +222,7 @@
                         android:drawablePadding="@dimen/distance_dp_5"
                         android:gravity="center_vertical"
                         android:text="已认证"
+                        android:visibility="gone"
                         android:textColor="@color/app_B2B2B2"
                         android:textSize="@dimen/distance_dp_14" />
 
@@ -260,6 +262,7 @@
                         android:drawablePadding="@dimen/distance_dp_5"
                         android:gravity="center_vertical"
                         android:text="已认证"
+                        android:visibility="gone"
                         android:textColor="@color/app_B2B2B2"
                         android:textSize="@dimen/distance_dp_14" />
 

@@ -68,7 +68,7 @@
             android:layout_marginLeft="@dimen/distance_dp_19"
             android:layout_marginTop="@dimen/distance_dp_18"
             android:layout_toRightOf="@+id/te_text"
-            android:text="工商银行(0908)"
+            tools:text="工商银行(0908)"
             android:textColor="@color/app_text_33"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/te_bank_name"
             android:layout_marginRight="@dimen/distance_dp_14"
             android:background="@mipmap/right_back" />
 
@@ -88,8 +88,9 @@
             android:layout_marginLeft="@dimen/distance_dp_40"
             android:layout_marginTop="@dimen/distance_dp_10"
             android:layout_toRightOf="@+id/te_text"
-            android:text="2小时内到账"
+            android:text="预计2小时内到账"
             android:textSize="@dimen/distance_dp_14" />
+
     </RelativeLayout>
 
     <TextView
@@ -118,11 +119,12 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/ed_reflect_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
             android:inputType="number"
-            android:text="200"
+            tools:text="200"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_33"
             android:textStyle="bold" />

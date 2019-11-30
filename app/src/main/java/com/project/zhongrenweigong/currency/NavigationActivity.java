@@ -1,5 +1,6 @@
 package com.project.zhongrenweigong.currency;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -52,14 +53,22 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
     private LinkedList<LocationEntity> locationList = new LinkedList<LocationEntity>(); // 存放历史定位结果的链表，最大存放当前结果的前5次定位结果
     private double longitude;
     private double latitude;
-    private String json = "{status:0,result:{location:{lng:116.3084202915042,lat:40.05703033345938}," +
-            "precise:1,confidence:80,comprehension:100,level:门址}}";
-    private NavigationBean navigationBean;
+    private double shopLongitude;
+    private double shopLatitude;
 
     @Override
     public void initView() {
-        String address = getIntent().getStringExtra("address");
+        Intent intent =  getIntent();
+        String address = intent.getStringExtra("address");
         teShopAddr.setText(address);
+        String lat = intent.getStringExtra("lat");
+        String lng = intent.getStringExtra("lng");
+        try {
+            shopLongitude = Double.parseDouble(lng);
+            shopLatitude = Double.parseDouble(lat);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomTo(15));
@@ -74,7 +83,6 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
 
     @Override
     public void initAfter() {
-        navigationBean = GsonProvider.gson.fromJson(json, NavigationBean.class);
     }
 
     @Override
@@ -113,10 +121,9 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
     }
 
     private void setAddress() {
-        NavigationBean.ResultBean.LocationBean location1 = navigationBean.getResult().getLocation();
         //定义起终点坐标（天安门和百度大厦）
         LatLng startPoint = new LatLng(longitude, latitude);
-        LatLng endPoint = new LatLng(location1.getLat(), location1.getLng());
+        LatLng endPoint = new LatLng(shopLatitude, shopLongitude);
 
         //构建RouteParaOption参数以及策略
         //也可以通过startName和endName来构造
@@ -227,8 +234,7 @@ public class NavigationActivity extends BaseActivity<NavigationPresent> {
 
                 int iscal = msg.getData().getInt("iscalculate");
                 if (location != null) {
-                    NavigationBean.ResultBean.LocationBean location1 = navigationBean.getResult().getLocation();
-                    LatLng point = new LatLng(location1.getLat(), location1.getLng());
+                    LatLng point = new LatLng(shopLatitude, shopLongitude);
                     // 构建Marker图标
                     BitmapDescriptor bitmap = null;
                     if (iscal == 0) {

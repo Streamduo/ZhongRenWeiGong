@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/transparent">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/line_cancel"
         android:layout_marginLeft="@dimen/distance_dp_7"
         android:layout_marginRight="@dimen/distance_dp_7"
         android:background="@drawable/bg_bac_white_10"
@@ -132,8 +131,8 @@
         android:id="@+id/line_cancel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/distance_dp_58"
-        android:layout_marginTop="@dimen/distance_dp_10"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/distance_dp_10">
 
         <TextView
             android:id="@+id/te_cancel"
@@ -149,4 +148,4 @@
             android:textSize="@dimen/distance_dp_17" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

@@ -54,6 +54,9 @@ public class MyIntegralCompensationActivity extends BaseActivity<MyIntegralCompe
     private int type;
     private CompensationListAdapter compensationListAdapter;
     private LoginMsg userAccent;
+    private double sumMoney;
+    private double sumIntegral;
+    private double reflectMoney;
 
     public static void start(Context context, int type) {
         Intent intent = new Intent(context, MyIntegralCompensationActivity.class);
@@ -141,13 +144,20 @@ public class MyIntegralCompensationActivity extends BaseActivity<MyIntegralCompe
             case R.id.te_ti_xian:
                 switch (type) {
                     case 1:
-
+                        reflectMoney = sumMoney;
+                        Router.newIntent(MyIntegralCompensationActivity.this)
+                                .putString("reflectMoney", String.valueOf(reflectMoney))
+                                .putInt("reflectType", 0)
+                                .to(ReflectActivity.class).launch();
                         break;
                     case 2:
-
+                        reflectMoney = sumIntegral / 100;
+                        Router.newIntent(MyIntegralCompensationActivity.this)
+                                .putString("reflectMoney", String.valueOf(reflectMoney))
+                                .putInt("reflectType", 1)
+                                .to(ReflectActivity.class).launch();
                         break;
                 }
-                Router.newIntent(MyIntegralCompensationActivity.this).to(ReflectActivity.class).launch();
                 break;
         }
     }
@@ -163,11 +173,11 @@ public class MyIntegralCompensationActivity extends BaseActivity<MyIntegralCompe
         IntegralCompensationDataBean integralCompensationDataBean = integralCompensationBean.getData();
         switch (type) {
             case 1:
-                double sumMoney = integralCompensationDataBean.sumMoney;
+                sumMoney = integralCompensationDataBean.sumMoney;
                 teIntegralSize.setText(String.valueOf(sumMoney));
                 break;
             case 2:
-                double sumIntegral = integralCompensationDataBean.sumIntegral;
+                sumIntegral = integralCompensationDataBean.sumIntegral;
                 teIntegralSize.setText(String.valueOf(sumIntegral));
                 break;
         }

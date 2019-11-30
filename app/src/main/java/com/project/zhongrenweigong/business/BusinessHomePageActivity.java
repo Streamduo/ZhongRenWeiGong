@@ -138,6 +138,8 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
     private String legalId;
     private int isLike;
     private String mbId;
+    private String lat;
+    private String lng;
 
     @Override
     public void initView() {
@@ -288,7 +290,9 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
                 break;
             case R.id.te_shop_address:
                 Router.newIntent(BusinessHomePageActivity.this)
-                        .putString("address", address)
+                        .putString("address",address)
+                        .putString("lat", lat)
+                        .putString("lng", lng)
                         .to(NavigationActivity.class).launch();
                 break;
             case R.id.te_right_title:
@@ -427,6 +431,8 @@ public class BusinessHomePageActivity extends BaseActivity<BusinessHomePagePrese
         teShopPhone.setText(shopPhone);
         teShopFans.setText(data.fansNum);
         teShopTime.setText("营业时间:" + data.beignTime + "-" + data.endTime);
+        lat = data.getLat();
+        lng = data.getLng();
 
         List<GoodsListsBean> goodsLists = data.goodsLists;
         if (goodsLists != null && goodsLists.size() > 0) {

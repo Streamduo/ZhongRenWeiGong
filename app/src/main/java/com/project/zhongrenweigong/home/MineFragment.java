@@ -390,6 +390,16 @@ public class MineFragment extends BaseFragment<MinePresent> {
             } else {
                 teBusinessRenzhengStatus.setVisibility(View.GONE);
             }
+            String isAuthProfession = loginMsg.isAuthProfession;
+            if (isAuthProfession.equals("1")){
+                teWorkAuthentication.setText("职业认证：已认证");
+                teMineRenzhengStatus.setVisibility(View.VISIBLE);
+            }else {
+                teWorkAuthentication.setText("职业认证：未认证");
+                teMineRenzhengStatus.setVisibility(View.GONE);
+            }
+
+
         }
     }
 

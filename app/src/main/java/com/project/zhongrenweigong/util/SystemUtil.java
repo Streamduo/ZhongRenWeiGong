@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -50,6 +51,17 @@ public class SystemUtil {
         }
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
         context.startActivity(intent);
+    }
+
+    public static String getSystemFilePath(Context context) {
+        String cachePath;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || !Environment.isExternalStorageRemovable()) {
+            cachePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+        } else {
+            cachePath = context.getFilesDir().getAbsolutePath();
+        }
+        return cachePath;
     }
 
     public static boolean isAppAlive(Context context, String packageName) {
