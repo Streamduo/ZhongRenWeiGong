@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.project.zhongrenweigong.R;
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 
 import butterknife.BindView;
@@ -25,6 +26,9 @@ public class Subject3ViewHolder extends BaseViewHolder {
     RelativeLayout rlPlay;
     @BindView(R.id.te_from_date)
     TextView teFromDate;
+    @BindView(R.id.detail_player)
+    StandardGSYVideoPlayer gsyVideoPlayer;
+
 
     public Subject3ViewHolder(View itemView) {
         super(itemView);

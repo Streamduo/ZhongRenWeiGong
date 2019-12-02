@@ -36,6 +36,7 @@ import com.project.zhongrenweigong.util.ScreenUtils;
 import com.project.zhongrenweigong.util.SystemUtil;
 import com.qiniu.pili.droid.shortvideo.PLShortVideoTranscoder;
 import com.qiniu.pili.droid.shortvideo.PLVideoSaveListener;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -239,6 +240,10 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
 
     @Override
     public void onBackPressed() {
+        if (GSYVideoManager.backFromWindowFull(this)) {
+            return;
+        }
+
         if (doubleClickToExit()) {
             super.onBackPressed();
             exit();

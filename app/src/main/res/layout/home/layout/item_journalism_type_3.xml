@@ -30,6 +30,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/distance_dp_5">
 
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@mipmap/yinying"
+                app:layout_constraintDimensionRatio="344:214"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                    android:id="@+id/detail_player"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+
             <ImageView
                 android:id="@+id/img_journalism_cover"
                 android:layout_width="0dp"
@@ -41,11 +57,12 @@
                 app:layout_constraintRight_toRightOf="parent" />
 
             <RelativeLayout
+                android:id="@+id/rl_yinying"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="@mipmap/yinying"
                 app:layout_constraintDimensionRatio="344:214"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:background="@mipmap/yinying"
                 app:layout_constraintRight_toRightOf="parent">
 
                 <RelativeLayout
