@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mine.ReflectRecordActivity">
+
+    <include
+        layout="@layout/layout_mine_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:background="@color/app_e8e8e8" />
+
+    <LinearLayout
+        android:id="@+id/line_select_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/distance_dp_16"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_reflect_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/distance_dp_5"
+            android:drawableRight="@mipmap/down_img"
+            android:paddingLeft="@dimen/distance_dp_16"
+            android:paddingTop="@dimen/distance_dp_16"
+            android:textColor="@color/FF000000"
+            android:textSize="@dimen/distance_dp_18"
+            tools:text="2019年7月" />
+
+        <TextView
+            android:id="@+id/te_reflect_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/distance_dp_16"
+            android:paddingTop="@dimen/distance_dp_8"
+            android:textColor="@color/app_8E8E8E"
+            android:textSize="@dimen/distance_dp_18"
+            tools:text="提现¥850.90" />
+    </LinearLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/sm_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@color/app_text_99"
+        app:srlEnablePreviewInEditMode="true"
+        app:srlPrimaryColor="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_business_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

@@ -25,6 +25,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,8 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
-        recyJournalismList.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyJournalismList.setLayoutManager(linearLayoutManager);
         homeRecommedListAdapter = new HomeRecommedListAdapter(datas);
         recyJournalismList.setAdapter(homeRecommedListAdapter);
         smRefresh.setOnRefreshListener(new OnRefreshListener() {
@@ -88,9 +90,38 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
                     case R.id.te_share_journalism:
                         showShareDialog();
                         break;
-                    case R.id.rl_play:
+                }
+            }
+        });
+        recyJournalismList.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
-                        break;
+            int firstVisibleItem, lastVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                firstVisibleItem = linearLayoutManager.findFirstVisibleItemPosition();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                //大于0说明有播放
+                if (GSYVideoManager.instance().getPlayPosition() >= 0) {
+                    //当前播放的位置
+                    int position = GSYVideoManager.instance().getPlayPosition();
+                    //对应的播放列表TAG
+                    if (GSYVideoManager.instance().getPlayTag().equals(homeRecommedListAdapter.TAG)
+                            && (position < firstVisibleItem || position > lastVisibleItem)) {
+
+                        //如果滑出去了上面和下面就是否，和今日头条一样
+                        //是否全屏
+                        if (!GSYVideoManager.isFullState(getActivity())) {
+                            GSYVideoManager.releaseAllVideos();
+                            homeRecommedListAdapter.notifyDataSetChanged();
+                        }
+                    }
                 }
             }
         });
@@ -166,6 +197,32 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        GSYVideoManager.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        GSYVideoManager.onResume(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        GSYVideoManager.releaseAllVideos();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            GSYVideoManager.onPause();
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -181,8 +238,10 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
             }
             if (currentPage == 1) {
                 homeRecommedListAdapter.setNewData(newsDataMultiItemEntities);
+                smRefresh.finishRefresh(1000/*,false*/);
             }else {
                 homeRecommedListAdapter.addData(newsDataMultiItemEntities);
+                smRefresh.finishRefresh(1000/*,false*/);
             }
         }else {
             getDataError();

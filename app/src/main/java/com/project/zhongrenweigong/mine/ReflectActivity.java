@@ -124,8 +124,8 @@ public class ReflectActivity extends BaseActivity<ReflectPresent> {
                 }
                 break;
             case R.id.te_reflect_record:
-                Router.newIntent(ReflectActivity.this).putInt("recordType", 1)
-                        .to(CompensationRecordActivity.class)
+                Router.newIntent(ReflectActivity.this)
+                        .to(ReflectRecordActivity.class)
                         .launch();
                 break;
             case R.id.te_reflect_all:

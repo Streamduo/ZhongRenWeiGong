@@ -21,6 +21,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,8 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
-        recyVideoList.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyVideoList.setLayoutManager(linearLayoutManager);
         homeVideoListAdapter = new HomeVideoListAdapter(R.layout.item_journalism_video);
         recyVideoList.setAdapter(homeVideoListAdapter);
         smRefresh.setOnRefreshListener(new OnRefreshListener() {
@@ -72,6 +74,39 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
             public void onLoadMore(RefreshLayout refreshlayout) {
                 currentPage++;
                 initAfter();
+            }
+        });
+
+        recyVideoList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            int firstVisibleItem, lastVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                firstVisibleItem = linearLayoutManager.findFirstVisibleItemPosition();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                //大于0说明有播放
+                if (GSYVideoManager.instance().getPlayPosition() >= 0) {
+                    //当前播放的位置
+                    int position = GSYVideoManager.instance().getPlayPosition();
+                    //对应的播放列表TAG
+                    if (GSYVideoManager.instance().getPlayTag().equals(homeVideoListAdapter.TAG)
+                            && (position < firstVisibleItem || position > lastVisibleItem)) {
+
+                        //如果滑出去了上面和下面就是否，和今日头条一样
+                        //是否全屏
+                        if (!GSYVideoManager.isFullState(getActivity())) {
+                            GSYVideoManager.releaseAllVideos();
+                            homeVideoListAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
             }
         });
     }
@@ -107,8 +142,10 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
         if (data != null && data.size() > 0) {
             if (currentPage == 1) {
                 homeVideoListAdapter.setNewData(data);
+                smRefresh.finishRefresh(1000/*,false*/);
             } else {
                 homeVideoListAdapter.addData(data);
+                smRefresh.finishRefresh(1000/*,false*/);
             }
         } else {
             getDataError();
@@ -133,6 +170,32 @@ public class HomeVideoFragment extends BaseFragment<HomeVideoPresent> {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            GSYVideoManager.onPause();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        GSYVideoManager.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        GSYVideoManager.onResume(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        GSYVideoManager.releaseAllVideos();
     }
 
     @Override

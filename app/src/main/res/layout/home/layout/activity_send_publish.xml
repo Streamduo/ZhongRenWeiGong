@@ -51,7 +51,7 @@
         android:background="@color/app_e8e8e8" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/distance_dp_15"
         android:layout_marginTop="@dimen/distance_dp_10">

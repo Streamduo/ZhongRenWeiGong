@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.project.zhongrenweigong.R;
 import com.project.zhongrenweigong.base.BaseFragment;
+import com.project.zhongrenweigong.business.BusinessAuthenticationActivity;
 import com.project.zhongrenweigong.business.manager.BusinessManagerActivity;
 import com.project.zhongrenweigong.business.manager.MineShopListActivity;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
@@ -285,6 +286,7 @@ public class MineFragment extends BaseFragment<MinePresent> {
                 Router.newIntent(getActivity()).to(ProfessionalCertificationActivity.class).launch();
                 break;
             case R.id.rl_business_renzheng:
+                Router.newIntent(getActivity()).to(BusinessAuthenticationActivity.class).launch();
                 break;
             case R.id.rl_mine_industry:
                 Router.newIntent(getActivity()).to(MineShopListActivity.class).launch();
@@ -387,8 +389,10 @@ public class MineFragment extends BaseFragment<MinePresent> {
             teUserId.setText("ID:" + loginMsg.mbId);
             if (loginMsg.isAuthMerchant.equals("1")) {
                 teBusinessRenzhengStatus.setVisibility(View.VISIBLE);
+                rlMineIndustry.setVisibility(View.VISIBLE);
             } else {
                 teBusinessRenzhengStatus.setVisibility(View.GONE);
+                rlMineIndustry.setVisibility(View.GONE);
             }
             String isAuthProfession = loginMsg.isAuthProfession;
             if (isAuthProfession.equals("1")){

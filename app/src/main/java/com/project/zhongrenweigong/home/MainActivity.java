@@ -3,6 +3,7 @@ package com.project.zhongrenweigong.home;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -34,6 +35,7 @@ import com.project.zhongrenweigong.login.bean.LoginMsg;
 import com.project.zhongrenweigong.util.AcacheUtils;
 import com.project.zhongrenweigong.util.ScreenUtils;
 import com.project.zhongrenweigong.util.SystemUtil;
+import com.project.zhongrenweigong.view.DownloadProgressDialog;
 import com.qiniu.pili.droid.shortvideo.PLShortVideoTranscoder;
 import com.qiniu.pili.droid.shortvideo.PLVideoSaveListener;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -84,6 +86,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
     private boolean isCompressing;
     private String destPath;
     private float percentage;
+    private DownloadProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -366,8 +369,12 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
                 String videopath = split[1];
                 if (getFile(videopath) > 15) {
                     startCompressed(videopath);
-                }else {
+                } else {
                     destPath = videopath;
+                    Router.newIntent(MainActivity.this)
+                            .putString("videoPath", destPath)
+                            .to(SendPublishActivity.class)
+                            .launch();
                 }
             } else if (resultCode == RESULT_CANCELED) {
                 // User cancelled the video capture
@@ -389,8 +396,12 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
                     cursor.close();
                     if (getFile(videopath) > 15) {
                         startCompressed(videopath);
-                    }else {
+                    } else {
                         destPath = videopath;
+                        Router.newIntent(MainActivity.this)
+                                .putString("videoPath", destPath)
+                                .to(SendPublishActivity.class)
+                                .launch();
                     }
                 }
             }
@@ -411,17 +422,20 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         retr.setDataSource(videoPath);
         int height = ScreenUtils.getScreenHeight(this); // 视频高度
         int width = ScreenUtils.getScreenWidth(this); // 视频宽度
-        mShortVideoTranscoder.transcode(width, height, height * width, false, new PLVideoSaveListener() {
+        showProgressDialog();
+        mShortVideoTranscoder.transcode(width, height, height * width, 90,false, new PLVideoSaveListener() {
 
 
             @Override
             public void onSaveVideoSuccess(String s) {
+                isCompressing = true;
                 handler.sendEmptyMessage(103);
             }
 
             @Override
             public void onSaveVideoFailed(final int errorCode) {
                 isCompressing = false;
+                mShortVideoTranscoder.cancelTranscode();
                 Log.e("snow", "save failed: " + errorCode);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -445,6 +459,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
 
             @Override
             public void onSaveVideoCanceled() {
+                mShortVideoTranscoder.cancelTranscode();
                 handler.sendEmptyMessage(101);
 //                LogUtil.e("onSaveVideoCanceled");
             }
@@ -452,6 +467,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             @Override
             public void onProgressUpdate(float percentag) {
                 percentage = percentag;
+                handler.sendEmptyMessage(100);
             }
         });
     }
@@ -461,7 +477,7 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
                 case 100:
-                    Log.i(TAG, String.valueOf(percentage) + "%");
+                    progressDialog.setProgress(Math.round(percentage * 100));
                     break;
                 case 101:
                     Log.i(TAG, "压缩取消了");
@@ -469,7 +485,14 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
                 case 102:
                     break;
                 case 103:
-                    Log.i(TAG, "压缩后大小 = " + getFileSize(destPath));
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                        Router.newIntent(MainActivity.this)
+                                .putString("videoPath", destPath)
+                                .to(SendPublishActivity.class)
+                                .launch();
+                    }
+//                    Log.i(TAG, "压缩后大小 = " + getFileSize(destPath));
                     break;
             }
             return false;
@@ -484,6 +507,24 @@ public class MainActivity extends BaseActivity<MainPresent> implements CompoundB
             long size = f.length();
             return (size / 1024f) / 1024f + "MB";
         }
+    }
+
+    private void showProgressDialog() {
+        progressDialog = new DownloadProgressDialog(this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        // 设置ProgressDialog 标题
+        progressDialog.setTitle("正在压缩视频");
+        // 设置ProgressDialog 提示信息
+        progressDialog.setMessage("当前压缩进度:");
+        // 设置ProgressDialog 标题图标
+        //progressDialog.setIcon(R.drawable.a);
+        // 设置ProgressDialog 进度条进度
+        // 设置ProgressDialog 的进度条是否不明确
+        progressDialog.setIndeterminate(false);
+        // 设置ProgressDialog 是否可以按退回按键取消
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+        progressDialog.setMax(100);
     }
 
     private float getFile(String path) {

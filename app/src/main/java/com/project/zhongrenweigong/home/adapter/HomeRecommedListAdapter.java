@@ -164,8 +164,6 @@ public class HomeRecommedListAdapter extends BaseMultiItemQuickAdapter<NewsDataM
         helper.setText(R.id.te_journalism_title, newsDataBean.title);
         helper.setText(R.id.te_from_date, newsDataBean.copyright + "    " + newsDataBean.time);
 
-
-
         final StandardGSYVideoPlayer gsyVideoPlayer = (StandardGSYVideoPlayer) helper.getView(R.id.detail_player);
         gsyVideoPlayer.setUpLazy(newsDataBean.videoUrl, true, null, null, "这是title");
         //增加title

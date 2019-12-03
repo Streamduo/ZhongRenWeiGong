@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/distance_dp_19"
+    android:paddingRight="@dimen/distance_dp_15">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/distance_dp_38"
+            android:layout_height="@dimen/distance_dp_38"
+            android:layout_marginTop="@dimen/distance_dp_19"
+            android:background="@mipmap/reflect_money"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_8"
+            android:layout_marginTop="@dimen/distance_dp_15">
+
+            <TextView
+                android:id="@+id/te_reflect_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/FF000000"
+                android:lines="1"
+                android:layout_marginRight="@dimen/distance_dp_80"
+                android:ellipsize="end"
+                android:textSize="@dimen/distance_dp_17"
+                tools:text="零钱提现到工商银行（19..." />
+
+            <TextView
+                android:id="@+id/te_reflect_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/te_reflect_intro"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:textColor="@color/app_BDBDBD"
+                android:textSize="@dimen/distance_dp_15"
+                tools:text="7月14日11:28" />
+
+            <TextView
+                android:id="@+id/te_reflect_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/FF000000"
+                android:textSize="@dimen/distance_dp_17"
+                tools:text="100.10" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_marginLeft="@dimen/distance_dp_50"
+        android:layout_marginTop="@dimen/distance_dp_15"
+        android:background="@color/app_bfbfbf" />
+</LinearLayout>

@@ -94,9 +94,6 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
                     case R.id.te_share_journalism:
                         showShareDialog(item);
                         break;
-                    case R.id.rl_play:
-
-                        break;
                 }
             }
         });
@@ -256,7 +253,15 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
         GSYVideoManager.releaseAllVideos();
     }
 
-//
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            GSYVideoManager.onPause();
+        }
+    }
+
+    //
 //    private void resolveData() {
 //        for (int i = 0; i < 19; i++) {
 //            VideoModel videoModel = new VideoModel();
@@ -282,8 +287,10 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
             }
             if (currentPage == 1) {
                 homeRecommedListAdapter.setNewData(newsDataMultiItemEntities);
+                smRefresh.finishRefresh(1000/*,false*/);
             } else {
                 homeRecommedListAdapter.addData(newsDataMultiItemEntities);
+                smRefresh.finishRefresh(1000/*,false*/);
             }
         } else {
             getDataError();

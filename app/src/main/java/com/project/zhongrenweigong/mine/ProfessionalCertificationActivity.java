@@ -67,6 +67,7 @@ public class ProfessionalCertificationActivity extends BaseActivity<Professional
     private String professionName;
     private String professionMain;
     private String professionMainAddress;
+    private int flag;
 
     @Override
     public void initView() {
@@ -240,7 +241,7 @@ public class ProfessionalCertificationActivity extends BaseActivity<Professional
                             latitude = location.getLat();
                             longitude = location.getLng();
                             getP().authMemberProfession(userAccent.mbId, work, companyAddress, company,
-                                    String.valueOf(latitude), String.valueOf(longitude));
+                                    String.valueOf(flag),String.valueOf(latitude), String.valueOf(longitude));
                         } else {
                             showToastShort("地址输入错误");
                         }
@@ -277,5 +278,9 @@ public class ProfessionalCertificationActivity extends BaseActivity<Professional
         edCompanyAddress.setEnabled(false);
         edCompanyAddress.setCursorVisible(false);
         teSend.setVisibility(View.GONE);
+    }
+
+    public void setFlag(int i) {
+        flag = i;
     }
 }

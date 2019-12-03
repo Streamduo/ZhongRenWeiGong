@@ -26,12 +26,13 @@ import okhttp3.RequestBody;
 public class ProfessionalCertificationPresent extends XPresent<ProfessionalCertificationActivity> {
 
     public void authMemberProfession(String mbId, String professionName, String addressDetail,
-                                     String authMainName, String lat, String lng) {
+                                     String authMainName, String flag, String lat, String lng) {
         Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
         stringMap.put("mbId", mbId);
         stringMap.put("addressDetail", addressDetail);
         stringMap.put("authMainName", authMainName);
         stringMap.put("professionName", professionName);
+        stringMap.put("flag", flag);
         stringMap.put("lat", lat);
         stringMap.put("lng", lng);
         String body = GsonProvider.gson.toJson(stringMap);
@@ -50,14 +51,16 @@ public class ProfessionalCertificationPresent extends XPresent<ProfessionalCerti
 
                     @Override
                     public void onNext(BaseModel baseModel) {
-                        ToastManager.showLong(getV(), baseModel.msg);
+
                         if (baseModel.getCode() == 200) {
+                            ToastManager.showShort(getV(), "提交认证成功");
                             getV().finish();
+                        } else {
+                            ToastManager.showShort(getV(), baseModel.msg);
                         }
                     }
                 });
     }
-
 
 
     public void getProfessionAuth(String mbId) {
@@ -80,7 +83,10 @@ public class ProfessionalCertificationPresent extends XPresent<ProfessionalCerti
                     @Override
                     public void onNext(ProfessionalBean professionalBean) {
                         if (professionalBean.getCode() == 200) {
+                            getV().setFlag(1);
                             getV().setUserCertifiation(professionalBean);
+                        } else if (professionalBean.getCode() == 501) {
+                            getV().setFlag(0);
                         }
                     }
                 });

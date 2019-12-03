@@ -11,6 +11,7 @@ import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 import com.project.zhongrenweigong.message.bean.VoucherMessageDetailBean;
 import com.project.zhongrenweigong.mine.bean.IntegralCompensationBean;
+import com.project.zhongrenweigong.mine.bean.ReflectBean;
 
 import java.util.List;
 
@@ -212,5 +213,22 @@ public interface MessageNetManager {
     @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     @POST("aWithdrawalEncryption")
     Flowable<BaseModel> aWithdrawalEncryption(@Field("dataMsg") String dataMsg);
+
+    /**
+     * 获取提现明细列表
+     *
+     * @return
+     */
+    @POST("getWithdrawDepositDetail")
+    Flowable<ReflectBean> getWithdrawDepositDetail(@Body RequestBody body);
+
+    /**
+     * @author fuduo
+     * @time 2018/1/21  10:38
+     * @describe 上传小视频
+     */
+    @POST()
+    Call<BaseModel> uploadLittleVideo(@Url() String url,
+                                    @Body RequestBody Body);
 
 }

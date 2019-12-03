@@ -186,7 +186,8 @@
         <activity android:name=".business.manager.MineShopListActivity" />
         <activity android:name=".mine.AddBankCardActivity" />
         <activity android:name=".mine.MyFollowListActivity" />
-        <activity android:name=".home.SendPublishActivity"></activity>
+        <activity android:name=".home.SendPublishActivity" />
+        <activity android:name=".mine.ReflectRecordActivity"/>
     </application>
 
 </manifest>
