@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_3E3E3E">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/light"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/line_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_50"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_share_jifen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="恭喜您获得100积分"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:text="该积分可提现和在维公平台购买商品！"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_8"
+            android:text="您可前往我的页面-积分管理查看，谢谢！"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_12" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_star"
+        android:layout_width="@dimen/distance_dp_127"
+        android:layout_height="@dimen/distance_dp_133"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/distance_dp_30"
+        android:src="@mipmap/gift" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_star"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_30"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="维公感谢您"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:text="为传播社会正能量"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_8"
+            android:text="所做的贡献，请您再接再厉！！"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+    </LinearLayout>
+</RelativeLayout>

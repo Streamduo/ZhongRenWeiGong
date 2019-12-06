@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_90"
+    android:layout_marginLeft="@dimen/distance_dp_12"
+    android:layout_marginRight="@dimen/distance_dp_12"
+    android:paddingTop="@dimen/distance_dp_7">
+
+    <ImageView
+        android:id="@+id/img_good_things"
+        android:layout_width="@dimen/distance_dp_96"
+        android:layout_height="@dimen/distance_dp_76"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        tools:background="@mipmap/vegetable_default" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/distance_dp_8"
+        android:layout_toLeftOf="@+id/img_good_things"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_things_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/app_3E3E3E"
+            android:textSize="@dimen/distance_dp_12"
+            tools:text="寻找最美“托举哥”；男孩被卡五楼窗外，见义勇成功救下被困男童…" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_9">
+
+            <ImageView
+                android:id="@+id/img_thing_sender_head"
+                android:layout_width="@dimen/distance_dp_22"
+                android:layout_height="@dimen/distance_dp_22"
+                android:scaleType="centerCrop"
+                tools:background="@mipmap/big_default_user_head" />
+
+            <ImageView
+                android:id="@+id/img_v"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_15"
+                android:layout_marginTop="@dimen/distance_dp_15"
+                android:background="@mipmap/renzheng_v"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/te_thing_sender_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/distance_dp_5"
+                android:layout_toRightOf="@+id/img_thing_sender_head"
+                android:text="维公哥哥"
+                android:textColor="@color/app_text_96"
+                android:textSize="@dimen/distance_dp_8" />
+
+            <TextView
+                android:id="@+id/te_thing_sees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/distance_dp_20"
+                android:layout_toRightOf="@+id/te_thing_sender_name"
+                android:drawableLeft="@mipmap/read_size"
+                android:text="1564"
+                android:textColor="@color/app_text_96"
+                android:textSize="@dimen/distance_dp_8" />
+
+            <TextView
+                android:id="@+id/te_thing_zan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:layout_toRightOf="@+id/te_thing_sees"
+                android:drawableLeft="@mipmap/thing_zan"
+                android:text="1564"
+                android:textColor="@color/app_text_96"
+                android:textSize="@dimen/distance_dp_8" />
+
+            <TextView
+                android:id="@+id/te_topic_share"
+                android:layout_width="@dimen/distance_dp_54"
+                android:layout_height="@dimen/distance_dp_16"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_bac_f74040_12"
+                android:gravity="center"
+                android:text="爱心传递"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_8" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:text="热点"
+            android:textColor="@color/app_E61414"
+            android:textSize="@dimen/distance_dp_9" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_D6D6D6" />
+</RelativeLayout>

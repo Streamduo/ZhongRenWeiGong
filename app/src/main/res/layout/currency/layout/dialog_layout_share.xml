@@ -5,21 +5,51 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/distance_dp_100"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="传播正能量"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="营造道德新风尚！"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="讲文明 树新风 学雷锋"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_20" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/line_cancel"
-        android:layout_marginLeft="@dimen/distance_dp_7"
-        android:layout_marginRight="@dimen/distance_dp_7"
-        android:background="@drawable/bg_bac_white_10"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginRight="@dimen/distance_dp_12"
+        android:background="@drawable/bg_bac_white_4"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/distance_dp_12"
+        android:paddingBottom="@dimen/distance_dp_17"
         android:paddingLeft="@dimen/distance_dp_36"
         android:paddingRight="@dimen/distance_dp_36"
-        android:paddingTop="@dimen/distance_dp_22">
+        android:paddingTop="@dimen/distance_dp_14">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_146"
+            android:layout_height="@dimen/distance_dp_120"
             android:orientation="vertical">
 
             <LinearLayout
@@ -33,7 +63,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_6"
+                    android:drawablePadding="@dimen/distance_dp_5"
                     android:drawableTop="@mipmap/share_qq"
                     android:gravity="center_horizontal"
                     android:text="QQ"
@@ -57,7 +87,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_14"
+                    android:drawablePadding="@dimen/distance_dp_5"
                     android:drawableTop="@mipmap/share_wx"
                     android:gravity="center_horizontal"
                     android:text="微信"
@@ -69,7 +99,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_7"
+                    android:drawablePadding="@dimen/distance_dp_5"
                     android:drawableTop="@mipmap/share_wx_pyq"
                     android:gravity="center_horizontal"
                     android:text="朋友圈"
@@ -100,10 +130,22 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_14"
+                    android:drawablePadding="@dimen/distance_dp_5"
                     android:drawableTop="@mipmap/share_wb"
                     android:gravity="center_horizontal"
                     android:text="微博"
+                    android:textColor="@color/FF000000"
+                    android:textSize="@dimen/distance_dp_10" />
+
+                <TextView
+                    android:id="@+id/te_share_sys"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/distance_dp_5"
+                    android:drawableTop="@mipmap/share_sys"
+                    android:gravity="center_horizontal"
+                    android:text="系统分享"
                     android:textColor="@color/FF000000"
                     android:textSize="@dimen/distance_dp_10" />
 
@@ -112,17 +154,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:drawablePadding="@dimen/distance_dp_8"
+                    android:drawablePadding="@dimen/distance_dp_5"
                     android:drawableTop="@mipmap/share_copy"
                     android:gravity="center_horizontal"
                     android:text="复制链接"
                     android:textColor="@color/FF000000"
                     android:textSize="@dimen/distance_dp_10" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -137,11 +176,10 @@
         <TextView
             android:id="@+id/te_cancel"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_48"
-            android:layout_marginBottom="@dimen/distance_dp_10"
-            android:layout_marginLeft="@dimen/distance_dp_7"
-            android:layout_marginRight="@dimen/distance_dp_7"
-            android:background="@drawable/bg_bac_white_10"
+            android:layout_height="@dimen/distance_dp_40"
+            android:layout_marginLeft="@dimen/distance_dp_12"
+            android:layout_marginRight="@dimen/distance_dp_12"
+            android:background="@drawable/bg_bac_white_4"
             android:gravity="center"
             android:text="取消"
             android:textColor="@color/FF000000"

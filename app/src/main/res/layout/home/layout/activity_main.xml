@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".home.MainActivity">
 
     <FrameLayout
@@ -25,7 +25,7 @@
             android:id="@+id/home_radio_group"
             android:layout_width="match_parent"
             android:layout_height="@dimen/distance_dp_50"
-            android:background="@color/white"
+            android:background="@mipmap/home_tab_bac"
             android:orientation="horizontal"
             android:saveEnabled="false">
 
@@ -41,18 +41,20 @@
                 style="@style/home_radiobutton"
                 android:drawableTop="@drawable/tab_industry"
                 android:saveEnabled="false"
+                android:layout_marginRight="@dimen/distance_dp_40"
                 android:text="@string/industry" />
 
-            <RadioButton
-                android:id="@+id/home_center"
-                style="@style/home_radiobutton"
-                android:drawableTop="@drawable/tab_center"
-                android:saveEnabled="false" />
+            <!--<RadioButton-->
+            <!--android:id="@+id/home_center"-->
+            <!--style="@style/home_radiobutton"-->
+            <!--android:drawableTop="@drawable/tab_center"-->
+            <!--android:saveEnabled="false" />-->
 
             <RadioButton
                 android:id="@+id/home_msg"
                 style="@style/home_radiobutton"
                 android:drawableTop="@drawable/tab_message"
+                android:layout_marginLeft="@dimen/distance_dp_40"
                 android:saveEnabled="false"
                 android:text="@string/msg" />
 
@@ -65,19 +67,21 @@
         </RadioGroup>
     </LinearLayout>
 
-    <!--<TextView-->
-    <!--android:id="@+id/home_square"-->
-    <!--style="@style/home_radiobutton_guangchang"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_marginRight="@dimen/distance_dp_110"-->
-    <!--android:drawableTop="@mipmap/guangchang"-->
-    <!--android:gravity="center_horizontal"-->
-    <!--android:paddingLeft="15dp"-->
-    <!--android:textColor="@color/app_7d7d7d"-->
-    <!--android:paddingRight="15dp"-->
-    <!--android:saveEnabled="false"-->
-    <!--android:text="@string/guangchang" />-->
+    <TextView
+        android:id="@+id/home_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:drawableTop="@mipmap/center"
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:saveEnabled="false"
+        android:textSize="@dimen/distance_dp_11"
+        android:text="@string/send"
+        android:paddingBottom="@dimen/distance_dp_3"
+        android:textColor="@color/app_7d7d7d" />
 
     <TextView
         android:id="@+id/msg_size"
@@ -94,8 +98,8 @@
         android:paddingRight="@dimen/distance_dp_2"
         android:paddingTop="@dimen/distance_dp_1"
         android:text="99"
-        android:visibility="gone"
         android:textColor="@color/white"
-        android:textSize="@dimen/distance_dp_10" />
+        android:textSize="@dimen/distance_dp_10"
+        android:visibility="gone" />
 
 </RelativeLayout>

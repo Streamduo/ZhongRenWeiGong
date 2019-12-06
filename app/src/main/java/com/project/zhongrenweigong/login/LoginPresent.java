@@ -5,6 +5,7 @@ import com.project.zhongrenweigong.currency.Constans;
 import com.project.zhongrenweigong.currency.event.RefreshMineEvent;
 import com.project.zhongrenweigong.home.MainActivity;
 import com.project.zhongrenweigong.login.bean.LoginMsg;
+import com.project.zhongrenweigong.net.BusinessApi;
 import com.project.zhongrenweigong.net.LoginApi;
 import com.project.zhongrenweigong.util.GsonProvider;
 import com.project.zhongrenweigong.util.XCache;
@@ -22,6 +23,8 @@ import cn.droidlover.xdroidmvp.net.ApiSubscriber;
 import cn.droidlover.xdroidmvp.net.NetError;
 import cn.droidlover.xdroidmvp.net.XApi;
 import cn.droidlover.xdroidmvp.router.Router;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 
 /**
@@ -83,6 +86,34 @@ public class LoginPresent extends XPresent<LoginActivity> {
                             }else {
                                 getV().finish();
                             }
+                        }
+                    }
+                });
+    }
+
+    public void getVerification(String mcPhone) {
+        Map<String, String> stringMap = BusinessApi.getBasicParamsUidAndToken();
+        stringMap.put("mcPhone", mcPhone);
+        String body = GsonProvider.gson.toJson(stringMap);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"),
+                body);
+        LoginApi.loginNetManager().getVerification(requestBody)
+                .compose(XApi.<BaseModel>getApiTransformer())
+                .compose(XApi.<BaseModel>getScheduler())
+                .compose(getV().<BaseModel>bindToLifecycle())
+                .subscribe(new ApiSubscriber<BaseModel>() {
+
+                    @Override
+                    protected void onFail(NetError error) {
+                        ToastManager.showShort(getV(), "发送验证码失败，请检查网络设置");
+                        getV().sendEmsFail();
+                    }
+
+                    @Override
+                    public void onNext(BaseModel baseModel) {
+                        ToastManager.showShort(getV(), baseModel.msg);
+                        if (baseModel.getCode() == 200) {
+                            getV().sendEmsSuccess();
                         }
                     }
                 });

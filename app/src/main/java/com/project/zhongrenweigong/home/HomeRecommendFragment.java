@@ -1,6 +1,7 @@
 package com.project.zhongrenweigong.home;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,7 @@ import com.project.zhongrenweigong.home.adapter.HomeRecommedListAdapter;
 import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.NewsDataBean;
 import com.project.zhongrenweigong.home.bean.NewsDataMultiItemEntity;
+import com.project.zhongrenweigong.home.viewholder.HomeRecommedHeader;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -55,6 +57,7 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
     private List<NewsDataMultiItemEntity> datas = new ArrayList<>();
     private HomeRecommedListAdapter homeRecommedListAdapter;
     private NewsDataMultiItemEntity newsItem;
+    private HomeRecommedHeader homeRecommedHeader;
 
     public static HomeRecommendFragment getInstance(int index) {
         HomeRecommendFragment homePageXinXiFragment = new HomeRecommendFragment();
@@ -68,10 +71,12 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
+        initTopView();
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyJournalismList.setLayoutManager(linearLayoutManager);
         homeRecommedListAdapter = new HomeRecommedListAdapter(datas);
         recyJournalismList.setAdapter(homeRecommedListAdapter);
+        homeRecommedListAdapter.setHeaderView(homeRecommedHeader.headerView);
         smRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -129,7 +134,13 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
                 }
             }
         });
+    }
 
+    private void initTopView(){
+        if(getActivity()==null){
+            return;
+        }
+        homeRecommedHeader = new HomeRecommedHeader(getContext(),getActivity());
 
     }
 
@@ -148,6 +159,7 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
         TextView teSharePyq = (TextView) view.findViewById(R.id.te_share_pyq);
         TextView teShareDingding = (TextView) view.findViewById(R.id.te_share_dingding);
         TextView teShareWb = (TextView) view.findViewById(R.id.te_share_wb);
+        TextView teShareSys = (TextView) view.findViewById(R.id.te_share_sys);
         TextView teShareCopy = (TextView) view.findViewById(R.id.te_share_copy);
         TextView teCancel = (TextView) view.findViewById(R.id.te_cancel);
 
@@ -158,6 +170,7 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
         teShareDingding.setOnClickListener(this);
         teShareWb.setOnClickListener(this);
         teShareCopy.setOnClickListener(this);
+        teShareSys.setOnClickListener(this);
         teCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,17 +186,6 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
     @Override
     public void initAfter() {
         getP().getNewsList(currentPage);
-//        List<NewsDataMultiItemEntity> newsDataMultiItemEntities = new ArrayList<>();
-//        for (int i = 0; i < 5; i++) {
-//            NewsDataBean newsDataBean = new NewsDataBean();
-//            newsDataBean.time = "2019" + "**" + i;
-//            newsDataBean.type = 2;
-//            newsDataBean.title = "好好编码" + i;
-//            newsDataBean.copyright = "新闻里纳波" + i;
-//            newsDataBean.videoUrl = "https://res.exexm.com/cw_145225549855002";
-//            newsDataMultiItemEntities.add(new NewsDataMultiItemEntity(newsDataBean));
-//        }
-//        homeRecommedListAdapter.setNewData(newsDataMultiItemEntities);
 
     }
 
@@ -222,6 +224,15 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
             case R.id.te_share_wb:
                 break;
             case R.id.te_share_copy:
+                break;
+            case R.id.te_share_sys:
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Here is the Shared text.");
+                //切记需要使用Intent.createChooser，否则会出现别样的应用选择框，您可以试试
+                shareIntent = Intent.createChooser(shareIntent, "Here is the title of Select box");
+                startActivity(shareIntent);
                 break;
         }
     }
@@ -302,7 +313,7 @@ public class HomeRecommendFragment extends BaseFragment<HomeRecommendPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeRecommedListAdapter, smRefresh);
+//            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeRecommedListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

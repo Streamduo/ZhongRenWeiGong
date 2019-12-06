@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/distance_dp_10"
+    android:layout_marginRight="@dimen/distance_dp_10"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_10">
+
+        <ImageView
+            android:id="@+id/img_city_good_cover"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@mipmap/vegetable_default"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="351:150"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/te_city_good_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/app_3E3E3E"
+        android:textSize="@dimen/distance_dp_16"
+        tools:text="李春平先生向北京市公安局捐赠警用仪器以及现金二百万元，帮助
+和改善民警维护公民安全装备…" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_2">
+
+        <TextView
+            android:id="@+id/te_city_good_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/app_959595"
+            android:textSize="@dimen/distance_dp_9"
+            tools:text="西城区.长安街" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/te_new_comment"
+                android:layout_width="54dp"
+                android:layout_height="@dimen/distance_dp_20"
+                android:layout_centerVertical="true"
+                android:background="@drawable/lafe_radius_fc9b53_12"
+                android:gravity="center"
+                android:text="去写热评"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_9" />
+
+            <TextView
+                android:id="@+id/te_new_share"
+                android:layout_width="54dp"
+                android:layout_height="@dimen/distance_dp_20"
+                android:layout_centerVertical="true"
+                android:background="@drawable/right_radius_f93b3b_12"
+                android:gravity="center"
+                android:text="爱心传递"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_9" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

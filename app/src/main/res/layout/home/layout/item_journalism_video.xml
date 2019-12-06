@@ -21,8 +21,8 @@
             <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
                 android:id="@+id/detail_player"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <ImageView
@@ -39,9 +39,9 @@
             android:id="@+id/rl_yinying"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@mipmap/yinying"
             app:layout_constraintDimensionRatio="344:214"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:background="@mipmap/yinying"
             app:layout_constraintRight_toRightOf="parent">
 
             <RelativeLayout
@@ -58,75 +58,120 @@
                     android:background="@mipmap/play" />
             </RelativeLayout>
         </RelativeLayout>
+
         <TextView
             android:id="@+id/te_journalism_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/distance_dp_16"
-            android:paddingTop="@dimen/distance_dp_16"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white"
-            android:textSize="@dimen/distance_dp_18"
-            tools:text="十年如一日，大晚上不睡觉清扫街边垃圾" />
-        <TextView
-            android:id="@+id/te_video_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/distance_dp_5"
-            android:layout_marginRight="@dimen/distance_dp_15"
-            android:background="@drawable/bg_bac_tran_black_12"
-            android:paddingBottom="@dimen/distance_dp_3"
-            android:paddingLeft="@dimen/distance_dp_8"
-            android:paddingRight="@dimen/distance_dp_8"
+            android:paddingLeft="@dimen/distance_dp_40"
+            android:paddingRight="@dimen/distance_dp_40"
             android:paddingTop="@dimen/distance_dp_3"
             android:textColor="@color/white"
-            android:textSize="@dimen/distance_dp_10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:text="02:58" />
+            android:textSize="@dimen/distance_dp_12"
+            tools:text="十年如一日，大晚上不睡觉清扫街边垃圾" />
     </android.support.constraint.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_66">
+        android:layout_height="@dimen/distance_dp_42">
 
         <ImageView
             android:id="@+id/te_sender_head"
-            android:layout_width="@dimen/distance_dp_41"
-            android:layout_height="@dimen/distance_dp_41"
+            android:layout_width="@dimen/distance_dp_22"
+            android:layout_height="@dimen/distance_dp_22"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/distance_dp_16"
+            android:layout_marginLeft="@dimen/distance_dp_12"
             android:background="@mipmap/img_default_gray_head" />
+
+        <ImageView
+            android:id="@+id/img_v"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_dp_30"
+            android:layout_marginTop="@dimen/distance_dp_22"
+            android:background="@mipmap/renzheng_v"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/te_thing_sender_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/distance_dp_5"
+            android:layout_toRightOf="@+id/te_sender_head"
+            android:text="维公哥哥"
+            android:textColor="@color/app_text_96"
+            android:textSize="@dimen/distance_dp_8" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0.1dp"
+            android:layout_height="@dimen/distance_dp_8"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/distance_dp_8"
+            android:layout_marginRight="@dimen/distance_dp_8"
+            android:layout_toRightOf="@+id/te_thing_sender_name"
+            android:background="@color/app_text_4c" />
+
+        <TextView
+            android:id="@+id/te_sees_journalism"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/distance_dp_10"
+            android:layout_toRightOf="@+id/view"
+            android:drawableLeft="@mipmap/read_size"
+            android:drawablePadding="@dimen/distance_dp_3"
+            android:gravity="center_vertical"
+            android:textColor="@color/app_text_99"
+            android:textSize="@dimen/distance_dp_8"
+            tools:text="56789" />
+
+        <TextView
+            android:id="@+id/te_thing_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/te_sees_journalism"
+            android:drawableLeft="@mipmap/thing_zan"
+            android:drawablePadding="@dimen/distance_dp_3"
+            android:gravity="center_vertical"
+            android:text="1564"
+            android:textColor="@color/app_text_96"
+            android:textSize="@dimen/distance_dp_8" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/distance_dp_15">
+            android:layout_marginRight="@dimen/distance_dp_12"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/te_sees_journalism"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/distance_dp_20"
-                android:drawableLeft="@mipmap/see_size"
-                android:drawablePadding="@dimen/distance_dp_6"
-                android:textColor="@color/app_text_99"
-                android:textSize="@dimen/distance_dp_12"
-                tools:text="56789" />
+                android:id="@+id/te_new_comment"
+                android:layout_width="54dp"
+                android:layout_height="@dimen/distance_dp_20"
+                android:layout_centerVertical="true"
+                android:background="@drawable/lafe_radius_fc9b53_12"
+                android:gravity="center"
+                android:text="去写热评"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_9" />
 
             <TextView
-                android:id="@+id/te_share_journalism"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:drawableLeft="@mipmap/share_journalism"
-                android:drawablePadding="@dimen/distance_dp_6"
-                android:textColor="@color/app_text_99"
-                android:textSize="@dimen/distance_dp_12"
-                tools:text="56789" />
+                android:id="@+id/te_new_share"
+                android:layout_width="54dp"
+                android:layout_height="@dimen/distance_dp_20"
+                android:layout_centerVertical="true"
+                android:background="@drawable/right_radius_f93b3b_12"
+                android:gravity="center"
+                android:text="爱心传递"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_9" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

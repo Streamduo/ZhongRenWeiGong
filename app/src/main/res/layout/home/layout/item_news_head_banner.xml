@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_249"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_placement_cover"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@mipmap/vegetable_default"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="374:190"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/distance_dp_12"
+        android:paddingRight="@dimen/distance_dp_12"
+        android:paddingTop="@dimen/distance_dp_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/weigongicon" />
+
+            <View
+                android:layout_width="@dimen/distance_dp_1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:background="@color/app_text_4c" />
+
+            <TextView
+                android:id="@+id/te_news_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="为救溺水儿童，的哥义无反顾跳入水中救起落水…"
+                android:textColor="@color/app_5D5D5D"
+                android:textSize="@dimen/distance_dp_12" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/te_news_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_3"
+                android:text="维公热评    2小时前"
+                android:textColor="@color/app_E14344"
+                android:textSize="@dimen/distance_dp_9" />
+
+            <TextView
+                android:id="@+id/te_thing_sees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_20"
+                android:layout_marginTop="@dimen/distance_dp_3"
+                android:layout_toRightOf="@+id/te_news_date"
+                android:drawableLeft="@mipmap/read_size"
+                android:text="1564"
+                android:textColor="@color/app_text_96"
+                android:textSize="@dimen/distance_dp_8" />
+
+            <TextView
+                android:id="@+id/te_thing_zan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_10"
+                android:layout_marginTop="@dimen/distance_dp_3"
+                android:layout_toRightOf="@+id/te_thing_sees"
+                android:drawableLeft="@mipmap/thing_zan"
+                android:text="1564"
+                android:textColor="@color/app_text_96"
+                android:textSize="@dimen/distance_dp_8" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/te_new_comment"
+                    android:layout_width="54dp"
+                    android:layout_height="@dimen/distance_dp_20"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/lafe_radius_fc9b53_12"
+                    android:gravity="center"
+                    android:text="去写热评"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_9" />
+
+                <TextView
+                    android:id="@+id/te_new_share"
+                    android:layout_width="54dp"
+                    android:layout_height="@dimen/distance_dp_20"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/right_radius_f93b3b_12"
+                    android:gravity="center"
+                    android:text="爱心传递"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_9" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

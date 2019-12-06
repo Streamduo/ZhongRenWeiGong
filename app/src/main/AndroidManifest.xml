@@ -187,7 +187,9 @@
         <activity android:name=".mine.AddBankCardActivity" />
         <activity android:name=".mine.MyFollowListActivity" />
         <activity android:name=".home.SendPublishActivity" />
-        <activity android:name=".mine.ReflectRecordActivity"/>
+        <activity android:name=".mine.ReflectRecordActivity" />
+        <activity android:name=".home.NewsDetailActivity" />
+        <activity android:name=".login.RealNameAuthenticationActivity"></activity>
     </application>
 
 </manifest>

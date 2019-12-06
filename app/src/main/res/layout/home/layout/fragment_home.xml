@@ -9,153 +9,135 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/distance_dp_50"
-        android:layout_marginLeft="@dimen/distance_dp_90"
-        android:layout_marginRight="@dimen/distance_dp_90"
-        android:layout_marginTop="@dimen/distance_dp_25"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:background="@color/app_E02627">
 
-        <RelativeLayout
-            android:id="@+id/tuijian_btn_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/tuijian_tx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="推荐"
-                android:textColor="@color/FF000000"
-                android:textSize="@dimen/distance_dp_19" />
-
-            <View
-                android:id="@+id/tuijian_bottom_line"
-                android:layout_width="@dimen/distance_dp_30"
-                android:layout_height="@dimen/distance_dp_2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/app_23A0F2" />
-
-            <ImageView
-                android:id="@+id/img_tuijian_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/distance_dp_10"
-                android:background="@mipmap/msg_new" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/news_btn_layout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginLeft="@dimen/distance_dp_72"
+            android:layout_marginRight="@dimen/distance_dp_72"
+            android:layout_marginTop="@dimen/distance_dp_25"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/news_tx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="新闻"
-                android:textColor="@color/app_text_99"
-                android:textSize="@dimen/distance_dp_17" />
+            <RelativeLayout
+                android:id="@+id/tuijian_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-            <View
-                android:id="@+id/news_bottom_line"
-                android:layout_width="@dimen/distance_dp_30"
-                android:layout_height="@dimen/distance_dp_2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/app_23A0F2"
-                android:visibility="gone" />
+                <TextView
+                    android:id="@+id/tuijian_tx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="推荐"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_20" />
 
-            <ImageView
-                android:id="@+id/img_news_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/distance_dp_10"
-                android:background="@mipmap/msg_new" />
+                <!--<View-->
+                <!--android:id="@+id/tuijian_bottom_line"-->
+                <!--android:layout_width="@dimen/distance_dp_30"-->
+                <!--android:layout_height="@dimen/distance_dp_2"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="@color/app_23A0F2" />-->
 
-        </RelativeLayout>
+                <!--<ImageView-->
+                <!--android:id="@+id/img_tuijian_new"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginTop="@dimen/distance_dp_10"-->
+                <!--android:background="@mipmap/msg_new" />-->
 
-        <RelativeLayout
-            android:id="@+id/video_btn_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            </RelativeLayout>
 
-            <TextView
-                android:id="@+id/video_tx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="视频"
-                android:textColor="@color/app_text_99"
-                android:textSize="@dimen/distance_dp_17" />
+            <RelativeLayout
+                android:id="@+id/news_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-            <View
-                android:id="@+id/video_bottom_line"
-                android:layout_width="@dimen/distance_dp_30"
-                android:layout_height="@dimen/distance_dp_2"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/app_23A0F2"
-                android:visibility="gone" />
+                <TextView
+                    android:id="@+id/news_tx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="新闻"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_16" />
 
-            <ImageView
-                android:id="@+id/img_video_new"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/distance_dp_10"
-                android:background="@mipmap/msg_new" />
+                <!--<View-->
+                <!--android:id="@+id/news_bottom_line"-->
+                <!--android:layout_width="@dimen/distance_dp_30"-->
+                <!--android:layout_height="@dimen/distance_dp_2"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="@color/app_23A0F2"-->
+                <!--android:visibility="gone" />-->
 
-        </RelativeLayout>
+                <!--<ImageView-->
+                <!--android:id="@+id/img_news_new"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginTop="@dimen/distance_dp_10"-->
+                <!--android:background="@mipmap/msg_new" />-->
 
-        <!--<RelativeLayout-->
-        <!--android:id="@+id/msg_btn_layout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_weight="1">-->
+            </RelativeLayout>
 
-        <!--<TextView-->
-        <!--android:id="@+id/msg_tx"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:text="消息"-->
-        <!--android:textColor="@color/app_text_99"-->
-        <!--android:textSize="@dimen/distance_dp_17" />-->
+            <RelativeLayout
+                android:id="@+id/video_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-        <!--<View-->
-        <!--android:id="@+id/msg_bottom_line"-->
-        <!--android:layout_width="@dimen/distance_dp_30"-->
-        <!--android:layout_height="@dimen/distance_dp_2"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:background="@color/app_23A0F2"-->
-        <!--android:visibility="gone" />-->
+                <TextView
+                    android:id="@+id/video_tx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="视频"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_16" />
 
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginRight="@dimen/distance_dp_6"-->
-        <!--android:layout_marginTop="@dimen/distance_dp_10"-->
-        <!--android:background="@mipmap/round_red"-->
-        <!--android:paddingBottom="@dimen/distance_dp_2"-->
-        <!--android:paddingLeft="@dimen/distance_dp_3"-->
-        <!--android:paddingRight="@dimen/distance_dp_3"-->
-        <!--android:paddingTop="@dimen/distance_dp_2"-->
-        <!--android:text="10"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:textSize="@dimen/distance_dp_10" />-->
+                <!--<View-->
+                <!--android:id="@+id/video_bottom_line"-->
+                <!--android:layout_width="@dimen/distance_dp_30"-->
+                <!--android:layout_height="@dimen/distance_dp_2"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="@color/app_23A0F2"-->
+                <!--android:visibility="gone" />-->
 
-        <!--</RelativeLayout>-->
+                <!--<ImageView-->
+                <!--android:id="@+id/img_video_new"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginTop="@dimen/distance_dp_10"-->
+                <!--android:background="@mipmap/msg_new" />-->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/city_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="北京"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_16" />
+
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/distance_dp_120"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/distance_dp_15"
+    android:paddingLeft="@dimen/distance_dp_12"
+    android:paddingTop="@dimen/distance_dp_15">
+
+    <EditText
+        android:id="@+id/ed_comment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.87"
+        android:background="@drawable/bg_bac_e8e8e8_4"
+        android:gravity="left"
+        android:hint="传递社会正能量你我皆有责～"
+        android:paddingLeft="@dimen/distance_dp_5"
+        android:paddingTop="@dimen/distance_dp_5"
+        android:textColor="@color/app_222222"
+        android:textSize="@dimen/distance_dp_12" />
+
+    <TextView
+        android:id="@+id/te_send"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.13"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/distance_dp_12"
+        android:text="发布"
+        android:textColor="@color/app_C0C0C0"
+        android:textSize="@dimen/distance_dp_12" />
+
+</LinearLayout>

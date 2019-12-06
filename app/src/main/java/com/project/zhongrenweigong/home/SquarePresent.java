@@ -7,6 +7,6 @@ import cn.droidlover.xdroidmvp.mvp.XPresent;
  * 邮箱：duoendeavor@163.com
  * 意图：
  */
-public class SquarePresent extends XPresent<SquareFragment> {
+public class SquarePresent extends XPresent<SendPublishFragment> {
     
 }

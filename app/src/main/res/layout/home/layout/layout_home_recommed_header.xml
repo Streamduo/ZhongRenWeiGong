@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/distance_dp_11"
+    android:paddingRight="@dimen/distance_dp_11">
+
+    <LinearLayout
+        android:id="@+id/line_placement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_placement_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:text="弘扬爱国主义精神，传承中华美德"
+            android:textColor="@color/app_3E3E3E"
+            android:textSize="@dimen/distance_dp_15" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5">
+
+            <ImageView
+                android:id="@+id/img_placement_cover"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@mipmap/vegetable_default"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="352:170"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_2">
+
+            <TextView
+                android:id="@+id/te_sender_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="中宣部宣教局     11小时前"
+                android:textColor="@color/app_7F7F7F"
+                android:textSize="@dimen/distance_dp_9" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/te_sender_date"
+                android:layout_marginTop="@dimen/distance_dp_2"
+                android:text="置顶"
+                android:textColor="@color/app_E61414"
+                android:textSize="@dimen/distance_dp_9" />
+
+            <TextView
+                android:id="@+id/te_placement_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/distance_dp_5"
+                android:drawableRight="@mipmap/red_share"
+                android:gravity="center_vertical"
+                android:text="一起传递道德正能量吧～"
+                android:textColor="@color/app_7F7F7F"
+                android:textSize="@dimen/distance_dp_9" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_marginTop="@dimen/distance_dp_3"
+            android:background="@color/app_D6D6D6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:text="热点话题"
+            android:textColor="@color/app_3E3E3E"
+            android:textSize="@dimen/distance_dp_16" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_topic_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:overScrollMode="never" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_fengshang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5"
+            android:text="传播风尚"
+            android:textColor="@color/app_3E3E3E"
+            android:textSize="@dimen/distance_dp_16"
+            android:textStyle="bold" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_dp_5">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@mipmap/yinying"
+                app:layout_constraintDimensionRatio="351:169"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                    android:id="@+id/detail_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/img_fengshang_cover"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@mipmap/vegetable_default"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="351:169"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/rl_yinying"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="351:169"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/radio_gray">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/play" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/te_fengshang_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_9"
+                android:layout_marginTop="@dimen/distance_dp_7"
+                android:background="@drawable/bg_bac_060606_7"
+                android:paddingBottom="@dimen/distance_dp_2"
+                android:paddingLeft="@dimen/distance_dp_8"
+                android:paddingRight="@dimen/distance_dp_8"
+                android:paddingTop="@dimen/distance_dp_2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="雷锋精神" />
+
+            <TextView
+                android:id="@+id/te_share_fengshang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/distance_dp_9"
+                android:layout_marginTop="@dimen/distance_dp_7"
+                android:background="@drawable/bg_bac_060606_7"
+                android:drawableLeft="@mipmap/small_share_white"
+                android:drawablePadding="@dimen/distance_dp_3"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/distance_dp_2"
+                android:paddingLeft="@dimen/distance_dp_8"
+                android:paddingRight="@dimen/distance_dp_8"
+                android:paddingTop="@dimen/distance_dp_2"
+                android:text="分享"
+                android:textColor="@color/white"
+                android:textSize="@dimen/distance_dp_8"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_5"
+        android:text="好人好事"
+        android:textColor="@color/app_3E3E3E"
+        android:textSize="@dimen/distance_dp_16"
+        android:textStyle="bold" />
+</LinearLayout>

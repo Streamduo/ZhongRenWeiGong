@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_84">
+
+        <ImageView
+            android:id="@+id/img_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/te_share_fengshang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/distance_dp_9"
+            android:layout_marginTop="@dimen/distance_dp_7"
+            android:background="@drawable/bg_bac_060606_7"
+            android:drawableLeft="@mipmap/small_address_whiter"
+            android:drawablePadding="@dimen/distance_dp_3"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/distance_dp_2"
+            android:paddingLeft="@dimen/distance_dp_8"
+            android:paddingRight="@dimen/distance_dp_8"
+            android:paddingTop="@dimen/distance_dp_2"
+            android:text="定位城市"
+            android:textColor="@color/white"
+            android:textSize="@dimen/distance_dp_8" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_90"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/line_food"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_food"
+                android:layout_width="@dimen/distance_dp_48"
+                android:layout_height="@dimen/distance_dp_48"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_10"
+                android:background="@color/app_f6f6f6"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="健康食"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_play"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_play"
+                android:layout_width="@dimen/distance_dp_48"
+                android:layout_height="@dimen/distance_dp_48"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_10"
+                android:background="@color/app_f6f6f6"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="畅快玩"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_house"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_house"
+                android:layout_width="@dimen/distance_dp_48"
+                android:layout_height="@dimen/distance_dp_48"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_10"
+                android:background="@color/app_f6f6f6"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="安心住"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_apartment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_apartment"
+                android:layout_width="@dimen/distance_dp_48"
+                android:layout_height="@dimen/distance_dp_48"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_10"
+                android:background="@color/app_f6f6f6"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="品质公寓"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_teach"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_teach"
+                android:layout_width="@dimen/distance_dp_48"
+                android:layout_height="@dimen/distance_dp_48"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_10"
+                android:background="@color/app_f6f6f6"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="放心学"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -43,9 +43,9 @@ public class HomeVideoListAdapter extends BaseQuickAdapter<HomeVideoDataBean, Ba
         GlideDownLoadImage.getInstance()
                 .loadImage(mContext, item.getCoverUrl(), (ImageView) helper.getView(R.id.img_journalism_cover), R.mipmap.vegetable_default);
         helper.setText(R.id.te_journalism_title, item.getTitle());
-        helper.setText(R.id.te_video_time, item.getDuration());
+//        helper.setText(R.id.te_video_time, item.getDuration());
         helper.setText(R.id.te_sees_journalism, item.getLookNum());
-        helper.setText(R.id.te_share_journalism, item.getTransmitNum());
+//        helper.setText(R.id.te_share_journalism, item.getTransmitNum());
         final StandardGSYVideoPlayer gsyVideoPlayer = (StandardGSYVideoPlayer) helper.getView(R.id.detail_player);
         gsyVideoPlayer.setUpLazy(item.getVideoUrl(), true, null, null, "这是title");
         //增加title
@@ -78,7 +78,6 @@ public class HomeVideoListAdapter extends BaseQuickAdapter<HomeVideoDataBean, Ba
                 helper.setVisible(R.id.img_journalism_cover, false);
                 helper.setVisible(R.id.rl_yinying, false);
                 helper.setVisible(R.id.detail_player, true);
-                helper.setVisible(R.id.te_video_time, false);
                 gsyVideoPlayer.startPlayLogic();
             }
         });

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".login.RealNameAuthenticationActivity">
+
+    <include
+        layout="@layout/layout_new_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/distance_dp_12"
+            android:layout_marginRight="@dimen/distance_dp_12"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/distance_dp_121"
+                android:layout_marginTop="@dimen/distance_dp_20"
+                android:background="@mipmap/face_search_bac"
+                android:paddingBottom="@dimen/distance_dp_22"
+                android:paddingLeft="@dimen/distance_dp_10"
+                android:paddingRight="@dimen/distance_dp_10"
+                android:paddingTop="@dimen/distance_dp_17">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="职业选择"
+                    android:textColor="@color/app_6D6D6D"
+                    android:textSize="@dimen/distance_dp_18" />
+
+                <TextView
+                    android:id="@+id/te_select_work"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/distance_dp_27"
+                    android:drawablePadding="@dimen/distance_dp_3"
+                    android:drawableRight="@mipmap/card_down"
+                    android:paddingLeft="@dimen/distance_dp_10"
+                    android:text="职业"
+                    android:textColor="@color/app_FA4848"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_below="@+id/text"
+                    android:layout_marginLeft="@dimen/distance_dp_30"
+                    android:layout_marginTop="@dimen/distance_dp_17"
+                    android:layout_toRightOf="@+id/te_select_work"
+                    android:background="@drawable/bg_stroke_d6d6d6_25">
+
+                    <EditText
+                        android:id="@+id/ed_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="检索您的职业～"
+                        android:paddingLeft="@dimen/distance_dp_17"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_12" />
+
+                    <ImageView
+                        android:id="@+id/img_search_work"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingLeft="@dimen/distance_dp_10"
+                        android:paddingRight="@dimen/distance_dp_19"
+                        android:src="@mipmap/search_red" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_20"
+                android:background="@mipmap/face_bac"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/distance_dp_30">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_282"
+                    android:background="@mipmap/face_top_bac"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="开启刷脸模式"
+                    android:textColor="@color/app_3E3E3E"
+                    android:textSize="@dimen/distance_dp_18" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/distance_dp_4"
+                    android:text="请确保光线充足，平视屏幕，面部清晰"
+                    android:textColor="@color/app_686868"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/distance_dp_19"
+                    android:background="@mipmap/card_record"
+                    android:gravity="center"
+                    android:text="开始拍摄"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_20"
+                android:background="@mipmap/face_bac"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/distance_dp_30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/distance_dp_18"
+                    android:text="拍摄并上传您的身份证正面与反面"
+                    android:textColor="@color/app_686868"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_130"
+                    android:layout_marginTop="@dimen/distance_dp_18"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/line_just"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/distance_dp_10"
+                            android:background="@mipmap/card_just">
+
+                            <ImageView
+                                android:id="@+id/img_card_just"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/distance_dp_110"
+                                android:scaleType="centerCrop" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="正面"
+                            android:textColor="@color/app_686868"
+                            android:textSize="@dimen/distance_dp_12" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/line_back"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/distance_dp_12"
+                            android:background="@mipmap/card_back">
+
+                            <ImageView
+                                android:id="@+id/img_card_back"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/distance_dp_110"
+                                android:scaleType="centerCrop" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/distance_dp_3"
+                            android:text="反面"
+                            android:textColor="@color/app_686868"
+                            android:textSize="@dimen/distance_dp_12" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/distance_dp_16"
+                    android:text="扫描上传时确保身份证边框完整，字体清晰，亮度均匀"
+                    android:textColor="@color/app_686868"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_70"
+                    android:layout_marginTop="@dimen/distance_dp_16"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/distance_dp_20"
+                    android:paddingRight="@dimen/distance_dp_20">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/distance_dp_2"
+                        android:drawableTop="@mipmap/card_biaozhun"
+                        android:gravity="center_horizontal"
+                        android:text="标准"
+                        android:textColor="@color/app_686868"
+                        android:textSize="@dimen/distance_dp_12" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/distance_dp_2"
+                        android:drawableTop="@mipmap/card_quesun"
+                        android:gravity="center_horizontal"
+                        android:text="边界缺损"
+                        android:textColor="@color/app_686868"
+                        android:textSize="@dimen/distance_dp_12" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/distance_dp_2"
+                        android:drawableTop="@mipmap/card_mohu"
+                        android:gravity="center_horizontal"
+                        android:text="对焦模糊"
+                        android:textColor="@color/app_686868"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/distance_dp_10"
+                    android:layout_marginTop="@dimen/distance_dp_24"
+                    android:text="身份证信息"
+                    android:textColor="@color/app_686868"
+                    android:textSize="@dimen/distance_dp_18" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginLeft="@dimen/distance_dp_10"
+                    android:layout_marginRight="@dimen/distance_dp_10"
+                    android:layout_marginTop="@dimen/distance_dp_24"
+                    android:background="@drawable/bg_stroke_d6d6d6_25"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/distance_dp_16"
+                        android:text="姓名"
+                        android:textColor="@color/app_D1D1D1"
+                        android:textSize="@dimen/distance_dp_12" />
+
+                    <EditText
+                        android:id="@+id/ed_card_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:hint="请输入真实姓名"
+                        android:paddingRight="@dimen/distance_dp_17"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_40"
+                    android:layout_marginLeft="@dimen/distance_dp_10"
+                    android:layout_marginRight="@dimen/distance_dp_10"
+                    android:layout_marginTop="@dimen/distance_dp_24"
+                    android:background="@drawable/bg_stroke_d6d6d6_25"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/distance_dp_16"
+                        android:text="身份证号"
+                        android:textColor="@color/app_D1D1D1"
+                        android:textSize="@dimen/distance_dp_12" />
+
+                    <EditText
+                        android:id="@+id/ed_card_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical|right"
+                        android:hint="请输入身份证号"
+                        android:inputType="number"
+                        android:paddingRight="@dimen/distance_dp_17"
+                        android:textColor="@color/FF000000"
+                        android:textSize="@dimen/distance_dp_12" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/te_start_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/distance_dp_19"
+                    android:background="@mipmap/card_record"
+                    android:gravity="center"
+                    android:text="开始拍摄"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/distance_dp_12" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

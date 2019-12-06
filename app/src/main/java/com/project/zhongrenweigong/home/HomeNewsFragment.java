@@ -20,6 +20,7 @@ import com.project.zhongrenweigong.home.adapter.HomeRecommedListAdapter;
 import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.NewsDataBean;
 import com.project.zhongrenweigong.home.bean.NewsDataMultiItemEntity;
+import com.project.zhongrenweigong.home.viewholder.HomeNewsHeader;
 import com.project.zhongrenweigong.util.QueShengManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -51,6 +52,7 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
     private int currentPage = 1;
     private List<NewsDataMultiItemEntity> datas = new ArrayList<>();
     private HomeRecommedListAdapter homeRecommedListAdapter;
+    private HomeNewsHeader homeNewsHeader;
 
     public static HomeNewsFragment getInstance(int index) {
         HomeNewsFragment homePageXinXiFragment = new HomeNewsFragment();
@@ -64,10 +66,12 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
     public void initView() {
         Bundle bundle = getArguments();
         index = bundle.getInt("index", 0);
+        initTop();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyJournalismList.setLayoutManager(linearLayoutManager);
         homeRecommedListAdapter = new HomeRecommedListAdapter(datas);
         recyJournalismList.setAdapter(homeRecommedListAdapter);
+        homeRecommedListAdapter.setHeaderView(homeNewsHeader.headerView);
         smRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -125,6 +129,10 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
                 }
             }
         });
+    }
+
+    private void initTop(){
+        homeNewsHeader = new HomeNewsHeader(getContext(),getActivity());
     }
 
     private void showShareDialog() {
@@ -253,7 +261,7 @@ public class HomeNewsFragment extends BaseFragment<HomeNewsPresent> {
 
     public void getDataError() {
         if (currentPage == 1) {
-            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeRecommedListAdapter, smRefresh);
+//            QueShengManager.setEmptyView(QueShengManager.QUESHENG_TYPE_1, homeRecommedListAdapter, smRefresh);
             smRefresh.finishRefresh(false);
         } else {
             smRefresh.finishLoadMore(false);

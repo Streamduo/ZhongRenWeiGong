@@ -12,8 +12,8 @@ public class FactoryFragment {
 
     public static final String TAG = "FactoryFragment";
 
-    private static final String[] TAGS = {HomeFragment.TAG,IndustryFragment.TAG,
-            MessageFragment.TAG, MineFragment.TAG};
+    private static final String[] TAGS = {HomeFragment.TAG, IndustryFragment.TAG,
+            MessageFragment.TAG, MineFragment.TAG, SendPublishFragment.TAG};
     private FragmentManager fragmentManager;
     private int currentIndex = -1;
 
@@ -44,6 +44,8 @@ public class FactoryFragment {
                 return new MessageFragment();
             case MineFragment.TAG:
                 return new MineFragment();
+            case SendPublishFragment.TAG:
+                return new SendPublishFragment();
         }
         return null;
     }
