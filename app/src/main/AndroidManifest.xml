@@ -189,7 +189,10 @@
         <activity android:name=".home.SendPublishActivity" />
         <activity android:name=".mine.ReflectRecordActivity" />
         <activity android:name=".home.NewsDetailActivity" />
-        <activity android:name=".login.RealNameAuthenticationActivity"></activity>
+        <activity android:name=".login.RealNameAuthenticationActivity" />
+        <activity
+            android:name=".currency.NewsSearchActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

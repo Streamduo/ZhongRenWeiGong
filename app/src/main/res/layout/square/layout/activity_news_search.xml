@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".currency.SearchBusinessActivity$NewsSearchActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_FA3C3C">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_50"
+            android:layout_marginTop="@dimen/distance_dp_25"
+            android:paddingRight="@dimen/distance_dp_12">
+
+            <TextView
+                android:id="@+id/te_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/new_white_back"
+                android:paddingLeft="@dimen/distance_dp_20"
+                android:paddingRight="@dimen/distance_dp_12" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/te_back">
+
+                <EditText
+                    android:id="@+id/ed_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:background="@drawable/bg_bac_white_solid_15"
+                    android:gravity="center_vertical"
+                    android:hint="地区热点道德事件"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:paddingLeft="14dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <ImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="@dimen/distance_dp_10"
+                    android:paddingRight="@dimen/distance_dp_14"
+                    android:src="@mipmap/big_black_search" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_F5F5F5"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/distance_dp_12"
+        android:paddingRight="@dimen/distance_dp_12">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recy_tuijian_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_1"
+            android:layout_marginBottom="@dimen/distance_dp_17"
+            android:layout_marginTop="@dimen/distance_dp_20"
+            android:background="@color/app_D6D6D6" />
+
+        <LinearLayout
+            android:id="@+id/line_history_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="历史记录"
+                    android:textColor="@color/app_A5A5A5"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <ImageView
+                    android:id="@+id/img_delete_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@mipmap/delete_history" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_history_search_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
