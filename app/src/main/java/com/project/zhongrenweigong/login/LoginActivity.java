@@ -208,7 +208,7 @@ public class LoginActivity extends BaseActivity<LoginPresent> {
                 getPhoneCode();//成功之后开始倒计时
                 break;
             case R.id.te_xieyi:
-
+                Router.newIntent(LoginActivity.this).to(RealNameAuthenticationActivity.class).launch();
                 break;
             case R.id.img_show_psd:
                 String psd = edPassword.getText().toString();

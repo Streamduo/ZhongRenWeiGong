@@ -3,62 +3,59 @@
     android:id="@+id/rlParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent">
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/distance_dp_138"
+        android:background="@mipmap/keji_top" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="12dp"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_circle_4"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnTakePhoto"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:height="42dp"
-                android:background="@null"
-                android:gravity="center"
-                android:text="拍照"
-                android:textColor="@color/app_text_33"
-                android:textSize="13dp" />
+            <TextView
+                android:id="@+id/te_select_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/distance_dp_3"
+                android:drawableTop="@mipmap/photos"
+                android:gravity="center_horizontal"
+                android:text="图片"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="@dimen/distance_dp_16" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/app_text_e6" />
+            <TextView
+                android:id="@+id/te_take_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/distance_dp_77"
+                android:drawablePadding="@dimen/distance_dp_3"
+                android:drawableTop="@mipmap/camera"
+                android:gravity="center_horizontal"
+                android:text="拍摄"
+                android:textColor="@color/app_3E3E3E"
+                android:textSize="@dimen/distance_dp_16" />
 
-            <Button
-                android:id="@+id/btnSelectPhoto"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:height="42dp"
-                android:background="@null"
-                android:gravity="center"
-                android:text="手机相册选择"
-                android:textColor="@color/app_text_33"
-                android:textSize="13dp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnCancel"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginTop="16dp"
-            android:height="42dp"
-            android:background="@drawable/bg_white_circle_4"
-            android:gravity="center"
-            android:text="取消"
-            android:textColor="@color/app_text_33"
-            android:textSize="13dp" />
-
+        <ImageView
+            android:id="@+id/img_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/distance_dp_58"
+            android:background="@mipmap/new_gray_exit" />
     </LinearLayout>
 </RelativeLayout>
 

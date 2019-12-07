@@ -122,9 +122,9 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_select_image);
         checkPermissions();
-        findViewById(R.id.btnTakePhoto).setOnClickListener(this);
-        findViewById(R.id.btnSelectPhoto).setOnClickListener(this);
-        findViewById(R.id.btnCancel).setOnClickListener(this);
+        findViewById(R.id.te_take_photo).setOnClickListener(this);
+        findViewById(R.id.te_select_photo).setOnClickListener(this);
+        findViewById(R.id.img_cancel).setOnClickListener(this);
         findViewById(R.id.rlParent).setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -152,12 +152,12 @@ public class ActivitySelectImage extends AppCompatActivity implements OnClickLis
     @Override
     public void onClick(View v) {
         int nId = v.getId();
-        if (nId == R.id.btnSelectPhoto) {
+        if (nId == R.id.te_select_photo) {
             checkPermissions();
             if (hasPermission) {
                 openGallery();
             }
-        } else if (nId == R.id.btnTakePhoto) {
+        } else if (nId == R.id.te_take_photo) {
             checkPermissions();
             if (hasPermission) {
                 takePhoto();

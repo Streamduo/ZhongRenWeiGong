@@ -66,24 +66,22 @@
                     android:layout_toRightOf="@+id/te_select_work"
                     android:background="@drawable/bg_stroke_d6d6d6_25">
 
-                    <EditText
-                        android:id="@+id/ed_work"
+                    <TextView
+                        android:id="@+id/te_work"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:gravity="center_vertical"
                         android:hint="检索您的职业～"
                         android:paddingLeft="@dimen/distance_dp_17"
-                        android:textColor="@color/FF000000"
                         android:textSize="@dimen/distance_dp_12" />
 
                     <ImageView
                         android:id="@+id/img_search_work"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:paddingLeft="@dimen/distance_dp_10"
-                        android:paddingRight="@dimen/distance_dp_19"
+                        android:layout_marginRight="@dimen/distance_dp_19"
                         android:src="@mipmap/search_red" />
                 </RelativeLayout>
             </RelativeLayout>
@@ -157,6 +155,7 @@
                 android:layout_marginTop="@dimen/distance_dp_20"
                 android:background="@mipmap/face_bac"
                 android:orientation="vertical"
+                android:layout_marginBottom="@dimen/distance_dp_20"
                 android:paddingBottom="@dimen/distance_dp_30">
 
                 <TextView
@@ -170,7 +169,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/distance_dp_130"
+                    android:layout_height="@dimen/distance_dp_135"
                     android:layout_marginTop="@dimen/distance_dp_18"
                     android:orientation="horizontal">
 

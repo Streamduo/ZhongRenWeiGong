@@ -20,6 +20,7 @@ import com.project.zhongrenweigong.util.glide.GlideDownLoadImage;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.droidlover.xdroidmvp.router.Router;
 
 public class RealNameAuthenticationActivity extends BaseActivity<RealNameAuthenticationPresent> {
 
@@ -29,8 +30,8 @@ public class RealNameAuthenticationActivity extends BaseActivity<RealNameAuthent
     TextView teTitle;
     @BindView(R.id.te_select_work)
     TextView teSelectWork;
-    @BindView(R.id.ed_work)
-    EditText edWork;
+    @BindView(R.id.te_work)
+    TextView teWork;
     @BindView(R.id.img_search_work)
     ImageView imgSearchWork;
     @BindView(R.id.img_card_just)
@@ -73,8 +74,8 @@ public class RealNameAuthenticationActivity extends BaseActivity<RealNameAuthent
         teBack.setOnClickListener(this);
         imgCardJust.setOnClickListener(this);
         imgCardBack.setOnClickListener(this);
-        imgSearchWork.setOnClickListener(this);
         teStartRecord.setOnClickListener(this);
+        teWork.setOnClickListener(this);
     }
 
     @Override
@@ -83,15 +84,19 @@ public class RealNameAuthenticationActivity extends BaseActivity<RealNameAuthent
             case R.id.te_back:
                 finish();
                 break;
-            case R.id.img_search_work:
+            case R.id.te_work:
+                Router.newIntent(RealNameAuthenticationActivity.this)
+                        .to(IndustrySearchActivity.class).launch();
                 break;
-            case R.id.line_just:
+            case R.id.img_card_just:
                 ActivitySelectImage.selectImageForCard(RealNameAuthenticationActivity.this);
                 break;
-            case R.id.line_back:
+            case R.id.img_card_back:
                 ActivitySelectImage.selectImageForCard1(RealNameAuthenticationActivity.this);
                 break;
             case R.id.te_start_record:
+                Router.newIntent(RealNameAuthenticationActivity.this)
+                        .to(DistinguishActivity.class).launch();
                 break;
         }
     }

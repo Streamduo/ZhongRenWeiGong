@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".login.IndustrySearchActivity">
+
+    <include
+        layout="@layout/layout_new_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_17"
+        android:text="请选择职业类型"
+        android:textColor="@color/app_323232"
+        android:textSize="@dimen/distance_dp_18" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_marginTop="@dimen/distance_dp_3"
+        android:text="选择职位名称所对应的类型"
+        android:textColor="@color/app_ACACAC"
+        android:textSize="@dimen/distance_dp_12" />
+
+    <EditText
+        android:id="@+id/ed_work_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_45"
+        android:layout_marginTop="@dimen/distance_dp_12"
+        android:background="@null"
+        android:drawableLeft="@mipmap/gray_search"
+        android:drawablePadding="@dimen/distance_dp_10"
+        android:gravity="center_vertical"
+        android:hint="请输入职位名称"
+        android:paddingLeft="@dimen/distance_dp_12"
+        android:textColor="@color/FF000000"
+        android:textSize="@dimen/distance_dp_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/app_ededed"
+        android:layout_height="@dimen/distance_dp_1"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_search_work_list"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/distance_dp_12"
+        android:layout_height="match_parent"
+        android:overScrollMode="never" />
+
+</LinearLayout>

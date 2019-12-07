@@ -7,6 +7,8 @@ import com.project.zhongrenweigong.home.bean.HomeRecommendBean;
 import com.project.zhongrenweigong.home.bean.HomeVideoBean;
 import com.project.zhongrenweigong.home.bean.HomeViewPagerBean;
 import com.project.zhongrenweigong.home.bean.MessageListBean;
+import com.project.zhongrenweigong.home.bean.RecommedBean;
+import com.project.zhongrenweigong.home.bean.RecommedTopBean;
 import com.project.zhongrenweigong.message.bean.SystemAndActivityBean;
 import com.project.zhongrenweigong.message.bean.SystemMessageBean;
 import com.project.zhongrenweigong.message.bean.VoucherMessageDetailBean;
@@ -230,5 +232,37 @@ public interface MessageNetManager {
     @POST()
     Call<BaseModel> uploadLittleVideo(@Url() String url,
                                     @Body RequestBody Body);
+    /////////////////////////2.0接口    //////////////////////
+    /**
+     * 获取首页推荐顶部信息接口
+     *
+     * @return
+     */
+    @POST("getRecommendMessage")
+    Flowable<RecommedTopBean> getRecommendMessage(@Body RequestBody body);
 
+    /**
+     * 获取新闻信息
+     *
+     * @return
+     */
+    @POST("getGoodDeedMessage")
+    Flowable<RecommedBean> getGoodDeedMessage(@Body RequestBody body);
+
+
+    /**
+     * 首页内容点赞接口
+     *
+     * @return
+     */
+    @POST("homePageLike")
+    Flowable<BaseModel> homePageLike(@Body RequestBody body);
+
+    /**
+     * 首页内容收藏接口
+     *
+     * @return
+     */
+    @POST("collect")
+    Flowable<BaseModel> collect(@Body RequestBody body);
 }

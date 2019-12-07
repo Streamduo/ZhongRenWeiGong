@@ -65,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="新闻"
-                    android:textColor="@color/white"
+                    android:textColor="@color/app_EFE1E1"
                     android:textSize="@dimen/distance_dp_16" />
 
                 <!--<View-->
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="视频"
-                    android:textColor="@color/white"
+                    android:textColor="@color/app_EFE1E1"
                     android:textSize="@dimen/distance_dp_16" />
 
                 <!--<View-->
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="北京"
-                    android:textColor="@color/white"
+                    android:textColor="@color/app_EFE1E1"
                     android:textSize="@dimen/distance_dp_16" />
 
             </RelativeLayout>

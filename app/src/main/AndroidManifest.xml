@@ -193,6 +193,8 @@
         <activity
             android:name=".currency.NewsSearchActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".login.IndustrySearchActivity" />
+        <activity android:name=".login.DistinguishActivity"></activity>
     </application>
 
 </manifest>

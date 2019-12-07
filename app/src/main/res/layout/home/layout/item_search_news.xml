@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/distance_dp_16">
+
+    <LinearLayout
+        android:id="@+id/view_line"
+        android:layout_width="@dimen/distance_dp_17"
+        android:layout_height="@dimen/distance_dp_11"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="@dimen/distance_dp_1"
+            android:layout_height="@dimen/distance_dp_11"
+            android:background="@color/app_e8e8e8" />
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/te_search_text"
+        android:id="@+id/te_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/view_line"
         android:textColor="@color/app_3E3E3E"
         android:textSize="@dimen/distance_dp_12"
         tools:text="外婆家的菜" />

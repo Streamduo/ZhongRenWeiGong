@@ -22,6 +22,7 @@ import com.project.zhongrenweigong.business.hotel.HotelListActivity;
 import com.project.zhongrenweigong.business.house.HouseListActivity;
 import com.project.zhongrenweigong.business.teach.TeachListActivity;
 import com.project.zhongrenweigong.currency.Constans;
+import com.project.zhongrenweigong.currency.NewsSearchActivity;
 import com.project.zhongrenweigong.currency.SearchBusinessActivity;
 import com.project.zhongrenweigong.currency.event.RefreshHomeEvent;
 import com.project.zhongrenweigong.currency.zxing.android.CaptureActivity;
@@ -155,7 +156,7 @@ public class IndustryFragment extends BaseFragment<IndustryPresent> {
                 Router.newIntent(getActivity()).to(AddressLocationActivity.class).launch();
                 break;
             case R.id.te_search:
-                Router.newIntent(getActivity()).to(SearchBusinessActivity.class).launch();
+                Router.newIntent(getActivity()).to(NewsSearchActivity.class).launch();
                 break;
             case R.id.img_message:
 //                LoginMsg userAccent = AcacheUtils.getInstance(getContext()).getUserAccent();

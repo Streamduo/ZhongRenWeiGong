@@ -96,23 +96,42 @@ public class HomeFragment extends BaseFragment<HomePresent> {
     private void select(int position) {
         if (position == 0) {
             tuijianTx.setTextSize(20);
+            tuijianTx.setTextColor(getResources().getColor(R.color.white));
+            newsTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            videoTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            cityTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
             newsTx.setTextSize(16);
             videoTx.setTextSize(16);
             cityTx.setTextSize(16);
             vpHomepage.setCurrentItem(0);
         } else if (position == 1) {
+            tuijianTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            newsTx.setTextColor(getResources().getColor(R.color.white));
+            videoTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            cityTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+
             tuijianTx.setTextSize(16);
             newsTx.setTextSize(20);
             videoTx.setTextSize(16);
             cityTx.setTextSize(16);
             vpHomepage.setCurrentItem(1);
         } else if (position == 2) {
+            tuijianTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            newsTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            videoTx.setTextColor(getResources().getColor(R.color.white));
+            cityTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+
             tuijianTx.setTextSize(16);
             newsTx.setTextSize(16);
             videoTx.setTextSize(20);
             cityTx.setTextSize(16);
             vpHomepage.setCurrentItem(2);
         } else if (position == 3) {
+            tuijianTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            newsTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            videoTx.setTextColor(getResources().getColor(R.color.app_EFE1E1));
+            cityTx.setTextColor(getResources().getColor(R.color.white));
+
             tuijianTx.setTextSize(16);
             newsTx.setTextSize(16);
             videoTx.setTextSize(16);

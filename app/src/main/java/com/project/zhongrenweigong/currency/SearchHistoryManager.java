@@ -16,6 +16,7 @@ import cn.droidlover.xdroidmvp.cache.SharedPref;
 public class SearchHistoryManager {
     public static final String SEARCH_BUSINESS_HISTORY = "search_business_history";
     public static final String SEARCH_ADDDRESS_HISTORY = "search_address_history";
+    public static final String SEARCH_NEWS_HISTORY = "search_news_history";
     public static final String SEARCH_USER = "search_user";
     public static final int BIGSIZE = 10;
 
@@ -88,6 +89,10 @@ public class SearchHistoryManager {
             }
         }
         return datas;
+    }
+
+    public void romoveHistory(String type) {
+        sp.remove(type);
     }
 
     /**
